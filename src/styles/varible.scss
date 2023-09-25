@@ -8,4 +8,22 @@ $light-text-color: #ffffff;
 $dark-text-color: #000000;
 
 //ui
+$background-body: #f2f2f2;
 $accent-color: #ff754c;
+$background-icon: #438ced;
+
+/* Mixins */
+
+//text
+@mixin overflow-text($count-line) {
+  display: -webkit-box;
+  -webkit-line-clamp: $count-line;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin section-title-text {
+  font-family: Poppins, sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+}
