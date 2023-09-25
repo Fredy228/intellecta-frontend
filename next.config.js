@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["localhost", "static.thairath.co.th"],
+    domains: ["localhost", "static.thairath.co.th", "195.138.86.82"],
   },
   webpack(config) {
     config.module.rules.push({
