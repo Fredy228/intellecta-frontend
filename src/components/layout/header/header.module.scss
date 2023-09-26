@@ -2,7 +2,12 @@
 
 .header {
   width: 100%;
-  padding-top: 47px;
+  padding: 47px 34px 25px 34px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: $background-body;
 
   &_inner {
     display: flex;

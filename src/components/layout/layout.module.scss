@@ -14,13 +14,17 @@
 
 .layout_wrapperMain {
   flex: 1;
-  padding: 0 34px;
   height: 100vh;
+
+  overflow-y: scroll;
 
   display: flex;
   flex-direction: column;
+
+  position: relative;
 }
 
 .layout_wrapperChild {
   flex: 1;
+  padding: 0 34px;
 }

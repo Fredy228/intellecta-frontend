@@ -4,6 +4,7 @@ import styles from "./info-subject.module.scss";
 import { IconSmallRightArrow } from "@/components/reused/Icon/Icon";
 import { TSubject } from "@/components/ui/home/list-subjects/subjectList";
 import Link from "next/link";
+import React from "react";
 
 type Props = {
   subject: TSubject | undefined;
@@ -44,9 +45,9 @@ const InfoSubject: FC<Props> = ({ subject, setActiveId }) => {
             <p className={styles.infoSubject_title}>Домашнє завдання:</p>
             <p className={styles.infoSubject_text}>
               {subject.homework.split("\n").map((line, index) => (
-                <>
+                <React.Fragment key={index}>
                   {line} <br />
-                </>
+                </React.Fragment>
               ))}
             </p>
             <br />

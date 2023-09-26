@@ -9,6 +9,9 @@ import InfoSubject from "@/components/ui/home/list-subjects/info-subject/InfoSub
 
 const ListSubjects: FC = () => {
   const [activeId, setActiveId] = useState<number>(0);
+  const toSubject = (id: number): void => {
+    setActiveId(id);
+  };
 
   return (
     <div className={styles.listSubjects}>
@@ -28,7 +31,7 @@ const ListSubjects: FC = () => {
           <li
             key={item.id}
             className={styles.listSubjects_item}
-            onClick={() => setActiveId(item.id)}
+            onClick={() => toSubject(item.id)}
           >
             <div className={styles.listSubjects_itemWrapperImg}>
               <Image
