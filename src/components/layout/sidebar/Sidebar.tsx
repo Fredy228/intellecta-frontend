@@ -25,7 +25,7 @@ const Sidebar: FC = () => {
             >
               <Link href={item.href} className={styles.aside_linkMenu}>
                 <Image
-                  src={`http://localhost:3000/img/sidebar/${item.url}`}
+                  src={`${process.env.NEXT_URL}/img/sidebar/${item.url}`}
                   alt={item.title}
                   width={"30"}
                   height={"30"}
@@ -39,7 +39,7 @@ const Sidebar: FC = () => {
       </div>
       <div className={styles.aside_wrapperUser}>
         <Image
-          src={"http://localhost:3000/img/sidebar/avatar.png"}
+          src={`${process.env.NEXT_URL}/img/sidebar/avatar.png`}
           alt={"avatar"}
           width={"40"}
           height={"40"}

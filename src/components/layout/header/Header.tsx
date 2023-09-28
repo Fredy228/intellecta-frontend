@@ -1,8 +1,7 @@
 import { FC } from "react";
 
-import stylesCommon from "@/styles/common.module.scss";
 import styles from "./header.module.scss";
-import { IconNotific, IconSearch } from "@/components/reused/Icon/Icon";
+import { IconNotific, IconSetting } from "@/components/reused/Icon/Icon";
 
 const Header: FC = () => {
   return (
@@ -13,7 +12,7 @@ const Header: FC = () => {
         </div>
         <ul className={styles.header_listNotificCenter}>
           <li className={styles.header_itemNotificCenter}>
-            <IconSearch />
+            <IconSetting />
           </li>
           <li className={styles.header_itemNotificCenter}>
             <IconNotific />

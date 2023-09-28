@@ -48,10 +48,4 @@ export const listMenu: TItemMenu[] = [
     url: "tally.png",
     href: "/dashboard/tally",
   },
-  {
-    id: 8,
-    title: "Налаштування",
-    url: "settings.png",
-    href: "/dashboard/settings",
-  },
 ];

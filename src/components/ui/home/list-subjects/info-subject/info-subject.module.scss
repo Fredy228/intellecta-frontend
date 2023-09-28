@@ -5,11 +5,16 @@
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
 
   padding: 0 10px;
 
   display: flex;
   flex-direction: column;
+
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 
   opacity: 0;
   visibility: hidden;
@@ -17,9 +22,14 @@
 
   transition-timing-function: ease;
   transition-property: visibility, opacity;
-  transition-duration: 650ms;
+  transition-duration: 500ms;
+  transition-delay: 400ms;
 
   background-color: $background-body;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
 
   &.active {
     opacity: 1;
@@ -55,6 +65,7 @@
   }
 
   &_wrapper {
+    margin-bottom: 30px;
     width: 100%;
     padding: 25px;
     border-radius: 50px;
@@ -90,7 +101,7 @@
 
   &_link {
     padding: 10px 15px;
-    background-color: $background-icon;
+    background-color: $background-item;
     color: $light-text-color;
     font-weight: 600;
     display: block;

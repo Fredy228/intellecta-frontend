@@ -16,38 +16,45 @@ const AdSlider: FC = () => {
     showStatus: false,
     dynamicHeight: false,
     showThumbs: false,
+    emulateTouch: true,
+    // centerMode: true,
+    // centerSlidePercentage: 100,
   };
 
   return (
-    <Carousel {...settings} className={styles.adSlider}>
-      <div className={styles.adSlider_item}>
-        <Image
-          src={"http://localhost:3000/img/img-for-slide.png"}
-          alt={""}
-          width={"550"}
-          height={"296"}
-          className={styles.adSlider_image}
-        />
+    <div className={styles.adSlider_innerGrid}>
+      <div className={styles.adSlider_carouselWrap}>
+        <Carousel {...settings} className={styles.adSlider}>
+          <div className={styles.adSlider_item}>
+            <Image
+              src={"http://localhost:3000/img/img-for-slide.png"}
+              alt={""}
+              width={"550"}
+              height={"296"}
+              className={styles.adSlider_image}
+            />
+          </div>
+          <div>
+            <Image
+              src={"http://localhost:3000/img/img-for-slide.png"}
+              alt={""}
+              width={"550"}
+              height={"296"}
+              className={styles.adSlider_image}
+            />
+          </div>
+          <div>
+            <Image
+              src={"http://localhost:3000/img/img-for-slide.png"}
+              alt={""}
+              width={"550"}
+              height={"296"}
+              className={styles.adSlider_image}
+            />
+          </div>
+        </Carousel>
       </div>
-      <div>
-        <Image
-          src={"http://localhost:3000/img/img-for-slide.png"}
-          alt={""}
-          width={"550"}
-          height={"296"}
-          className={styles.adSlider_image}
-        />
-      </div>
-      <div>
-        <Image
-          src={"http://localhost:3000/img/img-for-slide.png"}
-          alt={""}
-          width={"550"}
-          height={"296"}
-          className={styles.adSlider_image}
-        />
-      </div>
-    </Carousel>
+    </div>
   );
 };
 export default AdSlider;

@@ -15,13 +15,14 @@ const ListSubjects: FC = () => {
 
   return (
     <div className={styles.listSubjects}>
-      <p className={styles.listSubjects_title}>Заняття сьогодні:</p>
+      <div>
+        <p className={styles.listSubjects_title}>Заняття сьогодні:</p>
+      </div>
 
       <InfoSubject
         setActiveId={setActiveId}
         subject={subjectList.find((i) => i.id === activeId)}
       />
-
       <ul
         className={`${styles.listSubjects_list} ${
           activeId ? styles.active : ""
@@ -33,23 +34,25 @@ const ListSubjects: FC = () => {
             className={styles.listSubjects_item}
             onClick={() => toSubject(item.id)}
           >
-            <div className={styles.listSubjects_itemWrapperImg}>
-              <Image
-                src={`http://localhost:3000/img/subjects/${item.url}`}
-                alt={item.title}
-                width={"32"}
-                height={"32"}
-                className={styles.listSubjects_itemImg}
-              />
-            </div>
-            <div className={styles.listSubjects_itemNameWrapper}>
-              <p className={styles.listSubjects_itemName}>{item.title}</p>
-              <span className={styles.listSubjects_itemTeacher}>
-                {item.teacher}
-              </span>
-            </div>
-            <div className={styles.listSubjects_itemArrowWrapper}>
-              <IconSmallRightArrow />
+            <div className={styles.listSubjects_itemWrapp}>
+              <div className={styles.listSubjects_itemWrapperImg}>
+                <Image
+                  src={`${process.env.NEXT_URL}/img/subjects/${item.url}`}
+                  alt={item.title}
+                  width={"32"}
+                  height={"32"}
+                  className={styles.listSubjects_itemImg}
+                />
+              </div>
+              <div className={styles.listSubjects_itemNameWrapper}>
+                <p className={styles.listSubjects_itemName}>{item.title}</p>
+                <span className={styles.listSubjects_itemTeacher}>
+                  {item.teacher}
+                </span>
+              </div>
+              <div className={styles.listSubjects_itemArrowWrapper}>
+                <IconSmallRightArrow />
+              </div>
             </div>
           </li>
         ))}

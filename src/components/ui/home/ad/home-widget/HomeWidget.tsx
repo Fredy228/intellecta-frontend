@@ -17,7 +17,7 @@ const HomeWidget: FC = () => {
               {item.urls.map(({ id, url }) => (
                 <li key={id} className={styles.homeWidget_itemUserItem}>
                   <Image
-                    src={`http://localhost:3000/${url}`}
+                    src={`${process.env.NEXT_URL}/${url}`}
                     alt={""}
                     width={"24"}
                     height={"24"}

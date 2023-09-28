@@ -1,7 +1,7 @@
 @import "@/styles/varible";
 
 .aside {
-  width: 256px;
+  width: 280px;
   border-right: 1px solid #e4e4e4;
   height: 100%;
 
@@ -19,7 +19,7 @@
   &_logo {
     font-size: 32px;
     font-family: Poppins, sans-serif;
-    font-weight: 600;
+    font-weight: $title-weight;
 
     > span {
       color: $accent-color;
@@ -56,7 +56,7 @@
     padding: 20px;
     cursor: pointer;
 
-    font-size: 14px;
+    font-size: $text-upper-size;
     font-weight: 600;
     line-height: 1.4;
     color: $second-text-color;
@@ -100,7 +100,7 @@
     align-items: center;
     padding: 0 10px 0 20px;
     width: 100%;
-    height: 98px;
+    height: 90px;
 
     border-top: 1px solid #e4e4e4;
   }
@@ -118,8 +118,8 @@
   }
 
   &_userName {
-    font-size: 14px;
-    font-weight: 400;
+    font-size: $text-upper-size;
+    font-weight: 600;
     line-height: 1.42;
     width: 100%;
 
@@ -127,7 +127,7 @@
   }
 
   &_userRole {
-    font-size: 13px;
+    font-size: $text-lower-size;
     color: $second-text-color;
     line-height: 1.38;
 

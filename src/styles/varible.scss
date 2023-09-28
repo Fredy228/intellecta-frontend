@@ -10,9 +10,26 @@ $dark-text-color: #000000;
 //ui
 $background-body: #f2f2f2;
 $accent-color: #ff754c;
-$background-icon: #438ced;
+$background-item: #438ced;
 
-/* Mixins */
+/*----- Font size -----*/
+
+//title
+$title-upper-size: 40px;
+$title-lower-size: 25px;
+
+//subtitle
+$subtitle-upper-size: 25px;
+$subtitle-lower-size: 16px;
+
+//text
+$text-upper-size: 16px;
+$text-lower-size: 14px;
+
+//weight
+$title-weight: 600;
+
+/*----- Mixins -----*/
 
 //text
 @mixin overflow-text($count-line) {
@@ -24,6 +41,6 @@ $background-icon: #438ced;
 
 @mixin section-title-text {
   font-family: Poppins, sans-serif;
-  font-size: 40px;
+  font-size: $title-upper-size;
   font-weight: 600;
 }

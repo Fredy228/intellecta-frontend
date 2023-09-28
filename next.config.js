@@ -1,7 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  env: {
+    NEXT_URL: process.env.NEXT_URL,
+  },
   images: {
-    domains: ["localhost", "static.thairath.co.th", "195.138.86.82"],
+    domains: [
+      "localhost",
+      "static.thairath.co.th",
+      "195.138.86.82",
+      "fredytest.kyiv.ua",
+    ],
   },
   webpack(config) {
     config.module.rules.push({

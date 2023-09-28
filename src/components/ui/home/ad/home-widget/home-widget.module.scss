@@ -2,7 +2,7 @@
 
 .homeWidget {
   display: flex;
-  gap: 25px;
+  gap: 20px;
 
   max-height: 200px;
   min-height: 180px;
@@ -40,17 +40,18 @@
   }
 
   &_itemTitle {
-    font-size: 16px;
+    font-size: $text-upper-size;
     font-weight: 600;
     @include overflow-text(1);
     margin-bottom: 8px;
+    padding-right: 30px;
   }
 
   &_itemText {
     font-weight: 600;
-    font-size: 12px;
+    font-size: $subtitle-lower-size;
     color: $second-text-color;
-    @include overflow-text(4);
+    @include overflow-text(3);
   }
 
   &_itemBottomWrapper {
