@@ -1,11 +1,5 @@
-import { FC } from "react";
+import Schedule from "@/components/screens/schedule/Schedule";
 
-type Props = {};
-const Schedule: FC = (props: Props) => {
-  return (
-    <div>
-      <h2>Твій розклад:</h2>
-    </div>
-  );
-};
-export default Schedule;
+export default function SchedulePage() {
+  return <Schedule />;
+}

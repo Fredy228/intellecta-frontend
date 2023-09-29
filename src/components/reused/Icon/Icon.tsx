@@ -1,5 +1,6 @@
 //Global icons
 export { default as IconSmallRightArrow } from "./storage/small-right-arrow.svg";
+export { default as IconProcessing } from "./storage/processing.svg";
 
 //Header icons
 export { default as IconSetting } from "./storage/settings.svg";
