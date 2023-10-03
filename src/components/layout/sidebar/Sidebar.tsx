@@ -1,3 +1,5 @@
+"use client";
+
 import { FC } from "react";
 import Image from "next/image";
 
@@ -5,8 +7,11 @@ import styles from "./sidebar.module.scss";
 import { listMenu } from "@/components/layout/sidebar/listMenu";
 import { IconArrowCouple } from "@/components/reused/Icon/Icon";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Sidebar: FC = () => {
+  const pathname = usePathname();
+
   return (
     <aside className={styles.aside}>
       <div className={styles.aside_wrapperLogo}>
@@ -20,7 +25,7 @@ const Sidebar: FC = () => {
             <li
               key={item.id}
               className={`${styles.aside_itemMenu} ${
-                item.id === 1 ? styles.active : ""
+                item.href === pathname ? styles.active : ""
               }`}
             >
               <Link href={item.href} className={styles.aside_linkMenu}>

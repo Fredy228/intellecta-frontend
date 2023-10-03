@@ -1,7 +1,9 @@
 import { FC } from "react";
+import { ToastContainer } from "react-toastify";
 
 import styles from "./header.module.scss";
 import { IconNotific, IconSetting } from "@/components/reused/Icon/Icon";
+import "react-toastify/dist/ReactToastify.css";
 
 const Header: FC = () => {
   return (
@@ -22,6 +24,19 @@ const Header: FC = () => {
           </li>
         </ul>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        limit={3}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </header>
   );
 };

@@ -1,0 +1,60 @@
+@import "@/styles/varible";
+
+.conference {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &_wrapper {
+    flex: 1;
+  }
+
+  &_title {
+    @include section-title-text;
+    margin-bottom: 20px;
+  }
+
+  &_listVideo {
+    display: grid;
+    grid-auto-rows: 33.3333%;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+
+    width: 100%;
+    //height: calc(100vh - 120px);
+    height: 100%;
+
+    padding: 20px;
+
+    border-radius: 25px;
+
+    box-shadow:
+      rgb(220, 223, 227) 3px 3px 6px 0 inset,
+      rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  }
+
+  &_itemVideo {
+  }
+
+  &_wrapperVideo {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    border-radius: 20px;
+    border: 4px solid $accent-color;
+  }
+
+  &_video {
+    transform: scaleX(-1);
+    position: absolute;
+    width: 100%; /* Ширина видео 100% от родительского контейнера */
+    height: 100%; /* Высота видео 100% от родительского контейнера */
+    object-fit: cover; /* Эффект "cover" для видео */
+    top: 0;
+    left: 0;
+    display: block;
+  }
+}

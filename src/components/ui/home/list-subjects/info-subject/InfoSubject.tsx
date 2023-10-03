@@ -35,10 +35,7 @@ const InfoSubject: FC<Props> = ({ subject, setActiveId }) => {
               Кінець уроку:{" "}
               <span className={styles.infoSubject_text}>{subject.endTime}</span>{" "}
             </p>
-            <Link
-              className={styles.infoSubject_link}
-              href={"/dashboard/conversation"}
-            >
+            <Link className={styles.infoSubject_link} href={subject.linkLesson}>
               Перейти до уроку "{subject.title}"
             </Link>
 
@@ -51,10 +48,7 @@ const InfoSubject: FC<Props> = ({ subject, setActiveId }) => {
               ))}
             </p>
             <br />
-            <Link
-              className={styles.infoSubject_link}
-              href={"/dashboard/conversation"}
-            >
+            <Link className={styles.infoSubject_link} href={"/dashboard/chats"}>
               Чат по предмету "{subject.title}"
             </Link>
           </div>
