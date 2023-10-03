@@ -216,7 +216,10 @@ export default function UseWebRTC(roomID: string) {
 
     startCapture()
       .then(() => socket.emit(Actions.JOIN, { room: roomID }))
-      .catch((e) => console.error("Error getting useMedia"));
+      .catch((e) => {
+        console.error("Error getting useMedia");
+        console.error(e);
+      });
 
     return () => {
       if (localMediaStream.current) {
