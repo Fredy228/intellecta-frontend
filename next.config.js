@@ -2,6 +2,7 @@
 const nextConfig = {
   env: {
     NEXT_URL: process.env.NEXT_URL,
+    SERVER_URL: process.env.SERVER_URL,
   },
   images: {
     domains: [
