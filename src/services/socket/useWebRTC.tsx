@@ -3,8 +3,6 @@ import { useCallback, useEffect, useRef } from "react";
 import socket from "@/services/socket/index";
 import { Actions } from "@/enums/socket/actions";
 import useStateWithCallback from "@/services/socket/useStateWithCallback";
-import { log } from "util";
-import { getToastify } from "@/services/toastify";
 
 export const LOCAL_VIDEO: string = "LOCAL_VIDEO";
 
@@ -22,8 +20,6 @@ export default function UseWebRTC(roomID: string) {
   const addNewClient = useCallback(
     (newClient: string, cb: Function) => {
       if (!clients.includes(newClient)) {
-        console.log("newClient", newClient);
-        // updateClients((prev: string[]) => [...prev, newClient], cb);
         updateClients(newClient, cb);
       }
     },
@@ -65,10 +61,18 @@ export default function UseWebRTC(roomID: string) {
       };
 
       let tracksNumber = 0;
+
+      console.log(
+        "peerConnections.current[peerID]",
+        peerConnections.current[peerID],
+      ); //==============================================
+
       peerConnections.current[peerID].ontrack = ({
         streams: [remoteStream],
       }) => {
         tracksNumber += 1;
+
+        console.log("remoteStream", remoteStream); //---------------------------
 
         if (tracksNumber === 2) {
           // video & audio tracks received
@@ -76,14 +80,14 @@ export default function UseWebRTC(roomID: string) {
           addNewClient(peerID, () => {
             const element = peerMediaElements.current[peerID];
             if (element) {
-              element.srcObject = remoteStream;
+              element.srcObject = remoteStream ? remoteStream : null;
             } else {
               // FIX LONG RENDER IN CASE OF MANY CLIENTS
               let settled = false;
               const interval = setInterval(() => {
                 const element = peerMediaElements.current[peerID];
                 if (element) {
-                  element.srcObject = remoteStream;
+                  element.srcObject = remoteStream ? remoteStream : null;
                   settled = true;
                 }
 
@@ -196,13 +200,25 @@ export default function UseWebRTC(roomID: string) {
 
   useEffect(() => {
     async function startCapture() {
-      localMediaStream.current = await navigator.mediaDevices.getUserMedia({
-        audio: true,
-        video: {
-          width: 854,
-          height: 480,
-        },
-      });
+      try {
+        localMediaStream.current = await navigator.mediaDevices.getUserMedia({
+          audio: true,
+          video: {
+            width: 640,
+            height: 360,
+          },
+        });
+      } catch (e) {
+        console.error("1Error getting useMedia", e);
+        try {
+          localMediaStream.current = await navigator.mediaDevices.getUserMedia(
+            {},
+          );
+        } catch (e) {
+          console.error("2Error getting useMedia", e);
+          localMediaStream.current = null;
+        }
+      }
 
       addNewClient(LOCAL_VIDEO, () => {
         const localVideoElement = peerMediaElements.current[LOCAL_VIDEO];
@@ -217,20 +233,15 @@ export default function UseWebRTC(roomID: string) {
     startCapture()
       .then(() => socket.emit(Actions.JOIN, { room: roomID }))
       .catch((e) => {
-        console.error("Error getting useMedia");
-        console.error(e);
+        console.error("3Error", e);
       });
 
     return () => {
       if (localMediaStream.current) {
-        console.log("Start unmounting component");
         localMediaStream.current.getTracks().forEach((track) => {
-          console.log("Stopping track");
-          console.log(track);
           track.stop();
         });
         socket.emit(Actions.LEAVE);
-        console.log("End unmounting component");
       }
     };
   }, [roomID]);

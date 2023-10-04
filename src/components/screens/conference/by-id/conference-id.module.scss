@@ -8,6 +8,9 @@
 
   &_wrapper {
     flex: 1;
+
+    display: flex;
+    flex-direction: column;
   }
 
   &_title {
@@ -16,10 +19,15 @@
   }
 
   &_listVideo {
-    display: grid;
-    grid-auto-rows: 33.3333%;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    //display: grid;
+    //grid-auto-rows: 33.3333%;
+    //grid-template-columns: 1fr 1fr 1fr;
+    //gap: 10px;
 
     width: 100%;
     //height: calc(100vh - 120px);
@@ -35,6 +43,7 @@
   }
 
   &_itemVideo {
+    padding: 5px;
   }
 
   &_wrapperVideo {
@@ -42,13 +51,26 @@
     width: 100%;
     height: 100%;
     position: relative;
+    background-color: $background-item;
 
     border-radius: 20px;
-    border: 4px solid $accent-color;
+    //border: 4px solid $accent-color;
+  }
+
+  &_defultAvatar {
+    position: absolute;
+    height: 100%;
+    width: auto;
+    z-index: 3;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 10px;
   }
 
   &_video {
     transform: scaleX(-1);
+    border-radius: 20px;
     position: absolute;
     width: 100%; /* Ширина видео 100% от родительского контейнера */
     height: 100%; /* Высота видео 100% от родительского контейнера */
@@ -56,5 +78,25 @@
     top: 0;
     left: 0;
     display: block;
+    z-index: 15;
+  }
+
+  &_nameWrapper {
+    position: absolute;
+    width: 100%;
+    padding: 8px 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    bottom: 0;
+    left: 0;
+    z-index: 30;
+  }
+
+  &_name {
+    color: $light-text-color;
+    font-size: 18px;
+    font-weight: 500;
+
+    @include overflow-text(1);
   }
 }

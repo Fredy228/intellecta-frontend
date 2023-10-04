@@ -27,7 +27,7 @@ const AdSlider: FC = () => {
         <Carousel {...settings} className={styles.adSlider}>
           <div className={styles.adSlider_item}>
             <Image
-              src={"http://localhost:3000/img/ad/incubator.png"}
+              src={"http://localhost:3000/img/ad/incubator.jpeg"}
               alt={"Incubator advertising"}
               width={"599"}
               height={"336"}

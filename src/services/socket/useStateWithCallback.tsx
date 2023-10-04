@@ -1,6 +1,4 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { LOCAL_VIDEO } from "@/services/socket/useWebRTC";
-import { getToastify } from "@/services/toastify";
 
 const useStateWithCallback = (
   initialState: string[],
@@ -15,6 +13,7 @@ const useStateWithCallback = (
       if (prev.includes(newClient)) {
         return prev;
       }
+
       refCb.current = cb;
       return [...prev, newClient];
     });

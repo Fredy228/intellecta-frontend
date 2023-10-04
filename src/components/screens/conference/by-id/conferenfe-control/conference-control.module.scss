@@ -1,0 +1,99 @@
+@import "@/styles/varible";
+
+.control {
+  width: 100%;
+  padding: 15px 0;
+
+  &_wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    border-radius: 60px;
+    background-color: #d9d9d9;
+    padding: 12px 27px;
+
+    justify-content: space-between;
+  }
+
+  &_list {
+    display: flex;
+  }
+
+  &_item {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+    border-radius: 50%;
+
+    transition: box-shadow 350ms ease;
+
+    svg {
+      width: 25px;
+      height: 25px;
+      transition-timing-function: ease;
+      transition-property: fill, stroke;
+      transition-delay: 350ms;
+
+      fill: #c6c6c6;
+      stroke: #c6c6c6;
+    }
+  }
+
+  &_item:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  &_item:nth-child(2) {
+    //fix pos for camera icon
+    svg {
+      transform: translateX(3px);
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  &_item.active {
+    box-shadow:
+      -8px -8px 17px 0px rgba(255, 255, 255, 0.7) inset,
+      8px 8px 9px 0px rgba(176, 176, 176, 0.2) inset;
+
+    svg {
+      fill: $background-item;
+      stroke: $background-item;
+    }
+  }
+
+  &_exitWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &_exitLink {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    color: $light-text-color;
+    font-size: 22px;
+    font-weight: 500;
+    padding: 12px 20px;
+    border-radius: 50px;
+    background-color: $accent-color;
+    box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+
+    svg {
+      width: 25px;
+      height: 25px;
+      fill: $light-text-color;
+      stroke: $light-text-color;
+      margin-left: 5px;
+    }
+  }
+}

@@ -15,18 +15,17 @@ const Conference = () => {
   useEffect(() => {
     socket.on(Actions.SHARE_ROOMS, ({ roomsCurr = [] } = {}) => {
       if (rootNode.current) {
-        console.log("rooms", roomsCurr);
         setRooms(roomsCurr);
       }
     });
   }, []);
 
   const joinRoom = (roomID: string) => {
-    router.push(`/conversation/${roomID}`);
+    router.push(`/dashboard/conference/${roomID}`);
   };
 
   const createRoom = (roomID: string) => {
-    router.push(`/conversation/${roomID}`);
+    router.push(`/dashboard/conference/${roomID}`);
   };
 
   return (
