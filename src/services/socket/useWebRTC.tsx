@@ -49,7 +49,9 @@ export default function UseWebRTC(roomID: string) {
       }
       // Также отключите свое собственное видео
       if (localMediaStream.current) {
-        localMediaStream.current.getVideoTracks().forEach((track) => {
+        localMediaStream.current[
+          kind === "video" ? "getVideoTracks" : "getAudioTracks"
+        ]().forEach((track) => {
           track.enabled = false;
         });
       }
@@ -64,7 +66,9 @@ export default function UseWebRTC(roomID: string) {
       }
       // Также включите свое собственное видео
       if (localMediaStream.current) {
-        localMediaStream.current.getVideoTracks().forEach((track) => {
+        localMediaStream.current[
+          kind === "video" ? "getVideoTracks" : "getAudioTracks"
+        ]().forEach((track) => {
           track.enabled = true;
         });
       }
