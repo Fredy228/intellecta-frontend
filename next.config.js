@@ -3,6 +3,9 @@ const nextConfig = {
   env: {
     NEXT_URL: process.env.NEXT_URL,
     SERVER_URL: process.env.SERVER_URL,
+    TURN_SERVER_URL: process.env.TURN_SERVER_URL,
+    TURN_SERVER_USER: process.env.TURN_SERVER_USER,
+    TURN_SERVER_PASSWORD: process.env.TURN_SERVER_PASSWORD,
   },
   images: {
     domains: [

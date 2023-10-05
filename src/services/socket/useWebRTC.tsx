@@ -1,13 +1,17 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import socket from "@/services/socket/index";
 import { Actions } from "@/enums/socket/actions";
 import useStateWithCallback from "@/services/socket/useStateWithCallback";
+import { useRouter } from "next/navigation";
+import { getToastify } from "@/services/toastify";
+import { ToastifyEnum } from "@/enums/toastify-enum";
 
 export const LOCAL_VIDEO: string = "LOCAL_VIDEO";
 
 export default function UseWebRTC(roomID: string) {
   const [clients, updateClients, deleteState] = useStateWithCallback([]);
+  const router = useRouter();
 
   const peerConnections = useRef<{ [peerID: string]: RTCPeerConnection }>({});
   const localMediaStream = useRef<MediaStream | null>(null);
@@ -33,6 +37,40 @@ export default function UseWebRTC(roomID: string) {
     [],
   );
 
+  const toggleMedia = (turn: boolean, kind: "video" | "audio"): void => {
+    if (!turn) {
+      for (const peerID in peerConnections.current) {
+        const connection = peerConnections.current[peerID];
+        connection.getSenders().forEach((sender) => {
+          if (sender.track && sender.track.kind === kind) {
+            sender.track.enabled = false;
+          }
+        });
+      }
+      // Также отключите свое собственное видео
+      if (localMediaStream.current) {
+        localMediaStream.current.getVideoTracks().forEach((track) => {
+          track.enabled = false;
+        });
+      }
+    } else {
+      for (const peerID in peerConnections.current) {
+        const connection = peerConnections.current[peerID];
+        connection.getSenders().forEach((sender) => {
+          if (sender.track && sender.track.kind === kind) {
+            sender.track.enabled = true;
+          }
+        });
+      }
+      // Также включите свое собственное видео
+      if (localMediaStream.current) {
+        localMediaStream.current.getVideoTracks().forEach((track) => {
+          track.enabled = true;
+        });
+      }
+    }
+  };
+
   useEffect(() => {
     async function handleNewPear({
       peerID,
@@ -46,12 +84,20 @@ export default function UseWebRTC(roomID: string) {
       }
 
       const configuration = {
-        iceServers: [{ urls: "stun:stun.l.google.com:19302" }],
+        iceServers: [
+          { urls: "stun:stun.l.google.com:19302" },
+          {
+            urls: process.env.TURN_SERVER_URL || "",
+            username: process.env.TURN_SERVER_USER || "",
+            credential: process.env.TURN_SERVER_PASSWORD || "",
+          },
+        ],
       };
 
       peerConnections.current[peerID] = new RTCPeerConnection(configuration);
 
       peerConnections.current[peerID].onicecandidate = (event) => {
+        console.log("event.candidate", event.candidate);
         if (event.candidate) {
           socket.emit(Actions.RELAY_ICE, {
             peerID,
@@ -63,7 +109,8 @@ export default function UseWebRTC(roomID: string) {
       let tracksNumber = 0;
 
       console.log(
-        "peerConnections.current[peerID]",
+        //====================================
+        `peerConnections[${peerID}]`,
         peerConnections.current[peerID],
       ); //==============================================
 
@@ -71,8 +118,6 @@ export default function UseWebRTC(roomID: string) {
         streams: [remoteStream],
       }) => {
         tracksNumber += 1;
-
-        console.log("remoteStream", remoteStream); //---------------------------
 
         if (tracksNumber === 2) {
           // video & audio tracks received
@@ -204,8 +249,12 @@ export default function UseWebRTC(roomID: string) {
         localMediaStream.current = await navigator.mediaDevices.getUserMedia({
           audio: true,
           video: {
-            width: 640,
-            height: 360,
+            width: {
+              exact: 640,
+            },
+            height: {
+              exact: 360,
+            },
           },
         });
       } catch (e) {
@@ -217,6 +266,12 @@ export default function UseWebRTC(roomID: string) {
         } catch (e) {
           console.error("2Error getting useMedia", e);
           localMediaStream.current = null;
+          getToastify(
+            "Ви не можете увійти в конференцію, поки не надасте доступ до камері/мікрофону",
+            ToastifyEnum.WARNING,
+            7000,
+          );
+          router.push("/dashboard");
         }
       }
 
@@ -246,5 +301,5 @@ export default function UseWebRTC(roomID: string) {
     };
   }, [roomID]);
 
-  return { clients, provideMediaRef };
+  return { clients, provideMediaRef, toggleMedia };
 }

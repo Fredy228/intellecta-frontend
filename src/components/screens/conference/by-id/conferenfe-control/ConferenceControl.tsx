@@ -7,16 +7,47 @@ import {
   IconMicrophone,
   IconSmsConf,
 } from "@/components/reused/Icon/Icon";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 
-const ConferenceControl = () => {
+type Props = {
+  toggleMedia: (turn: boolean, kind: "video" | "audio") => void;
+  setTurnVideo: Dispatch<SetStateAction<boolean>>;
+  turnVideo: boolean;
+  setTurnAudio: Dispatch<SetStateAction<boolean>>;
+  turnAudio: boolean;
+};
+
+const ConferenceControl: FC<Props> = ({
+  toggleMedia,
+  setTurnVideo,
+  turnVideo,
+  setTurnAudio,
+  turnAudio,
+}) => {
   return (
     <div className={styles.control}>
       <div className={styles.control_wrapper}>
         <ul className={styles.control_list}>
-          <li className={`${styles.control_item} ${styles.active}`}>
+          <li
+            className={`${styles.control_item} ${
+              turnAudio ? styles.active : ""
+            }`}
+            onClick={() => {
+              toggleMedia(!turnAudio, "audio");
+              setTurnAudio((prevState) => !prevState);
+            }}
+          >
             <IconMicrophone />
           </li>
-          <li className={`${styles.control_item} ${styles.active}`}>
+          <li
+            className={`${styles.control_item} ${
+              turnVideo ? styles.active : ""
+            }`}
+            onClick={() => {
+              toggleMedia(!turnVideo, "video");
+              setTurnVideo((prevState) => !prevState);
+            }}
+          >
             <IconCamera />
           </li>
           <li className={styles.control_item}>

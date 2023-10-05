@@ -4,10 +4,11 @@ import { ToastifyEnum } from "@/enums/toastify-enum";
 export const getToastify = (
   message: string,
   type: ToastifyEnum = ToastifyEnum.SUCCESS,
+  delay: number = 3000,
 ) => {
   toast[type](message, {
     position: "top-right",
-    autoClose: 3000,
+    autoClose: delay,
     hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,

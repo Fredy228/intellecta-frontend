@@ -36,10 +36,6 @@
     svg {
       width: 25px;
       height: 25px;
-      transition-timing-function: ease;
-      transition-property: fill, stroke;
-      transition-delay: 350ms;
-
       fill: #c6c6c6;
       stroke: #c6c6c6;
     }
@@ -69,6 +65,13 @@
     }
   }
 
+  &_item:hover {
+    svg {
+      fill: $accent-color;
+      stroke: $accent-color;
+    }
+  }
+
   &_exitWrapper {
     display: flex;
     align-items: center;
@@ -88,6 +91,8 @@
     background-color: $accent-color;
     box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
 
+    transition: background-color 350ms ease;
+
     svg {
       width: 25px;
       height: 25px;
@@ -95,5 +100,9 @@
       stroke: $light-text-color;
       margin-left: 5px;
     }
+  }
+
+  &_exitLink:hover {
+    background-color: $second-text-color;
   }
 }
