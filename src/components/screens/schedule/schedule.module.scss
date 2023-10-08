@@ -44,7 +44,6 @@
 
     display: flex;
     flex-direction: column;
-    //justify-content: center;
     align-items: center;
 
     &.main {
@@ -54,9 +53,26 @@
     &.infoDesktop {
       width: 300px;
       margin-left: 10px;
+      padding: 30px;
+      position: relative;
     }
 
     &.infoLaptop {
     }
+  }
+}
+
+.info {
+  &_wrapperDefault {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &_textDefault {
+    color: $second-text-color;
+    text-align: center;
   }
 }

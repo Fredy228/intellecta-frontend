@@ -14,7 +14,9 @@ const WeekItemDay: FC<Props> = ({ day }) => {
       <h4 className={styles.day_title}>
         {whatDayOfWeek(day[0].start_date)}, {whatThisDay(day[0].start_date)}
       </h4>
-      <span className={styles.day_countLesson}>{day.length} уроків</span>
+      <span className={styles.day_countLesson}>
+        Кількість уроків: {day.length}
+      </span>
       <ul className={styles.day_listLesson}>
         {day.map((lesson, index) => (
           <li key={index} className={styles.day_ItemLesson}>

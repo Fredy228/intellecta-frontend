@@ -1,6 +1,6 @@
 import { TLesson } from "@/components/ui/schedule/listschedule";
 
-type TBrokeLessons = {
+export type TBrokeLessons = {
   [name: string]: TLesson[];
 };
 

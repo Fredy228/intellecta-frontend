@@ -21,6 +21,7 @@
     cursor: pointer;
 
     position: relative;
+    transition: border-color 350ms ease;
 
     border: 1px solid #fff;
     background: #ededed;
@@ -28,5 +29,15 @@
       4px 4px 25px 0 rgba(160, 160, 160, 0.5),
       -4px -4px 25px 0px #fff,
       4px 4px 35px 0px #fff inset;
+
+    &:hover {
+      border-color: $background-item;
+      //background: linear-gradient(
+      //    0deg,
+      //    rgba(67, 140, 237, 0.1) 0%,
+      //    rgba(67, 140, 237, 0.1) 100%
+      //  ),
+      //  #ededed;
+    }
   }
 }

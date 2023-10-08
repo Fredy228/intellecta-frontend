@@ -48,5 +48,7 @@
 
   &_ItemLesson {
     line-height: 1.4;
+
+    @include overflow-text(2);
   }
 }

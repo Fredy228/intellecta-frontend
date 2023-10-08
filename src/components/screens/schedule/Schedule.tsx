@@ -7,11 +7,15 @@ import SelectedCustom, {
 } from "@/components/reused/selected-custom/SelectedCustom";
 import { listOption } from "@/components/screens/schedule/listOption";
 import { useState } from "react";
-import { listLesson } from "@/components/ui/schedule/listschedule";
+import { listLesson, TLesson } from "@/components/ui/schedule/listschedule";
 import ScheduleWeek from "@/components/ui/schedule/table-week/ScheduleWeek";
 import ScheduleControlMonth from "@/components/ui/schedule/control-month/ScheduleControlMonth";
-import { breakArrLessonTo } from "@/services/schedule/breakArrLessonTo";
+import {
+  breakArrLessonTo,
+  TBrokeLessons,
+} from "@/services/schedule/breakArrLessonTo";
 import { whatMothOfYear } from "@/services/schedule/whatMothOfYear";
+import ScheduleDayMore from "@/components/ui/schedule/info-day-more/ScheduleDayMore";
 
 const Schedule: NextPage = () => {
   const [currentOption, setCurrentOption] = useState<TSelectedItem>(
@@ -21,9 +25,11 @@ const Schedule: NextPage = () => {
   //==================
   const lessonBy = breakArrLessonTo("week", listLesson);
 
+  const [currentDayInf, setCurrentDayInf] = useState<TLesson[] | null>(null);
+
   const currentMonth = whatMothOfYear(listLesson[0].start_date);
 
-  console.log("lessonBy", lessonBy);
+  // console.log("currentDayInf", currentDayInf);
   //==================
 
   return (
@@ -41,14 +47,24 @@ const Schedule: NextPage = () => {
         </div>
         <div className={styles.schedule_container}>
           <div className={`${styles.schedule_innerContainer} ${styles.main}`}>
-            <ScheduleWeek listWeek={lessonBy[0]} />
-            {/*Control arrow*/}
+            <ScheduleWeek
+              listWeek={lessonBy[0]}
+              setCurrentDayInf={setCurrentDayInf}
+            />
             <ScheduleControlMonth currentMonth={currentMonth} />
           </div>
           <div
             className={`${styles.schedule_innerContainer} ${styles.infoDesktop}`}
           >
-            {/*For desktop - pos right, for laptop - pos absolute*/}
+            {currentDayInf ? (
+              <ScheduleDayMore currentDayInf={currentDayInf} />
+            ) : (
+              <div className={styles.info_wrapperDefault}>
+                <p className={styles.info_textDefault}>
+                  Виберіть день для відображення більшої інформації
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>
