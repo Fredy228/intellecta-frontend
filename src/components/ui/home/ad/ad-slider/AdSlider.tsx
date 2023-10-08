@@ -52,15 +52,6 @@ const AdSlider: FC = () => {
               className={styles.adSlider_image}
             />
           </div>
-          <div>
-            <Image
-              src={"http://localhost:3000/img/ad/img-for-slide.png"}
-              alt={""}
-              width={"550"}
-              height={"296"}
-              className={styles.adSlider_image}
-            />
-          </div>
         </Carousel>
       </div>
     </div>
