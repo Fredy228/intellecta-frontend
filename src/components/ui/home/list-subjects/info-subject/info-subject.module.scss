@@ -15,25 +15,12 @@
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
-
-  opacity: 0;
-  visibility: hidden;
   z-index: 50;
-
-  transition-timing-function: ease;
-  transition-property: visibility, opacity;
-  transition-duration: 500ms;
-  transition-delay: 400ms;
 
   background-color: $background-body;
 
   &::-webkit-scrollbar {
     width: 0;
-  }
-
-  &.active {
-    opacity: 1;
-    visibility: visible;
   }
 
   &_backBtn {

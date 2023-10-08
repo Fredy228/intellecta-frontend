@@ -1,4 +1,5 @@
 import { Dispatch, FC, SetStateAction } from "react";
+import { motion } from "framer-motion";
 
 import styles from "./info-subject.module.scss";
 import { IconSmallRightArrow } from "@/components/reused/Icon/Icon";
@@ -13,7 +14,13 @@ type Props = {
 
 const InfoSubject: FC<Props> = ({ subject, setActiveId }) => {
   return (
-    <div className={`${styles.infoSubject} ${subject ? styles.active : ""}`}>
+    <motion.div
+      initial={{ translateX: "-120%" }}
+      animate={{ translateX: 0 }}
+      exit={{ translateX: "-120%" }}
+      transition={{ duration: 0.5 }}
+      className={styles.infoSubject}
+    >
       {subject && (
         <>
           <button
@@ -54,7 +61,7 @@ const InfoSubject: FC<Props> = ({ subject, setActiveId }) => {
           </div>
         </>
       )}
-    </div>
+    </motion.div>
   );
 };
 export default InfoSubject;

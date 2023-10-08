@@ -72,9 +72,9 @@
     transform: scaleX(-1);
     border-radius: 20px;
     position: absolute;
-    width: 100%; /* Ширина видео 100% от родительского контейнера */
-    height: 100%; /* Высота видео 100% от родительского контейнера */
-    object-fit: cover; /* Эффект "cover" для видео */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     top: 0;
     left: 0;
     display: block;

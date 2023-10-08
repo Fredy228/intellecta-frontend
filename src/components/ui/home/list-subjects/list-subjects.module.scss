@@ -36,26 +36,12 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
 
-    transition-property: visibility, opacity, transform;
-    transition-duration: 1500ms;
-    transition-timing-function: ease;
+    top: 0;
+    left: 0;
   }
 
   &_list::-webkit-scrollbar {
     width: 0;
-  }
-
-  &_list.active {
-    transform: translateY(120%);
-    opacity: 0;
-    visibility: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    > li {
-      margin-bottom: 70px;
-    }
   }
 
   &_item {
@@ -78,11 +64,7 @@
       0px 4px 6px 0px rgba(202, 202, 202, 0.48),
       -4px -4px 14px 0px rgba(255, 255, 255, 0.7);
 
-    transition: margin-bottom 1050ms ease;
-
-    &:not(:last-child) {
-      margin-bottom: 10px;
-    }
+    transition: margin-bottom 350ms linear;
   }
 
   &_itemWrapp {

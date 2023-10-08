@@ -1,0 +1,36 @@
+@import "@/styles/varible";
+
+.selected {
+  position: relative;
+  display: inline-block;
+
+  &_button {
+    border: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: $second-text-color;
+    background: transparent;
+
+    padding: 7px 16px;
+    border-radius: 25px;
+    transition: box-shadow 350ms ease;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+
+    > svg {
+      width: 15px;
+      height: 15px;
+      margin-left: 10px;
+      transform: rotate(90deg);
+      stroke: $background-item;
+    }
+  }
+
+  &_button:hover {
+    box-shadow:
+      -8px -8px 17px 0px rgba(255, 255, 255, 0.7) inset,
+      8px 8px 9px 0px rgba(176, 176, 176, 0.2) inset;
+  }
+}

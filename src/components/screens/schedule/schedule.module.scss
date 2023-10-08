@@ -15,5 +15,48 @@
     flex: 1;
 
     display: flex;
+    flex-direction: column;
+
+    margin-top: 15px;
+  }
+
+  &_selectWrapper {
+  }
+
+  &_container {
+    flex: 1;
+
+    display: flex;
+    box-shadow:
+      8px 8px 10px rgba(204, 204, 204, 0.3),
+      -8px -8px 10px #fff;
+    margin: 20px 0;
+    border-radius: 50px;
+    border: 5px solid transparent;
+    padding: 10px;
+  }
+
+  &_innerContainer {
+    border-radius: 50px;
+    box-shadow:
+      -8px -8px 17px 0px rgba(255, 255, 255, 0.7) inset,
+      8px 8px 9px 0px rgba(176, 176, 176, 0.3) inset;
+
+    display: flex;
+    flex-direction: column;
+    //justify-content: center;
+    align-items: center;
+
+    &.main {
+      flex: 1;
+    }
+
+    &.infoDesktop {
+      width: 300px;
+      margin-left: 10px;
+    }
+
+    &.infoLaptop {
+    }
   }
 }
