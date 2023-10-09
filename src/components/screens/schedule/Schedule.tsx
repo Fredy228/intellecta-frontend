@@ -16,6 +16,7 @@ import {
 } from "@/services/schedule/breakArrLessonTo";
 import { whatMothOfYear } from "@/services/schedule/whatMothOfYear";
 import ScheduleDayMore from "@/components/ui/schedule/info-day-more/ScheduleDayMore";
+import ScheduleMonth from "@/components/ui/schedule/table-month/ScheduleMonth";
 
 const Schedule: NextPage = () => {
   const [currentOption, setCurrentOption] = useState<TSelectedItem>(
@@ -23,13 +24,16 @@ const Schedule: NextPage = () => {
   );
 
   //==================
-  const lessonBy = breakArrLessonTo("week", listLesson);
+  const lessonBy = breakArrLessonTo(
+    currentOption.value as "month" | "week",
+    listLesson,
+  );
 
   const [currentDayInf, setCurrentDayInf] = useState<TLesson[] | null>(null);
 
   const currentMonth = whatMothOfYear(listLesson[0].start_date);
 
-  // console.log("currentDayInf", currentDayInf);
+  // console.log("lessonBy", lessonBy);
   //==================
 
   return (
@@ -47,10 +51,18 @@ const Schedule: NextPage = () => {
         </div>
         <div className={styles.schedule_container}>
           <div className={`${styles.schedule_innerContainer} ${styles.main}`}>
-            <ScheduleWeek
-              listWeek={lessonBy[0]}
-              setCurrentDayInf={setCurrentDayInf}
-            />
+            {currentOption.value === listOption[0].value ? (
+              <ScheduleWeek
+                listWeek={lessonBy[0]}
+                setCurrentDayInf={setCurrentDayInf}
+              />
+            ) : (
+              <ScheduleMonth
+                listMonth={lessonBy[0]}
+                setCurrentDayInf={setCurrentDayInf}
+              />
+            )}
+
             <ScheduleControlMonth currentMonth={currentMonth} />
           </div>
           <div

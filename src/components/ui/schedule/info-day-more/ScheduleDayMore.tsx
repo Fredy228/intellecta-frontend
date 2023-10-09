@@ -16,8 +16,11 @@ const ScheduleDayMore: FC<Props> = ({ currentDayInf }) => {
   return (
     <div className={styles.dayMore}>
       <h4 className={stylesWD.day_title}>
-        {whatDayOfWeek(currentDayInf[0].start_date)},{" "}
-        {whatThisDay(currentDayInf[0].start_date)}
+        {currentDayInf.length
+          ? `${whatDayOfWeek(currentDayInf[0].start_date)}, ${whatThisDay(
+              currentDayInf[0].start_date,
+            )}`
+          : "Немає уроків"}
       </h4>
       <span className={stylesWD.day_countLesson}>
         Кількість уроків: {currentDayInf.length}

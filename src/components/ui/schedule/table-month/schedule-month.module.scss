@@ -1,0 +1,33 @@
+@import "@/styles/varible";
+
+.scheduleMonth {
+  &_list {
+    flex: 1;
+    width: 100%;
+
+    gap: 10px;
+    padding: 20px;
+
+    display: grid;
+    grid-template-columns: repeat(7, minmax(50px, 1fr));
+    //grid-template-rows: repeat(6, minmax(50px, 1fr));
+  }
+
+  &_item {
+    border-radius: 20px;
+    cursor: pointer;
+
+    border: 1px solid #fff;
+    background: #ededed;
+    box-shadow:
+      4px 4px 25px 0 rgba(160, 160, 160, 0.5),
+      -4px -4px 25px 0px #fff,
+      4px 4px 35px 0px #fff inset;
+
+    transition: border-color 350ms ease;
+
+    &:hover {
+      border-color: $background-item;
+    }
+  }
+}
