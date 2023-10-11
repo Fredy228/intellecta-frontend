@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+// import SimplePeer from "simple-peer";
 
 import socket from "@/services/socket/index";
 import { Actions } from "@/enums/socket/actions";
@@ -99,6 +100,9 @@ export default function UseWebRTC(roomID: string) {
       };
 
       peerConnections.current[peerID] = new RTCPeerConnection(configuration);
+      // peerConnections.current[peerID] = new SimplePeer({
+      //   initiator: createOffer,
+      // });
 
       peerConnections.current[peerID].onicecandidate = (event) => {
         console.log("event.candidate", event.candidate);
@@ -111,12 +115,6 @@ export default function UseWebRTC(roomID: string) {
       };
 
       let tracksNumber = 0;
-
-      console.log(
-        //====================================
-        `peerConnections[${peerID}]`,
-        peerConnections.current[peerID],
-      ); //==============================================
 
       peerConnections.current[peerID].ontrack = ({
         streams: [remoteStream],

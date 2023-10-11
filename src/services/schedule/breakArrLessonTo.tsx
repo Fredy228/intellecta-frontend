@@ -39,7 +39,9 @@ export const breakArrLessonTo = (
 
     for (let day = 1; day < countDayInMonth; day++) {
       const separatorKey = `${year}-${lessons[0].month}`;
-      const dayKey = `${year}-${lessons[0].month}-${day}`;
+      const dayKey = `${year}-${
+        lessons[0].month < 10 ? `0${lessons[0].month}` : lessons[0].month
+      }-${day < 10 ? `0${day}` : day}`;
 
       if (!lessonsBy[separatorKey]) {
         lessonsBy[separatorKey] = {};
