@@ -300,7 +300,7 @@ export const listLesson: TLesson[] = [
   {
     month: 1,
     week_number: 2,
-    day: 8,
+    day: 9,
     year: 2023,
     lesson_name: "Урок 4",
     start_date: "2023-01-09 11:00:00",
@@ -309,7 +309,7 @@ export const listLesson: TLesson[] = [
   {
     month: 1,
     week_number: 2,
-    day: 9,
+    day: 11,
     year: 2023,
     lesson_name: "Урок 5",
     start_date: "2023-01-11 14:30:00",
@@ -318,7 +318,7 @@ export const listLesson: TLesson[] = [
   {
     month: 1,
     week_number: 3,
-    day: 10,
+    day: 16,
     year: 2023,
     lesson_name: "Урок 6",
     start_date: "2023-01-16 10:00:00",
@@ -327,7 +327,7 @@ export const listLesson: TLesson[] = [
   {
     month: 1,
     week_number: 3,
-    day: 11,
+    day: 18,
     year: 2023,
     lesson_name: "Урок 7",
     start_date: "2023-01-18 15:45:00",
@@ -336,7 +336,7 @@ export const listLesson: TLesson[] = [
   {
     month: 1,
     week_number: 4,
-    day: 12,
+    day: 23,
     year: 2023,
     lesson_name: "Урок 8",
     start_date: "2023-01-23 11:30:00",
@@ -345,7 +345,7 @@ export const listLesson: TLesson[] = [
   {
     month: 1,
     week_number: 4,
-    day: 14,
+    day: 25,
     year: 2023,
     lesson_name: "Урок 9",
     start_date: "2023-01-25 13:00:00",
@@ -354,7 +354,7 @@ export const listLesson: TLesson[] = [
   {
     month: 1,
     week_number: 5,
-    day: 15,
+    day: 30,
     year: 2023,
     lesson_name: "Урок 10",
     start_date: "2023-01-30 09:15:00",
