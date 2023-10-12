@@ -8,12 +8,20 @@
   display: flex;
   flex-direction: column;
 
+  @media screen and (max-width: 1279px) and (min-width: 768px) {
+    width: 70px;
+  }
+
   &_wrapperLogo {
     height: 132px;
 
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media screen and (max-width: 1279px) and (min-width: 768px) {
+      height: 80px;
+    }
   }
 
   &_logo {
@@ -23,6 +31,20 @@
 
     > span {
       color: $accent-color;
+    }
+
+    @media screen and (max-width: 1279px) and (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  &_logoV2 {
+    display: none;
+    width: 50px;
+    height: auto;
+
+    @media screen and (max-width: 1279px) and (min-width: 768px) {
+      display: block;
     }
   }
 
@@ -56,14 +78,15 @@
     padding: 0 20px;
     cursor: pointer;
 
-    font-size: $text-upper-size;
-    font-weight: 600;
-    line-height: 1.4;
     color: $second-text-color;
-
     transition-duration: 350ms;
     transition-timing-function: ease;
     transition-property: background, box-shadow, color;
+
+    @media screen and (max-width: 1279px) and (min-width: 768px) {
+      padding: 0;
+      height: 48px;
+    }
   }
 
   &_itemMenu:hover,
@@ -87,12 +110,30 @@
 
     width: 100%;
     height: 100%;
+
+    @media screen and (max-width: 1279px) and (min-width: 768px) {
+      justify-content: center;
+    }
   }
 
   &_imgMenu {
-    margin-right: 13px;
+    margin-right: 12px;
     width: 30px;
     height: 30px;
+
+    @media screen and (max-width: 1279px) and (min-width: 768px) {
+      margin-right: 0;
+    }
+  }
+
+  &_linkText {
+    font-size: $text-upper-size;
+    font-weight: 600;
+    line-height: 1.4;
+
+    @media screen and (max-width: 1279px) and (min-width: 768px) {
+      display: none;
+    }
   }
 
   &_wrapperUser {
@@ -103,6 +144,11 @@
     height: 90px;
 
     border-top: 1px solid #e4e4e4;
+
+    @media screen and (max-width: 1279px) and (min-width: 768px) {
+      padding: 0 5px;
+      justify-content: center;
+    }
   }
 
   &_imgAvatar {
@@ -115,6 +161,10 @@
     flex-direction: column;
     flex: 1;
     padding: 0 5px 0 10px;
+
+    @media screen and (max-width: 1279px) and (min-width: 768px) {
+      display: none;
+    }
   }
 
   &_userName {
@@ -140,5 +190,9 @@
     align-items: center;
 
     cursor: pointer;
+
+    @media screen and (max-width: 1279px) and (min-width: 768px) {
+      display: none;
+    }
   }
 }

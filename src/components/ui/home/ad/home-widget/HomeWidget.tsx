@@ -7,7 +7,7 @@ import Image from "next/image";
 const HomeWidget: FC = () => {
   return (
     <div className={styles.homeWidget_flex}>
-      <ul className={styles.homeWidget}>
+      <ul className={styles.homeWidget_list}>
         {widgetList.map((item) => (
           <li key={item.id} className={styles.homeWidget_item}>
             <span className={styles.homeWidget_itemOption}>..</span>

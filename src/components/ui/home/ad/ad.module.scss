@@ -14,7 +14,7 @@
   scrollbar-width: none;
 
   display: grid;
-  grid-template-rows: 1fr 200px;
+  grid-template-rows: 1fr 250px;
 
   &::-webkit-scrollbar {
     width: 0;
@@ -24,7 +24,5 @@
   }
 
   &_widgetWrapper {
-    margin-top: 20px;
-    margin-bottom: 20px;
   }
 }

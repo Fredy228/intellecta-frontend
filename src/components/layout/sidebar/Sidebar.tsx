@@ -18,6 +18,14 @@ const Sidebar: FC = () => {
         <p className={styles.aside_logo}>
           Intellecta<span>.</span>
         </p>
+
+        <Image
+          className={styles.aside_logoV2}
+          src={`${process.env.NEXT_URL}/img/logo.webp`}
+          alt={"Logo"}
+          width={959}
+          height={959}
+        />
       </div>
       <div className={styles.aside_listMenuWrapper}>
         <ul className={styles.aside_listMenu}>
@@ -36,7 +44,7 @@ const Sidebar: FC = () => {
                   height={"30"}
                   className={styles.aside_imgMenu}
                 />
-                {item.title}
+                <p className={styles.aside_linkText}>{item.title}</p>
               </Link>
             </li>
           ))}

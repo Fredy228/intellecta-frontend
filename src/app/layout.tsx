@@ -14,10 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="uk">
-      <body>
-        {children}
-        {/*<script src="http://localhost:8097"></script>*/}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
