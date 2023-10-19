@@ -4,12 +4,25 @@
   width: 100vw;
   height: 100vh;
 
-  background-size: cover;
-  background-position: center;
+  position: relative;
+  overflow: hidden;
+
+  //background-size: cover;
+  //background-position: center;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &_parallax {
+    position: absolute;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 110%;
+    height: 110%;
+    transition: all 0.1s ease;
+  }
 
   &_inner {
     position: relative;
@@ -23,6 +36,7 @@
     width: 100%;
     min-height: 200px;
     background: $background-body;
+    margin-top: 150px;
   }
 
   &_logoWrapper {

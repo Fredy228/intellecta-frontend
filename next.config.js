@@ -3,6 +3,8 @@ const nextConfig = {
   env: {
     NEXT_URL: process.env.NEXT_URL,
     SERVER_URL: process.env.SERVER_URL,
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     TURN_SERVER_URL: process.env.TURN_SERVER_URL,
     TURN_SERVER_USER: process.env.TURN_SERVER_USER,
     TURN_SERVER_PASSWORD: process.env.TURN_SERVER_PASSWORD,

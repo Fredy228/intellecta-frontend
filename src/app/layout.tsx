@@ -1,6 +1,7 @@
 import "./globals.scss";
 import type { Metadata } from "next";
 import React from "react";
+import { Providers } from "@/components/providers/providers";
 
 export const metadata: Metadata = {
   title: "Intellecta",
@@ -14,7 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="uk">
-      <body>{children}</body>
+      <Providers>
+        <body>{children}</body>
+      </Providers>
     </html>
   );
 }

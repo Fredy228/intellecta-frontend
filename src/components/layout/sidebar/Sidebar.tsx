@@ -2,15 +2,22 @@
 
 import { FC } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { signOut } from "next-auth/react";
 
 import styles from "./sidebar.module.scss";
 import { listMenu } from "@/components/layout/sidebar/listMenu";
 import { IconArrowCouple } from "@/components/reused/Icon/Icon";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useSelector } from "react-redux";
+import { selectUser } from "@/redux/auth/selectors";
+import { selectCRS } from "@/redux/crs-selector";
+import LoaderText from "@/components/reused/loader/loader-text/LoaderText";
 
 const Sidebar: FC = () => {
   const pathname = usePathname();
+  const user = useSelector(selectUser);
+  const isClient = useSelector(selectCRS);
 
   return (
     <aside className={styles.aside}>
@@ -57,9 +64,16 @@ const Sidebar: FC = () => {
           width={"40"}
           height={"40"}
           className={styles.aside_imgAvatar}
+          onClick={() =>
+            signOut({
+              callbackUrl: "/sign-in",
+            })
+          }
         />
         <div className={styles.aside_wrapperUserName}>
-          <p className={styles.aside_userName}>Кармазін Олексій</p>
+          <p className={styles.aside_userName}>
+            {isClient ? `${user.firstName} ${user.lastName}` : <LoaderText />}
+          </p>
           <span className={styles.aside_userRole}>Студент 2-го курсу</span>
         </div>
         <div className={styles.aside_wrapperChangeIcon}>
