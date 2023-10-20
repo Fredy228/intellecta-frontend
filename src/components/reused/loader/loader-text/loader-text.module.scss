@@ -1,7 +1,6 @@
 @import "@/styles/varible";
 
 .loader {
-  width: 60px;
   height: 100%;
   display: inline-flex;
   align-items: center;
@@ -11,14 +10,14 @@
   &_inner {
     display: inline-block;
     height: 8px;
-    width: 100%;
+    width: 60px;
     border-radius: 5px;
     background: linear-gradient(
       90deg,
       #3498db,
       #f1c40f //#e74c3c
-    ); /* Градиентные цвета полоски */
-    background-size: 200% 100%; /* Двойной размер фона, чтобы сделать анимацию */
+    );
+    background-size: 200% 100%;
     animation: loading 2s linear infinite;
   }
 
