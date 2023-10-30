@@ -1,13 +1,14 @@
 "use client";
 
-import { FC, PropsWithChildren, Suspense, useEffect, useState } from "react";
+import type { FC } from "react";
+import { PropsWithChildren, useEffect } from "react";
 import { useSession } from "next-auth/react";
+import { useDispatch } from "react-redux";
 
 import Header from "@/components/layout/header/Header";
 import Sidebar from "@/components/layout/sidebar/Sidebar";
 
 import styles from "./layout.module.scss";
-import { useDispatch } from "react-redux";
 import { setCRS } from "@/redux/crs-slice";
 
 const Layout: FC<PropsWithChildren<unknown>> = ({ children }) => {

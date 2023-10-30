@@ -76,7 +76,7 @@ const Sidebar: FC = () => {
                 </li>
               ))
             ) : (
-              <SidebarSkeleton />
+              <SidebarSkeleton pathname={pathname} />
             )}
           </ul>
         </div>
@@ -97,7 +97,11 @@ const Sidebar: FC = () => {
             <p className={styles.aside_userName}>
               {data && `${currentUser.firstName} ${currentUser.lastName}`}
             </p>
-            <span className={styles.aside_userRole}>Студент 2-го курсу</span>
+            <span className={styles.aside_userRole}>
+              {currentUser?.role === RoleEnum.TEACHER && "Викладач"}
+              {currentUser?.role === RoleEnum.STUDENT && "Студент"}
+              {currentUser?.role === RoleEnum.ADMIN && "Адмін"}
+            </span>
           </div>
           <div className={styles.aside_wrapperChangeIcon}>
             <IconArrowCouple />

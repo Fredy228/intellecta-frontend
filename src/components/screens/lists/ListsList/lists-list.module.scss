@@ -1,0 +1,27 @@
+@import "@/styles/varible";
+
+.list {
+  display: flex;
+  flex-direction: column;
+
+  &_item {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+
+    &:nth-child(2n + 1) {
+      background-color: #e8e8e8;
+    }
+  }
+
+  &_img {
+    width: 60px;
+    height: 60px;
+    margin-right: 25px;
+  }
+
+  &_text {
+    font-weight: 600;
+    font-size: 18px;
+  }
+}

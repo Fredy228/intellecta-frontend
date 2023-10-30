@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./schedule.module.scss";
-import { NextPage } from "next";
+import type { NextPage } from "next";
 import SelectedCustom, {
   TSelectedItem,
 } from "@/components/reused/selected-custom/SelectedCustom";

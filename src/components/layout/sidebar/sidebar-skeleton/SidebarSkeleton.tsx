@@ -3,8 +3,10 @@ import LoaderButton from "@/components/reused/loader/loader-button";
 import styles from "./sidebar-skeleton.module.scss";
 import { FC } from "react";
 
-type Props = {};
-const SidebarSkeleton: FC<Props> = ({}) => {
+type Props = {
+  pathname: string;
+};
+const SidebarSkeleton: FC<Props> = ({ pathname }) => {
   const arr = [1, 2, 3, 4, 5];
   return (
     <>
@@ -13,9 +15,11 @@ const SidebarSkeleton: FC<Props> = ({}) => {
           <div className={styles.skeleton_loaderCircle}>
             <LoaderButton width={"35px"} height={"35px"} color={"#438CED"} />
           </div>
-          <div className={styles.skeleton_loaderLine}>
-            <p className={styles.skeleton_loaderLine_text}>Завантаження...</p>
-          </div>
+          {pathname === "/dashboard" && (
+            <div className={styles.skeleton_loaderLine}>
+              <p className={styles.skeleton_loaderLine_text}>Завантаження...</p>
+            </div>
+          )}
         </li>
       ))}
     </>
