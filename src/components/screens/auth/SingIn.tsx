@@ -2,6 +2,8 @@
 
 import { NextPage } from "next";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 import styles from "./sing-in.module.scss";
 import SingInForm from "@/components/screens/auth/form/SingInForm";
@@ -11,6 +13,15 @@ type Props = {};
 
 const SingIn: NextPage<Props> = ({}) => {
   const divRef = useRef<HTMLDivElement | null>(null);
+
+  const router = useRouter();
+  const session = useSession();
+
+  useEffect(() => {
+    if (session?.data) {
+      router.push("/dashboard");
+    }
+  }, [session]);
 
   useEffect(() => {
     function moveBg(e: any) {

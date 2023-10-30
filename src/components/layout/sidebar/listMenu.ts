@@ -1,4 +1,4 @@
-type TItemMenu = {
+export type TItemMenu = {
   id: number;
   title: string;
   url: string;
@@ -47,5 +47,50 @@ export const listMenu: TItemMenu[] = [
     title: "Табель",
     url: "tally.png",
     href: "/dashboard/tally",
+  },
+];
+
+export const listMenuAdmin: TItemMenu[] = [
+  {
+    id: 1,
+    title: "Головна",
+    url: "educate.png",
+    href: "/dashboard",
+  },
+  {
+    id: 2,
+    title: "Розклад",
+    url: "schedule.png",
+    href: "/dashboard/schedule",
+  },
+  {
+    id: 3,
+    title: "Новини",
+    url: "homework.png",
+    href: "/dashboard/homework",
+  },
+  {
+    id: 4,
+    title: "Чати",
+    url: "chats.png",
+    href: "/dashboard/chats",
+  },
+  {
+    id: 6,
+    title: "Статистика",
+    url: "marks.png",
+    href: "/dashboard/marks",
+  },
+  {
+    id: 7,
+    title: "Табель",
+    url: "tally.png",
+    href: "/dashboard/tally",
+  },
+  {
+    id: 8,
+    title: "Списки",
+    url: "tests.png",
+    href: "/dashboard/lists",
   },
 ];

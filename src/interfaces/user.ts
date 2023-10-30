@@ -10,4 +10,5 @@ export interface UserInterface {
   middleName: string | null;
   birthday: string;
   photo: string | null;
+  token?: string;
 }

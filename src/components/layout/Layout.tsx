@@ -14,7 +14,7 @@ const Layout: FC<PropsWithChildren<unknown>> = ({ children }) => {
   const session = useSession();
   const dispatch = useDispatch();
 
-  console.log(session);
+  console.log("session", session);
 
   useEffect(() => {
     dispatch(setCRS(true));
@@ -25,9 +25,7 @@ const Layout: FC<PropsWithChildren<unknown>> = ({ children }) => {
       <Sidebar />
       <div className={styles.layout_wrapperMain}>
         <Header />
-        <div className={styles.layout_wrapperChild}>
-          <Suspense fallback={""}>{children}</Suspense>
-        </div>
+        <div className={styles.layout_wrapperChild}>{children}</div>
       </div>
     </div>
   );

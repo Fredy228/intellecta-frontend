@@ -6,20 +6,18 @@ import { ToastContainer } from "react-toastify";
 import styles from "./header.module.scss";
 import { IconNotific, IconSetting } from "@/components/reused/Icon/Icon";
 import "react-toastify/dist/ReactToastify.css";
-import { useSelector } from "react-redux";
-import { selectUser } from "@/redux/auth/selectors";
-import { selectCRS } from "@/redux/crs-selector";
-import LoaderText from "@/components/reused/loader/loader-text/LoaderText";
+import { useSession } from "next-auth/react";
+import { UserInterface } from "@/interfaces/user";
 
 const Header: FC = () => {
-  const user = useSelector(selectUser);
-  const isClient = useSelector(selectCRS);
+  const { data } = useSession();
+  const currentUser = data?.user as UserInterface;
 
   return (
     <header className={styles.header}>
       <div className={styles.header_inner}>
         <div className={styles.header_userName}>
-          <p>Привіт {isClient ? user.firstName : <LoaderText />},</p>
+          <p>Привіт {data && currentUser.firstName},</p>
         </div>
         <ul className={styles.header_listNotificCenter}>
           <li className={styles.header_itemNotificCenter}>

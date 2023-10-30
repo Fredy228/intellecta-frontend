@@ -3,21 +3,31 @@
 import { FC } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 import styles from "./sidebar.module.scss";
-import { listMenu } from "@/components/layout/sidebar/listMenu";
+import { listMenu, listMenuAdmin } from "@/components/layout/sidebar/listMenu";
+import type { TItemMenu } from "@/components/layout/sidebar/listMenu";
 import { IconArrowCouple } from "@/components/reused/Icon/Icon";
 import Link from "next/link";
-import { useSelector } from "react-redux";
-import { selectUser } from "@/redux/auth/selectors";
-import { selectCRS } from "@/redux/crs-selector";
-import LoaderText from "@/components/reused/loader/loader-text/LoaderText";
+import { RoleEnum } from "@/enums/user/role-enum";
+import SidebarSkeleton from "@/components/layout/sidebar/sidebar-skeleton/SidebarSkeleton";
+import { UserInterface } from "@/interfaces/user";
 
 const Sidebar: FC = () => {
   const pathname = usePathname();
-  const user = useSelector(selectUser);
-  const isClient = useSelector(selectCRS);
+  const { data } = useSession();
+  const currentUser = data?.user as UserInterface;
+
+  const menu = (): TItemMenu[] | [] => {
+    if (
+      currentUser?.role === RoleEnum.TEACHER ||
+      currentUser?.role === RoleEnum.STUDENT
+    )
+      return listMenu;
+    if (currentUser?.role === RoleEnum.ADMIN) return listMenuAdmin;
+    return [];
+  };
 
   return (
     <aside
@@ -45,25 +55,29 @@ const Sidebar: FC = () => {
         </div>
         <div className={styles.aside_listMenuWrapper}>
           <ul className={styles.aside_listMenu}>
-            {listMenu.map((item) => (
-              <li
-                key={item.id}
-                className={`${styles.aside_itemMenu} ${
-                  item.href === pathname ? styles.active : ""
-                }`}
-              >
-                <Link href={item.href} className={styles.aside_linkMenu}>
-                  <Image
-                    src={`${process.env.NEXT_URL}/img/sidebar/${item.url}`}
-                    alt={item.title}
-                    width={"30"}
-                    height={"30"}
-                    className={styles.aside_imgMenu}
-                  />
-                  <p className={styles.aside_linkText}>{item.title}</p>
-                </Link>
-              </li>
-            ))}
+            {menu().length !== 0 && data ? (
+              menu().map((item) => (
+                <li
+                  key={item.id}
+                  className={`${styles.aside_itemMenu} ${
+                    item.href === pathname ? styles.active : ""
+                  }`}
+                >
+                  <Link href={item.href} className={styles.aside_linkMenu}>
+                    <Image
+                      src={`${process.env.NEXT_URL}/img/sidebar/${item.url}`}
+                      alt={item.title}
+                      width={"30"}
+                      height={"30"}
+                      className={styles.aside_imgMenu}
+                    />
+                    <p className={styles.aside_linkText}>{item.title}</p>
+                  </Link>
+                </li>
+              ))
+            ) : (
+              <SidebarSkeleton />
+            )}
           </ul>
         </div>
         <div className={styles.aside_wrapperUser}>
@@ -81,7 +95,7 @@ const Sidebar: FC = () => {
           />
           <div className={styles.aside_wrapperUserName}>
             <p className={styles.aside_userName}>
-              {isClient ? `${user.firstName} ${user.lastName}` : <LoaderText />}
+              {data && `${currentUser.firstName} ${currentUser.lastName}`}
             </p>
             <span className={styles.aside_userRole}>Студент 2-го курсу</span>
           </div>

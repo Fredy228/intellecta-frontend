@@ -1,0 +1,40 @@
+@import "@/styles/varible";
+
+.skeleton {
+  &_item {
+    height: 58px;
+    width: 100%;
+
+    padding: 0 20px;
+    cursor: pointer;
+
+    display: flex;
+
+    @media screen and (max-width: 1279px) and (min-width: 768px) {
+      padding: 0;
+      height: 48px;
+    }
+  }
+
+  &_loaderCircle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: 1279px) and (min-width: 768px) {
+      width: 48px;
+    }
+  }
+
+  &_loaderLine {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+
+    &_text {
+      color: $second-text-color;
+      font-size: $text-lower-size;
+    }
+  }
+}

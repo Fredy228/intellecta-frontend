@@ -1,12 +1,9 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import type { FormEventHandler } from "react";
-import { signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 import { ToastContainer } from "react-toastify";
-import { AppDispatch } from "@/redux/store";
-import { useDispatch } from "react-redux";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -14,60 +11,32 @@ import styles from "./sing-in-form.module.scss";
 import { getToastify } from "@/services/toastify";
 import { ToastifyEnum } from "@/enums/toastify-enum";
 import LoaderButton from "@/components/reused/loader/loader-button";
-import * as API from "@/axios/auth";
-import { setUser } from "@/redux/auth/slice";
 
 type Props = {};
 const SingInForm: FC<Props> = ({}) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const router = useRouter();
-  const dispatch = useDispatch<AppDispatch>();
-  const session = useSession();
-
-  const linkTo = () => {
-    router.push("/dashboard");
-  };
 
   const submitForm: FormEventHandler<HTMLFormElement> = async (
     e,
   ): Promise<void> => {
     e.preventDefault();
-    try {
-      setIsLoading(true);
+    setIsLoading(true);
 
-      const data = await API.loginUser({
-        email,
-        password,
-      });
+    const answer = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+      callbackUrl: "/dashboard",
+    });
+    console.log(answer);
 
-      console.log("data", data);
-
-      if (data?.user) {
-        dispatch(setUser(data.user));
-      }
-
-      const answer = await signIn("credentials", {
-        email,
-        password,
-        redirect: false,
-        callbackUrl: "/dashboard",
-      });
-
-      linkTo();
-    } catch (error) {
-      console.log(error);
+    if (answer?.error) {
       getToastify("Невірний логін або пароль", ToastifyEnum.ERROR);
       setIsLoading(false);
     }
   };
-
-  useEffect(() => {
-    if (session?.data) {
-      linkTo();
-    }
-  }, [session]);
 
   return (
     <div className={styles.authForm}>

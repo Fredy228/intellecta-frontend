@@ -15,8 +15,14 @@ type Props = {
   list: Array<TSelectedItem>;
   currentValue: TSelectedItem;
   setValue: Dispatch<SetStateAction<TSelectedItem>>;
+  position: "left" | "right";
 };
-const SelectedCustom: FC<Props> = ({ list, currentValue, setValue }) => {
+const SelectedCustom: FC<Props> = ({
+  list,
+  currentValue,
+  setValue,
+  position,
+}) => {
   const [isShow, setIsShow] = useState(false);
 
   return (
@@ -30,7 +36,12 @@ const SelectedCustom: FC<Props> = ({ list, currentValue, setValue }) => {
       </button>
       <AnimatePresence>
         {isShow && (
-          <SelectedList list={list} setValue={setValue} setIsShow={setIsShow} />
+          <SelectedList
+            list={list}
+            setValue={setValue}
+            setIsShow={setIsShow}
+            position={position}
+          />
         )}
       </AnimatePresence>
     </div>

@@ -5,13 +5,12 @@
     position: absolute;
 
     top: calc(100% + 5px);
-    left: 0;
+    //left: 0;
     box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
 
     padding: 15px;
     border-radius: 10px;
     background-color: $background-body;
-    //width: 100%;
 
     z-index: 100;
   }

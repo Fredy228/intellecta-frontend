@@ -38,17 +38,16 @@ const Schedule: NextPage = () => {
 
   return (
     <main className={styles.schedule}>
-      <div>
-        <h2 className={styles.schedule_title}>Твій розклад:</h2>
+      <div className={styles.schedule_titleWrapper}>
+        <h2 className={styles.schedule_title}>Твій розклад чекає на тебе</h2>
+        <SelectedCustom
+          list={listOption}
+          currentValue={currentOption}
+          setValue={setCurrentOption}
+          position={"right"}
+        />
       </div>
       <div className={styles.schedule_wrapper}>
-        <div className={styles.schedule_selectWrapper}>
-          <SelectedCustom
-            list={listOption}
-            currentValue={currentOption}
-            setValue={setCurrentOption}
-          />
-        </div>
         <div className={styles.schedule_container}>
           <div className={`${styles.schedule_innerContainer} ${styles.main}`}>
             {currentOption.value === listOption[0].value ? (

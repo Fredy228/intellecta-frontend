@@ -8,11 +8,18 @@ type Props = {
   list: Array<TSelectedItem>;
   setValue: Dispatch<SetStateAction<TSelectedItem>>;
   setIsShow: Dispatch<SetStateAction<boolean>>;
+  position: "left" | "right";
 };
-const SelectedList: FC<Props> = ({ list, setValue, setIsShow }) => {
+const SelectedList: FC<Props> = ({ list, setValue, setIsShow, position }) => {
   const handleSelect = (value: TSelectedItem) => {
     setValue(value);
     setIsShow(false);
+  };
+
+  const pos = (): { [key: string]: string | number } => {
+    if (position === "left") return { left: 0, right: "initial" };
+    if (position === "right") return { right: 0, left: "initial" };
+    return {};
   };
 
   return (
@@ -22,6 +29,7 @@ const SelectedList: FC<Props> = ({ list, setValue, setIsShow }) => {
         animate={{ translateY: 0 }}
         exit={{ opacity: 0 }}
         className={styles.option_list}
+        style={pos()}
       >
         {list.map((item) => (
           <li
