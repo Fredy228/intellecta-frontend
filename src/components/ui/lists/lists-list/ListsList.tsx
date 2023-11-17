@@ -2,8 +2,8 @@ import type { FC } from "react";
 
 import styles from "./lists-list.module.scss";
 
-import { listTeacher } from "@/components/screens/lists/ListsList/list-lists";
 import Image from "next/image";
+import { listTeacher } from "@/components/ui/lists/lists-list/list-lists";
 
 type Props = {};
 const ListsList: FC<Props> = () => {

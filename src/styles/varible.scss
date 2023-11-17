@@ -45,3 +45,49 @@ $title-weight: 600;
   font-weight: 600;
   line-height: 1.1;
 }
+
+//create button
+@mixin plus-button {
+  width: 40px;
+  height: 40px;
+
+  border: none;
+  border-radius: 50%;
+  background: #e6e6e6;
+  box-shadow:
+    0 4px 6px 0 rgba(202, 202, 202, 0.48),
+    -4px -4px 14px 0px rgba(255, 255, 255, 0.7),
+    -4px -4px 20px 0px rgba(255, 255, 255, 0.7) inset;
+
+  position: relative;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    width: 3px;
+    height: 20px;
+    background-color: #adadad;
+    transition: background-color 350ms ease;
+
+    position: absolute;
+  }
+
+  &::before {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &::after {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  &:hover::before,
+  &:hover::after {
+    background-color: $background-item;
+  }
+}

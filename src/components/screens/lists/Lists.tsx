@@ -6,7 +6,7 @@ import SelectedCustom, {
   TSelectedItem,
 } from "@/components/reused/selected-custom/SelectedCustom";
 import { listOption } from "@/components/screens/lists/listOption";
-import ListsList from "@/components/screens/lists/ListsList/ListsList";
+import ListsList from "@/components/ui/lists/lists-list/ListsList";
 
 type Props = {};
 const Lists: NextPage<Props> = () => {

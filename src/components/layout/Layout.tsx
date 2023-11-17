@@ -11,7 +11,7 @@ import Sidebar from "@/components/layout/sidebar/Sidebar";
 import styles from "./layout.module.scss";
 import { setCRS } from "@/redux/crs-slice";
 
-const Layout: FC<PropsWithChildren<unknown>> = ({ children }) => {
+const Layout: FC<PropsWithChildren> = ({ children }) => {
   const session = useSession();
   const dispatch = useDispatch();
 

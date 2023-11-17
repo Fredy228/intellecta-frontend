@@ -15,3 +15,6 @@ export { default as IconSmsConf } from "./storage/email-conf.svg";
 export { default as IconFullScreen } from "./storage/full-screen.svg";
 export { default as IconMicrophone } from "./storage/microfon.svg";
 export { default as IconExit } from "./storage/exit.svg";
+
+//Widgets
+export { default as IconColorCircle } from "./storage/color-circle.svg";

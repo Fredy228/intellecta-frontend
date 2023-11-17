@@ -112,3 +112,16 @@ body {
 
   background-color: #f2f2f2;
 }
+
+*::-webkit-scrollbar {
+  width: 12px; /* Ширина полосы прокрутки */
+}
+
+*::-webkit-scrollbar-thumb {
+  background: $background-item;
+  border-radius: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}

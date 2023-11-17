@@ -27,12 +27,12 @@ export const authConfig: AuthOptions = {
         }
 
         return null;
-        // return { email: credentials?.email} as User;
       },
     }),
   ],
   session: {
     strategy: "jwt",
+    maxAge: 60 * 60 * 24,
   },
   callbacks: {
     async jwt({ token, user }) {
@@ -42,16 +42,15 @@ export const authConfig: AuthOptions = {
       return token;
     },
     async session({ session, token, user }) {
-      console.log("user", token.user);
-      //token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ItCe0LvQtdC60YHRltC5Iiwic3ViIjoxMzAyLCJpYXQiOjE2OTgxNTUyMzUsImV4cCI6MTY5ODE1ODgzNX0.caJH_9Qsst08nVcY-2p1OKX_lZw1n2L6uQuPTvrtQKo"
-      //token: "eyJhbGciOiJIUzI1NiIsInR5cC
+      // console.log("user", token.user);
       session.user = token.user as AdapterUser;
+      console.log("session", session);
 
       return session;
     },
   },
   jwt: {
-    maxAge: 60 * 60,
+    maxAge: 60 * 60 * 24,
   },
   pages: {
     signIn: "/sign-in",

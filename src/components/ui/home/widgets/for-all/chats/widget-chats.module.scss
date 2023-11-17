@@ -1,0 +1,95 @@
+@import "@/styles/varible";
+
+.widgetChats {
+  width: 100%;
+  height: 100%;
+
+  padding: 24px 20px;
+  position: relative;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  &_option {
+    font-size: 25px;
+    color: $second-text-color;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+  }
+
+  &_title {
+    font-size: $text-upper-size;
+    font-weight: 600;
+    @include overflow-text(1);
+    margin-bottom: 8px;
+    padding-right: 30px;
+
+    @media screen and (max-width: 1439px) {
+      font-size: 14px;
+    }
+  }
+
+  &_text {
+    font-weight: 600;
+    font-size: $subtitle-lower-size;
+    color: $second-text-color;
+    @include overflow-text(3);
+
+    @media screen and (max-width: 1439px) {
+      font-size: 14px;
+    }
+  }
+
+  &_bottomWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: auto;
+    position: relative;
+  }
+
+  &_userList {
+    display: flex;
+    position: relative;
+    flex: 1;
+  }
+
+  &_userItem {
+    width: 24px;
+    height: 24px;
+
+    &:nth-child(2) {
+      transform: translateX(-12px);
+    }
+    &:nth-child(3) {
+      transform: translateX(-24px);
+    }
+    &:nth-child(4) {
+      transform: translateX(-36px);
+    }
+    &:nth-child(5) {
+      transform: translateX(-48px);
+    }
+  }
+
+  &_notice {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    font-weight: 600;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $accent-color;
+    border-radius: 50%;
+    color: $light-text-color;
+  }
+}

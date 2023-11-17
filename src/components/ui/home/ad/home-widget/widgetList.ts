@@ -1,3 +1,14 @@
+import { WidgetsEnum } from "@/enums/widgets/widgets-enum";
+import WidgetChats from "@/components/ui/home/widgets/for-all/chats/WidgetChats";
+import WidgetGrade from "@/components/ui/home/widgets/for-student/grade/WidgetGrade";
+import { TWidgetList } from "@/types/widget";
+
+export const widgetList: TWidgetList = {
+  [WidgetsEnum.CHATS]: WidgetChats,
+  [WidgetsEnum.GRADE]: WidgetGrade,
+  [WidgetsEnum.TEST]: WidgetGrade,
+};
+
 type TWidget = {
   id: number;
   title: string;
@@ -9,7 +20,7 @@ type TWidget = {
   }>;
 };
 
-export const widgetList: TWidget[] = [
+export const widgetList1: TWidget[] = [
   {
     id: 1,
     title: "ДЗ на завтра",

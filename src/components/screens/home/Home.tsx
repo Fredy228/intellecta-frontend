@@ -18,9 +18,9 @@ const Home: NextPage = () => {
     <main className={styles.home}>
       <div>
         <h2 className={styles.home_title}>
-          {currentUser?.role === RoleEnum.STUDENT && "Чому ще не на уроці?"}
-          {currentUser?.role === RoleEnum.TEACHER && "Ви готові викладати?"}
-          {currentUser?.role === RoleEnum.ADMIN && "Усе готово для навчання?"}
+          {currentUser?.role === RoleEnum.STUDENT && "Чому ще не на уроці"}
+          {currentUser?.role === RoleEnum.TEACHER && "Ви готові викладати"}
+          {currentUser?.role === RoleEnum.ADMIN && "Усе готово для навчання"}?
         </h2>
       </div>
       <div className={styles.home_wrapper}>

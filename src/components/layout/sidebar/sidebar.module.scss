@@ -90,14 +90,14 @@
     width: 100%;
     height: 100%;
 
-    overflow-y: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    overflow-x: hidden;
+    //-ms-overflow-style: none;
+    //scrollbar-width: none;
   }
 
-  &_listMenu::-webkit-scrollbar {
-    width: 0;
-  }
+  //&_listMenu::-webkit-scrollbar {
+  //  width: 0;
+  //}
 
   &_itemMenu {
     height: 58px;
