@@ -1,0 +1,73 @@
+@import "@/styles/varible";
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  &_headColum {
+    border-bottom: 1px solid #d9d9d9;
+    padding: 5px 10px;
+
+    color: $second-text-color;
+    font-size: $font-size-lg;
+  }
+
+  &_headData {
+    width: 160px;
+  }
+  &_headSubject {
+    width: 400px;
+  }
+
+  &_body > tr:nth-child(2n + 2) {
+    .table_bodyHomework,
+    .table_bodySubject {
+      background-color: #e8e8e8;
+    }
+  }
+
+  &_tdBody {
+    padding: 10px;
+  }
+
+  &_bodyData {
+    vertical-align: top;
+    font-size: $font-size-lg;
+    border-bottom: 1px solid #d9d9d9;
+  }
+
+  &_bodySubject {
+    display: flex;
+  }
+
+  &_bodyHomework {
+    font-size: $font-size-lg;
+  }
+}
+
+.subject {
+  &_wrapperIcon {
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &_icon {
+  }
+
+  &_wrapperInfo {
+    flex: 1;
+    font-weight: 600;
+  }
+
+  &_name {
+    font-size: $font-size-md;
+    padding-bottom: 3px;
+  }
+
+  &_teacher {
+    font-size: $font-size-sm;
+    color: $second-text-color;
+  }
+}

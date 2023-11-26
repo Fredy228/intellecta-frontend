@@ -14,19 +14,15 @@ $background-item: #438ced;
 
 /*----- Font size -----*/
 
-//title
+$font-size-xl: 25px;
+$font-size-lg: 20px;
+$font-size-md: 16px;
+$font-size-sm: 14px;
+$font-size-xs: 12px;
+
+//title-home
 $title-upper-size: 40px;
-$title-lower-size: 25px;
-
-//subtitle
-$subtitle-upper-size: 25px;
-$subtitle-lower-size: 16px;
-
-//text
-$text-upper-size: 16px;
-$text-lower-size: 14px;
-
-//weight
+//title-weight
 $title-weight: 600;
 
 /*----- Mixins -----*/
@@ -41,7 +37,7 @@ $title-weight: 600;
 
 @mixin section-title-text {
   font-family: Poppins, sans-serif;
-  font-size: $title-lower-size;
+  font-size: $font-size-xl;
   font-weight: 600;
   line-height: 1.1;
 }

@@ -21,7 +21,7 @@
   }
 
   &_title {
-    font-size: $text-upper-size;
+    font-size: $font-size-md;
     font-weight: 600;
     @include overflow-text(1);
     margin-bottom: 8px;
@@ -34,7 +34,7 @@
 
   &_text {
     font-weight: 600;
-    font-size: $subtitle-lower-size;
+    font-size: $font-size-md;
     color: $second-text-color;
     @include overflow-text(3);
 

@@ -1,0 +1,49 @@
+@import "@/styles/varible";
+
+.notice {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  //z-index: 50;
+
+  width: 330px;
+  min-height: 150px;
+
+  border-radius: 45px;
+  background: #e1e1e1;
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.25);
+
+  padding: 40px 10px;
+
+  &_list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_item {
+    width: 100%;
+    cursor: pointer;
+    padding: 15px 20px;
+    border-radius: 16px;
+    border: 1px solid transparent;
+    background:
+      linear-gradient($background-body, $background-body) padding-box,
+      linear-gradient(
+          180deg,
+          rgba(208, 208, 208, 1) 0%,
+          rgba(255, 255, 255, 1) 100%
+        )
+        border-box;
+
+    box-shadow:
+      -4px -4px 20px 0px rgba(255, 255, 255, 0.7) inset,
+      0px 4px 6px 0px rgba(202, 202, 202, 0.48),
+      -4px -4px 14px 0px rgba(255, 255, 255, 0.7);
+
+    transition: margin-bottom 350ms linear;
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+}

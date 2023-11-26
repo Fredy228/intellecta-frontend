@@ -155,7 +155,7 @@
   }
 
   &_linkText {
-    font-size: $text-upper-size;
+    font-size: $font-size-md;
     font-weight: 600;
     line-height: 1.4;
     visibility: hidden;
@@ -206,7 +206,7 @@
   }
 
   &_userName {
-    font-size: $text-upper-size;
+    font-size: $font-size-md;
     font-weight: 600;
     line-height: 1.42;
     width: 100%;
@@ -215,7 +215,7 @@
   }
 
   &_userRole {
-    font-size: $text-lower-size;
+    font-size: $font-size-sm;
     color: $second-text-color;
     line-height: 1.38;
 

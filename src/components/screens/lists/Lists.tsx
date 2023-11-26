@@ -15,7 +15,7 @@ const Lists: NextPage<Props> = () => {
   );
 
   return (
-    <div className={styles.lists}>
+    <main className={styles.lists}>
       <div className={styles.lists_titleWrapper}>
         <h2 className={styles.lists_title}>Усе готово для навчання?</h2>
         <SelectedCustom
@@ -29,7 +29,7 @@ const Lists: NextPage<Props> = () => {
         </div>
       </div>
       <ListsList />
-    </div>
+    </main>
   );
 };
 export default Lists;

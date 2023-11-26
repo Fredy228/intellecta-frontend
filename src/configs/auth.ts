@@ -57,3 +57,10 @@ export const authConfig: AuthOptions = {
     error: "/sign-in",
   },
 };
+
+// export interface DefaultUser {
+//   id: string
+//   name?: string | null
+//   email?: string | null
+//   image?: string | null
+// }

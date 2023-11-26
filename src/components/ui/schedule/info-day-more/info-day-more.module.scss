@@ -22,12 +22,12 @@
   }
 
   &_nameLesson {
-    font-size: $text-upper-size;
+    font-size: $font-size-md;
     font-weight: 600;
   }
 
   &_timeLesson {
-    font-size: $text-lower-size;
+    font-size: $font-size-sm;
     color: $second-text-color;
   }
 
@@ -43,7 +43,7 @@
   }
 
   &_linkHomework {
-    font-size: $text-upper-size;
+    font-size: $font-size-md;
     color: $second-text-color;
     cursor: pointer;
     padding: 5px 2px;

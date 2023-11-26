@@ -5,6 +5,7 @@ export { default as IconProcessing } from "./storage/processing.svg";
 //Header icons
 export { default as IconSetting } from "./storage/settings.svg";
 export { default as IconNotific } from "./storage/notific.svg";
+export { default as IconCross } from "./storage/cross.svg";
 
 //SideBar icons
 export { default as IconArrowCouple } from "./storage/arrow-couple.svg";

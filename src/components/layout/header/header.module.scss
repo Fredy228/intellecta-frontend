@@ -15,7 +15,7 @@
 
   &_userName {
     > p {
-      font-size: $subtitle-upper-size;
+      font-size: $font-size-xl;
       font-family: Poppins, sans-serif;
       font-weight: 500;
       line-height: 1.3;
@@ -24,6 +24,7 @@
 
   &_listNotificCenter {
     display: flex;
+    position: relative;
   }
 
   &_itemNotificCenter {
@@ -45,14 +46,26 @@
       rgba(255, 255, 255, 1) 100%
     );
 
-    &:first-child {
-      margin-right: 15px;
+    &:last-child {
+      margin-left: 15px;
     }
 
     > svg {
       width: 24px;
       height: 24px;
       stroke: #aeaeb4;
+      fill: #aeaeb4;
+    }
+
+    &.notice {
+      z-index: 60;
+    }
+
+    &.active {
+      > svg {
+        width: 15px;
+        height: 15px;
+      }
     }
   }
 
