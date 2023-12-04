@@ -35,16 +35,27 @@ export const authConfig: AuthOptions = {
     maxAge: 60 * 60 * 24,
   },
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, account, profile }) {
       if (user) {
+        const userData = user as UserInterface;
         token.user = user;
+        token.id = user.id;
+        token.accessToken = userData.token;
       }
+      // if (account) {
+      //   token.accessToken = account.access_token;
+      // }
+      // console.log("token-jwt", token);
+      // console.log("account-jwt", account);
+      // console.log("profile-jwt", account);
       return token;
     },
     async session({ session, token, user }) {
-      // console.log("user", token.user);
+      console.log("user-session", user);
+      // console.log("token-session", token);
+      // console.log("accessToken", token.accessToken);
       session.user = token.user as AdapterUser;
-      console.log("session", session);
+      // console.log("session", session);
 
       return session;
     },
@@ -57,10 +68,3 @@ export const authConfig: AuthOptions = {
     error: "/sign-in",
   },
 };
-
-// export interface DefaultUser {
-//   id: string
-//   name?: string | null
-//   email?: string | null
-//   image?: string | null
-// }

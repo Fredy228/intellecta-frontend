@@ -33,6 +33,7 @@ const Header: FC = () => {
           <AnimatePresence>
             {!isShowNotice && (
               <motion.li
+                key={1}
                 initial={{ opacity: 1 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -42,6 +43,7 @@ const Header: FC = () => {
               </motion.li>
             )}
             <li
+              key={2}
               style={isShowNotice ? { zIndex: 120 } : {}}
               className={`${styles.header_itemNotificCenter} ${styles.notice} ${
                 isShowNotice ? styles.active : ""

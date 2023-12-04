@@ -26,7 +26,7 @@ const AdSlider: FC = () => {
       <div className={styles.adSlider_carouselWrap}>
         <Carousel {...settings} className={styles.adSlider}>
           <div className={styles.adSlider_item}>
-            <Image
+            <img
               src={"http://localhost:3000/img/ad/incubator-1.jpeg"}
               alt={"Incubator advertising"}
               width={"599"}
@@ -35,7 +35,7 @@ const AdSlider: FC = () => {
             />
           </div>
           <div className={styles.adSlider_item}>
-            <Image
+            <img
               src={"http://localhost:3000/img/ad/incubator-2.jpeg"}
               alt={"Incubator advertising"}
               width={"599"}
@@ -44,7 +44,7 @@ const AdSlider: FC = () => {
             />
           </div>
           <div className={styles.adSlider_item}>
-            <Image
+            <img
               src={"http://localhost:3000/img/ad/incubator-3.jpeg"}
               alt={"Incubator advertising"}
               width={"599"}

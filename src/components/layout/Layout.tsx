@@ -16,6 +16,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
   const dispatch = useDispatch();
 
   console.log("session", session);
+  // console.log(session.token);
 
   useEffect(() => {
     dispatch(setCRS(true));
