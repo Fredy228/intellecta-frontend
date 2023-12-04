@@ -11,11 +11,21 @@ const nextConfig = {
     TURN_SERVER_PASSWORD: process.env.TURN_SERVER_PASSWORD,
   },
   images: {
-    domains: [
-      "localhost",
-      "static.thairath.co.th",
-      "195.138.86.82",
-      "fredytest.kyiv.ua",
+    // domains: [
+    //   "localhost",
+    //   "static.thairath.co.th",
+    //   "195.138.86.82",
+    //   "fredytest.kyiv.ua",
+    // ],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "fredytest.kyiv.ua",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+      },
     ],
   },
   webpack(config) {
