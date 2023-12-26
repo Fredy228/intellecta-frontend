@@ -46,8 +46,8 @@
       rgba(255, 255, 255, 1) 100%
     );
 
-    &:last-child {
-      margin-left: 15px;
+    &:first-child {
+      margin-right: 15px;
     }
 
     > svg {
@@ -62,6 +62,7 @@
     }
 
     &.active {
+      margin-right: 0;
       > svg {
         width: 15px;
         height: 15px;

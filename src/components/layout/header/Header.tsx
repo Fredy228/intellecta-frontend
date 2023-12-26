@@ -33,7 +33,7 @@ const Header: FC = () => {
           <AnimatePresence>
             {!isShowNotice && (
               <motion.li
-                key={1}
+                key={10}
                 initial={{ opacity: 1 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -43,7 +43,7 @@ const Header: FC = () => {
               </motion.li>
             )}
             <li
-              key={2}
+              key={20}
               style={isShowNotice ? { zIndex: 120 } : {}}
               className={`${styles.header_itemNotificCenter} ${styles.notice} ${
                 isShowNotice ? styles.active : ""
@@ -56,13 +56,21 @@ const Header: FC = () => {
                 <span className={styles.header_countNotificCenter}>2</span>
               </div>
             </li>
-            {isShowNotice && <Notice isShow={isShowNotice} />}
             {isShowNotice && (
-              <Backdrop
-                setShow={setIsShowNotice}
-                backgroundColor={"transparent"}
-              ></Backdrop>
+              <>
+                <Notice isShow={isShowNotice} />
+                <Backdrop
+                  setShow={setIsShowNotice}
+                  backgroundColor={"transparent"}
+                ></Backdrop>
+              </>
             )}
+            {/*{isShowNotice && (*/}
+            {/*  <Backdrop*/}
+            {/*    setShow={setIsShowNotice}*/}
+            {/*    backgroundColor={"transparent"}*/}
+            {/*  ></Backdrop>*/}
+            {/*)}*/}
           </AnimatePresence>
         </ul>
       </div>
