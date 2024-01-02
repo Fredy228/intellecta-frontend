@@ -1,7 +1,6 @@
-import type { FC } from "react";
+import { type FC } from "react";
 
-type Props = {};
-const ListSort: FC<Props> = () => {
+const ListSort: FC = () => {
   return <div>ListSort</div>;
 };
 export default ListSort;

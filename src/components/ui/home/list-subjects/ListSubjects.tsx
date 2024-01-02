@@ -1,12 +1,14 @@
 "use client";
 
-import { FC, useState } from "react";
-import styles from "./list-subjects.module.scss";
-import { subjectList } from "@/components/ui/home/list-subjects/subjectList";
+import { type FC, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+
+import styles from "./list-subjects.module.scss";
+
+import { subjectList } from "@/components/ui/home/list-subjects/subjectList";
 import { IconSmallRightArrow } from "@/components/reused/Icon/Icon";
 import InfoSubject from "@/components/ui/home/list-subjects/info-subject/InfoSubject";
-import { AnimatePresence, motion } from "framer-motion";
 
 const ListSubjects: FC = () => {
   const [activeId, setActiveId] = useState<number>(0);

@@ -1,10 +1,9 @@
-import type { FC } from "react";
-
-import styles from "./homework-table.module.scss";
+import { type FC } from "react";
 import Image from "next/image";
 
-type Props = {};
-const HomeWorkTable: FC<Props> = () => {
+import styles from "./homework-table.module.scss";
+
+const HomeWorkTable: FC = () => {
   return (
     <table className={styles.table}>
       <thead className={styles.table_head}>

@@ -1,6 +1,7 @@
-import { FC } from "react";
+import { type FC } from "react";
 
 import styles from "./control-month.module.scss";
+
 import { IconSmallRightArrow } from "@/components/reused/Icon/Icon";
 
 type Props = {

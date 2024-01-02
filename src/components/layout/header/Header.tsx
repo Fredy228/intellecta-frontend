@@ -1,21 +1,21 @@
 "use client";
 
-import type { FC } from "react";
-import { useState } from "react";
+import { type FC, useState } from "react";
 import { useSession } from "next-auth/react";
-import { ToastContainer } from "react-toastify";
 import { AnimatePresence, motion } from "framer-motion";
 
 import styles from "./header.module.scss";
+
 import {
   IconCross,
   IconNotific,
   IconSetting,
 } from "@/components/reused/Icon/Icon";
-import "react-toastify/dist/ReactToastify.css";
-import { UserInterface } from "@/interfaces/user";
+
 import Notice from "@/components/layout/header/notice/Notice";
 import Backdrop from "@/components/reused/backdrop/Backdrop";
+
+import { UserInterface } from "@/interfaces/user";
 
 const Header: FC = () => {
   const { data } = useSession();
@@ -34,7 +34,7 @@ const Header: FC = () => {
             {!isShowNotice && (
               <motion.li
                 key={10}
-                initial={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 className={styles.header_itemNotificCenter}
@@ -65,28 +65,9 @@ const Header: FC = () => {
                 ></Backdrop>
               </>
             )}
-            {/*{isShowNotice && (*/}
-            {/*  <Backdrop*/}
-            {/*    setShow={setIsShowNotice}*/}
-            {/*    backgroundColor={"transparent"}*/}
-            {/*  ></Backdrop>*/}
-            {/*)}*/}
           </AnimatePresence>
         </ul>
       </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        limit={3}
-        hideProgressBar={true}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
     </header>
   );
 };

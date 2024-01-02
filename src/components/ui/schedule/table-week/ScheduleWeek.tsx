@@ -1,6 +1,7 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import { type Dispatch, type FC, type SetStateAction } from "react";
 
 import styles from "./schedule-week.module.scss";
+
 import { TLesson } from "@/components/ui/schedule/listschedule";
 import WeekItemDay from "@/components/ui/schedule/table-week/item-day/WeekItemDay";
 

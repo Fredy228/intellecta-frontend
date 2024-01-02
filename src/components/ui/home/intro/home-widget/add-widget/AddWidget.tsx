@@ -1,4 +1,4 @@
-import type { Dispatch, FC, SetStateAction } from "react";
+import { type Dispatch, type FC, type SetStateAction } from "react";
 import { motion } from "framer-motion";
 import { v4 as uuidv4 } from "uuid";
 

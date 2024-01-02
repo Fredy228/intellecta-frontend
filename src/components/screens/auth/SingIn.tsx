@@ -1,17 +1,16 @@
 "use client";
 
-import type { NextPage } from "next";
+import { type NextPage } from "next";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 
 import styles from "./sing-in.module.scss";
+
 import SingInForm from "@/components/screens/auth/form/SingInForm";
-import { useEffect, useRef } from "react";
 
-type Props = {};
-
-const SingIn: NextPage<Props> = ({}) => {
+const SingIn: NextPage = () => {
   const divRef = useRef<HTMLDivElement | null>(null);
 
   const router = useRouter();

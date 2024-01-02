@@ -1,12 +1,11 @@
-import type { FC } from "react";
+import { type FC } from "react";
+import Image from "next/image";
 
 import styles from "./lists-list.module.scss";
 
-import Image from "next/image";
 import { listTeacher } from "@/components/ui/lists/lists-list/list-lists";
 
-type Props = {};
-const ListsList: FC<Props> = () => {
+const ListsList: FC = () => {
   return (
     <ul className={styles.list}>
       {listTeacher.map((i) => (

@@ -1,19 +1,15 @@
 "use client";
 
-import { FC, useState } from "react";
-import type { FormEventHandler } from "react";
+import { type FC, type FormEventHandler, useState } from "react";
 import { signIn } from "next-auth/react";
-import { ToastContainer } from "react-toastify";
-
-import "react-toastify/dist/ReactToastify.css";
 
 import styles from "./sing-in-form.module.scss";
+
 import { getToastify } from "@/services/toastify";
 import { ToastifyEnum } from "@/enums/toastify-enum";
 import LoaderButton from "@/components/reused/loader/loader-button";
 
-type Props = {};
-const SingInForm: FC<Props> = ({}) => {
+const SingInForm: FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -75,19 +71,6 @@ const SingInForm: FC<Props> = ({}) => {
           {!isLoading && "Увійти"}
         </button>
       </form>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        limit={3}
-        hideProgressBar={true}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
     </div>
   );
 };

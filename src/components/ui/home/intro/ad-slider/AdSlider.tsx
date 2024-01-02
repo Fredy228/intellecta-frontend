@@ -1,11 +1,11 @@
 "use client";
 
-import { FC } from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { type FC } from "react";
 import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
 
 import styles from "./ad-slider.module.scss";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const AdSlider: FC = () => {
   const settings = {

@@ -1,7 +1,6 @@
 "use client";
 
-import type { FC } from "react";
-import { PropsWithChildren, useEffect } from "react";
+import { type FC, type PropsWithChildren, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useDispatch } from "react-redux";
 
@@ -16,7 +15,6 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
   const dispatch = useDispatch();
 
   console.log("session", session);
-  // console.log(session.token);
 
   useEffect(() => {
     dispatch(setCRS(true));

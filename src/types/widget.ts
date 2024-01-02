@@ -9,4 +9,3 @@ export type TWidget = {
 };
 
 export type TWidgetList = { [name: string]: FC };
-// export type TWidgetList = Record<WidgetsEnum, React.ComponentType>;

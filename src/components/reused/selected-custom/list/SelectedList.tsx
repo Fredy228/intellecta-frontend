@@ -1,8 +1,9 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import { type Dispatch, type FC, type SetStateAction } from "react";
 import { motion } from "framer-motion";
 
-import { TSelectedItem } from "@/components/reused/selected-custom/SelectedCustom";
 import styles from "./selected-list.module.scss";
+
+import { TSelectedItem } from "@/components/reused/selected-custom/SelectedCustom";
 
 type Props = {
   list: Array<TSelectedItem>;

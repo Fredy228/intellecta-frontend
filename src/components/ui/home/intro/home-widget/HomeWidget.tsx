@@ -1,15 +1,17 @@
 "use client";
 
-import type { FC } from "react";
+import { type FC } from "react";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-import { widgetList } from "@/components/ui/home/ad/home-widget/widgetList";
 import styles from "./home-widget.module.scss";
+
+import { widgetList } from "@/components/ui/home/intro/home-widget/widgetList";
 
 import { TWidget } from "@/types/widget";
 import { WidgetsEnum } from "@/enums/widgets/widgets-enum";
-import AddWidget from "@/components/ui/home/ad/home-widget/add-widget/AddWidget";
+
+import AddWidget from "@/components/ui/home/intro/home-widget/add-widget/AddWidget";
 import Backdrop from "@/components/reused/backdrop/Backdrop";
 
 const initialWidgets = [

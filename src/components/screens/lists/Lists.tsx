@@ -1,15 +1,16 @@
-import type { NextPage } from "next";
+import { type NextPage } from "next";
+import { useState } from "react";
 
 import styles from "./lists.module.scss";
-import { useState } from "react";
+
 import SelectedCustom, {
   TSelectedItem,
 } from "@/components/reused/selected-custom/SelectedCustom";
-import { listOption } from "@/components/screens/lists/listOption";
 import ListsList from "@/components/ui/lists/lists-list/ListsList";
 
-type Props = {};
-const Lists: NextPage<Props> = () => {
+import { listOption } from "@/components/screens/lists/listOption";
+
+const Lists: NextPage = () => {
   const [currentOption, setCurrentOption] = useState<TSelectedItem>(
     listOption[0],
   );

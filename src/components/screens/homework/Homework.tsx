@@ -1,11 +1,14 @@
 "use client";
 
-import type { NextPage } from "next";
-import styles from "./homework.module.scss";
-import SelectedCustom from "@/components/reused/selected-custom/SelectedCustom";
+import { type NextPage } from "next";
 import { useState } from "react";
-import { listOption } from "@/components/screens/homework/listOption";
+
+import styles from "./homework.module.scss";
+
+import SelectedCustom from "@/components/reused/selected-custom/SelectedCustom";
 import HomeWorkTable from "@/components/ui/homework/table/HomeWorkTable";
+
+import { listOption } from "@/components/screens/homework/listOption";
 
 const Homework: NextPage = () => {
   const [currentOption, setCurrentOption] = useState(listOption[0]);

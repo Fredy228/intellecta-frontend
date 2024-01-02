@@ -1,7 +1,9 @@
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import { type Dispatch, type FC, type SetStateAction, useState } from "react";
+
+import styles from "./selected-custom.module.scss";
 
 import SelectedList from "@/components/reused/selected-custom/list/SelectedList";
-import styles from "./selected-custom.module.scss";
+
 import { IconSmallRightArrow } from "@/components/reused/Icon/Icon";
 import { AnimatePresence } from "framer-motion";
 

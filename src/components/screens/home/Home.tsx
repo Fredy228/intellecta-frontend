@@ -1,12 +1,13 @@
 "use client";
 
-import type { NextPage } from "next";
+import { type NextPage } from "next";
 import { useSession } from "next-auth/react";
 
 import styles from "./home.module.scss";
 
 import ListSubjects from "@/components/ui/home/list-subjects/ListSubjects";
-import Ad from "@/components/ui/home/ad/ad";
+import Intro from "@/components/ui/home/intro/intro";
+
 import { UserInterface } from "@/interfaces/user";
 import { RoleEnum } from "@/enums/user/role-enum";
 
@@ -24,7 +25,7 @@ const Home: NextPage = () => {
         </h2>
       </div>
       <div className={styles.home_wrapper}>
-        <Ad />
+        <Intro />
         <ListSubjects />
       </div>
     </main>

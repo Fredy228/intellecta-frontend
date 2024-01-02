@@ -1,7 +1,7 @@
-import type { FC } from "react";
+import { type FC } from "react";
+import Image from "next/image";
 
 import styles from "./widget-chats.module.scss";
-import Image from "next/image";
 
 type Props = {};
 

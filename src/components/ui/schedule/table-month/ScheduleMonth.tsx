@@ -1,6 +1,7 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import { type Dispatch, type FC, type SetStateAction } from "react";
 
 import styles from "./schedule-month.module.scss";
+
 import { TLesson } from "@/components/ui/schedule/listschedule";
 import MonthItemDay from "@/components/ui/schedule/table-month/item-day/MonthItemDay";
 import { getDayUntilFirstDay } from "@/services/schedule/getDayUntilFirstDay";

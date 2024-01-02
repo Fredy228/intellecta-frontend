@@ -1,9 +1,9 @@
-import type { FC } from "react";
+import { type FC } from "react";
 
 import styles from "./widget-grade.module.scss";
+
 import { IconColorCircle } from "@/components/reused/Icon/Icon";
 
-type Props = {};
 const WidgetGrade: FC = () => {
   return (
     <div className={styles.widgetGrade}>

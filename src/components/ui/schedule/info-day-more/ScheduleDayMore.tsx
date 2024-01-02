@@ -1,4 +1,6 @@
-import { FC, Fragment } from "react";
+import { type FC, Fragment } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 import stylesWD from "@/components/ui/schedule/table-week/item-day/week-item-day.module.scss";
 import styles from "./info-day-more.module.scss";
@@ -6,8 +8,6 @@ import styles from "./info-day-more.module.scss";
 import { whatDayOfWeek } from "@/services/schedule/whatDayOfWeek";
 import { whatThisDay } from "@/services/schedule/whatThisDay";
 import { TLesson } from "@/components/ui/schedule/listschedule";
-import Image from "next/image";
-import Link from "next/link";
 
 type Props = {
   currentDayInf: TLesson[];

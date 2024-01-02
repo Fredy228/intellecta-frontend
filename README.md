@@ -19,10 +19,15 @@ TURN_SERVER_PASSWORD='password your turn server'
 
 2. Запуск проекту
 
+В режимі продакшн
 ```bash
 npm run build
 
 npm start
+```
+В режимі розробці
+```bash
+npm run dev
 ```
 
 ## Project structure

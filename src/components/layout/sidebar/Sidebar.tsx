@@ -1,17 +1,19 @@
 "use client";
 
-import { FC } from "react";
+import { type FC } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 
 import styles from "./sidebar.module.scss";
+
 import { listMenu, listMenuAdmin } from "@/components/layout/sidebar/listMenu";
-import type { TItemMenu } from "@/components/layout/sidebar/listMenu";
 import { IconArrowCouple } from "@/components/reused/Icon/Icon";
-import Link from "next/link";
-import { RoleEnum } from "@/enums/user/role-enum";
 import SidebarSkeleton from "@/components/layout/sidebar/sidebar-skeleton/SidebarSkeleton";
+
+import { TItemMenu } from "@/components/layout/sidebar/listMenu";
+import { RoleEnum } from "@/enums/user/role-enum";
 import { UserInterface } from "@/interfaces/user";
 
 const Sidebar: FC = () => {

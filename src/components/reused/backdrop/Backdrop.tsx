@@ -1,5 +1,10 @@
-import type { Dispatch, FC, PropsWithChildren, SetStateAction } from "react";
-import React, { useEffect } from "react";
+import React, {
+  useEffect,
+  type Dispatch,
+  type FC,
+  type PropsWithChildren,
+  type SetStateAction,
+} from "react";
 import { motion } from "framer-motion";
 
 import styles from "./backdrop.module.scss";

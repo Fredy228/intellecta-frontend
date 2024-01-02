@@ -1,12 +1,15 @@
 "use client";
 
+import { type NextPage } from "next";
+import { useState } from "react";
+
 import styles from "./schedule.module.scss";
-import type { NextPage } from "next";
+
 import SelectedCustom, {
   TSelectedItem,
 } from "@/components/reused/selected-custom/SelectedCustom";
 import { listOption } from "@/components/screens/schedule/listOption";
-import { useState } from "react";
+
 import { listLesson, TLesson } from "@/components/ui/schedule/listschedule";
 import ScheduleWeek from "@/components/ui/schedule/table-week/ScheduleWeek";
 import ScheduleControlMonth from "@/components/ui/schedule/control-month/ScheduleControlMonth";
