@@ -1,7 +1,5 @@
-import React from 'react'
+import Courses from "@/components/screens/courses/Courses"
 
 export default function CoursesPage() {
-  return (
-    <div>CoursesPage</div>
-  )
+  return <Courses />
 }
