@@ -24,3 +24,4 @@ export { default as IconColorCircle } from "./storage/color-circle.svg";
 export { default as IconRocket } from "./storage/rocket.svg" 
 export { default as IconTime } from "./storage/time.svg" 
 export { default as IconLearn } from "./storage/learn.svg" 
+export {default as IconSearchCourses} from './storage/search-courses.svg'

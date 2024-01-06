@@ -5,7 +5,7 @@ export type TCoursesProps = {
     description?: string;
 } 
 export interface ITestList extends TCoursesProps {
-    title:string;
+    title: string;
 }
 
 export const listItem: TCoursesProps[] = [

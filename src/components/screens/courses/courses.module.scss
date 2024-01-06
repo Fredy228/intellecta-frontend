@@ -1,9 +1,40 @@
+@import '@/styles/varible';
+
 .title{
-    color:#11142D;
+    color:$main-text-color;
     font-size: 40px;
     font-weight: 600;
     margin-bottom: 16px;
-
+}
+.inputInner{
+    display: flex;
+    position: relative;
+    align-items: center;
+  
+}
+.input{
+    width: 282px;
+    height: 46px;
+    border: none;
+    border-radius: 24px;
+    background: $background-option;
+    box-shadow: 4px 4px 7px 0px rgba(219, 219, 219, 0.25) inset, -4px -4px 7px 0px rgba(255, 255, 255, 0.80) inset;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    padding-left: 20px;
+    color:$second-text-color;
+}
+.searchButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    padding: 10px;
+    border-radius: 35px;
+    background: #E6E6E6;
+    box-shadow: 0px 4px 6px 0px rgba(202, 202, 202, 0.48), -4px -4px 14px 0px rgba(255, 255, 255, 0.70), -4px -4px 20px 0px rgba(255, 255, 255, 0.70) inset;
+    left: 235px;
+    bottom: 9px;
 }
 .list{
     overflow-y: auto;
@@ -13,35 +44,36 @@
     gap: 47px;
 }
 .cardWrapper{ 
-    width:100%;
+    width: 100%;
     display: flex;
     gap: 42px;
     flex-wrap: wrap;
     margin-top: 22px;
+    padding: 10px 0;
 }
 .cardInner{
     width: 100%;
     max-width: 400px;
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 12px;
     border-radius: 24px;
-    border: 1px solid #FFF;
-    background: #EDEDED;
-    box-shadow: 4px 4px 25px 0px rgba(160, 160, 160, 0.50), -4px -4px 25px 0px #FFF, 4px 4px 35px 0px #FFF inset;
+    border: 1px solid $light-text-color;
+    background: $background-option;
+    box-shadow: 4px 4px 25px 0px rgba(160, 160, 160, 0.50), -4px -4px 25px 0px $light-text-color, 4px 4px 35px 0px $light-text-color inset;
 
 }
 .cardTitle{
-    color: #438CED;
+    color: $background-item;
     font-size: 22px;
     font-weight: 600;
     padding-top: 17px;
 }
 .cardDesc{
-    color: #808191;
-    font-family: 'Poppins';
+    color: $second-text-color;
+    font-family: 'Poppins', sans-serif;
     font-size: 18px;
     padding-bottom: 12px;
     padding-left: 16px;

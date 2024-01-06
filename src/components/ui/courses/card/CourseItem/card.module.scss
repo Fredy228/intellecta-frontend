@@ -1,16 +1,17 @@
+@import '@/styles/varible';
 
 .cardWrapper{
-    display:flex;
-    gap:42px;
-    margin-top:20px;
+    display: flex;
+    gap: 42px;
+    margin-top: 20px;
 }
 .card{
     width:100%;
     max-width: 400px;
     border-radius: 24px;
-    border: 1px solid #FFF;
-    background: #EDEDED;
-    box-shadow: 4px 4px 25px 0px rgba(160, 160, 160, 0.50), -4px -4px 25px 0px #FFF, 4px 4px 35px 0px #FFF inset;
+    border: 1px solid $light-text-color;
+    background: $background-option;
+    box-shadow: 4px 4px 25px 0px rgba(160, 160, 160, 0.50), -4px -4px 25px 0px $light-text-color, 4px 4px 35px 0px $light-text-color inset;
     padding:23px 31px 22px 21px
 }
 .cardImg{
@@ -28,7 +29,7 @@
     width: 40px;
     height: 40px;
     border-radius: 30px;
-    background-color: #FFF;
+    background-color: $light-text-color;
     >svg{
         width: 28px;
         height: 23px;
@@ -42,24 +43,24 @@
 
 }
 .title{
-    text-align:center;
+    text-align: center;
     padding-top:5px;
     width: 229px;
     height: 35px;
-    color: #438CED;
-    font-size: 20px;
+    color: $background-item;
+    font-size: $font-size-lg;
     font-weight: 600;
     border-radius: 30px;
-    background: #FFF;
+    background: $light-text-color;
 }
 .subtitle{
-    text-align:center;
+    text-align: center;
     width: 100px;
-    color: #438CED;
-    font-size: 20px;
+    color: $background-item;
+    font-size: $font-size-lg;
     font-weight: 600;
     border-radius: 30px;
-    background: #FFF;
+    background: $light-text-color;
     padding: 10px 0;
 }
 .barWrapper{
@@ -67,7 +68,9 @@
     align-items: center;
     gap: 5px;
     padding-bottom:7px;
-    border-bottom: 1px solid #FFF;
+    border-bottom: 1px solid $light-text-color;
+    font-family: 'Poppins', sans-serif;
+
     svg{
         &:first-child{
             width: 34px;
@@ -82,9 +85,9 @@
     }
 }
 .descriptions{
-    color: #808191;
-    font-family: 'Poppins';
+    color: $second-text-color;
+    font-family: 'Poppins', sans-serif;
     font-size: 18px;
     font-weight: 400;
-    margin-top:20px;
+    margin-top: 20px;
 }

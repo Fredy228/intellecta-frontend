@@ -1,13 +1,21 @@
-import CoursesList from '@/components/ui/card/CoursesList/CoursesList'
-import CoursesListOther from '@/components/ui/card/CoursesList/CoursesListOther'
-import TestCardList from '@/components/ui/card/testCard/testCardList/TestCardList'
+import CoursesList from '@/components/ui/courses/card/CoursesList/CoursesList'
+import CoursesListOther from '@/components/ui/courses/card/CoursesList/CoursesListOther'
+import TestCardList from '@/components/ui/courses/card/testCard/testCardList/TestCardList'
 import styles from './courses.module.scss'
 import Image from 'next/image'
-export default function Courses() {
+import { NextPage } from 'next'
+import { IconSearchCourses } from '@/components/reused/Icon/Icon'
+
+export const Courses: NextPage = () => {
   return (
     <main className={styles.list}>        
       <h2 className={styles.title}>нові курси вже доступні</h2>
-      <input placeholder='Пошук'/>
+      <div className={styles.inputInner}>
+        <input placeholder='Пошук' className={styles.input}/>
+        <button className={styles.searchButton}>
+          <IconSearchCourses />
+        </button>
+      </div>
       <div className={styles.cardWrapper}>
         <CoursesList />
         <div className={styles.cardContainer}>
@@ -24,8 +32,8 @@ export default function Courses() {
           <CoursesListOther/>
           <div className={styles.cardInner}>
             <h1 className={styles.cardTitle}>Не знаєте, який курс обрати?</h1>
-            <Image src={`${process.env.NEXT_URL}/img/courses/mentor.png`} alt='test img' width={150} height={151}/>
-            <p className={styles.cardDesc}>Ми створили тест, який вам допоможе обрати напрямок для вашого розвитку або професійного шляху.</p>
+            <Image src={`${process.env.NEXT_URL}/img/courses/mentor.png`} alt='test img' width={155} height={171}/>
+            <p className={styles.cardDesc}>Знайди свого спеціаліста та напрямок, в якому хочеш розвиватися! Переглядай профілі менторів та обирай, що хочеш вивчати</p>
           </div>
         </div>
       </div>
