@@ -24,7 +24,7 @@ export default function Courses() {
           <CoursesListOther/>
           <div className={styles.cardInner}>
             <h1 className={styles.cardTitle}>Не знаєте, який курс обрати?</h1>
-            <Image src={`${process.env.NEXT_URL}/img/courses/cardtest.png`} alt='test img' width={150} height={151}/>
+            <Image src={`${process.env.NEXT_URL}/img/courses/mentor.png`} alt='test img' width={150} height={151}/>
             <p className={styles.cardDesc}>Ми створили тест, який вам допоможе обрати напрямок для вашого розвитку або професійного шляху.</p>
           </div>
         </div>
