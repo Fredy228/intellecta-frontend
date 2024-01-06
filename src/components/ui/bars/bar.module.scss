@@ -1,0 +1,47 @@
+.barWrapper{
+    display: flex;
+    color:#808191;
+    gap: 40px;
+    margin-top: 26px;
+    > button {
+        color: #808191;
+        font-weight: 600;
+        line-height: 24px; 
+        transition: all 0.3s linear;
+        padding: 3px 12px;
+            &:hover {
+            color: #438CED;
+            border-radius: 5px;
+            background: #F3F3F3;
+            box-shadow: 0px 0px 8px 0px rgba(67, 67, 67, 0.25) inset;
+        }
+    }
+}
+.supBarWrapper{
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 10px 25px;
+    background: #FFF;
+    display: flex;
+    color:#808191;
+    margin-top: 26px;
+    > button {
+        display: flex; 
+        gap: 8px;
+        color: #808191;
+        font-weight: 600;
+        line-height: 24px; 
+        transition: all 0.3s linear;
+        padding: 3px 12px;
+            &:hover {
+            color: #438CED;
+            border-radius: 5px;
+            background: #F3F3F3;
+            box-shadow: 0px 0px 8px 0px rgba(67, 67, 67, 0.25) inset;
+        }
+    }
+    > img {
+        margin-left: 20px;
+    }
+}
+

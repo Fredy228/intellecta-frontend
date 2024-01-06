@@ -1,0 +1,40 @@
+.cardTop{
+    display: flex;
+    
+}
+.cardTitle{
+    color: #438CED;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.title{
+    color: #808191;
+    font-size: 20px;
+    font-weight: 600;
+}
+.cardImg{
+    margin-right: 20px;
+
+}
+.descriptions{
+    max-width: 100%;
+    width: 323px;
+    color: #808191;
+    font-family: 'Poppins';
+    font-size: 14px;
+}
+.cardWrapper{
+    width: 100%;
+    max-width: 842px;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    padding-left: 12px;
+    gap: 31px 34px;
+    border-radius: 24px;
+    border: 1px solid #FFF;
+    background: #EDEDED;
+    box-shadow: 4px 4px 25px 0px rgba(160, 160, 160, 0.50), -4px -4px 25px 0px #FFF, 4px 4px 35px 0px #FFF inset;
+}
