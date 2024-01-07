@@ -7,7 +7,9 @@ export type TCoursesProps = {
 export interface ITestList extends TCoursesProps {
     title: string;
 }
-
+export interface IFrontCourses extends TCoursesProps  {
+    company: string;
+ }
 export const listItem: TCoursesProps[] = [
     {
         id: 1,
@@ -85,5 +87,50 @@ export const OtherCurses: TCoursesProps[] = [
         images:`${process.env.NEXT_URL}/img/courses/interesting.png`,
         types: 'Цікаве',
         description: 'Курси та приватні уроки із різних напрямків, наприклад: роботетхника, розробка ігр...'
+    },
+]
+
+export const FrontEndCurses: IFrontCourses[] = [
+    {
+        id: 1,
+        images: `${process.env.NEXT_URL}/img/courses/design.png`,
+        types: 'Front-end Basic',
+        company:'Hillel',
+        description: 'В рамках курсу Front-end Basic студенти без досвіду в розробці вивчають HTML і CSS та вчаться верстати сайти. Після успішного закінчення курсу студенти отримують достатньо знань і навичок для верстки сайту будь-якої складності.'
+    },
+    {
+        id: 2,
+        images: `${process.env.NEXT_URL}/img/courses/management.png`,
+        types: 'Front-end Pro',
+        company:'Hillel',
+        description: 'На курсі ви познайомитеся з принципами ООП, DOM, REST API і отримаєте практичні навички створення додатків з використанням «реакт-стека», що дозволить претендувати на посаду Junior Front-end Developer.'
+    },
+    {
+        id: 3,
+        images:`${process.env.NEXT_URL}/img/courses/languages.png`,
+        types: 'React',
+        company:'Hillel',
+        description: 'Курси присвячений бібліотеці React'
+    },
+    {
+        id: 4,
+        images:`${process.env.NEXT_URL}/img/courses/science.png`,
+        types: 'React',
+        company:'Hillel',
+        description: 'В рамках курсу Front-end Basic студенти без досвіду в розробці вивчають HTML і CSS та вчаться верстати сайти. Після успішного закінчення курсу студенти отримують достатньо знань і навичок для верстки сайту будь-якої складності.'
+    }, 
+    {
+        id: 5,
+        images:`${process.env.NEXT_URL}/img/courses/interesting.png`,
+        types: 'JavaScript Basic',
+        company:'Hillel',
+        description: 'На курсі ви познайомитеся з принципами ООП, DOM, REST API і отримаєте практичні навички створення додатків з використанням «реакт-стека», що дозволить претендувати на посаду Junior Front-end Developer.'
+    },
+    {
+        id: 6,
+        images:`${process.env.NEXT_URL}/img/courses/interesting.png`,
+        types: 'Typescript',
+        company:'Hillel',
+        description: 'Курси присвячений бібліотеці React'
     },
 ]
