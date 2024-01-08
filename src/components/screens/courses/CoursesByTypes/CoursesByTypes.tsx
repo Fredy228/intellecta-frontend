@@ -1,20 +1,35 @@
+'use client'
+import { EnumCourses } from '@/app/dashboard/courses/[typeCourse]/page'
 import SupBar from '@/components/ui/courses/bars/SupBar'
 import { CourseTypeItem } from '@/components/ui/courses/card/CourseTypeItem/CourseTypeItem'
-import { FrontEndCurses, IFrontCourses } from '@/components/ui/courses/card/list'
-import React from 'react'
+import { FrontEndCurses, IFrontCourses, TestingCurses } from '@/components/ui/courses/card/list'
+import { usePathname } from 'next/navigation'
 
-type TProps = {
-    params:{ types: string };
-  }
-
-export default function CoursesByTypes({params}: TProps) {
+export default function CoursesByTypes() {
+  const pathname = usePathname()
   return (
     <div> 
         <h2>нові курси вже доступні</h2>
+        <span>{pathname}</span>
         <SupBar/>
-        {FrontEndCurses.map((course: IFrontCourses) => (
+        {pathname === EnumCourses.programming
+        ? 
+        FrontEndCurses.map((course: IFrontCourses) => (
             <CourseTypeItem {...course} />
-        ))}
+        ))
+        :
+        pathname === EnumCourses.testing 
+        ?  
+        TestingCurses.map((course: IFrontCourses) => (
+          <CourseTypeItem {...course} />
+      ))
+        :
+        // TestingCurses.map((course: IFrontCourses) => (
+        //   <CourseTypeItem {...course} />
+        // ))
+        null
+      }
+        
     </div>
   )
 }

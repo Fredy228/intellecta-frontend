@@ -3,12 +3,11 @@ import Image from 'next/image'
 import { TCoursesProps } from '../list'
 import { FC } from 'react'
 import Link from 'next/link'
-import { IconRocket, IconTime } from '@/components/reused/Icon/Icon'
 
-export const CourseItem: FC<TCoursesProps> = ({id, images, types, description}) => {
+export const CourseItem: FC<TCoursesProps> = ({id, images, types, description,urlCheck}) => {
   return (
         <ul key={id} className={styles.card}>
-          <Link href={`/dashboard/courses/${types}`}>
+          <Link href={`/dashboard/courses/${urlCheck}`}>
               <div className={styles.cardTop}>
                 <Image
                   src={images}

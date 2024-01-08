@@ -1,12 +1,14 @@
 import CoursesByTypes from "@/components/screens/courses/CoursesByTypes/CoursesByTypes";
 
-type TProps = {
-  params:{ types:string };
+export enum EnumCourses {
+  programming = '/dashboard/courses/programming',
+  testing = '/dashboard/courses/testing',
+  marketing = '/dashboard/courses/marketing',
 }
-export default function typeCourses({params}: TProps) {
+export default function typeCourses({ params: { typeCourse: EnumCourses } }) {
   return (
     <main style={{overflowY: 'auto', display:'flex',width:'100%'}}>
-      <CoursesByTypes params={params} />
+      <CoursesByTypes params={EnumCourses.params}/>
     </main>
   )
 }

@@ -2,6 +2,7 @@ export type TCoursesProps = {
     id: number;
     images: string;
     types?: string;
+    urlCheck?: string;
     description?: string;
 } 
 export interface ITestList extends TCoursesProps {
@@ -15,18 +16,21 @@ export const listItem: TCoursesProps[] = [
         id: 1,
         images: `${process.env.NEXT_URL}/img/courses/front-end-basic.png`,
         types: 'Програмування',
+        urlCheck: 'programming',
         description: 'Курси Back-end, Front-end, Machine Learning та DevOps'
     },
     {
         id: 2,
         images: `${process.env.NEXT_URL}/img/courses/front-end-pro.png`,
         types: 'Тестування',
+        urlCheck: 'testing',
         description: 'Курси тестувальників: QA Manual та QA Automation на Java, Python та JavaScript, а також підготовка до сертифікації ISTQB'
     },
     {
         id: 3,
         images:`${process.env.NEXT_URL}/img/courses/react.png`,
         types: 'Маркетинг',
+        urlCheck: 'marketing',
         description: 'Курси інтернет маркетингу та SMM'
     },
 ]
@@ -133,4 +137,31 @@ export const FrontEndCurses: IFrontCourses[] = [
         company:'Hillel',
         description: 'Курси присвячений бібліотеці React'
     },
+]
+export const TestingCurses: IFrontCourses[] = [
+    {
+        id: 1,
+        images: `${process.env.NEXT_URL}/img/courses/design.png`,
+        types: 'Front-end Basic',
+        company:'Hillel',
+        description: 'В рамках курсу Front-end Basic студенти без досвіду в розробці вивчають HTML і CSS та вчаться верстати сайти. Після успішного закінчення курсу студенти отримують достатньо знань і навичок для верстки сайту будь-якої складності.'
+    },
+ 
+]
+export const MarketingCurses: IFrontCourses[] = [
+    {
+        id: 1,
+        images: `${process.env.NEXT_URL}/img/courses/design.png`,
+        types: 'Front-end Basic',
+        company:'Hillel',
+        description: 'В рамках курсу Front-end Basic студенти без досвіду в розробці вивчають HTML і CSS та вчаться верстати сайти. Після успішного закінчення курсу студенти отримують достатньо знань і навичок для верстки сайту будь-якої складності.'
+    },
+    {
+        id: 2,
+        images: `${process.env.NEXT_URL}/img/courses/management.png`,
+        types: 'Front-end Pro',
+        company:'Hillel',
+        description: 'На курсі ви познайомитеся з принципами ООП, DOM, REST API і отримаєте практичні навички створення додатків з використанням «реакт-стека», що дозволить претендувати на посаду Junior Front-end Developer.'
+    },
+
 ]
