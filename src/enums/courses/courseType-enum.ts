@@ -1,0 +1,1 @@
+export enum EnumCourses { PROGRAMMING = "programming", TESTING = "testing", MARKETING = "marketing", }
