@@ -1,6 +1,8 @@
+import CoursesById from "@/components/screens/courses/CoursesById/CoursesById";
 
-export default function page() {
-  return (
-    <div>ID</div>
-  )
+type TProps = {
+  params: { idCourse: string | number };
+};
+export default function IdCourses({ params }: TProps) {
+  return <CoursesById params={params.idCourse} />;
 }

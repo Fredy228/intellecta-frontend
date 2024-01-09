@@ -1,7 +1,12 @@
-import React from 'react'
+import CoursesByTypes from "@/components/screens/courses/CoursesByTypes/CoursesByTypes";
 
-export default function page() {
+type TProps = {
+  params: { typeCourse: string };
+};
+export default function typeCourses({ params }: TProps) {
   return (
-    <div>Type</div>
-  )
+    <main style={{ overflowY: "auto", display: "flex", width: "100%" }}>
+      <CoursesByTypes typeCourses={params.typeCourse} />
+    </main>
+  );
 }
