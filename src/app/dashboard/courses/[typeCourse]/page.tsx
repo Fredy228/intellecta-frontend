@@ -1,7 +1,8 @@
 import CoursesByTypes from "@/components/screens/courses/CoursesByTypes/CoursesByTypes";
+import { EnumCourses } from "@/enums/courses/courseType-enum";
 
 type TProps = {
-  params: { typeCourse: string };
+  params: { typeCourse: EnumCourses };
 };
 export default function typeCourses({ params }: TProps) {
   return (

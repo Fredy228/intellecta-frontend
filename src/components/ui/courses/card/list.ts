@@ -1,5 +1,4 @@
 import { EnumCourses } from "@/enums/courses/courseType-enum";
-import { EnumNamedCourses } from "@/enums/courses/coursesNamed-enum";
 
 export type TCoursesProps = {
   id: number | string;
@@ -13,6 +12,26 @@ export interface ITestList extends TCoursesProps {
 }
 export interface IFrontCourses extends TCoursesProps {
   company: string;
+  titlePage: string;
+  descriptionPage: string;
+  main: {
+    mainTitle: string;
+    mainDescription: string;
+  };
+  target: {
+    targetTitle: string;
+    targetList: string[];
+  };
+  aside: {
+    asideList: string[];
+
+    price: string;
+  };
+  mentors: TMentore[];
+  coursesProgram: {
+    coursesTitle: string;
+    coursesImg: string;
+  };
 }
 export type TMentore = {
   idMentor: number;
@@ -23,13 +42,22 @@ export type TMentore = {
 export interface ICourseByIdAndNamed extends TCoursesProps {
   titlePage: string;
   descriptionPage: string;
-  titleTarget?: string;
-  list?: string[];
-  main: {};
-  mentors?: TMentore[];
+  target: {
+    targetTitle: string;
+    targetList: string[];
+  };
+  main: {
+    mainTitle: string;
+    mainDescription: string;
+  };
+  mentors: TMentore[];
   aside?: {
     price: string;
     asideList: string[];
+  };
+  coursesProgram: {
+    coursesTitle: string;
+    coursesImg: string;
   };
 }
 export const listItem: TCoursesProps[] = [
@@ -125,90 +153,14 @@ export const OtherCurses: TCoursesProps[] = [
 
 export const FrontEndCurses: IFrontCourses[] = [
   {
-    id: 1,
-    images: `${process.env.NEXT_URL}/img/courses/design.png`,
-    types: "Front-end Basic",
-    company: "Hillel",
-    urlCheck: "programming",
-    description:
-      "В рамках курсу Front-end Basic студенти без досвіду в розробці вивчають HTML і CSS та вчаться верстати сайти. Після успішного закінчення курсу студенти отримують достатньо знань і навичок для верстки сайту будь-якої складності.",
-  },
-  {
-    id: 2,
-    images: `${process.env.NEXT_URL}/img/courses/management.png`,
-    types: "Front-end Pro",
-    company: "Hillel",
-    urlCheck: "programming",
-    description:
-      "На курсі ви познайомитеся з принципами ООП, DOM, REST API і отримаєте практичні навички створення додатків з використанням «реакт-стека», що дозволить претендувати на посаду Junior Front-end Developer.",
-  },
-  {
-    id: 3,
-    images: `${process.env.NEXT_URL}/img/courses/languages.png`,
-    types: "React",
-    company: "Hillel",
-    urlCheck: "programming",
-    description: "Курси присвячений бібліотеці React",
-  },
-  {
-    id: 4,
-    images: `${process.env.NEXT_URL}/img/courses/science.png`,
-    types: "React",
-    company: "Hillel",
-    urlCheck: "programming",
-    description:
-      "В рамках курсу Front-end Basic студенти без досвіду в розробці вивчають HTML і CSS та вчаться верстати сайти. Після успішного закінчення курсу студенти отримують достатньо знань і навичок для верстки сайту будь-якої складності.",
-  },
-  {
-    id: 5,
-    images: `${process.env.NEXT_URL}/img/courses/interesting.png`,
-    types: "JavaScript Basic",
-    company: "Hillel",
-    urlCheck: "programming",
-    description:
-      "На курсі ви познайомитеся з принципами ООП, DOM, REST API і отримаєте практичні навички створення додатків з використанням «реакт-стека», що дозволить претендувати на посаду Junior Front-end Developer.",
-  },
-  {
-    id: 6,
-    images: `${process.env.NEXT_URL}/img/courses/interesting.png`,
-    types: "Typescript",
-    company: "Hillel",
-    urlCheck: "programming",
-    description: "Курси присвячений бібліотеці React",
-  },
-];
-export const TestingCurses: IFrontCourses[] = [
-  {
-    id: 1,
-    images: `${process.env.NEXT_URL}/img/courses/design.png`,
-    types: "Front-end Basic",
-    company: "Hillel",
-    description:
-      "В рамках курсу Front-end Basic студенти без досвіду в розробці вивчають HTML і CSS та вчаться верстати сайти. Після успішного закінчення курсу студенти отримують достатньо знань і навичок для верстки сайту будь-якої складності.",
-  },
-];
-export const MarketingCurses: IFrontCourses[] = [
-  {
-    id: 1,
-    images: `${process.env.NEXT_URL}/img/courses/design.png`,
-    types: "Front-end Basic",
-    company: "Hillel",
-    description:
-      "В рамках курсу Front-end Basic студенти без досвіду в розробці вивчають HTML і CSS та вчаться верстати сайти. Після успішного закінчення курсу студенти отримують достатньо знань і навичок для верстки сайту будь-якої складності.",
-  },
-  {
-    id: 2,
-    images: `${process.env.NEXT_URL}/img/courses/management.png`,
-    types: "Front-end Pro",
-    company: "Hillel",
-    description:
-      "На курсі ви познайомитеся з принципами ООП, DOM, REST API і отримаєте практичні навички створення додатків з використанням «реакт-стека», що дозволить претендувати на посаду Junior Front-end Developer.",
-  },
-];
-export const courseByIdAndNamed: ICourseByIdAndNamed[] = [
-  {
     id: "1",
-    titlePage: "Front-end Basic",
+    images: `${process.env.NEXT_URL}/img/courses/design.png`,
+    types: "Front-end Basic",
+    company: "Hillel",
+    urlCheck: "programming",
+    description:
+      "В рамках курсу Front-end Basic студенти без досвіду в розробці вивчають HTML і CSS та вчаться верстати сайти. Після успішного закінчення курсу студенти отримують достатньо знань і навичок для верстки сайту будь-якої складності.",
+    titlePage: "Онлайн-курс",
     descriptionPage: "Front-end Basic",
     main: {
       mainTitle: "Навчися верстати сайти!",
@@ -216,7 +168,73 @@ export const courseByIdAndNamed: ICourseByIdAndNamed[] = [
         "Розробка видимої частини будь-якого сайту називається Front-end, і це область програмування, яка розвивається швидше за інші. Жоден сучасний веб-сайт і веб-додаток не обійдуться без Front-end розробника.\n" +
         "В рамках курсу Front-end Basic студенти без досвіду в розробці вивчають HTML і CSS та вчаться верстати сайти. Після успішного закінчення курсу студенти отримують достатньо знань і навичок для верстки сайту будь-якої складності.",
     },
-    targer: {
+    target: {
+      targetTitle: "Цілі курсу:",
+      targetList: [
+        "Втілювати в верстку дизайн будь-якої складності",
+        "Робити сайти, які однаково добре відображаються на будь-якому пристрої",
+        "Помічати важливі дрібниці і писати код, який легко розширювати і підтримувати",
+        "Навчитися розуміти структуру веб-сторінок",
+      ],
+    },
+    aside: {
+      asideList: [
+        "Курс у форматі дистанційного навчання",
+        "Записи усіх уроків у особистому кабінеті",
+        "Домашні завдання та зворотній \n" + "звʼязок від менторів",
+        "Опрацювання помилок",
+      ],
+
+      price: "12000 грн",
+    },
+    mentors: [
+      {
+        idMentor: 1,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Тетяна-Либідь.png`,
+        fullname: "Тетяна Либідь",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+      {
+        idMentor: 2,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Іван-Коломієць.png`,
+        fullname: "Іван Коломієць",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+      {
+        idMentor: 3,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Максим-Незабудко.png`,
+        fullname: "Максим Незабудко",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+      {
+        idMentor: 4,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Тетяна-Либідь-1.png`,
+        fullname: "Тетяна Либідь",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+    ],
+    coursesProgram: {
+      coursesTitle: "Програма курсу:",
+      coursesImg: `${process.env.NEXT_URL}/img/courses/theme-for-courses.png`,
+    },
+  },
+  {
+    id: "2",
+    images: `${process.env.NEXT_URL}/img/courses/management.png`,
+    types: "Front-end Pro",
+    company: "Hillel",
+    urlCheck: "programming",
+    description:
+      "На курсі ви познайомитеся з принципами ООП, DOM, REST API і отримаєте практичні навички створення додатків з використанням «реакт-стека», що дозволить претендувати на посаду Junior Front-end Developer.",
+    titlePage: "Онлайн-курс",
+    descriptionPage: "Front-end Pro",
+    main: {
+      mainTitle: "Навчися верстати сайти!",
+      mainDescription:
+        "Розробка видимої частини будь-якого сайту називається Front-end, і це область програмування, яка розвивається швидше за інші. Жоден сучасний веб-сайт і веб-додаток не обійдуться без Front-end розробника.\n" +
+        "В рамках курсу Front-end Basic студенти без досвіду в розробці вивчають HTML і CSS та вчаться верстати сайти. Після успішного закінчення курсу студенти отримують достатньо знань і навичок для верстки сайту будь-якої складності.",
+    },
+    target: {
       targetTitle: "Цілі курсу:",
       targetList: [
         "Втілювати в верстку дизайн будь-якої складності",
@@ -235,21 +253,305 @@ export const courseByIdAndNamed: ICourseByIdAndNamed[] = [
 
       price: "10000 грн",
     },
+    mentors: [
+      {
+        idMentor: 1,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        fullname: "Тетяна Либідь",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+      {
+        idMentor: 2,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        fullname: "Іван Коломієць",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+      {
+        idMentor: 3,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        fullname: "Максим Незабудко",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+      {
+        idMentor: 4,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        fullname: "Тетяна Либідь",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+    ],
+    coursesProgram: {
+      coursesTitle: "Програма курсу:",
+      coursesImg: `${process.env.NEXT_URL}/img/courses/design.png`,
+    },
   },
-  // {
-  //   id: "2",
-  //   titlePage: "Home2",
-  //   descriptionPage: "Home desc2",
-  // },
+  {
+    id: "3",
+    images: `${process.env.NEXT_URL}/img/courses/languages.png`,
+    types: "React",
+    company: "Hillel",
+    urlCheck: "programming",
+    description: "Курси присвячений бібліотеці React",
+    titlePage: "Онлайн-курс",
+    descriptionPage: "React",
+    main: {
+      mainTitle: "Навчися верстати сайти!",
+      mainDescription:
+        "Розробка видимої частини будь-якого сайту називається Front-end, і це область програмування, яка розвивається швидше за інші. Жоден сучасний веб-сайт і веб-додаток не обійдуться без Front-end розробника.\n" +
+        "В рамках курсу Front-end Basic студенти без досвіду в розробці вивчають HTML і CSS та вчаться верстати сайти. Після успішного закінчення курсу студенти отримують достатньо знань і навичок для верстки сайту будь-якої складності.",
+    },
+    target: {
+      targetTitle: "Цілі курсу:",
+      targetList: [
+        "Втілювати в верстку дизайн будь-якої складності",
+        "Робити сайти, які однаково добре відображаються на будь-якому пристрої",
+        "Помічати важливі дрібниці і писати код, який легко розширювати і підтримувати",
+        "Навчитися розуміти структуру веб-сторінок",
+      ],
+    },
+    aside: {
+      asideList: [
+        "Курс у форматі дистанційного навчання",
+        "Записи усіх уроків у особистому кабінеті",
+        "Домашні завдання та зворотній \n" + "звʼязок від менторів",
+        "Опрацювання помилок",
+      ],
+
+      price: "15000 грн",
+    },
+    mentors: [
+      {
+        idMentor: 1,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        fullname: "Тетяна Либідь",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+      {
+        idMentor: 2,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        fullname: "Іван Коломієць",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+      {
+        idMentor: 3,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        fullname: "Максим Незабудко",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+      {
+        idMentor: 4,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        fullname: "Тетяна Либідь",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+    ],
+    coursesProgram: {
+      coursesTitle: "Програма курсу:",
+      coursesImg: `${process.env.NEXT_URL}/img/courses/design.png`,
+    },
+  },
+];
+export const TestingCurses: IFrontCourses[] = [
+  {
+    id: 1,
+    images: `${process.env.NEXT_URL}/img/courses/design.png`,
+    types: "Front-end Basic",
+    company: "Hillel",
+    description:
+      "В рамках курсу Front-end Basic студенти без досвіду в розробці вивчають HTML і CSS та вчаться верстати сайти. Після успішного закінчення курсу студенти отримують достатньо знань і навичок для верстки сайту будь-якої складності.",
+    titlePage: "Онлайн-курс",
+    descriptionPage: "Front-end Basic",
+    main: {
+      mainTitle: "Навчися верстати сайти!",
+      mainDescription:
+        "Розробка видимої частини будь-якого сайту називається Front-end, і це область програмування, яка розвивається швидше за інші. Жоден сучасний веб-сайт і веб-додаток не обійдуться без Front-end розробника.\n" +
+        "В рамках курсу Front-end Basic студенти без досвіду в розробці вивчають HTML і CSS та вчаться верстати сайти. Після успішного закінчення курсу студенти отримують достатньо знань і навичок для верстки сайту будь-якої складності.",
+    },
+    target: {
+      targetTitle: "Цілі курсу:",
+      targetList: [
+        "Втілювати в верстку дизайн будь-якої складності",
+        "Робити сайти, які однаково добре відображаються на будь-якому пристрої",
+        "Помічати важливі дрібниці і писати код, який легко розширювати і підтримувати",
+        "Навчитися розуміти структуру веб-сторінок",
+      ],
+    },
+    aside: {
+      asideList: [
+        "Курс у форматі дистанційного навчання",
+        "Записи усіх уроків у особистому кабінеті",
+        "Домашні завдання та зворотній \n" + "звʼязок від менторів",
+        "Опрацювання помилок",
+      ],
+
+      price: "10000 грн",
+    },
+    mentors: [
+      {
+        idMentor: 1,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        fullname: "Тетяна Либідь",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+      {
+        idMentor: 2,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        fullname: "Іван Коломієць",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+      {
+        idMentor: 3,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        fullname: "Максим Незабудко",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+      {
+        idMentor: 4,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        fullname: "Тетяна Либідь",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+    ],
+    coursesProgram: {
+      coursesTitle: "Програма курсу:",
+      coursesImg: `${process.env.NEXT_URL}/img/courses/design.png`,
+    },
+  },
+];
+export const MarketingCurses: IFrontCourses[] = [
+  {
+    id: 1,
+    images: `${process.env.NEXT_URL}/img/courses/design.png`,
+    types: "Front-end Basic",
+    company: "Hillel",
+    description:
+      "В рамках курсу Front-end Basic студенти без досвіду в розробці вивчають HTML і CSS та вчаться верстати сайти. Після успішного закінчення курсу студенти отримують достатньо знань і навичок для верстки сайту будь-якої складності.",
+    titlePage: "Онлайн-курс",
+    descriptionPage: "Front-end Basic",
+    main: {
+      mainTitle: "Навчися верстати сайти!",
+      mainDescription:
+        "Розробка видимої частини будь-якого сайту називається Front-end, і це область програмування, яка розвивається швидше за інші. Жоден сучасний веб-сайт і веб-додаток не обійдуться без Front-end розробника.\n" +
+        "В рамках курсу Front-end Basic студенти без досвіду в розробці вивчають HTML і CSS та вчаться верстати сайти. Після успішного закінчення курсу студенти отримують достатньо знань і навичок для верстки сайту будь-якої складності.",
+    },
+    target: {
+      targetTitle: "Цілі курсу:",
+      targetList: [
+        "Втілювати в верстку дизайн будь-якої складності",
+        "Робити сайти, які однаково добре відображаються на будь-якому пристрої",
+        "Помічати важливі дрібниці і писати код, який легко розширювати і підтримувати",
+        "Навчитися розуміти структуру веб-сторінок",
+      ],
+    },
+    aside: {
+      asideList: [
+        "Курс у форматі дистанційного навчання",
+        "Записи усіх уроків у особистому кабінеті",
+        "Домашні завдання та зворотній \n" + "звʼязок від менторів",
+        "Опрацювання помилок",
+      ],
+
+      price: "10000 грн",
+    },
+    mentors: [
+      {
+        idMentor: 1,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        fullname: "Тетяна Либідь",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+      {
+        idMentor: 2,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        fullname: "Іван Коломієць",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+      {
+        idMentor: 3,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        fullname: "Максим Незабудко",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+      {
+        idMentor: 4,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        fullname: "Тетяна Либідь",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+    ],
+    coursesProgram: {
+      coursesTitle: "Програма курсу:",
+      coursesImg: `${process.env.NEXT_URL}/img/courses/design.png`,
+    },
+  },
+  {
+    id: 2,
+    images: `${process.env.NEXT_URL}/img/courses/management.png`,
+    types: "Front-end Pro",
+    company: "Hillel",
+    description:
+      "На курсі ви познайомитеся з принципами ООП, DOM, REST API і отримаєте практичні навички створення додатків з використанням «реакт-стека», що дозволить претендувати на посаду Junior Front-end Developer.",
+    titlePage: "Онлайн-курс",
+    descriptionPage: "Front-end Basic",
+    main: {
+      mainTitle: "Навчися верстати сайти!",
+      mainDescription:
+        "Розробка видимої частини будь-якого сайту називається Front-end, і це область програмування, яка розвивається швидше за інші. Жоден сучасний веб-сайт і веб-додаток не обійдуться без Front-end розробника.\n" +
+        "В рамках курсу Front-end Basic студенти без досвіду в розробці вивчають HTML і CSS та вчаться верстати сайти. Після успішного закінчення курсу студенти отримують достатньо знань і навичок для верстки сайту будь-якої складності.",
+    },
+    target: {
+      targetTitle: "Цілі курсу:",
+      targetList: [
+        "Втілювати в верстку дизайн будь-якої складності",
+        "Робити сайти, які однаково добре відображаються на будь-якому пристрої",
+        "Помічати важливі дрібниці і писати код, який легко розширювати і підтримувати",
+        "Навчитися розуміти структуру веб-сторінок",
+      ],
+    },
+    aside: {
+      asideList: [
+        "Курс у форматі дистанційного навчання",
+        "Записи усіх уроків у особистому кабінеті",
+        "Домашні завдання та зворотній \n" + "звʼязок від менторів",
+        "Опрацювання помилок",
+      ],
+
+      price: "10000 грн",
+    },
+    mentors: [
+      {
+        idMentor: 1,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        fullname: "Тетяна Либідь",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+      {
+        idMentor: 2,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        fullname: "Іван Коломієць",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+      {
+        idMentor: 3,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        fullname: "Максим Незабудко",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+      {
+        idMentor: 4,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        fullname: "Тетяна Либідь",
+        about: "Lead Front-end Developer в Macrosoft",
+      },
+    ],
+    coursesProgram: {
+      coursesTitle: "Програма курсу:",
+      coursesImg: `${process.env.NEXT_URL}/img/courses/design.png`,
+    },
+  },
 ];
 
 export const AllCoursesType: { [name: string]: IFrontCourses[] } = {
   [EnumCourses.PROGRAMMING]: FrontEndCurses,
   [EnumCourses.MARKETING]: MarketingCurses,
   [EnumCourses.TESTING]: TestingCurses,
-};
-export const AllCoursesNamed: { [name: string]: ICourseByIdAndNamed[] } = {
-  [EnumNamedCourses.FRONTENDBASIC]: courseByIdAndNamed,
-  [EnumNamedCourses.FRONTENDPRO]: courseByIdAndNamed,
-  [EnumNamedCourses.REACT]: courseByIdAndNamed,
 };

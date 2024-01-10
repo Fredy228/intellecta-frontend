@@ -1,0 +1,155 @@
+@import "@/styles/varible";
+@mixin title_static {
+  color: $background-item;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px; /* 55% */
+}
+.section {
+  padding: 0 10px;
+}
+.title {
+  @include title_static;
+}
+.backMenu {
+  display: flex;
+  gap: 11px;
+}
+.container {
+  width: 100%;
+  max-width: calc(100% / 2);
+  display: flex;
+  justify-content: space-between;
+}
+.titlePage {
+  color: $second-text-color;
+  font-size: $font-size-xl;
+  font-weight: 600;
+  text-align: center;
+}
+.descriptionPage {
+  text-align: center;
+  color: $background-item;
+  font-weight: 600;
+  font-size: 40px;
+}
+.iconsList {
+  display: flex;
+  gap: 24px;
+  border-bottom: 1px solid $light-text-color;
+  padding-bottom: 32px;
+  margin-top: 63px;
+  > li {
+    display: flex;
+    align-items: center;
+    color: $second-text-color;
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    gap: 7px;
+    font-weight: 500;
+    > svg {
+      width: 34px;
+      height: 34px;
+    }
+  }
+}
+.seciotnInner {
+  display: flex;
+  margin-top: 33px;
+}
+.mainInfo {
+  width: 100%;
+  max-width: 1560px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.asideContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 21px 30px;
+  gap: 25px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 24px;
+  border: 1px solid $light-text-color;
+  background: $background-option;
+  margin-left: 104px;
+  box-shadow:
+    4px 4px 25px 0 rgba(160, 160, 160, 0.5),
+    -4px -4px 25px 0px $light-text-color,
+    4px 4px 35px 0px $light-text-color inset;
+
+  > h1 {
+    width: 100%;
+    max-width: 341px;
+    font-size: 25px;
+    padding: 9px 0;
+    text-align: center;
+    border-radius: 50px;
+    background: $light-text-color;
+  }
+}
+.sendBtn {
+  border-radius: 50px;
+  background: $background-item;
+  width: 341px;
+  height: 50px;
+  color: #fff;
+  font-size: 25px;
+  font-weight: 600;
+}
+.priceList {
+  > li {
+    color: $second-text-color;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+.mentorContainer {
+  > h1 {
+    margin-bottom: 34px;
+  }
+}
+.mentorCards {
+  width: 100%;
+  max-width: 1557px;
+  display: flex;
+  margin-bottom: 141px;
+  gap: 211px;
+}
+.mentorCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mentorFullName {
+  color: #000;
+  font-family: "Unbounded", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+.mentorAbout {
+  width: 100%;
+  max-width: 231px;
+  color: $second-text-color;
+  font-family: "Unbounded", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding-left: 20px;
+}
+.titleCourses {
+  margin-bottom: 36px;
+  > img {
+    margin-bottom: 10px;
+  }
+  @include title_static;
+}
