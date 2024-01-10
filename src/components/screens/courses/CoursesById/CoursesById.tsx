@@ -2,6 +2,7 @@ import styles from "../courses.module.scss";
 import { CoursesByIdItem } from "@/components/ui/courses/card/CoursesByIditem/CoursesByIdItem";
 import Link from "next/link";
 import { courseByIdAndNamed } from "@/components/ui/courses/card/list";
+import { throws } from "node:assert";
 export default function CoursesById({ idCourse }: { idCourse: string }) {
   return (
     <div>
@@ -10,9 +11,7 @@ export default function CoursesById({ idCourse }: { idCourse: string }) {
 
       <div className={styles.cardWrapper}>
         {courseByIdAndNamed.map((courses) =>
-          !idCourse == courses.id ? (
-            <CoursesByIdItem idCourse={courses.id} {...courses} />
-          ) : null,
+          idCourse == courses.id ? <CoursesByIdItem {...courses} /> : null,
         )}
       </div>
     </div>
