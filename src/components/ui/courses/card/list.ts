@@ -11,7 +11,7 @@ export interface ITestList extends TCoursesProps {
   title: string;
 }
 export interface IFrontCourses extends TCoursesProps {
-  company: string;
+  company?: string;
   titlePage: string;
   descriptionPage: string;
   main: {
@@ -39,27 +39,6 @@ export type TMentore = {
   fullname: string;
   about: string;
 };
-export interface ICourseByIdAndNamed extends TCoursesProps {
-  titlePage: string;
-  descriptionPage: string;
-  target: {
-    targetTitle: string;
-    targetList: string[];
-  };
-  main: {
-    mainTitle: string;
-    mainDescription: string;
-  };
-  mentors: TMentore[];
-  aside?: {
-    price: string;
-    asideList: string[];
-  };
-  coursesProgram: {
-    coursesTitle: string;
-    coursesImg: string;
-  };
-}
 export const listItem: TCoursesProps[] = [
   {
     id: 1,
@@ -256,32 +235,32 @@ export const FrontEndCurses: IFrontCourses[] = [
     mentors: [
       {
         idMentor: 1,
-        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Тетяна-Либідь.png`,
         fullname: "Тетяна Либідь",
         about: "Lead Front-end Developer в Macrosoft",
       },
       {
         idMentor: 2,
-        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Іван-Коломієць.png`,
         fullname: "Іван Коломієць",
         about: "Lead Front-end Developer в Macrosoft",
       },
       {
         idMentor: 3,
-        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Максим-Незабудко.png`,
         fullname: "Максим Незабудко",
         about: "Lead Front-end Developer в Macrosoft",
       },
       {
         idMentor: 4,
-        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Тетяна-Либідь-1.png`,
         fullname: "Тетяна Либідь",
         about: "Lead Front-end Developer в Macrosoft",
       },
     ],
     coursesProgram: {
       coursesTitle: "Програма курсу:",
-      coursesImg: `${process.env.NEXT_URL}/img/courses/design.png`,
+      coursesImg: `${process.env.NEXT_URL}/img/courses/theme-for-courses.png.png`,
     },
   },
   {
@@ -321,45 +300,46 @@ export const FrontEndCurses: IFrontCourses[] = [
     mentors: [
       {
         idMentor: 1,
-        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Тетяна-Либідь.png`,
         fullname: "Тетяна Либідь",
         about: "Lead Front-end Developer в Macrosoft",
       },
       {
         idMentor: 2,
-        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Іван-Коломієць.png`,
         fullname: "Іван Коломієць",
         about: "Lead Front-end Developer в Macrosoft",
       },
       {
         idMentor: 3,
-        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Максим-Незабудко.png`,
         fullname: "Максим Незабудко",
         about: "Lead Front-end Developer в Macrosoft",
       },
       {
         idMentor: 4,
-        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Тетяна-Либідь-1.png`,
         fullname: "Тетяна Либідь",
         about: "Lead Front-end Developer в Macrosoft",
       },
     ],
     coursesProgram: {
       coursesTitle: "Програма курсу:",
-      coursesImg: `${process.env.NEXT_URL}/img/courses/design.png`,
+      coursesImg: `${process.env.NEXT_URL}/img/courses/theme-for-courses.png`,
     },
   },
 ];
 export const TestingCurses: IFrontCourses[] = [
   {
-    id: 1,
+    id: "1",
     images: `${process.env.NEXT_URL}/img/courses/design.png`,
-    types: "Front-end Basic",
+    types: "TEST",
     company: "Hillel",
+    urlCheck: "testing",
     description:
       "В рамках курсу Front-end Basic студенти без досвіду в розробці вивчають HTML і CSS та вчаться верстати сайти. Після успішного закінчення курсу студенти отримують достатньо знань і навичок для верстки сайту будь-якої складності.",
     titlePage: "Онлайн-курс",
-    descriptionPage: "Front-end Basic",
+    descriptionPage: "TEST",
     main: {
       mainTitle: "Навчися верстати сайти!",
       mainDescription:
@@ -388,45 +368,46 @@ export const TestingCurses: IFrontCourses[] = [
     mentors: [
       {
         idMentor: 1,
-        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Тетяна-Либідь.png`,
         fullname: "Тетяна Либідь",
         about: "Lead Front-end Developer в Macrosoft",
       },
       {
         idMentor: 2,
-        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Іван-Коломієць.png`,
         fullname: "Іван Коломієць",
         about: "Lead Front-end Developer в Macrosoft",
       },
       {
         idMentor: 3,
-        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Максим-Незабудко.png`,
         fullname: "Максим Незабудко",
         about: "Lead Front-end Developer в Macrosoft",
       },
       {
         idMentor: 4,
-        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Тетяна-Либідь-1.png`,
         fullname: "Тетяна Либідь",
         about: "Lead Front-end Developer в Macrosoft",
       },
     ],
     coursesProgram: {
       coursesTitle: "Програма курсу:",
-      coursesImg: `${process.env.NEXT_URL}/img/courses/design.png`,
+      coursesImg: `${process.env.NEXT_URL}/img/courses/theme-for-courses.png`,
     },
   },
 ];
 export const MarketingCurses: IFrontCourses[] = [
   {
-    id: 1,
+    id: "1",
     images: `${process.env.NEXT_URL}/img/courses/design.png`,
     types: "Front-end Basic",
     company: "Hillel",
+    urlCheck: "marketing",
     description:
       "В рамках курсу Front-end Basic студенти без досвіду в розробці вивчають HTML і CSS та вчаться верстати сайти. Після успішного закінчення курсу студенти отримують достатньо знань і навичок для верстки сайту будь-якої складності.",
     titlePage: "Онлайн-курс",
-    descriptionPage: "Front-end Basic",
+    descriptionPage: "marketing",
     main: {
       mainTitle: "Навчися верстати сайти!",
       mainDescription:
@@ -455,38 +436,39 @@ export const MarketingCurses: IFrontCourses[] = [
     mentors: [
       {
         idMentor: 1,
-        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Тетяна-Либідь.png`,
         fullname: "Тетяна Либідь",
         about: "Lead Front-end Developer в Macrosoft",
       },
       {
         idMentor: 2,
-        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Іван-Коломієць.png`,
         fullname: "Іван Коломієць",
         about: "Lead Front-end Developer в Macrosoft",
       },
       {
         idMentor: 3,
-        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Максим-Незабудко.png`,
         fullname: "Максим Незабудко",
         about: "Lead Front-end Developer в Macrosoft",
       },
       {
         idMentor: 4,
-        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Тетяна-Либідь-1.png`,
         fullname: "Тетяна Либідь",
         about: "Lead Front-end Developer в Macrosoft",
       },
     ],
     coursesProgram: {
       coursesTitle: "Програма курсу:",
-      coursesImg: `${process.env.NEXT_URL}/img/courses/design.png`,
+      coursesImg: `${process.env.NEXT_URL}/img/courses/theme-for-courses.png`,
     },
   },
   {
-    id: 2,
+    id: "2",
     images: `${process.env.NEXT_URL}/img/courses/management.png`,
     types: "Front-end Pro",
+    urlCheck: "marketing",
     company: "Hillel",
     description:
       "На курсі ви познайомитеся з принципами ООП, DOM, REST API і отримаєте практичні навички створення додатків з використанням «реакт-стека», що дозволить претендувати на посаду Junior Front-end Developer.",
@@ -520,32 +502,32 @@ export const MarketingCurses: IFrontCourses[] = [
     mentors: [
       {
         idMentor: 1,
-        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Тетяна-Либідь.png`,
         fullname: "Тетяна Либідь",
         about: "Lead Front-end Developer в Macrosoft",
       },
       {
         idMentor: 2,
-        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Іван-Коломієць.png`,
         fullname: "Іван Коломієць",
         about: "Lead Front-end Developer в Macrosoft",
       },
       {
         idMentor: 3,
-        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Максим-Незабудко.png`,
         fullname: "Максим Незабудко",
         about: "Lead Front-end Developer в Macrosoft",
       },
       {
         idMentor: 4,
-        imagesMentors: `${process.env.NEXT_URL}/img/courses/design.png`,
+        imagesMentors: `${process.env.NEXT_URL}/img/courses/Тетяна-Либідь-1.png`,
         fullname: "Тетяна Либідь",
         about: "Lead Front-end Developer в Macrosoft",
       },
     ],
     coursesProgram: {
       coursesTitle: "Програма курсу:",
-      coursesImg: `${process.env.NEXT_URL}/img/courses/design.png`,
+      coursesImg: `${process.env.NEXT_URL}/img/courses/theme-for-courses.png`,
     },
   },
 ];
