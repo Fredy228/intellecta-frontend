@@ -5,13 +5,20 @@ import {
   FrontEndCurses,
   TestingCurses,
   MarketingCurses,
+  IFrontCourses,
 } from "@/components/ui/courses/card/list";
 import { usePathname } from "next/navigation";
 import { EnumCourses } from "@/enums/courses/courseType-enum";
 export default function CoursesById({ idCourse }: { idCourse: string }) {
-  const listFrontEnd = FrontEndCurses.find((i) => idCourse === i.id);
-  const listTesting = TestingCurses.find((i) => idCourse === i.id);
-  const listMarketing = MarketingCurses.find((i) => idCourse === i.id);
+  const listFrontEnd: IFrontCourses = FrontEndCurses.find(
+    (i) => idCourse === i.id,
+  );
+  const listTesting: IFrontCourses = TestingCurses.find(
+    (i) => idCourse === i.id,
+  );
+  const listMarketing: IFrontCourses = MarketingCurses.find(
+    (i) => idCourse === i.id,
+  );
   const pathname = usePathname();
   const arr = pathname.split(`/`);
   return (
@@ -19,11 +26,11 @@ export default function CoursesById({ idCourse }: { idCourse: string }) {
       <div className={styles.cardWrapper}>
         {arr.map((i) =>
           i === EnumCourses.PROGRAMMING ? (
-            <CoursesByIdItem key={idCourse} id={idCourse} {...listFrontEnd} />
+            <CoursesByIdItem key={idCourse} {...listFrontEnd} />
           ) : i === EnumCourses.TESTING ? (
-            <CoursesByIdItem key={idCourse} id={idCourse} {...listTesting} />
+            <CoursesByIdItem key={idCourse} {...listTesting} />
           ) : i === EnumCourses.MARKETING ? (
-            <CoursesByIdItem key={idCourse} id={idCourse} {...listMarketing} />
+            <CoursesByIdItem key={idCourse} {...listMarketing} />
           ) : null,
         )}
       </div>

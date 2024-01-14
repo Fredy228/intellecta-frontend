@@ -12,7 +12,7 @@ export interface ITestList extends TCoursesProps {
 }
 export interface IFrontCourses {
   id: number | string;
-  images: string | null | undefined;
+  images: string | null;
   company: string | null;
   urlCheck: string;
   description: string;
@@ -406,13 +406,13 @@ export const MarketingCurses: IFrontCourses[] = [
   {
     id: "1",
     images: `${process.env.NEXT_URL}/img/courses/design.png`,
-    types: "Front-end Basic",
+    types: "Marketing",
     company: "Hillel",
     urlCheck: "marketing",
     description:
       "В рамках курсу Front-end Basic студенти без досвіду в розробці вивчають HTML і CSS та вчаться верстати сайти. Після успішного закінчення курсу студенти отримують достатньо знань і навичок для верстки сайту будь-якої складності.",
     titlePage: "Онлайн-курс",
-    descriptionPage: "marketing",
+    descriptionPage: "Marketing",
     main: {
       mainTitle: "Навчися верстати сайти!",
       mainDescription:

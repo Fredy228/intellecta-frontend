@@ -1,5 +1,5 @@
 import { FC, Fragment } from "react";
-import { TFrontCourses } from "@/components/ui/courses/card/list";
+import { IFrontCourses } from "@/components/ui/courses/card/list";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./courses.module.scss";
@@ -11,7 +11,7 @@ import {
   IconRocket,
   IconTime,
 } from "@/components/reused/Icon/Icon";
-export const CoursesByIdItem: FC<TFrontCourses> = ({
+export const CoursesByIdItem: FC<IFrontCourses> = ({
   id,
   titlePage,
   descriptionPage,
