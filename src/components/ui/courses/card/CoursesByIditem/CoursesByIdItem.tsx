@@ -1,5 +1,5 @@
 import { FC, Fragment } from "react";
-import { IFrontCourses } from "@/components/ui/courses/card/list";
+import { TFrontCourses } from "@/components/ui/courses/card/list";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./courses.module.scss";
@@ -11,7 +11,8 @@ import {
   IconRocket,
   IconTime,
 } from "@/components/reused/Icon/Icon";
-export const CoursesByIdItem: FC<IFrontCourses> = ({
+export const CoursesByIdItem: FC<TFrontCourses> = ({
+  id,
   titlePage,
   descriptionPage,
   target,
@@ -21,7 +22,7 @@ export const CoursesByIdItem: FC<IFrontCourses> = ({
   coursesProgram,
 }) => {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} key={id}>
       <div className={styles.container}>
         <div className={styles.backMenu}>
           <IconBack />
@@ -59,15 +60,17 @@ export const CoursesByIdItem: FC<IFrontCourses> = ({
           <p>{main.mainDescription}</p>
           <h2 className={styles.title}>{target.targetTitle}</h2>
           <ul>
-            {target.targetList.map((list: string) => (
-              <li>{list}</li>
+            {target.targetList.map((list: string, index: number) => (
+              <li key={index}>{list}</li>
             ))}
           </ul>
         </div>
         <aside className={styles.asideContainer}>
           <h1 className={styles.title}>{aside?.price}</h1>
           <ul className={styles.priceList}>
-            {aside?.asideList.map((list: string) => <li>{list}</li>)}
+            {aside?.asideList.map((list: string, index: number) => (
+              <li key={index}>{list}</li>
+            ))}
           </ul>
           <button className={styles.sendBtn}>Записатися на курс</button>
         </aside>
@@ -94,7 +97,7 @@ export const CoursesByIdItem: FC<IFrontCourses> = ({
       <div>
         <h1 className={styles.titleCourses}>{coursesProgram.coursesTitle}</h1>
         <Image
-          src={coursesProgram.coursesImg}
+          src={coursesProgram.coursesImg ? coursesProgram.coursesImg : ""}
           alt={""}
           width={1200}
           height={450}

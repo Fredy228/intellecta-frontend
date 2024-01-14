@@ -14,17 +14,16 @@ export default function CoursesById({ idCourse }: { idCourse: string }) {
   const listMarketing = MarketingCurses.find((i) => idCourse === i.id);
   const pathname = usePathname();
   const arr = pathname.split(`/`);
-  console.log(arr);
   return (
     <div>
       <div className={styles.cardWrapper}>
         {arr.map((i) =>
           i === EnumCourses.PROGRAMMING ? (
-            <CoursesByIdItem id={idCourse} {...listFrontEnd} />
+            <CoursesByIdItem key={idCourse} id={idCourse} {...listFrontEnd} />
           ) : i === EnumCourses.TESTING ? (
-            <CoursesByIdItem id={idCourse} {...listTesting} />
+            <CoursesByIdItem key={idCourse} id={idCourse} {...listTesting} />
           ) : i === EnumCourses.MARKETING ? (
-            <CoursesByIdItem id={idCourse} {...listMarketing} />
+            <CoursesByIdItem key={idCourse} id={idCourse} {...listMarketing} />
           ) : null,
         )}
       </div>

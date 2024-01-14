@@ -2,7 +2,7 @@ import { EnumCourses } from "@/enums/courses/courseType-enum";
 
 export type TCoursesProps = {
   id: number | string;
-  images?: string;
+  images: string;
   types?: string;
   urlCheck?: string;
   description?: string;
@@ -10,10 +10,15 @@ export type TCoursesProps = {
 export interface ITestList extends TCoursesProps {
   title: string;
 }
-export interface IFrontCourses extends TCoursesProps {
-  company?: string;
-  titlePage: string;
-  descriptionPage: string;
+export interface IFrontCourses {
+  id: number | string;
+  images: string | null | undefined;
+  company: string | null;
+  urlCheck: string;
+  description: string;
+  types: string;
+  titlePage: string | null;
+  descriptionPage?: string | null;
   main: {
     mainTitle: string;
     mainDescription: string;
