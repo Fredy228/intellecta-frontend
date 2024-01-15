@@ -12,13 +12,13 @@ export interface ITestList extends TCoursesProps {
 }
 export interface IFrontCourses {
   id: number | string;
-  images: string | null;
-  company: string | null;
+  images: string;
+  company: string;
   urlCheck: string;
   description: string;
   types: string;
-  titlePage: string | null;
-  descriptionPage?: string | null;
+  titlePage: string;
+  descriptionPage?: string;
   main: {
     mainTitle: string;
     mainDescription: string;
