@@ -70,7 +70,7 @@
 .cardWrapper {
   display: grid;
   grid-template-columns: repeat(3, minmax(150px, 400px));
-  grid-template-rows: repeat(1, minmax(150px, 400px));
+  grid-template-rows: repeat(1, minmax(150px, 450px));
   gap: 42px;
   padding-top: 20px;
   &:last-child {
