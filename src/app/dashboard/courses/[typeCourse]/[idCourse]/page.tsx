@@ -1,6 +1,12 @@
+import CoursesById from "@/components/screens/courses/CoursesById/CoursesById";
 
-export default function page() {
+type TProps = {
+  params: { idCourse: string };
+};
+export default function IdCourses({ params }: TProps) {
   return (
-    <div>ID</div>
-  )
+    <main style={{ overflowY: "auto", display: "flex", width: "100%" }}>
+      <CoursesById idCourse={params.idCourse} />
+    </main>
+  );
 }

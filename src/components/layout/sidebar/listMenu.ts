@@ -44,9 +44,9 @@ export const listMenu: TItemMenu[] = [
   },
   {
     id: 7,
-    title: "Табель",
+    title: "Саморозвиток",
     url: "tally.png",
-    href: "/dashboard/tally",
+    href: "/dashboard/courses",
   },
 ];
 
@@ -83,9 +83,9 @@ export const listMenuAdmin: TItemMenu[] = [
   },
   {
     id: 7,
-    title: "Табель",
+    title: "Саморозвиток",
     url: "tally.png",
-    href: "/dashboard/tally",
+    href: "/dashboard/courses",
   },
   {
     id: 8,
