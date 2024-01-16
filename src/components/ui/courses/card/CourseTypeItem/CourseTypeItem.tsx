@@ -4,7 +4,6 @@ import { FC } from "react";
 import Link from "next/link";
 import { IconLearn, IconRocket, IconTime } from "@/components/reused/Icon/Icon";
 import styles from "@/components/ui/courses/card/CourseItem/card.module.scss";
-import { string } from "prop-types";
 
 export const CourseTypeItem: FC<IFrontCourses> = ({
   id,
