@@ -1,81 +1,109 @@
-@import '@/styles/varible';
+@import "@/styles/varible";
 
-.title{
-    color:$main-text-color;
-    font-size: 40px;
-    font-weight: 600;
-    margin-bottom: 16px;
+.title {
+  color: $main-text-color;
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 16px;
 }
-.inputInner{
-    display: flex;
-    position: relative;
-    align-items: center;
-  
+.inputInner {
+  display: flex;
+  position: relative;
+  align-items: center;
 }
-.input{
-    width: 282px;
-    height: 46px;
-    border: none;
-    border-radius: 24px;
-    background: $background-option;
-    box-shadow: 4px 4px 7px 0px rgba(219, 219, 219, 0.25) inset, -4px -4px 7px 0px rgba(255, 255, 255, 0.80) inset;
-    padding-top: 11px;
-    padding-bottom: 11px;
-    padding-left: 20px;
-    color:$second-text-color;
+.container {
+  width: 100%;
+  max-width: calc(100% / 1.8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.searchButton{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    padding: 10px;
-    border-radius: 35px;
-    background: #E6E6E6;
-    box-shadow: 0px 4px 6px 0px rgba(202, 202, 202, 0.48), -4px -4px 14px 0px rgba(255, 255, 255, 0.70), -4px -4px 20px 0px rgba(255, 255, 255, 0.70) inset;
-    left: 235px;
-    bottom: 9px;
+.titlePage {
+  color: $second-text-color;
+  font-size: $font-size-xl;
+  font-weight: 600;
+  text-align: center;
 }
-.list{
-    overflow-y: auto;
+.backMenu {
+  display: flex;
+  gap: 11px;
 }
-.cardContainer{
-    display: flex;
-    gap: 47px;
+.input {
+  width: 282px;
+  height: 46px;
+  border: none;
+  border-radius: 24px;
+  background: $background-option;
+  box-shadow:
+    4px 4px 7px 0px rgba(219, 219, 219, 0.25) inset,
+    -4px -4px 7px 0px rgba(255, 255, 255, 0.8) inset;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  padding-left: 20px;
+  color: $second-text-color;
 }
-.cardWrapper{ 
-    width: 100%;
-    display: flex;
-    gap: 42px;
-    flex-wrap: wrap;
-    margin-top: 22px;
-    padding: 10px 0;
+.searchButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  padding: 10px;
+  border-radius: 35px;
+  background: #e6e6e6;
+  box-shadow:
+    0 4px 6px 0 rgba(202, 202, 202, 0.48),
+    -4px -4px 14px 0px rgba(255, 255, 255, 0.7),
+    -4px -4px 20px 0px rgba(255, 255, 255, 0.7) inset;
+  left: 235px;
+  bottom: 9px;
 }
-.cardInner{
-    width: 100%;
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    border-radius: 24px;
-    border: 1px solid $light-text-color;
-    background: $background-option;
-    box-shadow: 4px 4px 25px 0px rgba(160, 160, 160, 0.50), -4px -4px 25px 0px $light-text-color, 4px 4px 35px 0px $light-text-color inset;
-
+.list {
+  overflow-y: auto;
 }
-.cardTitle{
-    color: $background-item;
-    font-size: 22px;
-    font-weight: 600;
-    padding-top: 17px;
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(250px, 842px));
+  grid-template-rows: repeat(1, 400px);
+  grid-gap: 42px;
+  margin: 42px 0;
 }
-.cardDesc{
-    color: $second-text-color;
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-    padding-bottom: 12px;
-    padding-left: 16px;
-    padding-right: 11px;
+.cardWrapper {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(150px, 400px));
+  grid-template-rows: repeat(1, minmax(150px, 450px));
+  gap: 42px;
+  padding-top: 20px;
+  &:last-child {
+    padding-top: 10px;
+  }
+}
+.cardInner {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-radius: 24px;
+  border: 1px solid $light-text-color;
+  background: $background-option;
+  box-shadow:
+    4px 4px 25px 0px rgba(160, 160, 160, 0.5),
+    -4px -4px 25px 0px $light-text-color,
+    4px 4px 35px 0px $light-text-color inset;
+}
+.cardTitle {
+  color: $background-item;
+  font-size: 22px;
+  font-weight: 600;
+  padding-top: 17px;
+}
+.cardDesc {
+  color: $second-text-color;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  padding-bottom: 12px;
+  padding-left: 16px;
+  padding-right: 11px;
 }

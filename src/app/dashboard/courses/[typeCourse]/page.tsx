@@ -6,7 +6,7 @@ type TProps = {
 };
 export default function typeCourses({ params }: TProps) {
   return (
-    <main style={{ overflowY: "auto", display: "flex", width: "100%" }}>
+    <main style={{ overflowY: "auto", width: "100%" }}>
       <CoursesByTypes typeCourses={params.typeCourse} />
     </main>
   );
