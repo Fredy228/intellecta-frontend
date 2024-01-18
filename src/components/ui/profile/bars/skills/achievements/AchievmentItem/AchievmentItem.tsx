@@ -1,26 +1,14 @@
 import Image from "next/image";
-import { Fragment } from "react";
-import {
-  Achieve,
-  TAchievivList,
-} from "@/components/ui/profile/bars/skills/achievements/achieveList";
-
-export const AchievmentItem = () => {
+import { FC, Fragment } from "react";
+import { TAchievivList } from "@/components/ui/profile/bars/skills/achievements/achieveList";
+import styles from "./AchievmentItem.module.scss";
+export const AchievmentItem: FC<TAchievivList> = ({ id, images, named }) => {
   return (
     <>
-      <ul>
-        {Achieve.map((achievemet: TAchievivList) => (
-          <Fragment key={achievemet.id}>
-            <Image
-              src={achievemet.images}
-              alt={"card images"}
-              width={75}
-              height={75}
-            />
-            <li>{achievemet.named}</li>
-          </Fragment>
-        ))}
-      </ul>
+      <div key={id} className={styles.cardWrapper}>
+        <Image src={images} alt={"card images"} width={75} height={75} />
+        <li className={styles.named}>{named}</li>
+      </div>
     </>
   );
 };

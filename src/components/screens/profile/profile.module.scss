@@ -1,0 +1,23 @@
+.main {
+  overflow-y: auto;
+}
+.profileContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.coursesBlock {
+  width: 100%;
+  max-width: 1000px;
+  max-height: 325px;
+  gap: 53px;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 24px;
+  border: 1px solid #fff;
+  background: #ededed;
+  padding: 25px 165px 31px 26px;
+  box-shadow:
+    4px 4px 25px 0 rgba(160, 160, 160, 0.5),
+    -4px -4px 25px 0px #fff,
+    4px 4px 35px 0px #fff inset;
+}

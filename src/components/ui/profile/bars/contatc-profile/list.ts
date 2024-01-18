@@ -10,7 +10,7 @@ export type TInfoList = {
 export const contacts: TInfoList = [
   {
     id: 1,
-    emal: "alekseii@gmail.com",
+    email: "alekseii@gmail.com",
     tel: "+380 97 907 1001",
     web: "alekseii.com.ua",
     location: "Одеса, Україна",
