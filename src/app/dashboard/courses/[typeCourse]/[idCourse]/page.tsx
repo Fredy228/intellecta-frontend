@@ -5,7 +5,14 @@ type TProps = {
 };
 export default function IdCourses({ params }: TProps) {
   return (
-    <main style={{ overflowY: "auto", display: "flex", width: "100%" }}>
+    <main
+      style={{
+        overflowY: "auto",
+        display: "flex",
+        width: "100%",
+        paddingRight: "15px",
+      }}
+    >
       <CoursesById idCourse={params.idCourse} />
     </main>
   );

@@ -1,5 +1,4 @@
-import { LanguagesItem } from "@/components/ui/profile/bars/skills/languages/LanguagesItem/LanguagesItem";
-import { ProgramLang } from "@/components/ui/profile/bars/skills/languages/LanguagesItem/lang-list";
+import { ProgramLang } from "@/components/ui/profile/bars/skills/languages/lang-list";
 import { IconAddList } from "@/components/reused/Icon/Icon";
 import styles from "@/components/ui/profile/bars/skills/languages/language.module.scss";
 
@@ -9,7 +8,7 @@ export const Languages = () => {
       <h1 className={styles.title}>Скіли</h1>
       <ul className={styles.menuList}>
         {ProgramLang.lang.map((lang: string, idx: number) => (
-          <LanguagesItem key={idx} lang={...lang} />
+          <li key={idx}>{lang}</li>
         ))}
         <button className={styles.addList}>
           <IconAddList />
