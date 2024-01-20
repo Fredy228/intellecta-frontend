@@ -1,10 +1,8 @@
 @import "@/styles/varible";
 @mixin title_static {
   color: $background-item;
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 22px; /* 55% */
+  font-size: $title-upper-size;
+  font-weight: $title-weight;
 }
 .section {
   padding: 0 10px;
@@ -25,14 +23,14 @@
 .titlePage {
   color: $second-text-color;
   font-size: $font-size-xl;
-  font-weight: 600;
+  font-weight: $title-weight;
   text-align: center;
 }
 .descriptionPage {
   text-align: center;
   color: $background-item;
-  font-weight: 600;
-  font-size: 40px;
+  font-weight: $title-weight;
+  font-size: $title-upper-size;
 }
 .iconsList {
   display: flex;
@@ -98,7 +96,7 @@
   background: $background-item;
   width: 341px;
   height: 50px;
-  color: #fff;
+  color: $light-text-color;
   font-size: 25px;
   font-weight: 600;
 }
@@ -106,7 +104,7 @@
   > li {
     color: $second-text-color;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: $title-weight;
     margin-bottom: 30px;
     &:last-child {
       margin-bottom: 0;
@@ -143,7 +141,7 @@
   color: $second-text-color;
   font-family: "Unbounded", sans-serif;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: $title-weight;
   padding-left: 20px;
 }
 .titleCourses {

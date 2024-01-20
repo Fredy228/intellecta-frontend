@@ -2,8 +2,8 @@
 
 .title {
   color: $main-text-color;
-  font-size: 40px;
-  font-weight: 600;
+  font-size: $title-upper-size;
+  font-weight: $title-weight;
   margin-bottom: 16px;
 }
 .inputInner {
@@ -21,7 +21,7 @@
 .titlePage {
   color: $second-text-color;
   font-size: $font-size-xl;
-  font-weight: 600;
+  font-weight: $title-weight;
   text-align: center;
 }
 .backMenu {
@@ -35,7 +35,7 @@
   border-radius: 24px;
   background: $background-option;
   box-shadow:
-    4px 4px 7px 0px rgba(219, 219, 219, 0.25) inset,
+    4px 4px 7px 0 rgba(219, 219, 219, 0.25) inset,
     -4px -4px 7px 0px rgba(255, 255, 255, 0.8) inset;
   padding-top: 11px;
   padding-bottom: 11px;
@@ -49,7 +49,7 @@
   position: absolute;
   padding: 10px;
   border-radius: 35px;
-  background: #e6e6e6;
+  background: $color-option;
   box-shadow:
     0 4px 6px 0 rgba(202, 202, 202, 0.48),
     -4px -4px 14px 0px rgba(255, 255, 255, 0.7),
@@ -89,7 +89,7 @@
   border: 1px solid $light-text-color;
   background: $background-option;
   box-shadow:
-    4px 4px 25px 0px rgba(160, 160, 160, 0.5),
+    4px 4px 25px 0 rgba(160, 160, 160, 0.5),
     -4px -4px 25px 0px $light-text-color,
     4px 4px 35px 0px $light-text-color inset;
 }

@@ -1,3 +1,5 @@
+@import '@/styles/varible';
+
 .achievementContainer {
   display: grid;
   grid-template-columns: repeat(3, minmax(60px, 150px));
@@ -6,7 +8,7 @@
   grid-gap: 42px 16px;
 }
 .title {
-  color: #11142d;
+  color: $main-text-color;
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 16px;

@@ -1,3 +1,5 @@
+@import "@/styles/varible";
+
 .menuList {
   width: 100%;
   max-width: 440px;
@@ -8,11 +10,11 @@
 
   > li {
     text-align: center;
-    color: #11142d;
+    color: $main-text-color;
     font-size: 16px;
     font-weight: 600;
     border-radius: 20px;
-    background: #fff;
+    background: $light-text-color;
     padding: 7px 21px;
   }
 }
@@ -26,7 +28,7 @@
   margin-bottom: 30px;
 
   > h2 {
-    color: #11142d;
+    color: $main-text-color;
     font-size: 22px;
     font-weight: 600;
     margin-top: 10px;
@@ -35,16 +37,16 @@
   > p {
     width: 100%;
     max-width: 85px;
-    color: #438ced;
+    color: $background-item;
     font-size: 20px;
     font-weight: 600;
     border-radius: 20px;
-    background: #fff;
+    background: $background-body;
     padding: 9px 13px;
   }
 }
 .title {
-  color: #11142d;
+  color: $main-text-color;
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 20px;

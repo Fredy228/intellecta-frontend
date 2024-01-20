@@ -1,3 +1,5 @@
+@import '@/styles/varible';
+
 .card {
   display: flex;
   position: relative;
@@ -8,7 +10,7 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-position: left;
-  background-color: #ffffff;
+  background-color: $light-text-color;
   gap: 46px;
   padding: 23px 30px 23px 15px;
   margin-bottom: 36px;
@@ -23,18 +25,18 @@
   margin-bottom: 5px;
 }
 .title {
-  color: #11142d;
+  color: $main-text-color;
   font-size: 20px;
   font-weight: 600;
 }
 .subtitle {
-  color: #808191;
+  color: $second-text-color;
   font-size: 16px;
   font-weight: 600;
 }
 .role {
-  color: #11142d;
-  font-size: 16px;
+  color: $main-text-color;
+  font-size: $font-size-md;
   font-weight: 600;
 }
 .knowledge {
@@ -51,7 +53,7 @@
 .settings {
   display: flex;
   align-items: center;
-  background-color: #ff754c;
+  background-color: $accent-color;
   position: absolute;
   padding: 9px;
   border-radius: 50%;
