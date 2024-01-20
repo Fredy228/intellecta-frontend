@@ -96,14 +96,16 @@ const Sidebar: FC = () => {
             }
           />
           <div className={styles.aside_wrapperUserName}>
-            <p className={styles.aside_userName}>
-              {data && `${currentUser.firstName} ${currentUser.lastName}`}
-            </p>
-            <span className={styles.aside_userRole}>
-              {currentUser?.role === RoleEnum.TEACHER && "Викладач"}
-              {currentUser?.role === RoleEnum.STUDENT && "Студент"}
-              {currentUser?.role === RoleEnum.ADMIN && "Адмін"}
-            </span>
+            <Link href={"/dashboard/profile"}>
+              <p className={styles.aside_userName}>
+                {data && `${currentUser.firstName} ${currentUser.lastName}`}
+              </p>
+              <span className={styles.aside_userRole}>
+                {currentUser?.role === RoleEnum.TEACHER && "Викладач"}
+                {currentUser?.role === RoleEnum.STUDENT && "Студент"}
+                {currentUser?.role === RoleEnum.ADMIN && "Адмін"}
+              </span>
+            </Link>
           </div>
           <div className={styles.aside_wrapperChangeIcon}>
             <IconArrowCouple />

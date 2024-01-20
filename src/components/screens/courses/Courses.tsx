@@ -1,6 +1,6 @@
 import CoursesList from "@/components/ui/courses/card/CoursesList/CoursesList";
 import CoursesListOther from "@/components/ui/courses/card/CoursesList/CoursesListOther";
-import TestCardList from "@/components/ui/courses/card/testCard/testCardList/TestCardList";
+import TestCardList from "@/components/ui/courses/card/TestCard/TestCardList/TestCardList";
 import styles from "./courses.module.scss";
 import Image from "next/image";
 import { NextPage } from "next";

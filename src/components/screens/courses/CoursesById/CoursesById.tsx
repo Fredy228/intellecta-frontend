@@ -24,17 +24,15 @@ export default function CoursesById({ idCourse }: { idCourse: string }) {
   if (listFrontEnd && listTesting && listMarketing) {
     return (
       <div>
-        <div className={styles.cardWrapper}>
-          {arr.map((i) =>
-            i === EnumCourses.PROGRAMMING ? (
-              <CoursesByIdItem key={idCourse} {...listFrontEnd} />
-            ) : i === EnumCourses.TESTING ? (
-              <CoursesByIdItem key={idCourse} {...listTesting} />
-            ) : i === EnumCourses.MARKETING ? (
-              <CoursesByIdItem key={idCourse} {...listMarketing} />
-            ) : null,
-          )}
-        </div>
+        {arr.map((i) =>
+          i === EnumCourses.PROGRAMMING ? (
+            <CoursesByIdItem key={idCourse} {...listFrontEnd} />
+          ) : i === EnumCourses.TESTING ? (
+            <CoursesByIdItem key={idCourse} {...listTesting} />
+          ) : i === EnumCourses.MARKETING ? (
+            <CoursesByIdItem key={idCourse} {...listMarketing} />
+          ) : null,
+        )}
       </div>
     );
   } else {

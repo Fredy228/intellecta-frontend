@@ -1,7 +1,7 @@
 import { FC, Fragment } from "react";
-import { IFrontCourses } from "@/components/ui/courses/card/list";
 import Link from "next/link";
 import Image from "next/image";
+import { IFrontCourses } from "@/components/ui/courses/card/list";
 import styles from "./courses.module.scss";
 import {
   IconBack,
