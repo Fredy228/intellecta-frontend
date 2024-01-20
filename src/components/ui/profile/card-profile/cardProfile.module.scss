@@ -2,12 +2,17 @@
   display: flex;
   position: relative;
   align-items: center;
-  background-image: url("../../../../../public/img/profile/background-profile.png");
-  width: 1375px;
+  //background-image: url("src/../public/img/profile/profile-bg.png");
+  background-image: url("../../../../../public/img/profile/profile-bg.png");
+  width: 100%;
   background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left;
+  background-color: #ffffff;
   gap: 46px;
   padding: 23px 30px 23px 15px;
   margin-bottom: 36px;
+  border-radius: 8px;
 }
 .titleWrapper {
   display: flex;

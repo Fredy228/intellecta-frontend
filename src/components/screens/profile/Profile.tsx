@@ -16,7 +16,7 @@ export const Account = () => {
           <Friends />
           <AddBlockSecond />
         </div>
-        <div>
+        <div style={{flex: "1"}}>
           <div className={styles.coursesBlock}>
             <Achievement />
             <Languages />
