@@ -1,3 +1,4 @@
+@import "@/styles/varible";
 .cardWrapper {
   display: flex;
   flex-direction: column;
@@ -5,8 +6,8 @@
   gap: 9px;
 }
 .named {
-  color: #808191;
-  font-size: 16px;
-  font-weight: 600;
+  color: $second-text-color;
+  font-size: $font-size-md;
+  font-weight: $title-weight;
   text-align: center;
 }
