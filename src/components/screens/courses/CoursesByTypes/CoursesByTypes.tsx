@@ -14,7 +14,7 @@ export default function CoursesByTypes({
   typeCourses: string;
 }) {
   return (
-    <div>
+    <>
       <div className={styles.container}>
         <div className={styles.backMenu}>
           <IconBack />
@@ -27,11 +27,11 @@ export default function CoursesByTypes({
       <SupBar />
       <div className={styles.cardWrapper}>
         {AllCoursesType[typeCourses]
-          ? AllCoursesType[typeCourses].map((courses: IFrontCourses) => (
-              <CourseTypeItem {...courses} />
+          ? AllCoursesType[typeCourses].map((courses: IFrontCourses, idx: number) => (
+              <CourseTypeItem key={idx} {...courses} />
             ))
           : "Not found"}
       </div>
-    </div>
+    </>
   );
 }

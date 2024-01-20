@@ -1,5 +1,4 @@
 "use client";
-import styles from "../courses.module.scss";
 import { CoursesByIdItem } from "@/components/ui/courses/card/CoursesByIditem/CoursesByIdItem";
 import {
   FrontEndCurses,
@@ -23,7 +22,7 @@ export default function CoursesById({ idCourse }: { idCourse: string }) {
   const arr = pathname.split(`/`);
   if (listFrontEnd && listTesting && listMarketing) {
     return (
-      <div>
+      <>
         {arr.map((i) =>
           i === EnumCourses.PROGRAMMING ? (
             <CoursesByIdItem key={idCourse} {...listFrontEnd} />
@@ -33,7 +32,7 @@ export default function CoursesById({ idCourse }: { idCourse: string }) {
             <CoursesByIdItem key={idCourse} {...listMarketing} />
           ) : null,
         )}
-      </div>
+      </>
     );
   } else {
     return null;

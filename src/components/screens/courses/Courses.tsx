@@ -1,11 +1,10 @@
+import { NextPage } from "next";
+import Image from "next/image";
 import CoursesList from "@/components/ui/courses/card/CoursesList/CoursesList";
 import CoursesListOther from "@/components/ui/courses/card/CoursesList/CoursesListOther";
 import TestCardList from "@/components/ui/courses/card/TestCard/TestCardList/TestCardList";
-import styles from "./courses.module.scss";
-import Image from "next/image";
-import { NextPage } from "next";
 import { IconSearchCourses } from "@/components/reused/Icon/Icon";
-import Link from "next/link";
+import styles from "./courses.module.scss";
 
 export const Courses: NextPage = () => {
   return (

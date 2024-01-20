@@ -21,6 +21,9 @@
 .cardTop{
     display:flex;
     gap: 11px;
+    @media (max-width:1367px) {
+        flex-wrap: wrap;
+    }
 }
 .iconWrapper{
     display: flex;
@@ -43,15 +46,19 @@
 
 }
 .title{
-    text-align: center;
-    padding-top:5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 229px;
-    height: 35px;
+    max-width: 229px;
+    height: 100%;
+    max-height: 35px;
     color: $background-item;
-    font-size: $font-size-lg;
+    font-size: clamp(0.875rem, 0.8rem + 0.375vw, 1.25rem);
     font-weight: $title-weight;
     border-radius: 30px;
     background: $light-text-color;
+    padding: 10px 36px;
 }
 .subtitle{
     text-align: center;

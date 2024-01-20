@@ -1,11 +1,11 @@
-import styles from "./TestCard.module.scss";
 import Image from "next/image";
 import { ITestList } from "../list";
 import { FC } from "react";
+import styles from "./TestCard.module.scss";
 
-export const TestCard: FC<ITestList> = ({ id, images, title, description }) => {
+export const TestCard: FC<ITestList> = ({ images, title, description }) => {
   return (
-    <ul key={id} className={styles.card}>
+    <ul className={styles.card}>
       <div className={styles.cardTop}>
         <Image
           src={images ? images : ""}
