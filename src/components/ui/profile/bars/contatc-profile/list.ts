@@ -7,7 +7,7 @@ export type TInfoList = {
   dataReg: string;
 };
 
-export const contacts: TInfoList = [
+export const contacts: TInfoList[] = [
   {
     id: 1,
     email: "alekseii@gmail.com",
