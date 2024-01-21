@@ -9,8 +9,8 @@ export const Achievement = () => {
     <div>
       <h1 className={styles.title}>Досягнення</h1>
       <ul className={styles.achievementContainer}>
-        {Achieve.map((achive: TAchievivList) => (
-          <AchievmentItem {...achive} />
+        {Achieve.map((achive: TAchievivList, idx:number) => (
+          <AchievmentItem key={idx} {...achive} />
         ))}
       </ul>
     </div>

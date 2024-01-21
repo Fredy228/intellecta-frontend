@@ -1,43 +1,45 @@
+@import '@/styles/varible';
+
 .barWrapper {
   display: flex;
-  color: #808191;
+  color: $second-text-color;
   gap: 40px;
   margin-top: 26px;
   > button {
-    color: #808191;
-    font-weight: 600;
+    color: $second-text-color;
+    font-weight: $title-weight;
     line-height: 24px;
     transition: all 0.3s linear;
     padding: 3px 12px;
     &:hover {
-      color: #438ced;
+      color: $background-item;
       border-radius: 5px;
       background: #f3f3f3;
-      box-shadow: 0px 0px 8px 0px rgba(67, 67, 67, 0.25) inset;
+      box-shadow: 0 0 8px 0 rgba(67, 67, 67, 0.25) inset;
     }
   }
 }
 .supBarWrapper {
   border-radius: 8px;
   padding: 10px 25px;
-  background: #fff;
+  background: $light-text-color;
   display: flex;
-  color: #808191;
+  color: $second-text-color;
   margin-top: 26px;
   > button {
     display: flex;
     gap: 8px;
-    color: #808191;
+    color: $second-text-color;
     font-weight: 600;
     line-height: 24px;
     transition: all 0.3s linear;
     padding: 3px 12px;
     cursor: pointer;
     &:hover {
-      color: #438ced;
+      color: $background-item;
       border-radius: 5px;
-      background: #f3f3f3;
-      box-shadow: 0px 0px 8px 0px rgba(67, 67, 67, 0.25) inset;
+      background: $background-body-option;
+      box-shadow: 0 0 8px 0 rgba(67, 67, 67, 0.25) inset;
     }
   }
   > img {

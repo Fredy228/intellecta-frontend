@@ -1,3 +1,5 @@
+@import '@/styles/varible';
+
 .friendWrapper {
   display: flex;
   flex-direction: column;
@@ -7,11 +9,11 @@
   max-width: 275px;
   min-height: 200px;
   border-radius: 24px;
-  border: 1px solid #fff;
-  background: #ededed;
+  border: 1px solid $light-text-color;
+  background: $background-option;
   box-shadow:
     4px 4px 25px 0 rgba(160, 160, 160, 0.5),
-    -4px -4px 25px 0px #fff,
+    -4px -4px 25px 0px $light-text-color,
     4px 4px 35px 0px #fff inset;
   padding: 24px 36px;
   .infoWrapper {
@@ -21,12 +23,12 @@
     gap: 75px;
     margin-bottom: 23px;
     h1 {
-      color: #11142d;
+      color: $main-text-color;
       font-size: 22px;
       font-weight: 600;
     }
     h2 {
-      color: #11142d;
+      color: $main-text-color;
       font-size: 22px;
       font-weight: 600;
     }

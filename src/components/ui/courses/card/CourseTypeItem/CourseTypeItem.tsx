@@ -14,7 +14,7 @@ export const CourseTypeItem: FC<IFrontCourses> = ({
   urlCheck,
 }) => {
   return (
-    <ul key={id} className={styles.card}>
+    <ul className={styles.card}>
       <Link href={`/dashboard/courses/${urlCheck}/${id}`}>
         <div className={styles.cardTop}>
           <Image
