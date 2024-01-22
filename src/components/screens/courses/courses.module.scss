@@ -50,6 +50,9 @@
     border:1px solid $background-item ;
     transition: all 0.3s;
   }
+  &:focus{
+    outline-color: $background-item;
+  }
 }
 .searchButton {
   display: flex;
