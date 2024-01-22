@@ -1,15 +1,18 @@
 @import "@/styles/varible";
+
 @mixin title_static {
   color: $background-item;
   font-size: $title-upper-size;
   font-weight: $title-weight;
 }
-.section {
-  padding: 0 10px;
-}
 .title {
   @include title_static;
 }
+
+.section {
+  padding: 0 10px;
+}
+
 .backMenu {
   display: flex;
   gap: 11px;
@@ -20,19 +23,19 @@
   display: flex;
   justify-content: space-between;
 }
-.titlePage {
+.title_page {
   color: $second-text-color;
   font-size: $font-size-xl;
   font-weight: $title-weight;
   text-align: center;
 }
-.descriptionPage {
+.description_page {
   text-align: center;
   color: $background-item;
   font-weight: $title-weight;
   font-size: $title-upper-size;
 }
-.iconsList {
+.icons_list {
   display: flex;
   gap: 24px;
   border-bottom: 1px solid $light-text-color;
@@ -52,11 +55,11 @@
     }
   }
 }
-.seciotnInner {
+.section_inner {
   display: flex;
   margin-top: 33px;
 }
-.mainInfo {
+.main_info {
   width: 100%;
   max-width: 1560px;
   display: flex;
@@ -64,7 +67,7 @@
   gap: 40px;
   margin-bottom: 40px;
 }
-.asideContainer {
+.aside_container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,12 +79,16 @@
   border: 1px solid $light-text-color;
   background: $background-option;
   margin-left: 104px;
+  transition: all 0.3s;
   box-shadow:
     4px 4px 25px 0 rgba(160, 160, 160, 0.5),
     -4px -4px 25px 0px $light-text-color,
     4px 4px 35px 0px $light-text-color inset;
+  &:hover{
+    border:1px solid $background-item ;
+  }
 
-  > h1 {
+  .title {
     width: 100%;
     max-width: 341px;
     font-size: 25px;
@@ -91,7 +98,7 @@
     background: $light-text-color;
   }
 }
-.sendBtn {
+.send_btn {
   border-radius: 50px;
   background: $background-item;
   width: 341px;
@@ -100,8 +107,8 @@
   font-size: 25px;
   font-weight: 600;
 }
-.priceList {
-  > li {
+.price_list {
+    .price_item {
     color: $second-text-color;
     font-size: 18px;
     font-weight: $title-weight;
@@ -111,40 +118,41 @@
     }
   }
 }
-.mentorContainer {
-  > h1 {
+.mentor {
+   .title {
     margin-bottom: 34px;
   }
+  &_cards {
+    width: 100%;
+    max-width: 1557px;
+    display: flex;
+    margin-bottom: 141px;
+    gap: 211px;
+  }
+  &_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &_fullName {
+    color: #000;
+    font-family: "Unbounded", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+  }
+  &_about {
+    width: 100%;
+    max-width: 231px;
+    color: $second-text-color;
+    font-family: "Unbounded", sans-serif;
+    font-size: 15px;
+    font-weight: $title-weight;
+    padding-left: 20px;
+  }
 }
-.mentorCards {
-  width: 100%;
-  max-width: 1557px;
-  display: flex;
-  margin-bottom: 141px;
-  gap: 211px;
-}
-.mentorCard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.mentorFullName {
-  color: #000;
-  font-family: "Unbounded", sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  text-align: center;
-}
-.mentorAbout {
-  width: 100%;
-  max-width: 231px;
-  color: $second-text-color;
-  font-family: "Unbounded", sans-serif;
-  font-size: 15px;
-  font-weight: $title-weight;
-  padding-left: 20px;
-}
-.titleCourses {
+
+.title_courses {
   margin-bottom: 36px;
   > img {
     margin-bottom: 10px;

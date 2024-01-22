@@ -27,8 +27,8 @@ export const CardProfile = () => {
         width={150}
         height={150}
       />
-      <div className={styles.cardWrapper}>
-        <div className={styles.titleWrapper}>
+      <div className={styles.card_wrapper}>
+        <div className={styles.card_title_wrapper}>
           <IconVerify />
           <h1
             className={styles.title}

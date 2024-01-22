@@ -29,11 +29,11 @@ export const CoursesByIdItem: FC<IFrontCourses> = ({
           <Link href={`/dashboard/courses/`}>Повернутися</Link>
         </div>
         <div className={styles.top_wrapper}>
-          <h1 className={styles.titlePage}>{titlePage}</h1>
-          <h1 className={styles.descriptionPage}>{descriptionPage}</h1>
+          <h1 className={styles.title_page}>{titlePage}</h1>
+          <h1 className={styles.description_page}>{descriptionPage}</h1>
         </div>
       </div>
-      <ul className={styles.iconsList}>
+      <ul className={styles.icons_list}>
         <li className={styles.icon_container}>
           <IconRocket />
           11 грудня старт
@@ -54,8 +54,8 @@ export const CoursesByIdItem: FC<IFrontCourses> = ({
           нагорода від Intellecta
         </li>
       </ul>
-      <div className={styles.seciotnInner}>
-        <div className={styles.mainInfo}>
+      <div className={styles.section_inner}>
+        <div className={styles.main_info}>
           <h1 className={styles.title}>{main.mainTitle}</h1>
           <p>{main.mainDescription}</p>
           <h2 className={styles.title}>{target.targetTitle}</h2>
@@ -65,37 +65,37 @@ export const CoursesByIdItem: FC<IFrontCourses> = ({
             ))}
           </ul>
         </div>
-        <aside className={styles.asideContainer}>
+        <aside className={styles.aside_container}>
           <h1 className={styles.title}>{aside?.price}</h1>
-          <ul className={styles.priceList}>
+          <ul className={styles.price_list}>
             {aside?.asideList.map((list: string, index: number) => (
-              <li key={index}>{list}</li>
+              <li key={index} className={styles.price_item}>{list}</li>
             ))}
           </ul>
-          <button className={styles.sendBtn}>Записатися на курс</button>
+          <button className={styles.send_btn}>Записатися на курс</button>
         </aside>
       </div>
-      <div className={styles.mentorContainer}>
+      <div className={styles.mentor}>
         <h1 className={styles.title}>Викладачі:</h1>
-        <ul className={styles.mentorCards}>
+        <ul className={styles.mentor_cards}>
           {mentors.map((mentor) => (
             <Fragment key={mentor.idMentor}>
-              <div className={styles.mentorCard}>
+              <div className={styles.mentor_card}>
                 <Image
                   src={mentor.imagesMentors}
                   alt={"Mentore Image"}
                   width={150}
                   height={150}
                 />
-                <li className={styles.mentorFullName}>{mentor.fullname}</li>
-                <li className={styles.mentorAbout}>{mentor.about}</li>
+                <li className={styles.mentor_fullName}>{mentor.fullname}</li>
+                <li className={styles.mentor_about}>{mentor.about}</li>
               </div>
             </Fragment>
           ))}
         </ul>
       </div>
       <div>
-        <h1 className={styles.titleCourses}>{coursesProgram.coursesTitle}</h1>
+        <h1 className={styles.title_courses}>{coursesProgram.coursesTitle}</h1>
         <Image
           src={coursesProgram.coursesImg ? coursesProgram.coursesImg : ""}
           alt={""}

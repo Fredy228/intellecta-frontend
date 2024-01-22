@@ -21,19 +21,20 @@
     border-radius: 50%;
     border: 3px solid $light-text-color;
   }
+  &_title_wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+  }
 }
-.titleWrapper {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 5px;
-}
+
 .title {
   color: $main-text-color;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: $font-size-lg;
+  font-weight: $title-weight;
 }
 .subtitle {
   color: $second-text-color;
@@ -43,7 +44,7 @@
 .role {
   color: $main-text-color;
   font-size: $font-size-md;
-  font-weight: 600;
+  font-weight:  $title-weight;
 }
 .knowledge {
   display: flex;

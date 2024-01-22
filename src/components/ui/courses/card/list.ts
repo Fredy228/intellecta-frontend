@@ -1,4 +1,7 @@
 import { EnumCourses } from "@/enums/courses/courseType-enum";
+import {IconProgramming} from "@/components/reused/Icon/Icon";
+import {ReactNode, SVGProps} from "react";
+import {JSXClosingElement, JSXElement} from "@babel/types";
 
 export type TCoursesProps = {
   id: number | string;
@@ -6,6 +9,7 @@ export type TCoursesProps = {
   types?: string;
   urlCheck?: string;
   description?: string;
+  attr?: string;
 };
 export interface ITestList extends TCoursesProps {
   title: string;
@@ -47,10 +51,11 @@ export type TMentore = {
 export const listItem: TCoursesProps[] = [
   {
     id: 1,
-    images: `${process.env.NEXT_URL}/img/courses/front-end-basic.png`,
+    images: `${process.env.NEXT_URL}/img/courses/programming.svg`,
     types: "Програмування",
     urlCheck: "programming",
     description: "Курси Back-end, Front-end, Machine Learning та DevOps",
+    attr: "programming",
   },
   {
     id: 2,
@@ -59,6 +64,7 @@ export const listItem: TCoursesProps[] = [
     urlCheck: "testing",
     description:
       "Курси тестувальників: QA Manual та QA Automation на Java, Python та JavaScript, а також підготовка до сертифікації ISTQB",
+    attr: "testing",
   },
   {
     id: 3,
@@ -66,6 +72,7 @@ export const listItem: TCoursesProps[] = [
     types: "Маркетинг",
     urlCheck: "marketing",
     description: "Курси інтернет маркетингу та SMM",
+    attr: "marketing",
   },
 ];
 

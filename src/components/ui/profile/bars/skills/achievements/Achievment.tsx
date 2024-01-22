@@ -8,7 +8,7 @@ export const Achievement = () => {
   return (
     <div>
       <h1 className={styles.title}>Досягнення</h1>
-      <ul className={styles.achievementContainer}>
+      <ul className={styles.achievement_container}>
         {Achieve.map((achive: TAchievivList, idx:number) => (
           <AchievmentItem key={idx} {...achive} />
         ))}

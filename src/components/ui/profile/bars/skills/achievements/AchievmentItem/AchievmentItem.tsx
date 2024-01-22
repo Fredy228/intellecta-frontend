@@ -5,7 +5,7 @@ import styles from "./AchievmentItem.module.scss";
 export const AchievmentItem: FC<TAchievivList> = ({ images, named }) => {
   return (
     <>
-      <div className={styles.cardWrapper}>
+      <div className={styles.card_wrapper}>
         <Image src={images} alt={"card images"} width={75} height={75} />
         <li className={styles.named}>{named}</li>
       </div>
