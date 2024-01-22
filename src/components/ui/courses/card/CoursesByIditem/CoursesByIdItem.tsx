@@ -28,28 +28,28 @@ export const CoursesByIdItem: FC<IFrontCourses> = ({
           <IconBack />
           <Link href={`/dashboard/courses/`}>Повернутися</Link>
         </div>
-        <div>
+        <div className={styles.top_wrapper}>
           <h1 className={styles.titlePage}>{titlePage}</h1>
           <h1 className={styles.descriptionPage}>{descriptionPage}</h1>
         </div>
       </div>
       <ul className={styles.iconsList}>
-        <li>
+        <li className={styles.icon_container}>
           <IconRocket />
           11 грудня старт
         </li>
-        <li>
+        <li className={styles.icon_container}>
           <IconTime />
           20 занять
         </li>
-        <li>
+        <li className={styles.icon_container}>
           <IconCalendar />2 заняття на тиждень
         </li>
-        <li>
+        <li className={styles.icon_container}>
           <IconFile />
           сертифікат по закінченню
         </li>
-        <li>
+        <li className={styles.icon_container}>
           <IconLearn />
           нагорода від Intellecta
         </li>

@@ -28,18 +28,18 @@ export const CourseTypeItem: FC<IFrontCourses> = ({
             <h1 className={styles.title}>{types}</h1>
             <div className={styles.subtitleWrapper}>
               <h2 className={styles.subtitle}>{company}</h2>
-              <li>
+              <li className={styles.icon_container}>
                 <IconLearn />
               </li>
             </div>
           </div>
         </div>
         <div className={styles.barWrapper}>
-          <li>
+          <li className={styles.icon_container}>
             <IconRocket />
             <p>11 грудня старт</p>
           </li>
-          <li>
+          <li className={styles.icon_container}>
             <IconTime />
             <p>20 занять</p>
           </li>

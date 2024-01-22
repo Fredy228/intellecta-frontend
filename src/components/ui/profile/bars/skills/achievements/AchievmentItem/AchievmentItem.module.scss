@@ -4,10 +4,11 @@
   flex-direction: column;
   align-items: center;
   gap: 9px;
-}
-.named {
-  color: $second-text-color;
-  font-size: $font-size-md;
-  font-weight: $title-weight;
-  text-align: center;
+  .named {
+    color: $second-text-color;
+    font-size: $font-size-md;
+    font-weight: $title-weight;
+    text-align: center;
+  }
+
 }

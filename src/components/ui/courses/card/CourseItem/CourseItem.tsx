@@ -21,7 +21,7 @@ export const CourseItem: FC<TCoursesProps> = ({
             alt="Courses image"
             className={styles.cardImg}
           />
-          <div>
+          <div className={styles.type_container}>
             <h1 className={styles.title}>{types}</h1>
           </div>
         </div>

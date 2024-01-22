@@ -3,9 +3,9 @@ import styles from "./friends.module.scss";
 export const Friends = () => {
   return (
     <div className={styles.friendWrapper}>
-      <div className={styles.infoWrapper}>
-        <h1>Друзі</h1>
-        <h2>525</h2>
+      <div className={styles.info_wrapper}>
+        <h1 className={styles.info_title}>Друзі</h1>
+        <h2 className={styles.info_quantity}>525</h2>
       </div>
       <IconFriends />
     </div>

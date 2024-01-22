@@ -4,7 +4,7 @@ export default function TopBar() {
   return (
     <div className={styles.barWrapper}>
         {barsLists.map(list => ( 
-            <button key={list.id}>{list.named}</button>
+            <button key={list.id} className={styles.button}>{list.named}</button>
         ))}
     </div>
   )

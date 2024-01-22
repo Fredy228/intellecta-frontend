@@ -6,11 +6,13 @@
   width: 100%;
   max-width: 325px;
   grid-gap: 42px 16px;
-}
-.title {
-  color: $main-text-color;
-  font-size: 22px;
-  font-weight: $title-weight;
-  margin-bottom: 16px;
-  margin-left: 17px;
+
+  .title {
+    color: $main-text-color;
+    font-size: 22px;
+    font-weight: $title-weight;
+    margin-bottom: 16px;
+    margin-left: 17px;
+  }
+
 }

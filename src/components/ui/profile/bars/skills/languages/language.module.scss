@@ -27,14 +27,14 @@
 .rate {
   margin-bottom: 30px;
 
-  > h2 {
+  &_title {
     color: $main-text-color;
     font-size: 22px;
     font-weight: $title-weight;
     margin-top: 10px;
     margin-bottom: 10px;
   }
-  > p {
+  &_numbers {
     width: 100%;
     max-width: 85px;
     color: $background-item;
