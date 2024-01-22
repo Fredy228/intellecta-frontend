@@ -2,6 +2,9 @@
 export { default as IconSmallRightArrow } from "./storage/small-right-arrow.svg";
 export { default as IconProcessing } from "./storage/processing.svg";
 
+//Auth icons
+export { default as IconGoogle } from "./storage/google.svg";
+
 //Header icons
 export { default as IconSetting } from "./storage/settings.svg";
 export { default as IconNotific } from "./storage/notific.svg";

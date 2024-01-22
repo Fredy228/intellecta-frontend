@@ -10,9 +10,10 @@
     8px 8px 9px 0px rgba(176, 176, 176, 0.3) inset;
 
   &_title {
-    font-size: 40px;
+    font-size: $font-size-xl;
     font-weight: 60;
     margin-bottom: 20px;
+    text-align: center;
   }
 
   &_form {
@@ -30,29 +31,45 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    font-size: 20px;
-    margin-bottom: 25px;
+    font-size: 18px;
+    margin-bottom: 15px;
   }
 
   &_input {
     width: 100%;
-    font-size: 20px;
-    padding: 5px 15px;
+    font-size: $font-size-md;
+    padding: 8px 15px;
     border: 2px solid #e8e8e8;
     border-radius: 50px;
     margin-top: 10px;
     outline-color: $background-item;
 
     &::placeholder {
-      color: #e8e8e8;
+      color: $color-option;
+    }
+
+    &.invalid {
+      border-color: #a9270b;
+    }
+  }
+
+  &_linkRedirect {
+    font-size: $font-size-md;
+    margin-bottom: 15px;
+    outline: transparent;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
     }
   }
 
   &_button {
     background-color: $background-item;
     color: $light-text-color;
-    font-size: 25px;
-    width: 170px;
+    font-size: $font-size-lg;
+    max-width: 330px;
+    width: 100%;
     height: 50px;
 
     display: flex;
@@ -60,14 +77,72 @@
     align-items: center;
 
     border-radius: 50px;
-    border: none;
+    border: 1px solid transparent;
     cursor: pointer;
-    transition: background-color 350ms ease;
+
+    transition-timing-function: ease;
+    transition-property: background-color, border-color, opacity;
+    transition-duration: 350ms;
 
     outline-color: $accent-color;
+
+    &:disabled {
+      opacity: 0.8;
+    }
 
     &:hover {
       background-color: $accent-color;
     }
+
+    &.google {
+      background-color: transparent;
+      color: $background-item;
+
+      &:hover {
+        border-color: $color-option;
+      }
+    }
+  }
+
+  &_separatorWrap {
+    display: inline-block;
+    position: relative;
+    max-width: 330px;
+    width: 100%;
+
+    margin: 15px 0;
+    height: 24px;
+
+    &::before {
+      content: "";
+
+      height: 1px;
+      width: 100%;
+      background-color: $second-text-color;
+
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+  }
+
+  &_separator {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: inline-flex;
+    height: 24px;
+    width: 40px;
+    background-color: $background-body;
+
+    justify-content: center;
+    align-items: center;
+    color: $second-text-color;
+
+    font-size: $font-size-md;
+    font-weight: 400;
   }
 }

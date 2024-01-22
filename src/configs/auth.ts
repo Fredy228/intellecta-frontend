@@ -1,29 +1,80 @@
-import type { AuthOptions } from "next-auth";
+import type { AuthOptions, User } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import * as API from "@/axios/auth";
-import { UserInterface } from "@/interfaces/user";
+import GoogleProvider from "next-auth/providers/google";
+
+import { googleAuth, loginUser, registerUser } from "@/axios/auth";
 import { AdapterUser } from "next-auth/adapters";
+import { TGoogleProfile } from "@/types/auth/auth-types";
+import { decodeJwtToken } from "@/services/jwtToken";
+import { UserInterface } from "@/interfaces/user";
 
 export const authConfig: AuthOptions = {
   providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      authorization: {
+        params: { prompt: "select_account" },
+      },
+    }),
     Credentials({
       credentials: {
         email: { label: "email", type: "email", required: true },
         password: { label: "password", type: "password", required: true },
+        firstName: {
+          label: "name",
+          type: "text",
+          placeholder: "Enter your first name",
+        },
+        lastName: {
+          label: "name",
+          type: "text",
+          placeholder: "Enter your last name",
+        },
+        type: {
+          label: "type",
+          type: "text",
+          required: true,
+          placeholder: "Enter: login or register",
+        },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials.password) return null;
+        if (!credentials?.email || !credentials?.password) return null;
+        if (!["register", "login"].includes(credentials?.type)) return null;
+        let user = null;
 
-        const data = await API.loginUser({
-          email: credentials.email,
-          password: credentials.password,
-        });
+        if (credentials.type === "login") {
+          user = await loginUser({
+            email: credentials.email,
+            password: credentials.password,
+          });
 
-        if (data?.user) {
           return {
-            ...data.user,
-            token: data.token,
-          } as UserInterface;
+            id: String(user.id),
+            name: user.firstName,
+            email: user.email,
+            image: user.image,
+            accessToken: user.accessToken,
+            refreshToken: user.refreshToken,
+          } as User;
+        }
+
+        if (credentials.type === "register") {
+          user = await registerUser({
+            email: credentials.email,
+            password: credentials.password,
+            firstName: credentials.firstName,
+            lastName: credentials.lastName,
+          });
+
+          return {
+            id: String(user.id),
+            name: user.firstName,
+            email: user.email,
+            image: user.image,
+            accessToken: user.accessToken,
+            refreshToken: user.refreshToken,
+          } as User;
         }
 
         return null;
@@ -32,39 +83,95 @@ export const authConfig: AuthOptions = {
   ],
   session: {
     strategy: "jwt",
-    maxAge: 60 * 60 * 24,
   },
   callbacks: {
-    async jwt({ token, user, account, profile }) {
+    async jwt({ token, user, account, profile, trigger, session }) {
       if (user) {
-        const userData = user as UserInterface;
         token.user = user;
-        token.id = user.id;
-        token.accessToken = userData.token;
       }
-      // if (account) {
-      //   token.accessToken = account.access_token;
-      // }
-      // console.log("token-jwt", token);
-      // console.log("account-jwt", account);
-      // console.log("profile-jwt", account);
+
+      if (user && account?.provider === "google" && profile?.email) {
+        const profileUser = profile as TGoogleProfile;
+        const payload = {
+          email: profile.email,
+          firstName: profileUser.given_name,
+          lastName: profileUser.family_name,
+          image: profileUser.picture,
+        };
+        const findUser = await googleAuth(payload);
+        token.user = {
+          ...user,
+          name: profileUser.given_name,
+          accessToken: findUser.accessToken,
+          refreshToken: findUser.refreshToken,
+        };
+      }
+
+      if (
+        trigger === "update" &&
+        session?.accessToken &&
+        session?.refreshToken
+      ) {
+        const updateToken = {
+          accessToken: session?.accessToken,
+          refreshToken: session?.refreshToken,
+        };
+        token.user = { ...user, ...updateToken };
+      }
+
       return token;
     },
-    async session({ session, token, user }) {
-      console.log("user-session", user);
-      // console.log("token-session", token);
-      // console.log("accessToken", token.accessToken);
+    async session({ session, token }) {
       session.user = token.user as AdapterUser;
-      // console.log("session", session);
+      const tokenAuth = token.user as UserInterface;
+
+      if (!tokenAuth.refreshToken || !tokenAuth.accessToken) {
+        session.user = undefined;
+        return session;
+      }
+
+      const decodedTokenAs = decodeJwtToken(tokenAuth.accessToken);
+      const decodedTokenRf = decodeJwtToken(tokenAuth.refreshToken);
+
+      const currTime = new Date().getTime();
+      const currExpAs = decodedTokenAs?.exp
+        ? decodedTokenAs.exp * 1000
+        : (session.user = undefined);
+      const currExpRf = decodedTokenRf?.exp
+        ? decodedTokenRf.exp * 1000
+        : (session.user = undefined);
+
+      console.log(
+        "Left access:",
+        currExpAs &&
+          Math.floor((currExpAs - currTime) / 60)
+            .toString()
+            .slice(0, 2) + "m",
+      );
+      console.log(
+        "Left refresh:",
+        currExpRf &&
+          Math.floor((currExpRf - currTime) / 60)
+            .toString()
+            .slice(0, 2) + "m",
+      );
+
+      if (currExpRf && currTime > currExpRf) {
+        session.user = undefined;
+        return session;
+      }
+
+      if (currExpAs && currTime > currExpAs - 1000) {
+        const clearToken = { accessToken: null };
+        session.user = { ...session.user, ...clearToken };
+      }
 
       return session;
     },
   },
-  jwt: {
-    maxAge: 60 * 60 * 24,
-  },
   pages: {
-    signIn: "/sign-in",
-    error: "/sign-in",
+    signIn: "/auth/login",
+    error: "/auth/login",
+    newUser: "/auth/register",
   },
 };

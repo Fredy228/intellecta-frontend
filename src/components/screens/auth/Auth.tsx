@@ -3,24 +3,21 @@
 import { type NextPage } from "next";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 
-import styles from "./sing-in.module.scss";
+import styles from "./auth.module.scss";
 
-import SingInForm from "@/components/screens/auth/form/SingInForm";
+import AuthForm from "@/components/screens/auth/form/AuthForm";
+import LoaderPage from "@/components/reused/loader/loader-page";
 
-const SingIn: NextPage = () => {
+const Auth: NextPage = () => {
   const divRef = useRef<HTMLDivElement | null>(null);
 
-  const router = useRouter();
+  const pathname = usePathname();
   const session = useSession();
 
-  useEffect(() => {
-    if (session?.data) {
-      router.push("/dashboard");
-    }
-  }, [session]);
+  const isRegister = pathname === "/auth/register";
 
   useEffect(() => {
     function moveBg(e: any) {
@@ -36,6 +33,9 @@ const SingIn: NextPage = () => {
       window.removeEventListener("mousemove", moveBg);
     };
   }, []);
+
+  if (session.status === "loading") return <LoaderPage isFull={true} />;
+  if (session.status === "authenticated") redirect("/dashboard");
 
   return (
     <div className={styles.singin}>
@@ -59,9 +59,11 @@ const SingIn: NextPage = () => {
             Intellecta<span>.</span>
           </p>
         </div>
-        <SingInForm />
+        <div className={styles.singin_wrapperForm}>
+          <AuthForm isRegister={isRegister} />
+        </div>
       </div>
     </div>
   );
 };
-export default SingIn;
+export default Auth;
