@@ -15,6 +15,9 @@ NEXTAUTH_SECRET='secret key for jwt'
 TURN_SERVER_URL='URL your turn server'
 TURN_SERVER_USER='username your turn server'
 TURN_SERVER_PASSWORD='password your turn server'
+
+GOOGLE_CLIENT_ID='string'
+GOOGLE_CLIENT_SECRET='string'
 ```
 
 2. Запуск проекту
