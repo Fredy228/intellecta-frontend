@@ -10,6 +10,9 @@
   display: flex;
   position: relative;
   align-items: center;
+  &:focus{
+    outline:$background-item ;
+  }
 }
 .container {
   width: 100%;
@@ -29,9 +32,10 @@
   gap: 11px;
 }
 .input {
-  width: 282px;
+  width: 100%;
+  max-width: 282px;
   height: 46px;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 24px;
   background: $background-option;
   box-shadow:
@@ -41,6 +45,11 @@
   padding-bottom: 11px;
   padding-left: 20px;
   color: $second-text-color;
+  transition: all 0.3s;
+  &:hover{
+    border:1px solid $background-item ;
+    transition: all 0.3s;
+  }
 }
 .searchButton {
   display: flex;

@@ -12,11 +12,15 @@
     border: 1px solid $light-text-color;
     background: $background-option;
     box-shadow: 4px 4px 25px 0 rgba(160, 160, 160, 0.50), -4px -4px 25px 0px $light-text-color, 4px 4px 35px 0px $light-text-color inset;
-    padding:23px 31px 22px 21px
+    padding:23px 31px 22px 21px;
+    transition: all 0.3s;
+    &:hover{
+        border:1px solid $background-item ;
+        transition: all 0.3s;
+    }
 }
 .cardImg{
     margin-bottom:27px;
-    
 }
 .cardTop{
     display:flex;
@@ -89,7 +93,6 @@
             }
         }
 }
-
 .barWrapper {
     display: flex;
     gap:20px;
