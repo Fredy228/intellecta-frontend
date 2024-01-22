@@ -2,8 +2,10 @@ import "./globals.scss";
 import "react-toastify/dist/ReactToastify.css";
 import type { Metadata } from "next";
 import React from "react";
-import { Providers } from "@/components/providers/providers";
 import { ToastContainer } from "react-toastify";
+
+import { Providers } from "@/components/providers/providers";
+import { AuthProviders } from "@/components/providers/auth-propvider";
 
 export const metadata: Metadata = {
   title: "Intellecta",
@@ -18,22 +20,24 @@ export default function RootLayout({
   return (
     <html lang="uk">
       <Providers>
-        <body>
-          {children}
-          <ToastContainer
-            position="top-right"
-            autoClose={3000}
-            limit={3}
-            hideProgressBar={true}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="colored"
-          />
-        </body>
+        <AuthProviders>
+          <body>
+            {children}
+            <ToastContainer
+              position="top-right"
+              autoClose={3000}
+              limit={3}
+              hideProgressBar={true}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="colored"
+            />
+          </body>
+        </AuthProviders>
       </Providers>
     </html>
   );

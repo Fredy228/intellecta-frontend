@@ -1,8 +1,8 @@
 "use client";
 
 import { type FC, useState } from "react";
-import { useSession } from "next-auth/react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useSelector } from "react-redux";
 
 import styles from "./header.module.scss";
 
@@ -14,12 +14,10 @@ import {
 
 import Notice from "@/components/layout/header/notice/Notice";
 import Backdrop from "@/components/reused/backdrop/Backdrop";
-
-import { UserInterface } from "@/interfaces/user";
+import { selectUser } from "@/redux/user/selectors";
 
 const Header: FC = () => {
-  const { data } = useSession();
-  const currentUser = data?.user as UserInterface;
+  const user = useSelector(selectUser);
 
   const [isShowNotice, setIsShowNotice] = useState<boolean>(false);
 
@@ -27,7 +25,7 @@ const Header: FC = () => {
     <header className={styles.header}>
       <div className={styles.header_inner}>
         <div className={styles.header_userName}>
-          <p>Привіт {data && currentUser.firstName},</p>
+          <p>Привіт {user.firstName}</p>
         </div>
         <ul className={styles.header_listNotificCenter}>
           <AnimatePresence>

@@ -10,12 +10,12 @@
     width: 280px;
   }
 
-  //@media screen and (max-width: 1279px) and (min-width: 768px) {
-  //  width: 70px;
-  //  &.active {
-  //    width: 70px;
-  //  }
-  //}
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    width: 70px;
+    &.active {
+      width: 70px;
+    }
+  }
 
   &_inner {
     position: absolute;
@@ -35,6 +35,10 @@
   &_inner.active,
   &_inner:hover {
     width: 280px;
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+      width: 70px;
+    }
   }
 
   &_wrapperLogo {
@@ -44,7 +48,7 @@
     justify-content: center;
     align-items: center;
 
-    @media screen and (max-width: 1279px) and (min-width: 768px) {
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
       height: 80px;
     }
   }
@@ -63,6 +67,10 @@
   &_inner:hover &_logo,
   &_inner.active &_logo {
     display: initial;
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+      display: none;
+    }
   }
 
   &_logoV2 {
@@ -74,6 +82,10 @@
   &_inner:hover &_logoV2,
   &_inner.active &_logoV2 {
     display: none;
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+      display: block;
+    }
   }
 
   &_listMenuWrapper {
@@ -91,13 +103,7 @@
     height: 100%;
 
     overflow-x: hidden;
-    //-ms-overflow-style: none;
-    //scrollbar-width: none;
   }
-
-  //&_listMenu::-webkit-scrollbar {
-  //  width: 0;
-  //}
 
   &_itemMenu {
     height: 58px;
@@ -111,7 +117,7 @@
     transition-timing-function: ease;
     transition-property: background, box-shadow, color;
 
-    @media screen and (max-width: 1279px) and (min-width: 768px) {
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
       padding: 0;
       height: 48px;
     }
@@ -139,7 +145,7 @@
     width: 100%;
     height: 100%;
 
-    @media screen and (max-width: 1279px) and (min-width: 768px) {
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
       justify-content: center;
     }
   }
@@ -149,7 +155,7 @@
     width: 30px;
     height: 30px;
 
-    @media screen and (max-width: 1279px) and (min-width: 768px) {
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
       margin-right: 0;
     }
   }
@@ -161,6 +167,10 @@
     visibility: hidden;
     opacity: 0;
     transition: opacity 100ms ease 300ms;
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+      display: none;
+    }
   }
 
   &_inner:hover &_linkText,
@@ -178,7 +188,7 @@
 
     border-top: 1px solid #e4e4e4;
 
-    @media screen and (max-width: 1279px) and (min-width: 768px) {
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
       padding: 0 5px;
       justify-content: center;
     }
@@ -196,6 +206,10 @@
     visibility: hidden;
     opacity: 0;
     transition: opacity 100ms ease 300ms;
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+      display: none;
+    }
   }
 
   &_inner:hover &_wrapperUserName,
@@ -203,6 +217,10 @@
     display: flex;
     visibility: visible;
     opacity: 1;
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+      display: none;
+    }
   }
 
   &_userName {
@@ -233,5 +251,9 @@
   &_inner:hover &_wrapperChangeIcon,
   &_inner.active &_wrapperChangeIcon {
     display: flex;
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+      display: none;
+    }
   }
 }
