@@ -101,7 +101,8 @@
 .send_btn {
   border-radius: 50px;
   background: $background-item;
-  width: 341px;
+  width: 100%;
+  max-width: 341px;
   height: 50px;
   color: $light-text-color;
   font-size: 25px;
@@ -136,16 +137,14 @@
   }
   &_fullName {
     color: #000;
-    font-family: "Unbounded", sans-serif;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: $title-weight;
     text-align: center;
   }
   &_about {
     width: 100%;
     max-width: 231px;
     color: $second-text-color;
-    font-family: "Unbounded", sans-serif;
     font-size: 15px;
     font-weight: $title-weight;
     padding-left: 20px;
