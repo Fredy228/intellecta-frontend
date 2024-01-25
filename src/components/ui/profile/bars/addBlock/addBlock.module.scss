@@ -1,6 +1,6 @@
 @import '@/styles/varible';
 
-.addWrapper {
+.add_wrapper {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -14,6 +14,24 @@
     -4px -4px 25px 0px $light-text-color,
     4px 4px 35px 0px $light-text-color inset;
   margin-top: 27px;
+  svg{
+    background-color: #11142d;
+  }
+}
+
+.modal_wrapper{
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  background-color: #f2f2f2;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  max-width: 740px;
+  width: 100%;
+  min-height: 450px;
+  height: 60vh;
+  padding: 12px;
+  transform: translateX(50%);
 }
 .btnAdd {
   @include plus-button;
