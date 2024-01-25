@@ -10,14 +10,14 @@ export const Account = () => {
   return (
     <main className={styles.main}>
       <CardProfile />
-      <div className={styles.profileContainer}>
+      <div className={styles.profile_container}>
         <div>
           <Contacts />
           <Friends />
           <AddBlockSecond />
         </div>
         <div style={{flex: "1"}}>
-          <div className={styles.coursesBlock}>
+          <div className={styles.courses_block}>
             <Achievement />
             <Languages />
           </div>

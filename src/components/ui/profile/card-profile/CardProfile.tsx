@@ -21,11 +21,17 @@ export const CardProfile = () => {
         src={
           user.image
             ? user.image
-            : `${process.env.NEXT_URL}/img/sidebar/avatar.png`
+            : `${process.env.NEXT_URL}/img/sidebar/avatar1.png`
         }
         alt={""}
+        sizes="100vw"
         width={150}
         height={150}
+        style={{
+            width: '100%',
+            maxWidth:'150px',
+            height: 'auto',
+        }}
       />
       <div className={styles.card_wrapper}>
         <div className={styles.card_title_wrapper}>

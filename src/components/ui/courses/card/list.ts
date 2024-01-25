@@ -1,15 +1,14 @@
 import { EnumCourses } from "@/enums/courses/courseType-enum";
-import {IconProgramming} from "@/components/reused/Icon/Icon";
-import {ReactNode, SVGProps} from "react";
-import {JSXClosingElement, JSXElement} from "@babel/types";
+import {JSX} from "react";
 
 export type TCoursesProps = {
   id: number | string;
-  images: string;
+  images?: string;
   types?: string;
   urlCheck?: string;
   description?: string;
   attr?: string;
+  Icon?: JSX.Element
 };
 export interface ITestList extends TCoursesProps {
   title: string;

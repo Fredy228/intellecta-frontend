@@ -41,4 +41,3 @@ export { default as IconLocation } from "./storage/location.svg";
 export { default as IconCalendarList } from "./storage/calendar-list.svg";
 export { default as IconFriends } from "./storage/friends.svg";
 export { default as IconAddList } from "./storage/add-btn-list.svg";
-export { default as IconProgramming } from "./storage/programming.svg"

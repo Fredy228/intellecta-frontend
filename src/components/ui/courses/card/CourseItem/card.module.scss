@@ -21,16 +21,18 @@
             flex-wrap: wrap;
         }
     }
-    &_img{
+    .svg{
         margin-bottom:27px;
         border-radius: 19px;
-        &[data-attribute="programming"] {
-            background: linear-gradient(138deg, #0029FF -8%, #FA00FF 106.69%);
-            padding: 17px 20px 18px 14px;
-
+        background: linear-gradient(138deg, #0029FF -8%, #FA00FF 106.69%);
+        padding: 17px 20px 18px 14px;
+        max-width: 109px;
+        max-height: 108px;
+        >svg{
+            width: 70px;
+            height: 81px;
         }
     }
-
     &:hover{
         border:1px solid $background-item ;
     }
