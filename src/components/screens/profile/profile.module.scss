@@ -1,25 +1,38 @@
+@import "@/styles/varible";
+
 .main {
   overflow-y: auto;
   padding-right: 15px;
   padding-bottom: 20px;
   width: 100%;
 }
-.profileContainer {
+.profile_container {
   width: 100%;
   display: flex;
   gap: 50px;
 }
-.coursesBlock {
+.courses_block {
   width: 100%;
 
-  gap: 53px;
+  gap: calc(100px - 54px);
   display: flex;
-  border-radius: 24px;
-  border: 1px solid #fff;
-  background: #ededed;
+  background: $background-option;
   padding: 25px;
-  box-shadow:
-    4px 4px 25px 0 rgba(160, 160, 160, 0.5),
-    -4px -4px 25px 0px #fff,
-    4px 4px 35px 0px #fff inset;
+  border-radius: 24px;
+  border: 1px solid #FFF;
+  background: #EDEDED;
+  box-shadow: 4px 4px 25px 0 rgba(160, 160, 160, 0.50), -4px -4px 25px 0px #FFF, 4px 4px 35px 0px #FFF inset;
+  > div:first-child{
+    border-right: 2px solid #D9D9D9;
+    padding-right: 54px;
+
+  }
+}
+@media (max-width: 769px) {
+  .courses_block {
+    > div:first-child {
+      border-right: none;
+      padding-right: 0;
+    }
+  }
 }

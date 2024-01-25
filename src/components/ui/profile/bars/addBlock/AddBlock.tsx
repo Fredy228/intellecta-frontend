@@ -1,11 +1,37 @@
+"use client"
 import styles from "./addBlock.module.scss";
+import {useState} from "react";
+import Backdrop from "@/components/reused/backdrop/Backdrop";
+import {WidgetsEnum} from "@/enums/widgets/widgets-enum";
+import {AnimatePresence,} from "framer-motion";
+import {ModalWindow} from "@/components/ui/profile/modal-window/ModalWindow";
+
+const initialWidgets = [
+    {
+        id: "sdfdsfsf",
+        type: WidgetsEnum.CHATS,
+        value: "",
+    },
+];
 export const AddBlock = () => {
-  return (
-    <div className={styles.addWrapper}>
-      <button
-          className={styles.btnAdd}
-          type={"button"}
-      ></button>
-    </div>
-  );
+    const [isShowAddWidget, setIsShowAddWidget] = useState<boolean>(false);
+
+    return (
+        <div className={styles.add_wrapper}>
+            <button
+                className={styles.btnAdd}
+                type={"button"}
+                onClick={() => setIsShowAddWidget(true)}
+            ></button>
+                    <div className={styles.homeWidget_flex}>
+                        <AnimatePresence>
+                            {isShowAddWidget && (
+                                <Backdrop setShow={setIsShowAddWidget}>
+                                    <ModalWindow/>
+                                </Backdrop>
+                            )}
+                        </AnimatePresence>
+                    </div>
+        </div>
+    );
 };

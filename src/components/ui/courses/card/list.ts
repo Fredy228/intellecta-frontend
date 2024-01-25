@@ -2,7 +2,7 @@ import { EnumCourses } from "@/enums/courses/courseType-enum";
 
 export type TCoursesProps = {
   id: number | string;
-  images: string;
+  images?: string;
   types?: string;
   urlCheck?: string;
   description?: string;
@@ -47,10 +47,11 @@ export type TMentore = {
 export const listItem: TCoursesProps[] = [
   {
     id: 1,
-    images: `${process.env.NEXT_URL}/img/courses/front-end-basic.png`,
+    images: `${process.env.NEXT_URL}/img/courses/programming.svg`,
     types: "Програмування",
     urlCheck: "programming",
     description: "Курси Back-end, Front-end, Machine Learning та DevOps",
+
   },
   {
     id: 2,

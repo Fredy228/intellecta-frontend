@@ -4,19 +4,19 @@ import styles from "@/components/ui/profile/bars/skills/languages/language.modul
 
 export const Languages = () => {
   return (
-    <div>
+    <div className={styles.languages}>
       <h1 className={styles.title}>Скіли</h1>
-      <ul className={styles.menuList}>
+      <ul className={styles.languages_menu_list}>
         {ProgramLang.lang.map((lang: string, idx: number) => (
-          <li key={idx}>{lang}</li>
+          <li key={idx} className={styles.languages_menu_item}>{lang}</li>
         ))}
-        <button className={styles.addList}>
+        <button className={styles.add_list}>
           <IconAddList />
         </button>
       </ul>
       <div className={styles.rate}>
-        <h2>Рейтинг</h2>
-        <p>7.5/10</p>
+        <h2 className={styles.rate_title}>Рейтинг</h2>
+        <p className={styles.rate_numbers}>7.5/10</p>
       </div>
     </div>
   );

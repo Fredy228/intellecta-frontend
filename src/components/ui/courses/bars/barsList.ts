@@ -2,41 +2,12 @@ export type TBarsProps = {
 
     id:number;
     named:string;
-
-}
-export interface ISupBarProps extends TBarsProps { 
-
     images: string;
 
 }
-export const barsLists: TBarsProps[] = [
-    {
-        id:1,
-        named:'Програмування'
-    },
-    {
-        id:2,
-        named:'Тестування'
-    },
-    {
-        id:3,
-        named:'Менеджемент'
-    },
-    {
-        id:4,
-        named:'Маркетинг'
-    },
-    {
-        id:5,
-        named:'Дизайн'
-    },
-    {
-        id:6,
-        named:'Підліткові курси'
-    },
-]
 
-export const supBarsLists: ISupBarProps[] = [
+
+export const supBarsLists: TBarsProps[] = [
     {
         id:1,
         named:'Front-end',
