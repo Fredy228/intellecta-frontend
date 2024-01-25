@@ -1,21 +1,19 @@
 import Link from "next/link";
-import Image from "next/image";
 import { FC } from "react";
 import { TCoursesProps } from "../list";
 import styles from "./card.module.scss";
-import {IconsImport} from "@/components/reused/Icon/IconsImport";
+import {IconsImport, listOptionsImg} from "@/components/reused/Icon/IconsImport";
 
-export const CourseItem: FC<TCoursesProps> = async ({
-  images,
+export const CourseItem: FC<TCoursesProps> =  ({
   types,
   description,
   urlCheck,
-                                                    }) => {
+}) => {
   return (
     <ul  className={styles.card}>
       <Link href={`/dashboard/courses/${urlCheck}`}>
         <div className={styles.card_top}>
-            <IconsImport/>
+              <IconsImport />
           <div className={styles.type_container}>
             <h1 className={styles.title}>{types}</h1>
           </div>

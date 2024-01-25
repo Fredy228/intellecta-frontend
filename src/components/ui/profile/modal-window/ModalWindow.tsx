@@ -5,6 +5,7 @@ import {
   coursesIcons,
   listOptionsImg
 } from "@/components/ui/profile/modal-window/modal-window-Item/icon-check/IconModal";
+import {IconsImport} from "@/components/reused/Icon/IconsImport";
 
 export const ModalWindow = () => {
   return (
@@ -13,9 +14,8 @@ export const ModalWindow = () => {
           {blockInfo.map(item => (
               <>
                 {listOptionsImg.map(( item ) => (
-                    <div>
-                      {coursesIcons[item.img]}
-                    </div>
+                      <IconsImport {...item}/>
+
                 ))}
                 <ModalWindowItem key={item.id} {...item}/>
               </>
