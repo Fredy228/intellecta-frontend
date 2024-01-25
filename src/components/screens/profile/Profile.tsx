@@ -19,6 +19,7 @@ export const Account = () => {
           <div className={styles.courses_block}>
             <Achievement />
             <Languages />
+
           </div>
           <AddBlock />
         </div>
