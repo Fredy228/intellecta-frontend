@@ -10,18 +10,18 @@ export const Account = () => {
     <main className={styles.main}>
       <CardProfile />
       <div className={styles.profile_container}>
-        <div>
           <Contacts />
           <Friends />
-          <AddBlock />
-        </div>
-        <div style={{flex: "1"}}>
-          <div className={styles.courses_block}>
-            <Achievement/>
-            <Languages/>
+          <div className={styles.btn_container}>
+              <AddBlock />
           </div>
-          <AddBlock/>
-        </div>
+              <Achievement/>
+              <Languages/>
+              <div className={styles.rate}>
+                  <h2 className={styles.rate_title}>Рейтинг</h2>
+                  <p className={styles.rate_numbers}>7.5/10</p>
+              </div>
+              <AddBlock/>
       </div>
     </main>
   );

@@ -14,10 +14,7 @@ export const Languages = () => {
           <IconAddList />
         </button>
       </ul>
-      <div className={styles.rate}>
-        <h2 className={styles.rate_title}>Рейтинг</h2>
-        <p className={styles.rate_numbers}>7.5/10</p>
-      </div>
+
     </div>
   );
 };

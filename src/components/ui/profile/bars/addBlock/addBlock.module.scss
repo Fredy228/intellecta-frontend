@@ -15,7 +15,7 @@
     -4px -4px 25px 0px $light-text-color,
     4px 4px 35px 0px $light-text-color inset;
   margin-top: 27px;
-
+  grid-area: pop-up;
   .modal_wrapper{
     position: absolute;
     bottom: 0;

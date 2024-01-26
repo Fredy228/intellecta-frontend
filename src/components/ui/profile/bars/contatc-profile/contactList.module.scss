@@ -12,7 +12,7 @@
     4px 4px 25px 0 rgba(160, 160, 160, 0.5),
     -4px -4px 25px 0px $light-text-color,
     4px 4px 35px 0px $light-text-color inset;
-
+  grid-area: contact;
   &_list {
     display: flex;
     flex-direction: column;
