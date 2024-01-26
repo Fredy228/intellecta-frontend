@@ -1,12 +1,19 @@
 @import "@/styles/varible";
 
 .languages_menu_list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(40px,115px));
+  grid-template-rows: repeat(auto-fill, 35px);
+  grid-row-gap: 20px;
+  grid-column-gap: 10px;
   width: 100%;
   max-width: 440px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 20px;
+  justify-items: start;
+  align-items: center;
+  //display: flex;
+  //flex-wrap: wrap;
+  //gap: 20px;
+  //margin-top: 20px;
 
   .languages_menu_item {
     text-align: center;
@@ -15,11 +22,11 @@
     font-weight: $title-weight;
     border-radius: 20px;
     background: $light-text-color;
-    padding: 7px 21px;
+    padding: 7px 15px;
   }
 }
 .add_list {
-  > svg {
+  svg{
     width: 35px;
     height: 35px;
   }

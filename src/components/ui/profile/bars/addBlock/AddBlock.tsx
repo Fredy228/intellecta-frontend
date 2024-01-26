@@ -23,7 +23,6 @@ export const AddBlock = () => {
             <button
                 className={styles.btnAdd}
                 type={"button"}
-                onClick={() => setIsShowAddWidget(true)}
             ></button>
                     <div >
                         <AnimatePresence>
