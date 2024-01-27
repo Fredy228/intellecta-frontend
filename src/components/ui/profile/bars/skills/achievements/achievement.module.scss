@@ -2,21 +2,22 @@
 
 .achievement_container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(60px,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(60px, 82px));
   grid-template-rows: repeat(auto-fill, 102px);
   width: 100%;
   max-width: 325px;
   grid-gap: 16px 39px;
-  @media (max-width: 768px) {
-    .achievement_container {
-      grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+  @media(max-width: 1080px) {
+    justify-content: center;
+    .title{
+      text-align: center;
     }
   }
-  //display: flex;
-  //flex-wrap: wrap;
-  //width: 100%;
-  //max-width: 325px;
-  //gap: 16px 53px;
+  @media (max-width: 768px) {
+    .achievement_container {
+      grid-template-columns: repeat(auto-fill, 100%);
+    }
+  }
 }
 .title {
   color: $main-text-color;
@@ -24,4 +25,7 @@
   font-weight: $title-weight;
   margin-bottom: 16px;
   margin-left: 17px;
+  @media(max-width: 1080px) {
+    text-align: center;
+  }
 }

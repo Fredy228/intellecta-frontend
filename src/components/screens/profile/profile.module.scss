@@ -1,5 +1,6 @@
 @import "@/styles/varible";
 
+
 .main {
   overflow-y: auto;
   padding-right: 15px;
@@ -28,10 +29,27 @@
 
   }
 }
-@media (max-width: 769px) {
+@media(max-width: 1080px){
+  .courses_block {
+    display: flex;
+   flex-wrap: wrap;
+    justify-content: center;
+    > div:first-child {
+      border-right: none;
+    }
+  }
+}
+
+@media (max-width:960px) {
   .courses_block {
     > div:first-child {
       border-right: none;
+    }
+  }
+}
+@media (max-width: 1268px) {
+  .courses_block {
+    > div:first-child {
       padding-right: 0;
     }
   }
