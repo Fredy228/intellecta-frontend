@@ -1,25 +1,29 @@
 import axios, { setAuthHeader } from "@/axios/base";
 
-import { TGoogleAuth, TLoginBody, TRegisterBody } from "@/types/auth/auth-types";
+import {
+  TGoogleAuth,
+  TLoginBody,
+  TRegisterBody,
+} from "@/types/auth/auth-types";
 import { UserInterface } from "@/interfaces/user";
 import { generateJwtToken } from "@/services/jwtToken";
 
 export const loginUser = async (
-    credentials: TLoginBody,
+  credentials: TLoginBody,
 ): Promise<UserInterface> => {
   const { data } = await axios.post("/api/auth/login", credentials);
   return data;
 };
 
 export const registerUser = async (
-    credentials: TRegisterBody,
+  credentials: TRegisterBody,
 ): Promise<UserInterface> => {
   const { data } = await axios.post("/api/auth/register", credentials);
   return data;
 };
 
 export const googleAuth = async (
-    payload: TGoogleAuth,
+  payload: TGoogleAuth,
 ): Promise<UserInterface> => {
   const token = generateJwtToken(payload);
 
@@ -31,7 +35,7 @@ export const googleAuth = async (
 };
 
 export const refreshToken = async (
-    token: string,
+  token: string,
 ): Promise<{ accessToken: string; refreshToken: string }> => {
   const { data } = await axios.get("/api/auth/refresh", {
     headers: { Authorization: `Bearer ${token}` },
@@ -44,4 +48,14 @@ export const logoutUser = async (token: string): Promise<void> => {
   await axios.get("/api/auth/logout", {
     headers: { Authorization: `Bearer ${token}` },
   });
+};
+
+export const setUserAgentAPI = async (token: string): Promise<string> => {
+  const res = await axios.patch(
+    "/api/auth/user-agent",
+    {},
+    { headers: { Authorization: `Bearer ${token}` } },
+  );
+
+  return res.data;
 };

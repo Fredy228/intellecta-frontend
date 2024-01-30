@@ -12,6 +12,7 @@ export interface UserInterface {
   verified: 0 | 1;
   accessToken: string;
   refreshToken: string;
+  currentDevice?: UserDeviceInterface;
   devices?: Array<UserDeviceInterface>;
 }
 
