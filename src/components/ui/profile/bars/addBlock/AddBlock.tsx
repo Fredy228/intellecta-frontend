@@ -17,17 +17,18 @@ export const AddBlock = () => {
     const [isShowAddWidget, setIsShowAddWidget] = useState<boolean>(false);
 
     return (
-        <div className={styles.add_wrapper}>
+        <div
+            className={styles.add_wrapper}
+            onClick={() => setIsShowAddWidget(!isShowAddWidget)}>
             <button
                 className={styles.btnAdd}
                 type={"button"}
-                onClick={() => setIsShowAddWidget(true)}
             ></button>
-                    <div className={styles.homeWidget_flex}>
+                    <div >
                         <AnimatePresence>
                             {isShowAddWidget && (
                                 <Backdrop setShow={setIsShowAddWidget}>
-                                    <ModalWindow/>
+                                    <ModalWindow />
                                 </Backdrop>
                             )}
                         </AnimatePresence>

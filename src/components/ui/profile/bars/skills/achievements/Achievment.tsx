@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/profile/bars/skills/achievements/achieveList";
 export const Achievement = () => {
   return (
-    <div>
+    <div className={styles.acivement_container}>
       <h1 className={styles.title}>Досягнення</h1>
       <ul className={styles.achievement_container}>
         {Achieve.map((achive: TAchievivList, idx:number) => (

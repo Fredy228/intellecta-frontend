@@ -10,6 +10,22 @@ export const blockInfo: TBlockInfo[] = [
     },
     {
         id:2,
-        named:'Досвід',
+        named:'Освіта',
+    },
+    {
+        id:3,
+        named:'Сертифікати',
+    },
+    {
+        id:4,
+        named:'Про себе',
+    },
+    {
+        id:5,
+        named:'Портфоліо/файли',
+    },
+    {
+        id:6,
+        named:'Додати курс',
     },
 ]

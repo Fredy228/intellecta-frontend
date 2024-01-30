@@ -2,12 +2,22 @@
 
 .achievement_container {
   display: grid;
-  grid-template-columns: repeat(3, minmax(60px, 150px));
+  grid-template-columns: repeat(auto-fill, minmax(60px, 82px));
+  grid-template-rows: repeat(auto-fill, 102px);
   width: 100%;
   max-width: 325px;
-  grid-gap: 49px 16px;
-
-
+  grid-gap: 16px 39px;
+  @media(max-width: 1080px) {
+    justify-content: center;
+    .title{
+      text-align: center;
+    }
+  }
+  @media (max-width: 768px) {
+    .achievement_container {
+      grid-template-columns: repeat(auto-fill, 100%);
+    }
+  }
 }
 .title {
   color: $main-text-color;
@@ -15,4 +25,7 @@
   font-weight: $title-weight;
   margin-bottom: 16px;
   margin-left: 17px;
+  @media(max-width: 1080px) {
+    text-align: center;
+  }
 }

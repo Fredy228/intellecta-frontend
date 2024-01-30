@@ -17,10 +17,10 @@ export const Account = () => {
         </div>
         <div style={{flex: "1"}}>
           <div className={styles.courses_block}>
-            <Achievement />
-            <Languages />
+            <Achievement/>
+            <Languages/>
           </div>
-          <AddBlock />
+          <AddBlock/>
         </div>
       </div>
     </main>
