@@ -1,34 +1,16 @@
 @import "@/styles/varible";
 
 .addWidget {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-
-  background-color: $background-body;
-  border-top-left-radius: 24px;
-  border-top-right-radius: 24px;
-  max-width: 700px;
-  width: 100%;
-  min-height: 450px;
-  height: 60vh;
-
-  padding: 12px;
-
   &_list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
   }
 
   &_item {
-    flex: 1;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
-    padding: 12px;
   }
 
   &_wrapper {

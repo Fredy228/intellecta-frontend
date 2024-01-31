@@ -1,4 +1,5 @@
 @import "@/styles/varible";
+@import "@/styles/plate-mixins";
 
 .homeWidget {
   &_flex {
@@ -40,13 +41,7 @@
 
     position: relative;
 
-    border-radius: 24px;
-    border: 1px solid #fff;
-    background: #ededed;
-    box-shadow:
-      4px 4px 25px 0 rgba(160, 160, 160, 0.5),
-      -4px -4px 25px 0px #fff,
-      4px 4px 35px 0px #fff inset;
+    @include plate-item;
   }
 
   &_itemInner:hover &_itemAddBtn:before,
@@ -73,30 +68,20 @@
   }
 
   &_optionBtn {
-    position: absolute;
     cursor: pointer;
 
-    top: 10px;
-    right: 10px;
-    z-index: 105;
-
-    padding: 5px 10px;
-    border-radius: 10px;
+    padding: 5px 0;
     border: none;
 
-    font-size: 14px;
+    font-size: $font-size-sm;
     font-weight: 600;
 
-    color: $light-text-color;
-    background-color: $accent-color;
-    transition: background-color 350ms ease;
-
-    box-shadow:
-      rgba(60, 64, 67, 0.3) 0 1px 2px 0,
-      rgba(60, 64, 67, 0.15) 0 2px 6px 2px;
+    color: $second-text-color;
+    background-color: transparent;
+    transition: color 350ms ease;
 
     &:hover {
-      background-color: $background-item;
+      color: $background-item;
     }
   }
 

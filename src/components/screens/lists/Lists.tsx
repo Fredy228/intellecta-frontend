@@ -23,7 +23,7 @@ const Lists: NextPage = () => {
           list={listOption}
           currentValue={currentOption}
           setValue={setCurrentOption}
-          position={"right"}
+          stylePop={{ top: "calc(100% + 10px)", right: "0" }}
         />
         <div className={styles.lists_createBtnWrapper}>
           <button className={styles.lists_createBtn} type={"button"}></button>

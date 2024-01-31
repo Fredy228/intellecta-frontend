@@ -2,17 +2,6 @@
 
 .option {
   &_list {
-    position: absolute;
-
-    top: calc(100% + 5px);
-    //left: 0;
-    box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
-
-    padding: 15px;
-    border-radius: 10px;
-    background-color: $background-body;
-
-    z-index: 100;
   }
 
   &_item {

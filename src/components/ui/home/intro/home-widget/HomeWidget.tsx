@@ -12,7 +12,8 @@ import { TWidget } from "@/types/widget";
 import { WidgetsEnum } from "@/enums/widgets/widgets-enum";
 
 import AddWidget from "@/components/ui/home/intro/home-widget/add-widget/AddWidget";
-import Backdrop from "@/components/reused/backdrop/Backdrop";
+import ModalWindow from "@/components/reused/modal-window/ModalWindow";
+import PopapMenuWrap from "@/components/reused/popap-menu-wrap/PopapMenuWrap";
 
 const initialWidgets = [
   {
@@ -25,13 +26,7 @@ const initialWidgets = [
 const HomeWidget: FC = () => {
   const [widgets, setWidgets] = useState<Array<TWidget>>(initialWidgets);
   const [isShowAddWidget, setIsShowAddWidget] = useState<boolean>(false);
-  const [isShowOption, setIsShowOption] = useState<boolean>(false);
-  const [currentIdDelete, setCurrentIdDelete] = useState<string | null>(null);
-
-  const openWidgetOption = (id: string) => {
-    setCurrentIdDelete(id);
-    setIsShowOption(true);
-  };
+  const [isShowOption, setIsShowOption] = useState<number | null>(null);
 
   const deleteWidget = (id: string) => {
     setWidgets((prevState) => prevState.filter((i) => i.id !== id));
@@ -42,7 +37,7 @@ const HomeWidget: FC = () => {
       <ul className={styles.homeWidget_list}>
         <AnimatePresence>
           {widgets.length > 0 &&
-            widgets.map((item) => {
+            widgets.map((item, index) => {
               const Widget = widgetList[item.type];
               return (
                 <motion.li
@@ -55,26 +50,25 @@ const HomeWidget: FC = () => {
                   <div className={styles.homeWidget_itemInner}>
                     <span
                       className={styles.homeWidget_option}
-                      onClick={() => openWidgetOption(item.id)}
+                      onClick={() => setIsShowOption(index)}
                     >
                       ..
                     </span>
-                    {isShowOption && currentIdDelete === item.id && (
+                    {isShowOption === index && (
                       <>
-                        <Backdrop
-                          backgroundColor={"transparent"}
-                          setShow={setIsShowOption}
-                        ></Backdrop>
-                        <motion.button
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          type={"button"}
-                          className={styles.homeWidget_optionBtn}
-                          onClick={() => deleteWidget(item.id)}
+                        <PopapMenuWrap
+                          stylePop={{ top: "15px", right: "15px" }}
+                          keyItem={46532}
+                          setShowIdx={setIsShowOption}
                         >
-                          Видалити
-                        </motion.button>
+                          <button
+                            type={"button"}
+                            className={styles.homeWidget_optionBtn}
+                            onClick={() => deleteWidget(item.id)}
+                          >
+                            Видалити
+                          </button>
+                        </PopapMenuWrap>
                       </>
                     )}
                     <Widget />
@@ -105,14 +99,14 @@ const HomeWidget: FC = () => {
       </ul>
       <AnimatePresence>
         {isShowAddWidget && (
-          <Backdrop setShow={setIsShowAddWidget}>
+          <ModalWindow setShow={setIsShowAddWidget} position={"bottom"}>
             <AddWidget
               widgetList={widgetList}
               widgets={widgets}
               setWidgets={setWidgets}
               setShow={setIsShowAddWidget}
             />
-          </Backdrop>
+          </ModalWindow>
         )}
       </AnimatePresence>
     </div>

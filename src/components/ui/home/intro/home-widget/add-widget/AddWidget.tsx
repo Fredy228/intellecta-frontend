@@ -35,12 +35,7 @@ const AddWidget: FC<Props> = ({ widgetList, widgets, setWidgets, setShow }) => {
   };
 
   return (
-    <motion.div
-      initial={{ transform: "translate(-50%, 100%)" }}
-      animate={{ transform: "translate(-50%, 0)" }}
-      exit={{ transform: "translate(-50%, 100%)" }}
-      className={styles.addWidget}
-    >
+    <div className={styles.addWidget}>
       <ul className={styles.addWidget_list}>
         {keys.map((item, index) => {
           const Widget = widgetList[item];
@@ -57,7 +52,7 @@ const AddWidget: FC<Props> = ({ widgetList, widgets, setWidgets, setShow }) => {
           );
         })}
       </ul>
-    </motion.div>
+    </div>
   );
 };
 export default AddWidget;

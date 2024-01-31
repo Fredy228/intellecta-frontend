@@ -23,10 +23,11 @@ export default function RootLayout({
         <AuthProviders>
           <body>
             {children}
+            <div id="modal-root"></div>
             <ToastContainer
               position="top-right"
               autoClose={3000}
-              limit={3}
+              limit={4}
               hideProgressBar={true}
               newestOnTop={false}
               closeOnClick
