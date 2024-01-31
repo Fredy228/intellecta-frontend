@@ -1,24 +1,19 @@
-import Image from "next/image";
-import { ITestList } from "../list";
-import { FC } from "react";
+import { type FC } from "react";
+
 import styles from "./TestCard.module.scss";
+
+import { ITestList } from "../list";
 
 export const TestCard: FC<ITestList> = ({ images, title, description }) => {
   return (
-    <ul className={styles.card}>
+    <li className={styles.card}>
       <div className={styles.cardTop}>
-        <Image
-          src={images ? images : ""}
-          width={45}
-          height={67}
-          alt="Courses image"
-          className={styles.cardImg}
-        />
+        <div className={styles.cardImg}>{images}</div>
         <div>
           <h1 className={styles.cardTitle}>{title}</h1>
-          <li className={styles.descriptions}>{description}</li>
+          <p className={styles.descriptions}>{description}</p>
         </div>
       </div>
-    </ul>
+    </li>
   );
 };

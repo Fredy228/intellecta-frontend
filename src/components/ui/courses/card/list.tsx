@@ -1,8 +1,24 @@
+import React from "react";
 import { EnumCourses } from "@/enums/courses/courseType-enum";
+import {
+  IconCourseActually,
+  IconCourseCareer,
+  IconCourseDesign,
+  IconCourseEffective,
+  IconCourseInterested,
+  IconCourseLanguage,
+  IconCourseManagement,
+  IconCourseMarketing,
+  IconCoursePrograming,
+  IconCourseReach,
+  IconCourseScience,
+  IconCourseTesting,
+} from "@/components/reused/Icon/Icon";
 
 export type TCoursesProps = {
   id: number | string;
-  images?: string;
+  images: React.JSX.Element;
+  bg?: string;
   types?: string;
   urlCheck?: string;
   description?: string;
@@ -47,15 +63,16 @@ export type TMentore = {
 export const listItem: TCoursesProps[] = [
   {
     id: 1,
-    images: `${process.env.NEXT_URL}/img/courses/programming.svg`,
+    images: <IconCoursePrograming />,
+    bg: "linear-gradient(138deg, #0029FF -8%, #FA00FF 106.69%)",
     types: "Програмування",
     urlCheck: "programming",
     description: "Курси Back-end, Front-end, Machine Learning та DevOps",
-
   },
   {
     id: 2,
-    images: `${process.env.NEXT_URL}/img/courses/front-end-pro.png`,
+    images: <IconCourseTesting />,
+    bg: "linear-gradient(138deg, #4E6AFE -8%, #00F0FF 106.69%)",
     types: "Тестування",
     urlCheck: "testing",
     description:
@@ -63,7 +80,8 @@ export const listItem: TCoursesProps[] = [
   },
   {
     id: 3,
-    images: `${process.env.NEXT_URL}/img/courses/react.png`,
+    images: <IconCourseMarketing />,
+    bg: "linear-gradient(138deg, #EB6CF6 -8%, #1DE4FF 103.83%, #54D8EA 106.69%)",
     types: "Маркетинг",
     urlCheck: "marketing",
     description: "Курси інтернет маркетингу та SMM",
@@ -73,28 +91,28 @@ export const listItem: TCoursesProps[] = [
 export const TestList: ITestList[] = [
   {
     id: 1,
-    images: `${process.env.NEXT_URL}/img/courses/card-test-actually.png`,
+    images: <IconCourseActually />,
     title: "Актуальність знань",
     description:
       "Навчальні курси, створені експертами, забезпечують актуальність інформації, що критично в галузях, які швидко розвиваються.",
   },
   {
     id: 2,
-    images: `${process.env.NEXT_URL}/img/courses/card-test-idei.png`,
+    images: <IconCourseEffective />,
     title: "Ефективність навчання",
     description:
       "Курсы структуровані логічно, щоб допомагати учням ефективно засвоювати матеріал і швидко досягати цілей.",
   },
   {
     id: 3,
-    images: `${process.env.NEXT_URL}/img/courses/card-test-global.png`,
+    images: <IconCourseReach />,
     title: "Доступність для всіх",
     description:
       "Онлайн-курси роблять освіту доступною всюди, де є Інтернет, забезпечуючи глобальну доступність навчання.",
   },
   {
     id: 4,
-    images: `${process.env.NEXT_URL}/img/courses/card-test-money.png`,
+    images: <IconCourseCareer />,
     title: `Підтримка кар'єрного зростання`,
     description: `Навчання новим навичкам підвищує конкурентоспроможність на ринку праці і відкриває можливості для кар'єрного зростання.`,
   },
@@ -102,34 +120,39 @@ export const TestList: ITestList[] = [
 export const OtherCurses: TCoursesProps[] = [
   {
     id: 1,
-    images: `${process.env.NEXT_URL}/img/courses/design.png`,
+    images: <IconCourseDesign />,
+    bg: "linear-gradient(138deg, #FF56D0 -8%, #FF7A00 106.69%)",
     types: "Дизайн",
     description:
       "Курси веб та графічного дизайну для починаючих та вже прокачаних юзерів.",
   },
   {
     id: 2,
-    images: `${process.env.NEXT_URL}/img/courses/management.png`,
+    images: <IconCourseManagement />,
+    bg: "linear-gradient(138deg, #F9AF58 -8%, #FF542F 106.69%)",
     types: "Менеджмент",
     description: "Курси менеджменту, апргейт навичок управління командою.",
   },
   {
     id: 3,
-    images: `${process.env.NEXT_URL}/img/courses/languages.png`,
+    images: <IconCourseLanguage />,
+    bg: "linear-gradient(138deg, #FFA24C -8%, #FB238B 106.69%)",
     types: "Іноземні мови",
     description:
       "Курси та приватні уроки з української, англійської,  німецької, французьскої, іспанської, італьянської та інших мов.",
   },
   {
     id: 4,
-    images: `${process.env.NEXT_URL}/img/courses/science.png`,
+    images: <IconCourseScience />,
+    bg: "linear-gradient(138deg, #FFCE20 -8%, #7FFF00 106.69%)",
     types: "Науки",
     description:
       "Курс та приватні уроки із математики, хімії, фізики та інших наук.",
   },
   {
     id: 5,
-    images: `${process.env.NEXT_URL}/img/courses/interesting.png`,
+    images: <IconCourseInterested />,
+    bg: "linear-gradient(138deg, #2BFE09 -8%, #508F10 106.69%)",
     types: "Цікаве",
     description:
       "Курси та приватні уроки із різних напрямків, наприклад: роботетхника, розробка ігр...",
