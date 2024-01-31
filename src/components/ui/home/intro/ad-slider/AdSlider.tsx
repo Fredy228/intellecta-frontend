@@ -1,61 +1,54 @@
 "use client";
 
 import { type FC } from "react";
-import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore from "swiper";
+import { Autoplay, Pagination } from "swiper/modules";
 
+import "swiper/scss";
+// import "swiper/scss/navigation";
+import "swiper/scss/pagination";
+
+import "./custom-style-swiper.scss";
 import styles from "./ad-slider.module.scss";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+
+import { listSlides } from "@/components/ui/home/intro/ad-slider/list-slides";
+
+SwiperCore.use([Autoplay, Pagination]);
 
 const AdSlider: FC = () => {
-  const settings = {
-    infiniteLoop: true,
-    stopOnHover: true,
-    autoPlay: true,
-    interval: 5000,
-    showStatus: false,
-    dynamicHeight: false,
-    showThumbs: false,
-    emulateTouch: true,
-    // centerMode: true,
-    // centerSlidePercentage: 100,
-  };
-
   return (
     <div className={styles.adSlider_innerGrid}>
       <div className={styles.adSlider_carouselWrap}>
-        <Carousel {...settings} className={styles.adSlider}>
-          <div className={styles.adSlider_item}>
-            <Image
-              src={"http://localhost:3000/img/ad/incubator-1.jpeg"}
-              alt={"Incubator advertising"}
-              width={"599"}
-              height={"336"}
-              quality={100}
-              className={styles.adSlider_image}
-            />
-          </div>
-          <div className={styles.adSlider_item}>
-            <Image
-              src={"http://localhost:3000/img/ad/incubator-2.jpeg"}
-              alt={"Incubator advertising"}
-              width={"599"}
-              height={"336"}
-              quality={100}
-              className={styles.adSlider_image}
-            />
-          </div>
-          <div className={styles.adSlider_item}>
-            <Image
-              src={"http://localhost:3000/img/ad/incubator-3.jpeg"}
-              alt={"Incubator advertising"}
-              width={"599"}
-              height={"336"}
-              quality={100}
-              className={styles.adSlider_image}
-            />
-          </div>
-        </Carousel>
+        <Swiper
+          slidesPerView={1}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          spaceBetween={20}
+          className={styles.adSlider}
+        >
+          {listSlides.map((item) => (
+            <SwiperSlide key={item.id}>
+              <div className={styles.adSlider_item}>
+                <Image
+                  src={`${process.env.NEXTAUTH_URL}/${item.image}`}
+                  alt={"Incubator advertising"}
+                  width={"1066"}
+                  height={"600"}
+                  quality={100}
+                  className={styles.adSlider_image}
+                />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );
