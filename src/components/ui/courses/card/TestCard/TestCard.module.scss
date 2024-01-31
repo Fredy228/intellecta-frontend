@@ -1,45 +1,55 @@
-@import '@/styles/varible';
+@import "@/styles/varible";
 
-.cardTop{
-    display: flex;
+.cardTop {
+  display: flex;
 }
-.cardTitle{
-    color: $background-item;
-    font-size: 18px;
-    font-weight: $title-weight;
-    margin-bottom: 5px;
+.cardTitle {
+  color: $background-item;
+  font-size: 18px;
+  font-weight: $title-weight;
+  margin-bottom: 5px;
 }
-.title{
-    color: $second-text-color;
-    font-size: $font-size-lg;
-    font-weight: $title-weight;
+.title {
+  color: $second-text-color;
+  font-size: $font-size-lg;
+  font-weight: $title-weight;
 }
-.cardImg{
-    margin-right: 20px;
+.cardImg {
+  margin-right: 10px;
+  > svg {
+    width: 70px;
+    height: auto;
+  }
+}
+.descriptions {
+  width: 100%;
+  max-width: 323px;
+  color: $second-text-color;
+  font-family: "Poppins", sans-serif;
+  font-size: $font-size-sm;
+}
+.cardWrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 18px;
+  gap: 25px;
+  border-radius: 24px;
+  border: 1px solid $light-text-color;
+  background: $background-option;
+  box-shadow:
+    4px 4px 25px 0 rgba(160, 160, 160, 0.5),
+    -4px -4px 25px 0px $light-text-color,
+    4px 4px 35px 0px $light-text-color inset;
+  transition: border-color 0.3s ease;
 
+  &:hover {
+    border-color: $background-item;
+  }
 }
-.descriptions{
-    width: 100%;
-    max-width: 323px;
-    color: $second-text-color;
-    font-family: 'Poppins', sans-serif;
-    font-size: $font-size-sm;
-}
-.cardWrapper{
-    width: 100%;
-    max-width: 842px;
-    display: flex;
-    flex-wrap: wrap;
-    padding-top: 18px;
-    padding-bottom: 18px;
-    padding-left: 12px;
-    gap: 27px ;
-    border-radius: 24px;
-    border: 1px solid $light-text-color;
-    background: $background-option;
-    box-shadow: 4px 4px 25px 0 rgba(160, 160, 160, 0.50), -4px -4px 25px 0px $light-text-color, 4px 4px 35px 0px $light-text-color inset;
-    &:hover{
-        border:1px solid $background-item ;
-        transition: all 0.3s;
-    }
+
+.card_list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
 }

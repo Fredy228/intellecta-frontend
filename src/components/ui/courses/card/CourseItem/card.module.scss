@@ -1,116 +1,120 @@
-@import '@/styles/varible';
+@import "@/styles/varible";
 
-.cardWrapper{
+.cardWrapper {
+  display: flex;
+  gap: 42px;
+  margin-top: 20px;
+}
+.card {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 24px;
+  border: 1px solid $light-text-color;
+  background: $background-option;
+  box-shadow:
+    4px 4px 25px 0 rgba(160, 160, 160, 0.5),
+    -4px -4px 25px 0px $light-text-color,
+    4px 4px 35px 0px $light-text-color inset;
+  transition: all 0.3s;
+  padding: 23px 31px 22px 21px;
+  &_top {
     display: flex;
-    gap: 42px;
-    margin-top: 20px;
-}
-.card{
-    width:100%;
-    max-width: 400px;
-    border-radius: 24px;
-    border: 1px solid $light-text-color;
-    background: $background-option;
-    box-shadow: 4px 4px 25px 0 rgba(160, 160, 160, 0.50), -4px -4px 25px 0px $light-text-color, 4px 4px 35px 0px $light-text-color inset;
-    transition: all 0.3s;
-    padding:23px 31px 22px 21px;
-    &_top{
-        display:flex;
-        gap: 11px;
-        @media (max-width:1367px) {
-            flex-wrap: wrap;
-        }
+    gap: 11px;
+    @media (max-width: 1367px) {
+      flex-wrap: wrap;
     }
-    .svg{
-        margin-bottom:27px;
-        border-radius: 19px;
-        background: linear-gradient(138deg, #0029FF -8%, #FA00FF 106.69%);
-        padding: 17px 20px 18px 14px;
-        max-width: 109px;
-        max-height: 108px;
-        >svg{
-            width: 70px;
-            height: 81px;
-        }
+  }
+
+  &_image {
+    width: 108px;
+    height: 108px;
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #fff;
+
+    > svg {
+      width: 80px;
+      height: 80px;
     }
-    &:hover{
-        border:1px solid $background-item ;
-    }
+  }
+
+  &:hover {
+    border: 1px solid $background-item;
+  }
 }
 
-
-
-.title{
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 229px;
+  height: 100%;
+  max-height: 35px;
+  color: $background-item;
+  font-size: clamp(0.875rem, 0.8rem + 0.375vw, 1.25rem);
+  font-weight: $title-weight;
+  border-radius: 30px;
+  background: $light-text-color;
+  padding: 10px 36px;
+}
+.subtitle {
+  text-align: center;
+  width: 100%;
+  max-width: 100px;
+  color: $background-item;
+  font-size: $font-size-lg;
+  font-weight: $title-weight;
+  border-radius: 30px;
+  background: $light-text-color;
+  padding: 10px 0;
+}
+.subtitle_wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  gap: 9px;
+  .icon_container {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    max-width: 229px;
-    height: 100%;
-    max-height: 35px;
-    color: $background-item;
-    font-size: clamp(0.875rem, 0.8rem + 0.375vw, 1.25rem);
-    font-weight: $title-weight;
-    border-radius: 30px;
-    background: $light-text-color;
-    padding: 10px 36px;
-}
-.subtitle{
-    text-align: center;
-    width: 100%;
-    max-width: 100px;
-    color: $background-item;
-    font-size: $font-size-lg;
-    font-weight:  $title-weight;
-    border-radius: 30px;
-    background: $light-text-color;
-    padding: 10px 0;
-}
-.subtitle_wrapper{
-    display: flex;
-    align-items:center;
-    margin-top: 8px;
-    gap: 9px;
-     .icon_container{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 9px 6px;
-        background-color: $light-text-color;
-        border-radius: 50%;
-            > svg{
-                width: 28px;
-                height: 22px;
-                
-            }
-        }
+    padding: 9px 6px;
+    background-color: $light-text-color;
+    border-radius: 50%;
+    > svg {
+      width: 28px;
+      height: 22px;
+    }
+  }
 }
 .bar_wrapper {
+  display: flex;
+  gap: 20px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid $light-text-color;
+  .icon_container {
     display: flex;
-    gap:20px;
-    padding-bottom:7px;
-    border-bottom: 1px solid $light-text-color;
-    .icon_container{
-        display: flex;
-        align-items: center;
-        >svg {
-            width:34px;
-            height:34px;
-            margin-right: 7px;
+    align-items: center;
+    > svg {
+      width: 34px;
+      height: 34px;
+      margin-right: 7px;
 
-            &:first-child{
-                width:46px;
-                margin-right: 12px;
-            }
-
-        }
+      &:first-child {
+        width: 46px;
+        margin-right: 12px;
+      }
     }
-   
+  }
 }
-.descriptions{
-    color: $second-text-color;
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-    margin-top: 20px;
+.descriptions {
+  color: $second-text-color;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 20px;
 }

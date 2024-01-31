@@ -1,4 +1,7 @@
 "use client";
+
+import { usePathname } from "next/navigation";
+
 import { CoursesByIdItem } from "@/components/ui/courses/card/CoursesByIditem/CoursesByIdItem";
 import {
   FrontEndCurses,
@@ -6,8 +9,8 @@ import {
   MarketingCurses,
   IFrontCourses,
 } from "@/components/ui/courses/card/list";
-import { usePathname } from "next/navigation";
 import { EnumCourses } from "@/enums/courses/courseType-enum";
+
 export default function CoursesById({ idCourse }: { idCourse: string }) {
   const listFrontEnd: IFrontCourses | undefined = FrontEndCurses?.find(
     (i: IFrontCourses) => idCourse === i.id,

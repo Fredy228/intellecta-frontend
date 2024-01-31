@@ -24,6 +24,19 @@ export { default as IconExit } from "./storage/exit.svg";
 export { default as IconColorCircle } from "./storage/color-circle.svg";
 
 //Courses icons
+export { default as IconCourseDesign } from "./courses/design.svg";
+export { default as IconCourseInterested } from "./courses/interested.svg";
+export { default as IconCourseMarketing } from "./courses/marketing.svg";
+export { default as IconCourseManagement } from "./courses/menezhment.svg";
+export { default as IconCoursePrograming } from "./courses/programming.svg";
+export { default as IconCourseScience } from "./courses/sciense.svg";
+export { default as IconCourseTesting } from "./courses/testing.svg";
+export { default as IconCourseLanguage } from "./courses/language.svg";
+export { default as IconCourseActually } from "./courses/actually.svg";
+export { default as IconCourseReach } from "./courses/reach.svg";
+export { default as IconCourseEffective } from "./courses/effective.svg";
+export { default as IconCourseCareer } from "./courses/career.svg";
+
 export { default as IconRocket } from "./storage/rocket.svg";
 export { default as IconTime } from "./storage/time.svg";
 export { default as IconLearn } from "./storage/learn.svg";
