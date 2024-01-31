@@ -1,0 +1,11 @@
+@import "src/styles/varible";
+
+.swiper-pagination-bullet {
+  background: #fff;
+  outline: 3px solid transparent;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  outline-color: $background-item;
+}
