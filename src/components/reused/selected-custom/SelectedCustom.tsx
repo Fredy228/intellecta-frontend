@@ -6,6 +6,7 @@ import SelectedList from "@/components/reused/selected-custom/list/SelectedList"
 
 import { IconSmallRightArrow } from "@/components/reused/Icon/Icon";
 import { AnimatePresence } from "framer-motion";
+import PopapMenuWrap from "@/components/reused/popap-menu-wrap/PopapMenuWrap";
 
 export type TSelectedItem = {
   id: number;
@@ -17,13 +18,13 @@ type Props = {
   list: Array<TSelectedItem>;
   currentValue: TSelectedItem;
   setValue: Dispatch<SetStateAction<TSelectedItem>>;
-  position: "left" | "right";
+  stylePop: Record<string, string>;
 };
 const SelectedCustom: FC<Props> = ({
   list,
   currentValue,
   setValue,
-  position,
+  stylePop,
 }) => {
   const [isShow, setIsShow] = useState(false);
 
@@ -38,12 +39,13 @@ const SelectedCustom: FC<Props> = ({
       </button>
       <AnimatePresence>
         {isShow && (
-          <SelectedList
-            list={list}
-            setValue={setValue}
-            setIsShow={setIsShow}
-            position={position}
-          />
+          <PopapMenuWrap setShow={setIsShow} keyItem={423} stylePop={stylePop}>
+            <SelectedList
+              list={list}
+              setValue={setValue}
+              setIsShow={setIsShow}
+            />
+          </PopapMenuWrap>
         )}
       </AnimatePresence>
     </div>

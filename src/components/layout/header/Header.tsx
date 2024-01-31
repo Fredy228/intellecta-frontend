@@ -13,8 +13,8 @@ import {
 } from "@/components/reused/Icon/Icon";
 
 import Notice from "@/components/layout/header/notice/Notice";
-import Backdrop from "@/components/reused/backdrop/Backdrop";
 import { selectUser } from "@/redux/user/selectors";
+import PopapMenuWrap from "@/components/reused/popap-menu-wrap/PopapMenuWrap";
 
 const Header: FC = () => {
   const user = useSelector(selectUser);
@@ -28,40 +28,33 @@ const Header: FC = () => {
           <p>Привіт {user.firstName}</p>
         </div>
         <ul className={styles.header_listNotificCenter}>
-          <AnimatePresence>
-            {!isShowNotice && (
-              <motion.li
-                key={10}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className={styles.header_itemNotificCenter}
-              >
-                <IconSetting />
-              </motion.li>
-            )}
-            <li
-              key={20}
-              style={isShowNotice ? { zIndex: 120 } : {}}
-              className={`${styles.header_itemNotificCenter} ${styles.notice} ${
-                isShowNotice ? styles.active : ""
-              }`}
-              onClick={() => setIsShowNotice((prevState) => !prevState)}
-            >
-              {isShowNotice ? <IconCross /> : <IconNotific />}
+          <li key={10} className={styles.header_itemNotificCenter}>
+            <IconSetting />
+          </li>
 
-              <div className={styles.header_wrapperCountNotificCenter}>
-                <span className={styles.header_countNotificCenter}>2</span>
-              </div>
-            </li>
+          <li
+            key={20}
+            style={isShowNotice ? { zIndex: 120 } : {}}
+            className={`${styles.header_itemNotificCenter} ${styles.notice} ${
+              isShowNotice ? styles.active : ""
+            }`}
+            onClick={() => setIsShowNotice((prevState) => !prevState)}
+          >
+            {isShowNotice ? <IconCross /> : <IconNotific />}
+
+            <div className={styles.header_wrapperCountNotificCenter}>
+              <span className={styles.header_countNotificCenter}>2</span>
+            </div>
+          </li>
+          <AnimatePresence>
             {isShowNotice && (
-              <>
-                <Notice isShow={isShowNotice} />
-                <Backdrop
-                  setShow={setIsShowNotice}
-                  backgroundColor={"transparent"}
-                ></Backdrop>
-              </>
+              <PopapMenuWrap
+                setShow={setIsShowNotice}
+                keyItem={7453}
+                stylePop={{ top: "calc(100% + 10px)", right: "0" }}
+              >
+                <Notice />
+              </PopapMenuWrap>
             )}
           </AnimatePresence>
         </ul>

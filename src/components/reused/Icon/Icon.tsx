@@ -1,6 +1,7 @@
 //Global icons
 export { default as IconSmallRightArrow } from "./storage/small-right-arrow.svg";
 export { default as IconProcessing } from "./storage/processing.svg";
+export { default as IconMonicInet } from "./storage/monick-inet.svg";
 
 //Auth icons
 export { default as IconGoogle } from "./storage/google.svg";
@@ -54,3 +55,10 @@ export { default as IconLocation } from "./storage/location.svg";
 export { default as IconCalendarList } from "./storage/calendar-list.svg";
 export { default as IconFriends } from "./storage/friends.svg";
 export { default as IconAddList } from "./storage/add-btn-list.svg";
+
+//Profile icons
+export { default as IconProfileAboutMe } from "./profile/about-me.svg";
+export { default as IconProfileCertificates } from "./profile/certificates.svg";
+export { default as IconProfileDocuments } from "./profile/documents.svg";
+export { default as IconProfileEducation } from "./profile/education.svg";
+export { default as IconProfileExperience } from "./profile/experience.svg";

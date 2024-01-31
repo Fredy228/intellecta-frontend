@@ -47,7 +47,7 @@ const Schedule: NextPage = () => {
           list={listOption}
           currentValue={currentOption}
           setValue={setCurrentOption}
-          position={"right"}
+          stylePop={{ top: "calc(100% + 10px)", right: "0" }}
         />
       </div>
       <div className={styles.schedule_wrapper}>

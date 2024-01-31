@@ -23,7 +23,7 @@ const Homework: NextPage = () => {
           list={listOption}
           currentValue={currentOption}
           setValue={setCurrentOption}
-          position={"right"}
+          stylePop={{ top: "calc(100% + 10px)", right: "0" }}
         />
       </div>
       <HomeWorkTable />

@@ -1,0 +1,10 @@
+@import "@/styles/plate-mixins";
+
+.wrapMenuPop {
+  position: absolute;
+
+  padding: 16px;
+  @include plate-item;
+  border-radius: 12px;
+  z-index: 100;
+}
