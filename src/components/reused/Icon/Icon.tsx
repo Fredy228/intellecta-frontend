@@ -55,7 +55,9 @@ export { default as IconLocation } from "./storage/location.svg";
 export { default as IconCalendarList } from "./storage/calendar-list.svg";
 export { default as IconFriends } from "./storage/friends.svg";
 export { default as IconAddList } from "./storage/add-btn-list.svg";
-
+export {default as IconHtml} from  "./courses/html.svg"
+export {default as IconReact} from  "./courses/react.svg"
+export {default as IconJavaScript} from  "./courses/js.svg"
 //Profile icons
 export { default as IconProfileAboutMe } from "./profile/about-me.svg";
 export { default as IconProfileCertificates } from "./profile/certificates.svg";

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { IFrontCourses } from "../list";
 import { FC } from "react";
 import Link from "next/link";
@@ -7,23 +6,20 @@ import styles from "@/components/ui/courses/card/CourseItem/card.module.scss";
 
 export const CourseTypeItem: FC<IFrontCourses> = ({
   id,
-  images,
   types,
   company,
   description,
   urlCheck,
+    icon,
+    bg,
 }) => {
   return (
     <ul className={styles.card}>
       <Link href={`/dashboard/courses/${urlCheck}/${id}`}>
-        <div className={styles.card_top}>
-          <Image
-            src={images ? images : ""}
-            width={109}
-            height={108}
-            alt="Courses image"
-            className={styles.card_img}
-          />
+        <div className={styles.card_top} >
+          <div className={styles.card_image} style={{background:bg}}>
+            {icon}
+          </div>
           <div>
             <h1 className={styles.title}>{types}</h1>
             <div className={styles.subtitle_wrapper}>
