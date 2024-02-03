@@ -165,7 +165,7 @@ export const FrontEndCurses: IFrontCourses[] = [
   {
     id: "1",
     icon: <IconHtml/>,
-    bg:'gba(222, 175, 175, 0.4),linear-gradient(222.92deg, rgb(255, 0, 0) -6%,rgb(255, 230, 0) 104.145%)',
+    bg:'linear-gradient(0deg, rgba(222, 175, 175, 0.40) 0%, rgba(222, 175, 175, 0.40) 100%), linear-gradient(223deg, #F00 -6%, #FFE500 104.15%)',
     types: "Front-end Basic",
     company: "Hillel",
     urlCheck: "programming",
@@ -232,7 +232,7 @@ export const FrontEndCurses: IFrontCourses[] = [
   {
     id: "2",
     icon:<IconJavaScript/>,
-    bg:'gba(222, 175, 175, 0.4),linear-gradient(222.92deg, rgb(255, 0, 0) -6%,rgb(255, 230, 0) 104.145%)',
+    bg:'linear-gradient(0deg, rgba(222, 175, 175, 0.40) 0%, rgba(222, 175, 175, 0.40) 100%), linear-gradient(223deg, #F00 -6%, #FFE500 104.15%)',
     types: "Front-end Pro",
     company: "Hillel",
     urlCheck: "programming",
@@ -299,7 +299,7 @@ export const FrontEndCurses: IFrontCourses[] = [
   {
     id: "3",
     icon: <IconReact/>,
-    bg:'gba(222, 175, 175, 0.4),linear-gradient(222.92deg, rgb(255, 0, 0) -6%,rgb(255, 230, 0) 104.145%)',
+    bg:'linear-gradient(0deg, rgba(222, 175, 175, 0.40) 0%, rgba(222, 175, 175, 0.40) 100%), linear-gradient(223deg, #F00 -6%, #FFE500 104.15%)',
     types: "React",
     company: "Hillel",
     urlCheck: "programming",
