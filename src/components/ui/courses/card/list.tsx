@@ -12,7 +12,7 @@ import {
   IconCoursePrograming,
   IconCourseReach,
   IconCourseScience,
-  IconCourseTesting,
+  IconCourseTesting, IconHtml, IconJavaScript, IconReact,
 } from "@/components/reused/Icon/Icon";
 
 export type TCoursesProps = {
@@ -28,7 +28,9 @@ export interface ITestList extends TCoursesProps {
 }
 export interface IFrontCourses {
   id: number | string;
-  images: string;
+  images?: string;
+  icon?: React.JSX.Element;
+  bg?:string;
   company: string;
   urlCheck: string;
   description: string;
@@ -162,7 +164,8 @@ export const OtherCurses: TCoursesProps[] = [
 export const FrontEndCurses: IFrontCourses[] = [
   {
     id: "1",
-    images: `${process.env.NEXT_URL}/img/courses/design.png`,
+    icon: <IconHtml/>,
+    bg:'linear-gradient(90deg, rgba(255,0,0,1) 19%, rgba(255,229,0,1) 100%)',
     types: "Front-end Basic",
     company: "Hillel",
     urlCheck: "programming",
@@ -228,7 +231,8 @@ export const FrontEndCurses: IFrontCourses[] = [
   },
   {
     id: "2",
-    images: `${process.env.NEXT_URL}/img/courses/management.png`,
+    icon:<IconJavaScript/>,
+    bg:'linear-gradient(90deg, rgba(255,0,0,1) 19%, rgba(255,229,0,1) 100%)',
     types: "Front-end Pro",
     company: "Hillel",
     urlCheck: "programming",
@@ -294,7 +298,8 @@ export const FrontEndCurses: IFrontCourses[] = [
   },
   {
     id: "3",
-    images: `${process.env.NEXT_URL}/img/courses/languages.png`,
+    icon: <IconReact/>,
+    bg:'linear-gradient(90deg, rgba(255,0,0,1) 19%, rgba(255,229,0,1) 100%)',
     types: "React",
     company: "Hillel",
     urlCheck: "programming",
