@@ -165,7 +165,7 @@ export const FrontEndCurses: IFrontCourses[] = [
   {
     id: "1",
     icon: <IconHtml/>,
-    bg:'linear-gradient(90deg, rgba(255,0,0,1) 19%, rgba(255,229,0,1) 100%)',
+    bg:'gba(222, 175, 175, 0.4),linear-gradient(222.92deg, rgb(255, 0, 0) -6%,rgb(255, 230, 0) 104.145%)',
     types: "Front-end Basic",
     company: "Hillel",
     urlCheck: "programming",
@@ -232,7 +232,7 @@ export const FrontEndCurses: IFrontCourses[] = [
   {
     id: "2",
     icon:<IconJavaScript/>,
-    bg:'linear-gradient(90deg, rgba(255,0,0,1) 19%, rgba(255,229,0,1) 100%)',
+    bg:'gba(222, 175, 175, 0.4),linear-gradient(222.92deg, rgb(255, 0, 0) -6%,rgb(255, 230, 0) 104.145%)',
     types: "Front-end Pro",
     company: "Hillel",
     urlCheck: "programming",
@@ -299,7 +299,7 @@ export const FrontEndCurses: IFrontCourses[] = [
   {
     id: "3",
     icon: <IconReact/>,
-    bg:'linear-gradient(90deg, rgba(255,0,0,1) 19%, rgba(255,229,0,1) 100%)',
+    bg:'gba(222, 175, 175, 0.4),linear-gradient(222.92deg, rgb(255, 0, 0) -6%,rgb(255, 230, 0) 104.145%)',
     types: "React",
     company: "Hillel",
     urlCheck: "programming",
