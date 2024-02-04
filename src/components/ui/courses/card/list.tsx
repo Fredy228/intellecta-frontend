@@ -12,7 +12,10 @@ import {
   IconCoursePrograming,
   IconCourseReach,
   IconCourseScience,
-  IconCourseTesting, IconHtml, IconJavaScript, IconReact,
+  IconCourseTesting,
+  IconHtml,
+  IconJavaScript,
+  IconReact,
 } from "@/components/reused/Icon/Icon";
 
 export type TCoursesProps = {

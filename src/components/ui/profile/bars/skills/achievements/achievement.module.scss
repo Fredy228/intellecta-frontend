@@ -3,7 +3,7 @@
 .achievement_container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(60px, 82px));
-  grid-template-rows: repeat(auto-fill, 102px);
+  grid-template-rows: repeat(3, 112px);
   width: 100%;
   max-width: 325px;
   grid-gap: 16px 39px;
