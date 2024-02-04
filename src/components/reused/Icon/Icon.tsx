@@ -64,3 +64,9 @@ export { default as IconProfileCertificates } from "./profile/certificates.svg";
 export { default as IconProfileDocuments } from "./profile/documents.svg";
 export { default as IconProfileEducation } from "./profile/education.svg";
 export { default as IconProfileExperience } from "./profile/experience.svg";
+export {default as IconProfileMentor} from "./profile/mentor.svg"
+export {default as IconProfileInventation} from "./profile/inventation.svg"
+export {default as IconProfileQa} from "./profile/QA.svg"
+export {default as IconProfilePro} from "./profile/pro.svg"
+export {default as IconProfileVerify} from "./profile/verif.svg"
+export {default as IconProfileCalendar} from "./profile/calendar-verif.svg"

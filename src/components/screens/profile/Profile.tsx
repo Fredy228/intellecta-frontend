@@ -1,3 +1,4 @@
+"use client"
 import { CardProfile } from "@/components/ui/profile/card-profile/CardProfile";
 import { Contacts } from "@/components/ui/profile/bars/contatc-profile/Contacts";
 import { Friends } from "@/components/ui/profile/bars/friends/Friends";
