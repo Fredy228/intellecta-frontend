@@ -1,26 +1,25 @@
 "use client";
 
 import Lists from "@/components/screens/lists/Lists";
-import { useSession } from "next-auth/react";
-import { UserInterface } from "@/interfaces/user";
 import { useEffect, useState } from "react";
 import LoaderPage from "@/components/reused/loader/loader-page";
 import { RoleEnum } from "@/enums/user/role-enum";
 import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
+import { selectIsAuthorize, selectIsLoadingApp } from "@/redux/selector-param";
+import { selectUser } from "@/redux/user/selectors";
 
 export default function ListsPage() {
-  const { data } = useSession();
-  const currentUser = data?.user as UserInterface;
+  const user = useSelector(selectUser);
+  const isLoadingApp = useSelector(selectIsLoadingApp);
+  const isAuthorize = useSelector(selectIsAuthorize);
 
-  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
-  useEffect(() => {
-    if (data && currentUser?.role !== RoleEnum.ADMIN) {
-      router.push("/dashboard");
-    }
-    if (currentUser?.role === RoleEnum.ADMIN) setIsLoading(false);
-  }, [data]);
+  if (isLoadingApp) return <LoaderPage />;
+  if (!isAuthorize) return router.push("/auth/login");
+  if (isAuthorize && user.role !== RoleEnum.ADMIN)
+    return router.push("/dashboard");
 
-  return <>{isLoading ? <LoaderPage /> : <Lists />}</>;
+  return <Lists />;
 }
