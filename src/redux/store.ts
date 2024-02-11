@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import userReducer from "@/redux/user/slice";
+import paramReducer from "@/redux/slice-param";
 
 export const store = configureStore({
   reducer: {
     user: userReducer,
+    param: paramReducer,
   },
 });
 

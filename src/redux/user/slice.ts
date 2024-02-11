@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getMe } from "@/redux/user/operations";
 import { UserInterface } from "@/interfaces/user";
 import { RoleEnum } from "@/enums/user/role-enum";
 
@@ -15,7 +14,6 @@ const initialState: UserInterface = {
   verified: 0,
   accessToken: "",
   refreshToken: "",
-  currentDevice: undefined,
   devices: undefined,
 };
 
@@ -26,19 +24,12 @@ export const userSlice = createSlice({
     removeUser: () => {
       return { ...initialState };
     },
-    setUserAgent: (state, { payload }: { payload: string }) => {
-      if (state.currentDevice) state.currentDevice.deviceModel = payload;
+    setUser: (_state, { payload }: { payload: UserInterface }) => {
+      return { ...payload };
     },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(getMe.fulfilled, (_state, { payload }) => {
-      if (payload) {
-        return { ...payload };
-      }
-    });
   },
 });
 
-export const { removeUser, setUserAgent } = userSlice.actions;
+export const { removeUser, setUser } = userSlice.actions;
 
 export default userSlice.reducer;
