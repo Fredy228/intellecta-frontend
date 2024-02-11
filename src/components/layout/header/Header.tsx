@@ -1,7 +1,7 @@
 "use client";
 
 import { type FC, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { useSelector } from "react-redux";
 
 import styles from "./header.module.scss";

@@ -1,8 +1,10 @@
 "use client";
 
-import { type FC, type FormEventHandler, useState } from "react";
-import { signIn } from "next-auth/react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { Dispatch, type FC, type FormEventHandler, useState } from "react";
+import Link from "next/link";
+import { set } from "local-storage";
+import { isAxiosError } from "axios";
+import { useDispatch } from "react-redux";
 
 import styles from "./sing-in-form.module.scss";
 
@@ -10,8 +12,10 @@ import { getToastify } from "@/services/toastify";
 import { userCreateSchema, userLoginSchema } from "@/joi/auth-schema";
 import { ToastifyEnum } from "@/enums/toastify-enum";
 import LoaderButton from "@/components/reused/loader/loader-button";
-import Link from "next/link";
 import { IconGoogle } from "@/components/reused/Icon/Icon";
+import { loginUser, registerUser } from "@/axios/auth";
+import { setUser } from "@/redux/user/slice";
+import { setAuthorize } from "@/redux/slice-param";
 
 type Props = {
   isRegister: boolean;
@@ -26,10 +30,8 @@ const AuthForm: FC<Props> = ({ isRegister }) => {
   const [isShowPass, setIsShowPass] = useState<boolean>(false);
   const [invalidInput, setInvalidInput] = useState<Array<string>>([]);
 
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
   const isMatchesPass = (isRegister && password === rePassword) || !isRegister;
+  const dispacth: Dispatch<any> = useDispatch();
 
   const submitForm: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
@@ -45,8 +47,6 @@ const AuthForm: FC<Props> = ({ isRegister }) => {
       password,
     });
 
-    console.log("err", error?.details);
-
     if (error) {
       const nameField = error.message.split("|")[0];
       setInvalidInput((prevState) => [...prevState, nameField]);
@@ -54,45 +54,36 @@ const AuthForm: FC<Props> = ({ isRegister }) => {
       setIsLoading(false);
       return getToastify(error.message.split("|")[1], ToastifyEnum.ERROR, 5000);
     }
-    const answer = await signIn("credentials", {
-      email: email.trim(),
-      password,
-      firstName: firstName.trim(),
-      lastName: lastName.trim(),
-      type: pathname.split("/")[2],
-      redirect: false,
-    });
-    console.log("answer", answer);
 
-    if (answer?.error) {
-      if (answer.status === 401) {
-        if (!isRegister)
-          getToastify("Invalid login or password", ToastifyEnum.ERROR);
-        if (isRegister)
-          getToastify("Such a user already exists", ToastifyEnum.ERROR);
+    try {
+      let authUser;
+      if (isRegister) {
+        authUser = await registerUser({
+          email: email.trim(),
+          password,
+          firstName: firstName.trim(),
+          lastName: lastName.trim(),
+        });
       } else {
-        console.error("Unknown error");
+        authUser = await loginUser({ email: email.trim(), password });
       }
-    }
 
-    setIsLoading(false);
+      set<string>("token", authUser.accessToken);
+      dispacth(setUser(authUser));
+      dispacth(setAuthorize(true));
+    } catch (e) {
+      if (isAxiosError(e) && e.response?.data?.message) {
+        getToastify(e.response.data.message, ToastifyEnum.ERROR, 3000);
+      } else {
+        getToastify("Unknown error", ToastifyEnum.ERROR, 3000);
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const signInWithGoogle = async () => {
-    setIsLoading(true);
-    const answer = await signIn("google", {
-      callbackUrl,
-    });
-
-    if (answer?.error) {
-      if (answer.status === 401) {
-        console.error("Error 401");
-      } else {
-        console.error("Unknown error");
-      }
-    }
-
-    setIsLoading(false);
+    window.open(`${process.env.SERVER_URL}/api/auth/google`, "_self");
   };
 
   return (

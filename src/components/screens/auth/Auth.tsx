@@ -1,21 +1,23 @@
 "use client";
 
 import { type NextPage } from "next";
+import { useSelector } from "react-redux";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { redirect, usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
 
 import styles from "./auth.module.scss";
 
 import AuthForm from "@/components/screens/auth/form/AuthForm";
 import LoaderPage from "@/components/reused/loader/loader-page";
+import { selectIsAuthorize, selectIsLoadingApp } from "@/redux/selector-param";
 
 const Auth: NextPage = () => {
   const divRef = useRef<HTMLDivElement | null>(null);
 
   const pathname = usePathname();
-  const session = useSession();
+  const isLoadingApp = useSelector(selectIsLoadingApp);
+  const isAuthorize = useSelector(selectIsAuthorize);
 
   const isRegister = pathname === "/auth/register";
 
@@ -34,8 +36,8 @@ const Auth: NextPage = () => {
     };
   }, []);
 
-  if (session.status === "loading") return <LoaderPage isFull={true} />;
-  if (session.status === "authenticated") redirect("/dashboard");
+  if (isLoadingApp) return <LoaderPage isFull={true} />;
+  if (isAuthorize && !isLoadingApp) redirect("/dashboard");
 
   return (
     <div className={styles.singin}>

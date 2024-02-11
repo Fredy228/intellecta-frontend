@@ -1,4 +1,8 @@
-import Auth from "@/components/screens/auth/Auth";
+import dynamic from "next/dynamic";
+
+const Auth = dynamic(() => import("@/components/screens/auth/Auth"), {
+  ssr: false,
+});
 
 export default function SingInPage() {
   return <Auth />;

@@ -4,7 +4,6 @@ import { type FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { signOut } from "next-auth/react";
 
 import styles from "./sidebar.module.scss";
 
@@ -85,11 +84,6 @@ const Sidebar: FC = () => {
             width={"40"}
             height={"40"}
             className={styles.aside_imgAvatar}
-            onClick={() =>
-              signOut({
-                callbackUrl: "/auth/login",
-              })
-            }
           />
           <div className={styles.aside_wrapperUserName}>
             <Link href={"/dashboard/profile"}>

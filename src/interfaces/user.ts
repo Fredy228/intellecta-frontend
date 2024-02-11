@@ -12,7 +12,6 @@ export interface UserInterface {
   verified: 0 | 1;
   accessToken: string;
   refreshToken: string;
-  currentDevice?: UserDeviceInterface;
   devices?: Array<UserDeviceInterface>;
 }
 
@@ -22,13 +21,4 @@ export interface UserDeviceInterface {
   createAt: Date;
   token: string;
   userId: number;
-}
-
-export interface SessionInterface {
-  id: string;
-  email: string;
-  image: string;
-  name: string;
-  accessToken: string;
-  refreshToken: string;
 }
