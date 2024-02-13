@@ -1,6 +1,6 @@
 FROM node:lts as dependencies
 WORKDIR /intellecta-prod
-COPY package*.json ./
+COPY .package*.json ./
 RUN npm install
 
 FROM node:lts as builder
@@ -10,7 +10,7 @@ COPY --from=dependencies /intellecta-prod/node_modules ./node_modules
 RUN npm run build
 
 FROM node:lts as runner
-WORKDIR /intellecta
+WORKDIR /intellecta-prod
 
 COPY --from=builder /intellecta-prod/public ./public
 COPY --from=builder /intellecta-prod/package.json ./package.json
