@@ -13,6 +13,10 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
+        hostname: "intellecta.com.ua",
+      },
+      {
+        protocol: "https",
         hostname: "fredytest.kyiv.ua",
       },
       {
