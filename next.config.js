@@ -12,6 +12,7 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
+        protocol: "https",
         hostname: "intellecta.com.ua",
       },
       {
