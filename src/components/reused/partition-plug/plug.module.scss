@@ -1,0 +1,223 @@
+.plug{
+  position: relative;
+  background: linear-gradient(60deg, rgb(59, 133, 246), rgb(63, 140, 255),rgb(19, 73, 166));
+  &_wrapper{
+    display: flex;
+    align-items: center;
+    width: 94vw;
+    height: 100vh;
+  }
+  &_title{
+    width: 100%;
+    max-width: 647px;
+    font-weight: 600;
+    font-size: 40px;
+    color: #F4F4F4;
+    line-height: 48px;
+    letter-spacing: -1px;
+    margin-left: 100px;
+  }
+  .cube__wrapper {
+    left: 270px;
+    bottom: -3%;
+    position: absolute;
+    .cube {
+      perspective: 800px;
+      width: 300px;
+      height: 300px;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateY(270deg) rotateY(37deg) rotateX(-40deg);
+
+      .side {
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+      }
+
+      .front {
+        transform: translateZ(150px);
+        background: linear-gradient(218.58deg, rgb(59, 131, 240) 31.103%, rgb(63, 135, 245) 100%);
+      }
+
+      .top {
+        transform: rotateY(180deg) rotateX(90deg) translateZ(150px);
+        background: linear-gradient(-60.14deg, rgb(65, 139, 249) 44.292%, rgb(61, 139, 255) 95.724%);
+      }
+
+      .right_side {
+        transform: rotateY(90deg) translateZ(150px);
+        background: linear-gradient(233.39deg, rgb(47, 118, 228) 26.495%, rgb(47, 119, 230) 91.465%);
+      }
+    }
+  }
+  .cube_wrapper_second {
+    top: -15%;
+    right: 166px;
+    position: absolute;
+    .cube_second {
+      perspective: 800px;
+      width:200px;
+      height:190px;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateY(270deg) rotateY(30deg) rotateX(-35deg);
+
+      .side_second {
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+      }
+
+      .front_second{
+        transform: translateZ(100px);
+        background: linear-gradient(-82.76deg, rgb(62, 116, 203) 24.097%,rgb(84, 142, 226) 82.629%);
+      }
+
+      .right_side_second{
+        transform: rotateY(90deg) translateZ(100px);
+        background: linear-gradient(236.31deg, rgb(19, 73, 166) 3.291%,rgb(16, 68, 157) 71.992%);
+      }
+    }
+  }
+
+}
+.star1{
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  transform: rotate(-30.01deg);
+  border-radius: 2px;
+  background: rgb(205, 244, 255);
+  left: 50%;
+  top: 40%;
+}
+.star2{
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  transform: rotate(-30.01deg);
+  border-radius: 5px;
+  background: rgb(164, 206, 161);
+  left: 66%;
+  top: 30%;
+}
+.star3{
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  transform: rotate(-30.01deg);
+  border-radius: 5px;
+  background: rgb(164, 206, 161);
+  left: 50%;
+  top: 70%;
+}
+.star4{
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  transform: rotate(-30.01deg);
+  border-radius: 5px;
+  background: rgb(164, 206, 161);
+  left: 90%;
+  top: 10%;
+}
+.star5{
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  transform: rotate(-30.01deg);
+  border-radius: 2px;
+  background: rgb(205, 244, 255);
+  left: 60%;
+  top:15%;
+}
+.star6{
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  transform: rotate(-30.01deg);
+  border-radius: 2px;
+  background: rgb(205, 244, 255);
+  left: 70%;
+  top:20%;
+}
+.star7{
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  transform: rotate(-30.01deg);
+  border-radius: 2px;
+  background: rgb(205, 244, 255);
+  left: 58%;
+  top:30%;
+
+}
+.star8{
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  transform: rotate(-30.01deg);
+  border-radius: 2px;
+  background: rgb(205, 244, 255);
+  left: 82%;
+  top: 20%;
+}
+.star9{
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  transform: rotate(-30.01deg);
+  border-radius: 2px;
+  background: rgb(205, 244, 255);
+  left: 60%;
+  top: 66%;
+}
+.star10{
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  transform: rotate(-30.01deg);
+  border-radius: 2px;
+  background: rgb(205, 244, 255);
+  left: 69%;
+  top: 65%;
+}
+.star11{
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  transform: rotate(-30.01deg);
+  border-radius: 2px;
+  background: rgb(205, 244, 255);
+  left: 80%;
+  top:64%;
+}
+.star12{
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  transform: rotate(-30.01deg);
+  border-radius: 2px;
+  background: rgb(205, 244, 255);
+  left: 90%;
+  top: 63%;
+}
+.star13{
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  transform: rotate(-30.01deg);
+  border-radius: 2px;
+  background: rgb(205, 244, 255);
+  left: 58%;
+  top:80%;
+}
