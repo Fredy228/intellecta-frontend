@@ -16,6 +16,7 @@ export const PartitionPlugVariantOne = () => {
             <div className={styles.cube_wrapper_second}>
                 <div className={styles.cube_second}>
                     <div className={`${styles.front_second} ${styles.side_second}`}></div>
+                    <div className={`${styles.top_second} ${styles.side_second}`}></div>
                     <div className={`${styles.right_side_second} ${styles.side_second}`}></div>
                 </div>
             </div>
