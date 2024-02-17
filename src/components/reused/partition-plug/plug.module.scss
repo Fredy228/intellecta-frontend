@@ -36,6 +36,10 @@ $animation-delay: 0.5s;
     letter-spacing: -1px;
     margin-left: 100px;
   }
+  .cube__wrapper {
+    left: 270px;
+    bottom: -3%;
+    position: absolute;
     .cube {
       perspective: 800px;
       width: 300px;
@@ -68,12 +72,12 @@ $animation-delay: 0.5s;
         transform: rotateY(90deg) translateZ(150px);
         background: linear-gradient(233.39deg, rgb(47, 118, 228) 26.495%, rgb(47, 119, 230) 91.465%);
       }
+    }
   }
   .cube_wrapper_second {
     top: -15%;
     right: 166px;
     position: absolute;
-    animation: cube2 ease-in 5s infinite ;
     .cube_second {
       perspective: 800px;
       width:200px;
@@ -191,28 +195,7 @@ $animation-delay: 0.5s;
     filter: drop-shadow(1px 0px 14px #fff);
   }
 }
-@keyframes cube2 {
-  0%{
-    top: -15%;
-  }
-  50%{
-    top:-12%;
-  }
-  100%{
-    top: -15%;
-  }
-}
-@keyframes cube {
-  0%{
-    bottom: -3%;
-  }
-  50%{
-    bottom: 1px;
-  }
-  100%{
-    bottom:-3%;
-  }
-}
+
 //animation star
 @for $i from 1 through 13 {
   .star:nth-child(#{$i}) {

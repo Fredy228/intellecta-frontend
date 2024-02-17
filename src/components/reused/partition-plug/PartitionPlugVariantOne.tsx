@@ -1,5 +1,3 @@
-"use client"
-import {motion} from 'framer-motion'
 import styles from "./plug.module.scss";
 export const PartitionPlugVariantOne = () => {
     return (
@@ -8,28 +6,14 @@ export const PartitionPlugVariantOne = () => {
 
                 <h1 className={styles.plug_title}>Ви не підключені
                     до жодного навчального процесу</h1>
-                    <motion.div
-                        animate={{
-                            bottom:["-3%","-2%","-3%"]
-                        }}
-                        transition={{
-                            duration: 3,
-                            ease: "easeIn",
-                            repeat: Infinity
-                        }}
-                        style={{
-                            left: '270px',
-                            bottom: '-3%',
-                            position: "absolute",
-                        }}
-                    >
-                        <div className={styles.cube}>
-                            <div className={`${styles.front} ${styles.side}`}></div>
-                            <div className={`${styles.top} ${styles.side}`}></div>
-                            <div className={`${styles.right_side} ${styles.side}`}></div>
-                        </div>
-                    </motion.div>
+                <div className={styles.cube__wrapper}>
+                    <div className={styles.cube}>
+                        <div className={`${styles.front} ${styles.side}`}></div>
+                        <div className={`${styles.top} ${styles.side}`}></div>
+                        <div className={`${styles.right_side} ${styles.side}`}></div>
+                    </div>
                 </div>
+            </div>
             <div className={styles.cube_wrapper_second}>
                 <div className={styles.cube_second}>
                     <div className={`${styles.front_second} ${styles.side_second}`}></div>

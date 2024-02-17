@@ -7,8 +7,8 @@ const Tests: NextPage = () => {
   return (
     <div>
       {" "}
-        {/*<PartitionPlugVariantTwo/>*/}
-        <PartitionPlugVariantOne/>
+        <PartitionPlugVariantTwo/>
+        {/*<PartitionPlugVariantOne/>*/}
     </div>
   );
 };

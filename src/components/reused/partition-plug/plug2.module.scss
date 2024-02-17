@@ -79,7 +79,6 @@ $animation-delay: 0.5s;
     top: -15%;
     left: 466px;
     position: absolute;
-    animation: cube2 ease-in 5s infinite ;
     .cube_second {
       perspective: 800px;
       width:200px;
@@ -194,28 +193,6 @@ $animation-delay: 0.5s;
   from {
     opacity: 1.0;
     filter: drop-shadow(1px 0px 14px #fff);
-  }
-}
-@keyframes cube2 {
-  0%{
-    top: -15%;
-  }
-  50%{
-    top:-12%;
-  }
-  100%{
-    top: -15%;
-  }
-}
-@keyframes cube {
-  0%{
-    bottom: -3%;
-  }
-  50%{
-    bottom: 10px;
-  }
-  100%{
-    bottom:-3%;
   }
 }
 //animation star
