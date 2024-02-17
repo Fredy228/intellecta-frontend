@@ -1,7 +1,7 @@
 import styles from "./plug.module.scss";
 export const PartitionPlugVariantOne = () => {
     return (
-        <div className={styles.plug} >
+        <div className={styles.plug}>
             <div className={styles.plug_wrapper}>
                 <h1 className={styles.plug_title}>Ви не підключені
                     до жодного навчального процесу</h1>
@@ -20,19 +20,19 @@ export const PartitionPlugVariantOne = () => {
                     <div className={`${styles.right_side_second} ${styles.side_second}`}></div>
                 </div>
             </div>
-            <div className={styles.star1}></div>
-            <div className={styles.star2}></div>
-            <div className={styles.star3}></div>
-            <div className={styles.star4}></div>
-            <div className={styles.star5}></div>
-            <div className={styles.star6}></div>
-            <div className={styles.star7}></div>
-            <div className={styles.star8}></div>
-            <div className={styles.star9}></div>
-            <div className={styles.star10}></div>
-            <div className={styles.star11}></div>
-            <div className={styles.star12}></div>
-            <div className={styles.star13}></div>
+            <div className={`${styles.star} ${styles.star1} ${styles.star_white}`}></div>
+            <div className={`${styles.star} ${styles.star2} ${styles.star_green}`}></div>
+            <div className={`${styles.star} ${styles.star3} ${styles.star_green}`}></div>
+            <div className={`${styles.star} ${styles.star4} ${styles.star_green}`}></div>
+            <div className={`${styles.star} ${styles.star5} ${styles.star_white}`}></div>
+            <div className={`${styles.star} ${styles.star6} ${styles.star_white}`}></div>
+            <div className={`${styles.star} ${styles.star7} ${styles.star_white}`}></div>
+            <div className={`${styles.star} ${styles.star8} ${styles.star_white}`}></div>
+            <div className={`${styles.star} ${styles.star9} ${styles.star_white}`}></div>
+            <div className={`${styles.star} ${styles.star10} ${styles.star_white}`}></div>
+            <div className={`${styles.star} ${styles.star11} ${styles.star_white}`}></div>
+            <div className={`${styles.star} ${styles.star12} ${styles.star_white}`}></div>
+            <div className={`${styles.star} ${styles.star13} ${styles.star_white}`}></div>
         </div>
     );
 };
