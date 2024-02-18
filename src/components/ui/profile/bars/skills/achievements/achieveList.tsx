@@ -8,7 +8,7 @@ import {
   IconProfileVerify
 } from "@/components/reused/Icon/Icon";
 
-export type TAchievivList = {
+export type TAchievement = {
   id: number;
   icon: React.JSX.Element;
   named: string;
@@ -17,7 +17,7 @@ export type TAchievivList = {
   border:string;
 };
 
-export const Achieve: TAchievivList[] = [
+export const Achieve: TAchievement[] = [
   {
     id: 1,
     icon: <IconProfileMentor/>,

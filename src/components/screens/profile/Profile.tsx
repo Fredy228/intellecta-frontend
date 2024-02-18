@@ -1,29 +1,20 @@
-"use client"
-import { CardProfile } from "@/components/ui/profile/card-profile/CardProfile";
-import { Contacts } from "@/components/ui/profile/bars/contatc-profile/Contacts";
-import { Friends } from "@/components/ui/profile/bars/friends/Friends";
-import { AddBlock } from "@/components/ui/profile/bars/addBlock/AddBlock";
-import { Achievement } from "@/components/ui/profile/bars/skills/achievements/Achievment";
-import { Languages } from "@/components/ui/profile/bars/skills/languages/Languages";
+"use client";
 import styles from "./profile.module.scss";
-export const Account = () => {
-  return (
-    <main className={styles.main}>
-      <CardProfile />
-      <div className={styles.profile_container}>
-        <div>
-          <Contacts />
-          <Friends />
-          <AddBlock />
-        </div>
-        <div style={{flex: "1"}}>
-          <div className={styles.courses_block}>
-            <Achievement/>
-            <Languages/>
-          </div>
-          <AddBlock/>
-        </div>
-      </div>
-    </main>
-  );
+import { TStudentProfile, TUniversityProfile } from "@/types/profile";
+import { ProfileUser } from "@/components/screens/profile/ProfileUser";
+// import { ProfileInstitution } from "@/components/screens/profile/ProfileInstitution";
+
+export const Profile = ({
+  profile,
+}: {
+  profile: TUniversityProfile | TStudentProfile;
+}) => {
+  switch (profile.type) {
+    case "student":
+      return <ProfileUser user={profile} />;
+    case "university":
+    // return <ProfileInstitution user={profile} />;
+    default:
+      return <main className={styles.main}>Невідомий тип профілю.</main>;
+  }
 };

@@ -1,7 +1,7 @@
 import { FC } from "react";
-import { TAchievivList } from "@/components/ui/profile/bars/skills/achievements/achieveList";
+import { TAchievement } from "@/components/ui/profile/bars/skills/achievements/achieveList";
 import styles from "./AchievmentItem.module.scss";
-export const AchievmentItem: FC<TAchievivList> = ({ icon, named,bg }) => {
+export const AchievmentItem: FC<TAchievement> = ({ icon, named,bg }) => {
   return (
       <div className={styles.card_wrapper}>
           <li className={styles.card_icon} style={{background:bg}}>

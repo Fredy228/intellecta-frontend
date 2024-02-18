@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useSelector } from "react-redux";
 
 import {
   IconCalendarList,
@@ -13,17 +12,17 @@ import {
 } from "@/components/reused/Icon/Icon";
 import styles from "./contactList.module.scss";
 
-import { selectUser } from "@/redux/user/selectors";
+import { TStudentContacts } from "@/types/profile";
 
-export const Contacts = () => {
-  const user = useSelector(selectUser);
+export const Contacts = ({ contacts }: { contacts: TStudentContacts }) => {
+  // const user = useSelector(selectUser);
 
   return (
     <div className={styles.listWrapper}>
       <ul className={styles.listWrapper_list}>
         <li className={styles.listWrapper_item}>
           <IconMail />
-          <Link href={`mailto:${user.email}`}>{user.email}</Link>
+          <Link href={`mailto:${contacts.mail}`}>{contacts.mail}</Link>
         </li>
         <li className={styles.listWrapper_item}>
           <IconTel />
