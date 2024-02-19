@@ -70,3 +70,6 @@ export {default as IconProfileQa} from "./profile/QA.svg"
 export {default as IconProfilePro} from "./profile/pro.svg"
 export {default as IconProfileVerify} from "./profile/verif.svg"
 export {default as IconProfileCalendar} from "./profile/calendar-verif.svg"
+// plug
+export {default as IconRobot} from "./plug/intellecta_bot.svg"
+export {default as IconRobotWithBooks} from "./plug/intellecta_bot_with_books.svg"
