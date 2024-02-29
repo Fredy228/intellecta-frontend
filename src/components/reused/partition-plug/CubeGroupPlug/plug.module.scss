@@ -20,13 +20,15 @@ $animation-delay: 0.5s;
 .plug{
   position: relative;
   background: linear-gradient(60deg, rgb(59, 133, 246), rgb(63, 140, 255),rgb(19, 73, 166));
+  width: 100%;
   &_wrapper{
     display: flex;
     align-items: center;
-    width: 94vw;
     height: 100vh;
   }
   &_title{
+    position: relative;
+    z-index: 1;
     width: 100%;
     max-width: 647px;
     font-weight: 600;
@@ -38,9 +40,10 @@ $animation-delay: 0.5s;
   }
   .cube__wrapper {
     left: 270px;
-    bottom: -3%;
+    bottom: -8%;
     position: absolute;
     .cube {
+      z-index: 0;
       perspective: 800px;
       width: 300px;
       height: 300px;

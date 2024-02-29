@@ -3,7 +3,6 @@ export const PartitionPlugVariantOne = () => {
     return (
         <div className={styles.plug}>
             <div className={styles.plug_wrapper}>
-
                 <h1 className={styles.plug_title}>Ви не підключені
                     до жодного навчального процесу</h1>
                 <div className={styles.cube__wrapper}>
