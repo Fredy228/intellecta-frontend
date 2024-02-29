@@ -1,12 +1,8 @@
 import { type NextPage } from "next";
-import InDevelop from "@/components/ui/in-develop/InDevelop";
+
+import { PartitionPlugVariantFive } from "@/components/reused/partition-plug/PartitionPlugVariantFive";
 
 const Marks: NextPage = () => {
-  return (
-    <div>
-      {" "}
-      <InDevelop name={"Оцінки"} />
-    </div>
-  );
+  return <PartitionPlugVariantFive />;
 };
 export default Marks;

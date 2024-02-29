@@ -1,11 +1,8 @@
 import { type NextPage } from "next";
-import InDevelop from "@/components/ui/in-develop/InDevelop";
+
+import { PartitionPlugVariantFive } from "@/components/reused/partition-plug/PartitionPlugVariantFive";
 
 const Chats: NextPage = () => {
-  return (
-    <div>
-      <InDevelop name={"Чати"} />
-    </div>
-  );
+  return <PartitionPlugVariantFive />;
 };
 export default Chats;
