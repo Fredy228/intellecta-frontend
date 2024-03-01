@@ -1,4 +1,4 @@
-@import "../mixnis-cube";
+@import "../mixins-cube";
 .plug{
   .side {
     @include side;
@@ -9,7 +9,7 @@
     justify-content: space-between;
     .robot_bg{
       @include robot-bg;
-
+      margin: 0;
     }
   }
   &_title{
