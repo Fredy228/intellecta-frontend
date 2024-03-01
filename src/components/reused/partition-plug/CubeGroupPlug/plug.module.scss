@@ -1,0 +1,134 @@
+@import "../mixins-cube";
+
+.side {
+  @include side;
+}
+
+.plug{
+  @include plug;
+  &_wrapper{
+   @include plugin-wrapper
+  }
+  &_title{
+    @include title-cube;
+  }
+  .cube {
+    @include cube-styles;
+  }
+  .cube__wrapper_right{
+    right: 270px;
+    bottom: -8%;
+    position: absolute;
+    @media (max-width: 880px) {
+      transform: translateX(67%);
+    }
+  }
+  .cube_wrapper_second_left{
+    top: -15%;
+    left: 466px;
+    position: absolute;
+    @media (max-width: 880px) {
+      transform: translateX(-100%);
+    }
+    .cube_second {
+      @include second-cube-styles;
+    }
+  }
+  .cube_wrapper_second{
+    top: -15%;
+    right: 466px;
+    position: absolute;
+    @media (max-width: 880px) {
+      transform: translateX(100%);
+    }
+    .cube_second {
+      @include second-cube-styles;
+    }
+  }
+  .cube__wrapper {
+    left: 270px;
+    bottom: -8%;
+    position: absolute;
+    @media (max-width: 880px) {
+      transform: translateX(-20%);
+    }
+  }
+  .star_green{
+    @include green_star;
+  }
+  .star_white{
+    @include white_star;
+  }
+  .star1{
+    left: 50%;
+    animation: blinker infinite 2s ease-in-out;
+    top: 40%;
+  }
+  .star2{
+    animation: blinker infinite 2s ease-in-out;
+    left: 66%;
+    top: 30%;
+  }
+  .star3{
+    animation: blinker infinite 2s ease-in-out;
+    left: 50%;
+    top: 70%;
+  }
+  .star4{
+    animation: blinker infinite 2s ease-in-out;
+    left: 90%;
+    top: 10%;
+  }
+  .star5{
+    animation: blinker infinite 2s ease-in-out;
+    left: 60%;
+    top:15%;
+  }
+  .star6{
+    left: 70%;
+    animation: blinker infinite 2s ease-in-out;
+    top:20%;
+  }
+  .star7{
+    animation: blinker infinite 2s ease-in-out;
+    left: 58%;
+    top:30%;
+  }
+  .star8{
+    animation: blinker infinite 2s ease-in-out;
+    left: 82%;
+    top: 20%;
+  }
+  .star9{
+    animation: blinker infinite 2s ease-in-out;
+    left: 60%;
+    top: 66%;
+  }
+  .star10{
+    animation: blinker infinite 2s ease-in-out;
+    left: 69%;
+    top: 65%;
+  }
+  .star11{
+    animation: blinker infinite 2s ease-in-out;
+    left: 80%;
+    top:64%;
+  }
+  .star12{
+    animation: blinker infinite 2s ease-in-out;
+    left: 90%;
+    top: 63%;
+  }
+  .star13{
+    animation: blinker infinite 2s ease-in-out;
+    left: 58%;
+    top:80%;
+  }
+}
+
+@for $i from 1 through 13 {
+  .star:nth-child(#{$i}) {
+    animation: blinker $animation-duration infinite alternate $i * $animation-delay;
+
+  }
+}

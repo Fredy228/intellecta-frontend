@@ -1,4 +1,4 @@
-import styles from "./plug5.module.scss";
+import styles from "./plug-last-page.module.scss";
 import {IconRobotWithBooks} from "@/components/reused/Icon/Icon";
 export const PartitionPlugVariantFive = () => {
     return (
@@ -7,7 +7,7 @@ export const PartitionPlugVariantFive = () => {
                 <div className={styles.robot_bg}>
                     <IconRobotWithBooks/>
                 </div>
-                <div className={styles.plug_inner_bg}>
+                <div className={`${styles.plug_inner_bg} ${styles.blue}`}>
                     <h1 className={styles.plug_title}>Ви не підключені
                         до жодного навчального процесу
                     </h1>

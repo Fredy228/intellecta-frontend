@@ -1,0 +1,136 @@
+//args for animation start
+$animation-duration:1s;
+$animation-delay: 0.5s;
+
+@keyframes blinker {
+  to {
+    opacity: 0.7;
+  }
+  from {
+    opacity: 1.0;
+    filter: drop-shadow(1px 0px 14px #fff);
+  }
+}
+
+// mixins
+@mixin plug {
+  position: relative;
+  width: 100%;
+}
+@mixin plugin-wrapper {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+@mixin title-cube {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 647px;
+  font-weight: 600;
+  font-size: clamp(1.25rem, 0.4167rem + 1.7361vw, 2.5rem);
+  color: #F4F4F4;
+  margin-left: 100px;
+}
+@mixin cube-styles {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateY(270deg) rotateY(37deg) rotateX(-40deg);
+  .front {
+    transform: translateZ(150px);
+    background: linear-gradient(218.58deg, rgb(59, 131, 240) 31.103%, rgb(63, 135, 245) 100%);
+  }
+
+  .top {
+    transform: rotateY(180deg) rotateX(90deg) translateZ(150px);
+    background: linear-gradient(-60.14deg, rgb(65, 139, 249) 44.292%, rgb(61, 139, 255) 95.724%);
+  }
+
+  .right_side {
+    transform: rotateY(90deg) translateZ(150px);
+    background: linear-gradient(233.39deg, rgb(47, 118, 228) 26.495%, rgb(47, 119, 230) 91.465%);
+  }
+}
+@mixin side  {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+@mixin second-cube-styles {
+  width:200px;
+  height:190px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateY(270deg) rotateY(30deg) rotateX(-35deg);
+
+  .front_second{
+    transform: translateZ(100px);
+    background: linear-gradient(-82.76deg, rgb(62, 116, 203) 24.097%,rgb(84, 142, 226) 82.629%);
+  }
+  .top_second{
+    width: 100%;
+    transform: rotateY(180deg) rotateX(90deg) translateZ(94px);
+    background: linear-gradient(-60.14deg, rgb(65, 139, 249) 44.292%, rgb(61, 139, 255) 95.724%);
+  }
+  .right_side_second{
+    transform: rotateY(90deg) translateZ(100px);
+    background: linear-gradient(236.31deg, rgb(19, 73, 166) 3.291%,rgb(16, 68, 157) 71.992%);
+  }
+}
+@mixin robot-bg{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  width: 100%;
+  max-width: 453px;
+  height: 100vh;
+  border-radius: 0 100% 40% 0;
+  margin: 0 auto;
+  >svg{
+    padding-right: 20px;
+    padding-left: 20px;
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+    max-height: 400px;
+  }
+}
+// starts styles
+@mixin white_star {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  transform: rotate(-30.01deg);
+  border-radius: 2px;
+  background: rgb(205, 244, 255);
+}
+@mixin green_star{
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  transform: rotate(-30.01deg);
+  border-radius: 5px;
+  background: rgb(164, 206, 161);
+}
+//classes for all pages
+.star_green{
+  @include green_star;
+}
+.star_white{
+  @include white_star;
+}
+
+.blue{
+  background: linear-gradient(60deg, rgb(59, 133, 246), rgb(63, 140, 255),rgb(19, 73, 166))
+}
+.pink{
+  background: linear-gradient(0deg, rgba(174,182,243,1) 0%, rgba(96,120,236,1) 100%);;
+}
