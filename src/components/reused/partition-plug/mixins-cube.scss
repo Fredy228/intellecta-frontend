@@ -33,7 +33,6 @@ $animation-delay: 0.5s;
   margin-left: 100px;
 }
 @mixin cube-styles {
-  perspective: 800px;
   width: 300px;
   height: 300px;
   position: relative;
@@ -65,7 +64,6 @@ $animation-delay: 0.5s;
 }
 
 @mixin second-cube-styles {
-  perspective: 800px;
   width:200px;
   height:190px;
   position: relative;
@@ -89,7 +87,9 @@ $animation-delay: 0.5s;
 @mixin robot-bg{
   display: flex;
   align-items: center;
+  justify-content: center;
   background-color: #FFFFFF;
+  width: 100%;
   max-width: 453px;
   height: 100vh;
   border-radius: 0 100% 40% 0;

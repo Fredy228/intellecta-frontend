@@ -12,9 +12,9 @@ const Tests: NextPage = () => {
       {" "}
         {/*<PartitionPlugVariantOne/>*/}
         {/*<PartitionPlugVariantTwo/>*/}
-        {/*<PartitionPlugVariantThree/>*/}
+        <PartitionPlugVariantThree/>
         {/*<PartitionPlugVariantFour/>*/}
-        <PartitionPlugVariantFive/>
+        {/*<PartitionPlugVariantFive/>*/}
     </>
   );
 };
