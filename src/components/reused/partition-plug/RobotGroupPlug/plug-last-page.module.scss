@@ -1,0 +1,102 @@
+@import "../mixins-cube";
+.plug{
+  @include plug;
+  background-color: #FFFFFF;
+  &_wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    .plug_inner_bg{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 60%;
+      height: 100vh;
+      border-radius: 100% 0 0 100%;
+    }
+    .robot_bg{
+     @include robot-bg;
+    }
+  }
+  &_title {
+    @include title-cube;
+    margin-left: 30px;
+  }
+  .star1{
+    left: 50%;
+    animation: blinker infinite 2s ease-in-out;
+    top: 40%;
+  }
+  .star2{
+    animation: blinker infinite 2s ease-in-out;
+    left: 66%;
+    top: 30%;
+  }
+  .star3{
+    animation: blinker infinite 2s ease-in-out;
+    left: 50%;
+    top: 70%;
+  }
+  .star4{
+    animation: blinker infinite 2s ease-in-out;
+    left: 90%;
+    top: 10%;
+  }
+  .star5{
+    animation: blinker infinite 2s ease-in-out;
+    left: 60%;
+    top:15%;
+  }
+  .star6{
+    left: 70%;
+    animation: blinker infinite 2s ease-in-out;
+    top:20%;
+  }
+  .star7{
+    animation: blinker infinite 2s ease-in-out;
+    left: 58%;
+    top:30%;
+
+  }
+  .star8{
+    animation: blinker infinite 2s ease-in-out;
+    left: 82%;
+    top: 20%;
+  }
+  .star9{
+    animation: blinker infinite 2s ease-in-out;
+    left: 60%;
+    top: 66%;
+  }
+  .star10{
+    animation: blinker infinite 2s ease-in-out;
+    left: 69%;
+    top: 65%;
+  }
+  .star11{
+    animation: blinker infinite 2s ease-in-out;
+    left: 80%;
+    top:64%;
+  }
+  .star12{
+    animation: blinker infinite 2s ease-in-out;
+    left: 90%;
+    top: 63%;
+  }
+  .star13{
+    animation: blinker infinite 2s ease-in-out;
+    left: 58%;
+    top:80%;
+  }
+
+}
+
+
+//animation star
+@for $i from 1 through 13 {
+  .star:nth-child(#{$i}) {
+    animation: blinker $animation-duration infinite alternate $i * $animation-delay;
+
+  }
+}

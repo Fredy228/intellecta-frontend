@@ -1,8 +1,8 @@
-import styles from "./plug4.module.scss";
+import styles from "./plug.module.scss";
 import {IconRobot} from "@/components/reused/Icon/Icon";
 export const PartitionPlugVariantFour = () => {
     return (
-        <div className={styles.plug}>
+        <div className={`${styles.plug} ${styles.pink}`}>
             <div className={styles.plug_wrapper}>
                 <div className={styles.robot_bg}>
                     <IconRobot/>
@@ -19,9 +19,9 @@ export const PartitionPlugVariantFour = () => {
             </div>
             <div className={styles.cube_wrapper_second}>
                 <div className={styles.cube_second}>
-                    <div className={`${styles.front_second} ${styles.side_second}`}></div>
-                    <div className={`${styles.top_second} ${styles.side_second}`}></div>
-                    <div className={`${styles.right_side_second} ${styles.side_second}`}></div>
+                    <div className={`${styles.front_second} ${styles.side}`}></div>
+                    <div className={`${styles.top_second} ${styles.side}`}></div>
+                    <div className={`${styles.right_side_second} ${styles.side}`}></div>
                 </div>
             </div>
             <div className={`${styles.star} ${styles.star1} ${styles.star_white}`}></div>
