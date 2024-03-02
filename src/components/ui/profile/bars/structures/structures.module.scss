@@ -1,0 +1,34 @@
+@import '@/styles/varible';
+.structures_wrapper {
+  width: 100%;
+
+  .title {
+    color: $main-text-color;
+    font-size: 22px;
+    font-weight: $title-weight;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .structures {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    & > li {
+      flex: 1 0 auto;
+    }
+  }
+
+  .showAll {
+    background: #fff;
+    color: #438CED;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 34px;
+    padding: 8px 16px;
+    float: right;
+    margin-top: 16px;
+  }
+}

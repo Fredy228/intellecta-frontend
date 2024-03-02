@@ -11,46 +11,34 @@
   width: 100%;
   display: flex;
   gap: 50px;
-
 }
 .courses_block {
   width: 100%;
-  gap: calc(100px - 54px);
+  gap: 32px 42px;
   display: flex;
   background: $background-option;
-  padding: 25px;
+  padding: 24px;
   border-radius: 24px;
   border: 1px solid #FFF;
-  background: #EDEDED;
   box-shadow: 4px 4px 25px 0 rgba(160, 160, 160, 0.50), -4px -4px 25px 0px #FFF, 4px 4px 35px 0px #FFF inset;
-  > div:first-child{
-    border-right: 2px solid #D9D9D9;
-    padding-right: 54px;
 
+  .courses_rates {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
+}
+.people_counts {
+  display: flex;
+  gap: 12px;
 }
 @media(max-width: 1080px){
   .courses_block {
     display: flex;
-   flex-wrap: wrap;
+    flex-wrap: wrap;
     justify-content: center;
-    > div:first-child {
-      border-right: none;
-    }
   }
-}
-
-@media (max-width:960px) {
-  .courses_block {
-    > div:first-child {
-      border-right: none;
-    }
-  }
-}
-@media (max-width: 1268px) {
-  .courses_block {
-    > div:first-child {
-      padding-right: 0;
-    }
+  .vertical_line {
+    display: none;
   }
 }

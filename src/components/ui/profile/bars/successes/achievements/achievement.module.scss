@@ -1,0 +1,29 @@
+@import '@/styles/varible';
+.achievement_wrapper {
+  width: 100%;
+  max-width: 336px;
+
+  @media(max-width: 1080px) {
+    max-width: unset;
+  }
+}
+
+.achievement_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+  min-width: 210px;
+  max-width: 336px;
+  grid-gap: 16px;
+  @media(max-width: 1080px) {
+    max-width: unset;
+  }
+}
+.title {
+  color: $main-text-color;
+  font-size: 22px;
+  font-weight: $title-weight;
+  margin-bottom: 16px;
+  text-align: center;
+}

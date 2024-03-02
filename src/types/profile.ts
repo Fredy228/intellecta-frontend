@@ -1,4 +1,5 @@
-import { TAchievement } from "@/components/ui/profile/bars/skills/achievements/achieveList";
+import { TAchievement } from "@/types/achievements";
+import { TStructure } from "@/types/structures";
 
 export type TUniversityProfile = {
   type: "university";
@@ -11,6 +12,7 @@ export type TUniversityProfile = {
   students: number;
   rating: number;
   image: string;
+  structures: TStructure[];
 };
 
 export type TUniversityContacts = {

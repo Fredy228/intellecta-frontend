@@ -2,9 +2,8 @@
 
 .listWrapper {
   position: relative;
-  max-width: 300px;
-  width: 100%;
-  padding: 24px;
+  width: 350px;
+  padding: 28px 16px 28px;
   border-radius: 24px;
   border: 1px solid $light-text-color;
   background: $background-option;
@@ -29,6 +28,12 @@
     color: $main-text-color;
     font-size: $font-size-md;
     font-weight: $title-weight;
+
+    & > svg {
+      flex: 0 0 auto;
+      height: 24px;
+      width: 24px;
+    }
   }
 }
 
