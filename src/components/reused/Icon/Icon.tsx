@@ -55,21 +55,22 @@ export { default as IconLocation } from "./storage/location.svg";
 export { default as IconCalendarList } from "./storage/calendar-list.svg";
 export { default as IconFriends } from "./storage/friends.svg";
 export { default as IconAddList } from "./storage/add-btn-list.svg";
-export {default as IconHtml} from  "./courses/html.svg"
-export {default as IconReact} from  "./courses/react.svg"
-export {default as IconJavaScript} from  "./courses/js.svg"
+export { default as IconHtml } from "./courses/html.svg";
+export { default as IconReact } from "./courses/react.svg";
+export { default as IconJavaScript } from "./courses/js.svg";
 //Profile icons
 export { default as IconProfileAboutMe } from "./profile/about-me.svg";
 export { default as IconProfileCertificates } from "./profile/certificates.svg";
 export { default as IconProfileDocuments } from "./profile/documents.svg";
 export { default as IconProfileEducation } from "./profile/education.svg";
 export { default as IconProfileExperience } from "./profile/experience.svg";
-export {default as IconProfileMentor} from "./profile/mentor.svg"
-export {default as IconProfileInventation} from "./profile/inventation.svg"
-export {default as IconProfileQa} from "./profile/QA.svg"
-export {default as IconProfilePro} from "./profile/pro.svg"
-export {default as IconProfileVerify} from "./profile/verif.svg"
-export {default as IconProfileCalendar} from "./profile/calendar-verif.svg"
+export { default as IconProfileMentor } from "./profile/mentor.svg";
+export { default as IconProfileInventation } from "./profile/inventation.svg";
+export { default as IconProfileQa } from "./profile/QA.svg";
+export { default as IconProfilePro } from "./profile/pro.svg";
+export { default as IconProfileVerify } from "./profile/verif.svg";
+export { default as IconProfileCalendar } from "./profile/calendar-verif.svg";
+export { default as IconRector } from "./profile/rector.svg";
 // plug
-export {default as IconRobot} from "./plug/intellecta_bot.svg"
-export {default as IconRobotWithBooks} from "./plug/intellecta_bot_with_books.svg"
+export { default as IconRobot } from "./plug/intellecta_bot.svg";
+export { default as IconRobotWithBooks } from "./plug/intellecta_bot_with_books.svg";

@@ -1,0 +1,45 @@
+@import "@/styles/varible";
+
+.skills_menu_list {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 12px;
+  column-gap: 20px;
+  width: 100%;
+  max-width: 440px;
+  justify-items: start;
+  align-items: center;
+
+
+  .skills_menu_item {
+    text-align: center;
+    color: $main-text-color;
+    font-size: clamp(0.75rem, 0.675rem + 0.375vw, 1.125rem);
+    font-weight: $title-weight;
+    border-radius: 20px;
+    background: $light-text-color;
+    padding: 8px 16px;
+  }
+}
+.add_list {
+  svg {
+    width: 35px;
+    height: 35px;
+  }
+}
+.title {
+  color: $main-text-color;
+  font-size: 22px;
+  font-weight: $title-weight;
+  margin-bottom: 20px;
+  @media(max-width: 1080px) {
+    text-align: center;
+  }
+}
+@media (max-width: 1080px) {
+  .skills_menu_list {
+    width: 100%;
+    max-width: 440px;
+    justify-content: center;
+  }
+}

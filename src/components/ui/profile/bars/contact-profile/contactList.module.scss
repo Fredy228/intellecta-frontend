@@ -1,0 +1,50 @@
+@import "@/styles/varible";
+
+.listWrapper {
+  position: relative;
+  width: 350px;
+  padding: 28px 16px 28px;
+  border-radius: 24px;
+  border: 1px solid $light-text-color;
+  background: $background-option;
+  box-shadow:
+    4px 4px 25px 0 rgba(160, 160, 160, 0.5),
+    -4px -4px 25px 0px $light-text-color,
+    4px 4px 35px 0px $light-text-color inset;
+
+  &_list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 35px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &_item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: $main-text-color;
+    font-size: $font-size-md;
+    font-weight: $title-weight;
+
+    & > svg {
+      flex: 0 0 auto;
+      height: 24px;
+      width: 24px;
+    }
+  }
+}
+
+.settings {
+  display: flex;
+  align-items: center;
+  background-color: $accent-color;
+  position: absolute;
+  padding: 9px;
+  border-radius: 50%;
+  right: 25px;
+  bottom: 17px;
+  cursor: pointer;
+}

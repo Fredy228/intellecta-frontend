@@ -1,0 +1,70 @@
+@import "@/styles/varible";
+
+.card {
+  display: flex;
+  position: relative;
+  align-items: center;
+  background-image: url("../../../../../public/img/profile/profile-bg.png");
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: left;
+  background-color: $light-text-color;
+  gap: 46px;
+  padding: 23px 30px 23px 15px;
+  margin-bottom: 36px;
+  border-radius: 8px;
+
+  &_avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid $light-text-color;
+  }
+  &_title_wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+  }
+}
+
+.title {
+  color: $main-text-color;
+  font-size: $font-size-lg;
+  font-weight: $title-weight;
+}
+.subtitle {
+  color: $second-text-color;
+  font-size: 16px;
+  font-weight: 600;
+}
+.role {
+  color: $main-text-color;
+  font-size: $font-size-md;
+  font-weight:  $title-weight;
+}
+.knowledge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 5px;
+  > svg {
+    width: 22px;
+    height: 20px;
+  }
+}
+
+.settings {
+  display: flex;
+  align-items: center;
+  background-color: $accent-color;
+  position: absolute;
+  padding: 9px;
+  border-radius: 50%;
+  right: 24px;
+  bottom: 23px;
+  cursor: pointer;
+}

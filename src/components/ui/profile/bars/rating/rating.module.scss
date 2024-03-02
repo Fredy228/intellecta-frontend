@@ -1,0 +1,44 @@
+@import "@/styles/varible";
+
+.rating_wrapper {
+  margin-bottom: 24px;
+  width: 100%;
+  max-width: 350px;
+  border-radius: 24px;
+  border: 1px solid $light-text-color;
+  background: $background-option;
+  box-shadow:
+          4px 4px 25px 0 rgba(160, 160, 160, 0.5),
+          -4px -4px 25px 0px $light-text-color,
+          4px 4px 35px 0px #fff inset;
+  padding: 8px 24px;
+
+  &.inline {
+    box-shadow: none;
+    border: none;
+    background: none;
+    padding: 0;
+  }
+
+  .rate {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &_title {
+      color: $main-text-color;
+      font-size: $font-size-lg;
+      font-weight: $title-weight;
+    }
+    &_numbers {
+      width: 100%;
+      max-width: 85px;
+      color: $background-item;
+      font-size: $font-size-lg;
+      font-weight: $title-weight;
+      text-align: center;
+      border-radius: 20px;
+      background: $light-text-color;
+      padding: 8px 12px;
+    }
+  }
+}
