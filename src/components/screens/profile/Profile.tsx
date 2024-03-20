@@ -18,6 +18,8 @@ export const Profile = ({ type }: { type: "university" | "student" }) => {
   if (type === "student") {
     const user = useSelector(selectUser);
 
+    if (!user) return;
+
     let profile: TStudentProfile = {
       type: "student",
       subtitle: "User at Intellecta",

@@ -8,18 +8,22 @@ import styles from "./home.module.scss";
 import ListSubjects from "@/components/ui/home/list-subjects/ListSubjects";
 import Intro from "@/components/ui/home/intro/intro";
 import { RoleEnum } from "@/enums/user/role-enum";
-import { selectUser } from "@/redux/user/selectors";
+import { selectProfile, selectUser } from "@/redux/user/selectors";
 
 const Home: NextPage = () => {
-  const user = useSelector(selectUser);
+  const currentProfile = useSelector(selectProfile);
 
   return (
     <main className={styles.home}>
       <div>
         <h2 className={styles.home_title}>
-          {user?.role === RoleEnum.STUDENT && "Чому ще не на уроці"}
-          {user?.role === RoleEnum.TEACHER && "Ви готові викладати"}
-          {user?.role === RoleEnum.ADMIN && "Усе готово для навчання"}?
+          {(currentProfile?.role === RoleEnum.STUDENT ||
+            currentProfile?.role === null) &&
+            "Чому ще не на уроці"}
+          {currentProfile?.role === RoleEnum.TEACHER && "Ви готові викладати"}
+          {currentProfile?.role === RoleEnum.OWNER_UNIVERSITY &&
+            "Усе готово для навчання"}
+          ?
         </h2>
       </div>
       <div className={styles.home_wrapper}>
