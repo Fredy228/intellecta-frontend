@@ -1,20 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { UserInterface } from "@/interfaces/user";
-import { RoleEnum } from "@/enums/user/role-enum";
+import { ProfileInterface } from "@/interfaces/profile";
 
-const initialState: UserInterface = {
-  id: 0,
-  email: "",
-  firstName: "",
-  lastName: "",
-  middleName: null,
-  role: RoleEnum.STUDENT,
-  sex: null,
-  image: null,
-  verified: 0,
-  accessToken: "",
-  refreshToken: "",
-  devices: undefined,
+type StateType = {
+  user: UserInterface | null;
+  profile: ProfileInterface | null;
+};
+
+const initialState: StateType = {
+  user: null,
+  profile: null,
 };
 
 export const userSlice = createSlice({
@@ -24,8 +19,8 @@ export const userSlice = createSlice({
     removeUser: () => {
       return { ...initialState };
     },
-    setUser: (_state, { payload }: { payload: UserInterface }) => {
-      return { ...payload };
+    setUser: (state, { payload }: { payload: UserInterface }) => {
+      state.user = payload;
     },
   },
 });

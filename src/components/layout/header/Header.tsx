@@ -25,7 +25,7 @@ const Header: FC = () => {
     <header className={styles.header}>
       <div className={styles.header_inner}>
         <div className={styles.header_userName}>
-          <p>Привіт {user.firstName}</p>
+          <p>Привіт {user?.firstName}</p>
         </div>
         <ul className={styles.header_listNotificCenter}>
           <li key={10} className={styles.header_itemNotificCenter}>

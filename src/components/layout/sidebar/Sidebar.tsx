@@ -13,17 +13,24 @@ import { IconArrowCouple } from "@/components/reused/Icon/Icon";
 import { TItemMenu } from "@/components/layout/sidebar/listMenu";
 import { RoleEnum } from "@/enums/user/role-enum";
 import { useSelector } from "react-redux";
-import { selectUser } from "@/redux/user/selectors";
+import { selectProfile, selectUser } from "@/redux/user/selectors";
 
 const Sidebar: FC = () => {
   const pathname = usePathname();
   const user = useSelector(selectUser);
+  const currentProfile = useSelector(selectProfile);
 
   const menu = (): TItemMenu[] | [] => {
-    if (user?.role === RoleEnum.TEACHER || user?.role === RoleEnum.STUDENT)
+    if (
+      currentProfile?.role === RoleEnum.TEACHER ||
+      currentProfile?.role === RoleEnum.STUDENT
+    )
       return listMenu;
-    if (user?.role === RoleEnum.ADMIN) return listMenuAdmin;
-    return [];
+    if (currentProfile?.role === RoleEnum.OWNER_UNIVERSITY)
+      return listMenuAdmin;
+
+    // return [];
+    return listMenu;
   };
 
   return (
@@ -76,7 +83,7 @@ const Sidebar: FC = () => {
         <div className={styles.aside_wrapperUser}>
           <Image
             src={
-              user.image
+              user?.image
                 ? user.image
                 : `${process.env.NEXT_URL}/img/sidebar/avatar.png`
             }
@@ -88,12 +95,14 @@ const Sidebar: FC = () => {
           <div className={styles.aside_wrapperUserName}>
             <Link href={"/dashboard/profile"}>
               <p className={styles.aside_userName}>
-                {`${user.firstName} ${user.lastName}`}
+                {`${user?.firstName} ${user?.lastName}`}
               </p>
               <span className={styles.aside_userRole}>
-                {user?.role === RoleEnum.TEACHER && "Викладач"}
-                {user?.role === RoleEnum.STUDENT && "Студент"}
-                {user?.role === RoleEnum.ADMIN && "Адмін"}
+                {currentProfile?.role === RoleEnum.TEACHER && "Викладач"}
+                {(currentProfile?.role === RoleEnum.STUDENT ||
+                  currentProfile?.role === null) &&
+                  "Студент"}
+                {currentProfile?.role === RoleEnum.OWNER_UNIVERSITY && "Адмін"}
               </span>
             </Link>
           </div>

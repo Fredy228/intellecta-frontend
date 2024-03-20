@@ -1,18 +1,22 @@
-import { RoleEnum } from "@/enums/user/role-enum";
+import { ProfileInterface } from "@/interfaces/profile";
 
 export interface UserInterface {
   id: number;
   email: string;
-  role: RoleEnum;
-  sex: number | null;
+  sex: 0 | 1 | null;
   firstName: string;
   lastName: string;
   middleName: string | null;
   image: string | null;
-  verified: 0 | 1;
+  verified: boolean;
+  settings: {
+    restorePassAt: Date | null;
+    code: string;
+  };
   accessToken: string;
   refreshToken: string;
-  devices?: Array<UserDeviceInterface>;
+  devices?: UserDeviceInterface[];
+  profiles?: ProfileInterface[];
 }
 
 export interface UserDeviceInterface {
