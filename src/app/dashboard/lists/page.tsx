@@ -18,8 +18,8 @@ export default function ListsPage() {
 
   if (isLoadingApp) return <LoaderPage />;
   if (!isAuthorize) return router.push("/auth/login");
-  if (isAuthorize && user.role !== RoleEnum.ADMIN)
-    return router.push("/dashboard");
+  // if (isAuthorize && user.role !== RoleEnum.ADMIN)
+  //   return router.push("/dashboard");
 
   return <Lists />;
 }
