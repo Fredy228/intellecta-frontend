@@ -34,6 +34,7 @@ $api.interceptors.response.use(
             withCredentials: true,
           },
         );
+        console.log(data);
         set("token", data.accessToken);
         return $api.request(originalRequest);
       } catch (e) {

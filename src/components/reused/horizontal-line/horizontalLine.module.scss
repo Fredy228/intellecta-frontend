@@ -1,5 +1,21 @@
+@import "@/styles/varible";
+
 .horizontalLine {
   width: 100%;
-  background: #d9d9d9;
-  height: 1px;
+  height: 2px;
+  border-radius: 2px;
+  margin: 15px 0;
+
+  &.main {
+    background-color: $main-text-color;
+  }
+  &.second {
+    background-color: $background-item;
+  }
+  &.accent {
+    background-color: $accent-color;
+  }
+  &.light {
+    background: #d9d9d9;
+  }
 }
