@@ -15,10 +15,10 @@ export const ProfileHeader = ({
   role,
   subtitle,
 }: {
-  avatar: string | null;
-  name: string;
-  role: string;
-  subtitle: string;
+  avatar?: string | null;
+  name?: string;
+  role?: string;
+  subtitle?: string;
 }) => {
   return (
     <div className={styles.card}>
@@ -43,10 +43,10 @@ export const ProfileHeader = ({
           <h1 className={styles.title}>{name}</h1>
         </div>
         <h2 className={styles.subtitle}>{subtitle}</h2>
-        <div className={styles.knowledge}>
-          <IconLearnVerSec />
-          <h3 className={styles.role}>{role}</h3>
-        </div>
+        {/*<div className={styles.knowledge}>*/}
+        {/*  <IconLearnVerSec />*/}
+        {/*  <h3 className={styles.role}>{role}</h3>*/}
+        {/*</div>*/}
       </div>
       <button className={styles.settings}>
         <IconSettingsProfile />

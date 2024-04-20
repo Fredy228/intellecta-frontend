@@ -1,0 +1,37 @@
+@import "@/styles/modal-mixins";
+
+.infoUser {
+  width: 700px;
+
+  &_title {
+    @include title-modal;
+  }
+
+  &_form {
+  }
+
+  &_formWrapp {
+    display: flex;
+    gap: 30px;
+  }
+
+  &_block {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1;
+  }
+
+  &_phoneWrap {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+
+  &_btnWrapp {
+    display: flex;
+    justify-content: right;
+    gap: 15px;
+    margin-top: 30px;
+  }
+}

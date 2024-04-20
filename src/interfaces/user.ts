@@ -1,4 +1,5 @@
 import { ProfileInterface } from "@/interfaces/profile";
+import { CountryCode } from "libphonenumber-js";
 
 export interface UserInterface {
   id: number;
@@ -9,10 +10,14 @@ export interface UserInterface {
   middleName: string | null;
   image: string | null;
   verified: boolean;
-  settings: {
-    restorePassAt: Date | null;
-    code: string;
+  bio: string;
+  birthday: Date;
+  phone: {
+    country: CountryCode;
+    number: string;
   };
+  settings: {};
+  actions: {};
   accessToken: string;
   refreshToken: string;
   devices?: UserDeviceInterface[];

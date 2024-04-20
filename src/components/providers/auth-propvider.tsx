@@ -37,8 +37,8 @@ export const AuthProviders = ({ children }: { children: ReactNode }) => {
     const getUserCurrent = async () => {
       console.log("Loading user...");
       try {
-        const user = await getUser();
-        dispacth(setUser(user));
+        const res = await getUser();
+        dispacth(setUser(res));
         dispacth(setAuthorize(true));
       } catch (e) {
         if (isAxiosError(e) && e.response?.status === 401) {
