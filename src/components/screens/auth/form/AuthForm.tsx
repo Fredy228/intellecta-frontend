@@ -69,7 +69,12 @@ const AuthForm: FC<Props> = ({ isRegister }) => {
       }
 
       set<string>("token", authUser.accessToken);
-      dispacth(setUser(authUser));
+      dispacth(
+        setUser({
+          user: authUser,
+          profiles: authUser.profiles,
+        }),
+      );
       dispacth(setAuthorize(true));
     } catch (e) {
       if (isAxiosError(e) && e.response?.data?.message) {
