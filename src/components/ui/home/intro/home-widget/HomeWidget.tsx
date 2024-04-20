@@ -12,8 +12,14 @@ import { TWidget } from "@/types/widget";
 import { WidgetsEnum } from "@/enums/widgets/widgets-enum";
 
 import AddWidget from "@/components/ui/home/intro/home-widget/add-widget/AddWidget";
-import ModalWindow from "@/components/reused/modal-window/ModalWindow";
+const ModalWindow = dynamic(
+  () => import("@/components/reused/modal-window/ModalWindow"),
+  {
+    ssr: false,
+  },
+);
 import PopapMenuWrap from "@/components/reused/popap-menu-wrap/PopapMenuWrap";
+import dynamic from "next/dynamic";
 
 const initialWidgets = [
   {

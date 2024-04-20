@@ -1,15 +1,20 @@
-"use client"
+"use client";
 
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
 import styles from "./addBlock.module.scss";
 
 import { ModalAddBlock } from "@/components/ui/profile/modal-window/ModalAddBlock";
-import ModalWindow from "@/components/reused/modal-window/ModalWindow";
-import {ModalWindowAbout} from "@/components/ui/profile/modal-window/modal-window-about/ModalWindowAbout";
+const ModalWindow = dynamic(
+  () => import("@/components/reused/modal-window/ModalWindow"),
+  {
+    ssr: false,
+  },
+);
+import { ModalWindowAbout } from "@/components/ui/profile/modal-window/modal-window-about/ModalWindowAbout";
 import AddWidget from "@/components/ui/home/intro/home-widget/add-widget/AddWidget";
-
 
 export const AddBlock = () => {
   const [isShowAddWidget, setIsShowAddWidget] = useState<boolean>(false);
@@ -27,7 +32,7 @@ export const AddBlock = () => {
         <AnimatePresence>
           {isShowAddWidget && (
             <ModalWindow setShow={setIsShowAddWidget} setShowIdx={setIsShowIdx}>
-              <ModalAddBlock/>
+              <ModalAddBlock />
             </ModalWindow>
           )}
         </AnimatePresence>

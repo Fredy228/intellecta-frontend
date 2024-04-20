@@ -12,13 +12,19 @@ import {
 } from "@/components/reused/Icon/Icon";
 import styles from "./contactList.module.scss";
 
-import ModalWindow from "@/components/reused/modal-window/ModalWindow";
+const ModalWindow = dynamic(
+  () => import("@/components/reused/modal-window/ModalWindow"),
+  {
+    ssr: false,
+  },
+);
 import ModalInfoUser from "@/components/ui/profile/modal-window/modal-info-user/ModalInfoUser";
 import { useSelector } from "react-redux";
 import { selectUser } from "@/redux/user/selectors";
 import { parsePhoneNumber } from "libphonenumber-js";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
+import dynamic from "next/dynamic";
 
 export const ProfileContactsUser = () => {
   const user = useSelector(selectUser);
