@@ -5,10 +5,10 @@ interface AnyObject {
 export function compareObjects(
   obj1: AnyObject | null,
   obj2: AnyObject | null,
-): AnyObject | undefined {
-  if (!obj1 === !obj2) return undefined;
+): AnyObject | undefined | null {
+  if (obj1 === obj2) return undefined;
   if (!obj1 && obj2) return obj2;
-  if (!obj2 && obj1) return obj1;
+  if (!obj2 && obj1) return null;
   if (!obj1 || !obj2) return undefined;
 
   const keys1 = Object.keys(obj1);

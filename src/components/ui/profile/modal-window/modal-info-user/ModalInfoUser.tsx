@@ -46,6 +46,7 @@ const ModalInfoUser: FC<Props> = ({ setIsShow }) => {
   const [middleName, setMiddleName] = useState<string>("");
   const [bio, setBio] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [sex, setSex] = useState<string>("");
 
   const user = useSelector(selectUser);
   const dispacth: Dispatch<any> = useDispatch();
@@ -56,9 +57,16 @@ const ModalInfoUser: FC<Props> = ({ setIsShow }) => {
     setCountry(event.target.value);
   };
 
+  const handleChangeSex = (event: SelectChangeEvent) => {
+    setSex(event.target.value);
+  };
+
   const handleSubmitForm: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     setIsLoading(true);
+
+    console.log(user?.birthday);
+    console.log(birthday?.format("YYYY-MM-DD"));
 
     const body: { [key: string]: any } = {
       firstName: compareStringAndNumber(user?.firstName, firstName.trim()),
@@ -66,12 +74,17 @@ const ModalInfoUser: FC<Props> = ({ setIsShow }) => {
       middleName: compareStringAndNumber(user?.middleName, middleName.trim()),
       bio: compareStringAndNumber(user?.bio, bio.trim()),
       birthday: compareStringAndNumber(
-        user?.birthday ? new Date(user?.birthday).toISOString() : null,
-        birthday?.toISOString(),
+        user?.birthday ? dayjs(user.birthday).format("YYYY-MM-DD") : null,
+        birthday?.format("YYYY-MM-DD"),
       ),
-      sex: undefined,
+      sex: compareStringAndNumber(
+        user?.sex,
+        (Number(sex) === 0 || Number(sex) === 1) && sex !== ""
+          ? Number(sex)
+          : null,
+      ),
       phone: compareObjects(
-        user?.phone ? user?.phone : null,
+        user?.phone?.number ? user.phone : null,
         phoneNumber.trim()
           ? {
               country,
@@ -80,6 +93,8 @@ const ModalInfoUser: FC<Props> = ({ setIsShow }) => {
           : null,
       ),
     };
+
+    console.log("body", body);
 
     if (Object.values(body).every((i) => i === undefined)) {
       setIsShow(false);
@@ -119,6 +134,7 @@ const ModalInfoUser: FC<Props> = ({ setIsShow }) => {
     setBirthday(user.birthday ? dayjs(user.birthday) : null);
     setPhoneNumber(user.phone?.number || "");
     setCountry(user.phone?.country || "");
+    setSex(user?.sex === 1 || user?.sex === 0 ? user?.sex.toString() : "");
   }, [user]);
 
   return (
@@ -130,7 +146,6 @@ const ModalInfoUser: FC<Props> = ({ setIsShow }) => {
           <div className={styles.infoUser_block}>
             <TextField
               id="outlined-basic"
-              size="small"
               label="Ім'я"
               variant="outlined"
               fullWidth
@@ -139,7 +154,6 @@ const ModalInfoUser: FC<Props> = ({ setIsShow }) => {
             />
             <TextField
               id="outlined-basic"
-              size="small"
               label="Призвіще"
               variant="outlined"
               fullWidth
@@ -148,7 +162,6 @@ const ModalInfoUser: FC<Props> = ({ setIsShow }) => {
             />
             <TextField
               id="outlined-basic"
-              size="small"
               label="Побатькові"
               variant="outlined"
               fullWidth
@@ -157,7 +170,6 @@ const ModalInfoUser: FC<Props> = ({ setIsShow }) => {
             />
             <TextField
               id="outlined-basic"
-              size="small"
               label="Про себе"
               variant="outlined"
               fullWidth
@@ -167,11 +179,11 @@ const ModalInfoUser: FC<Props> = ({ setIsShow }) => {
           </div>
           <div className={styles.infoUser_block}>
             <div className={styles.infoUser_phoneWrap}>
-              <FormControl size={"small"} sx={{ minWidth: 90 }}>
-                <InputLabel id="demo-select-small-label">Регіон</InputLabel>
+              <FormControl sx={{ minWidth: 90 }}>
+                <InputLabel id="demo-simple-small-label">Регіон</InputLabel>
                 <Select
-                  labelId="demo-select-small-label"
-                  id="demo-select-small"
+                  labelId="demo-select-simple-label"
+                  id="demo-select-simple"
                   value={country}
                   label="Регіон"
                   defaultValue={"UA"}
@@ -182,7 +194,6 @@ const ModalInfoUser: FC<Props> = ({ setIsShow }) => {
               </FormControl>
               <TextField
                 id="outlined-basic"
-                size="small"
                 label="Номер телефону"
                 variant="outlined"
                 fullWidth
@@ -191,7 +202,10 @@ const ModalInfoUser: FC<Props> = ({ setIsShow }) => {
               />
             </div>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DemoContainer components={["DatePicker"]} sx={{ width: "100%" }}>
+              <DemoContainer
+                components={["DatePicker"]}
+                sx={{ width: "100%", paddingTop: "0", overflow: "initial" }}
+              >
                 <DatePicker
                   label="Дата народження"
                   value={birthday}
@@ -200,6 +214,21 @@ const ModalInfoUser: FC<Props> = ({ setIsShow }) => {
                 />
               </DemoContainer>
             </LocalizationProvider>
+            <FormControl>
+              <InputLabel id="demo-simple-select-label">Стать</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-select-simple"
+                value={sex}
+                label="Стать"
+                defaultValue={""}
+                onChange={handleChangeSex}
+              >
+                <MenuItem value={""}>Не обрано</MenuItem>
+                <MenuItem value={0}>Жіноча</MenuItem>
+                <MenuItem value={1}>Чоловіча</MenuItem>
+              </Select>
+            </FormControl>
           </div>
         </div>
         <div className={styles.infoUser_btnWrapp}>
