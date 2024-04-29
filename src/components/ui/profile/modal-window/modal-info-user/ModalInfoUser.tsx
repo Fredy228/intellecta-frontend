@@ -52,6 +52,7 @@ const ModalInfoUser: FC<Props> = ({ setIsShow }) => {
   const dispacth: Dispatch<any> = useDispatch();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [currErrorTag, setCurrErrorTag] = useState<string | null>(null);
 
   const handleChangeRegion = (event: SelectChangeEvent) => {
     setCountry(event.target.value);
@@ -64,9 +65,7 @@ const ModalInfoUser: FC<Props> = ({ setIsShow }) => {
   const handleSubmitForm: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     setIsLoading(true);
-
-    console.log(user?.birthday);
-    console.log(birthday?.format("YYYY-MM-DD"));
+    setCurrErrorTag(null);
 
     const body: { [key: string]: any } = {
       firstName: compareStringAndNumber(user?.firstName, firstName.trim()),
@@ -94,7 +93,7 @@ const ModalInfoUser: FC<Props> = ({ setIsShow }) => {
       ),
     };
 
-    console.log("body", body);
+    // console.log("body", body);
 
     if (Object.values(body).every((i) => i === undefined)) {
       setIsShow(false);
@@ -120,7 +119,10 @@ const ModalInfoUser: FC<Props> = ({ setIsShow }) => {
         getToastify("Дані оновлені", ToastifyEnum.SUCCESS);
         setIsShow(false);
       })
-      .catch(outputError)
+      .catch((e) => {
+        const errorTag = outputError(e);
+        setCurrErrorTag(errorTag);
+      })
       .finally(() => setIsLoading(false));
   };
 
@@ -149,6 +151,7 @@ const ModalInfoUser: FC<Props> = ({ setIsShow }) => {
               label="Ім'я"
               variant="outlined"
               fullWidth
+              error={currErrorTag === "firstName"}
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
             />
@@ -157,6 +160,7 @@ const ModalInfoUser: FC<Props> = ({ setIsShow }) => {
               label="Призвіще"
               variant="outlined"
               fullWidth
+              error={currErrorTag === "lastName"}
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
             />
@@ -165,6 +169,7 @@ const ModalInfoUser: FC<Props> = ({ setIsShow }) => {
               label="Побатькові"
               variant="outlined"
               fullWidth
+              error={currErrorTag === "middleName"}
               value={middleName}
               onChange={(e) => setMiddleName(e.target.value)}
             />
@@ -173,6 +178,7 @@ const ModalInfoUser: FC<Props> = ({ setIsShow }) => {
               label="Про себе"
               variant="outlined"
               fullWidth
+              error={currErrorTag === "bio"}
               value={bio}
               onChange={(e) => setBio(e.target.value)}
             />
@@ -185,6 +191,7 @@ const ModalInfoUser: FC<Props> = ({ setIsShow }) => {
                   labelId="demo-select-simple-label"
                   id="demo-select-simple"
                   value={country}
+                  error={currErrorTag === "countryCode"}
                   label="Регіон"
                   defaultValue={"UA"}
                   onChange={handleChangeRegion}
@@ -197,6 +204,7 @@ const ModalInfoUser: FC<Props> = ({ setIsShow }) => {
                 label="Номер телефону"
                 variant="outlined"
                 fullWidth
+                error={currErrorTag === "numberPhone"}
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
               />

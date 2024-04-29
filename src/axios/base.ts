@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { isAxiosError } from "axios";
 import { get, set, remove } from "local-storage";
 import { getToastify } from "@/services/toastify";
 import { ToastifyEnum } from "@/enums/toastify-enum";
@@ -34,16 +34,19 @@ $api.interceptors.response.use(
             withCredentials: true,
           },
         );
-        console.log(data);
         set("token", data.accessToken);
         return $api.request(originalRequest);
       } catch (e) {
-        remove("token");
-        getToastify(
-          "Your session has expired. Reload the page",
-          ToastifyEnum.ERROR,
-        );
-        // document.location.reload();
+        if (isAxiosError(e) && e.response?.status === 401) {
+          remove("token");
+          getToastify(
+            "Your session has expired. Reload the page",
+            ToastifyEnum.ERROR,
+          );
+          document.location.reload();
+        } else {
+          getToastify("Unknown session validation error", ToastifyEnum.ERROR);
+        }
       }
     }
     throw error;

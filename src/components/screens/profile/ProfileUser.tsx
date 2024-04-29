@@ -105,7 +105,6 @@ const ProfileUser = () => {
 
     getUserProfile()
       .then((data) => {
-        console.log("profile", data);
         dispacth(setUserProfile(data));
       })
       .catch((e) => {
