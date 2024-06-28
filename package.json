@@ -27,7 +27,6 @@
     "dayjs": "^1.11.10",
     "dotenv": "^16.4.3",
     "framer-motion": "^10.16.4",
-    "i": "^0.3.7",
     "joi": "^17.12.0",
     "jsonwebtoken": "^9.0.2",
     "libphonenumber-js": "^1.10.60",
