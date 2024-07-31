@@ -79,14 +79,11 @@ const AuthForm: FC<Props> = ({ isRegister }) => {
         authUser = await loginUser({ email: email.trim(), password });
       }
 
-      set<string>("token", authUser.accessToken);
-      dispacth(
-        setUser({
-          user: authUser,
-          profiles: authUser.profiles,
-        }),
-      );
-      dispacth(setAuthorize(true));
+      if (authUser.accessToken) {
+        set<string>("token", authUser.accessToken);
+        dispacth(setUser(authUser));
+        dispacth(setAuthorize(true));
+      }
     } catch (e) {
       if (isAxiosError(e) && e.response?.data?.message) {
         getToastify(e.response.data.message, ToastifyEnum.ERROR, 3000);
