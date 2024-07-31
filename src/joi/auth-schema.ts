@@ -10,10 +10,10 @@ export const userCreateSchema = Joi.object()
         "string.empty": "email|Імейл порожній.",
       }),
     firstName: Joi.string().min(2).max(30).required().messages({
-      "string.empty": "first name|Ім'я порожнє.",
-      "any.required": "first name|Ім'я порожнє.",
-      "string.min": "first name|Ім'я не може бути менше 2 символів",
-      "string.max": "first name|Ім'я не може бути більше 30 символів",
+      "string.empty": "first-name|Ім'я порожнє.",
+      "any.required": "first-name|Ім'я порожнє.",
+      "string.min": "first-name|Ім'я не може бути менше 2 символів",
+      "string.max": "first-name|Ім'я не може бути більше 30 символів",
     }),
     lastName: Joi.string().min(2).max(30).required().messages({
       "string.empty": "last-name|Призвіще порожнє.",

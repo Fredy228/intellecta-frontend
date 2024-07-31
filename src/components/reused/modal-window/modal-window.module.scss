@@ -16,13 +16,13 @@
     overflow-y: auto;
 
     background-color: #fff;
-    padding: 35px;
+    padding: 25px;
 
     &.center {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      border-radius: 40px;
+      border-radius: 15px;
       max-height: calc(100vh - 30px);
 
       @media screen and (max-width: 767px) {
@@ -36,8 +36,8 @@
       left: 50%;
       transform: translateX(-50%);
 
-      border-top-left-radius: 40px;
-      border-top-right-radius: 40px;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
       max-height: calc(100vh - 300px);
 
       @media screen and (max-width: 1024px) {

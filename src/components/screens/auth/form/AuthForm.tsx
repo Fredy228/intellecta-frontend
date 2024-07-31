@@ -5,6 +5,8 @@ import Link from "next/link";
 import { set } from "local-storage";
 import { isAxiosError } from "axios";
 import { useDispatch } from "react-redux";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 import styles from "./sing-in-form.module.scss";
 
@@ -16,6 +18,15 @@ import { IconGoogle } from "@/components/reused/Icon/Icon";
 import { loginUser, registerUser } from "@/axios/auth";
 import { setUser } from "@/redux/user/slice";
 import { setAuthorize } from "@/redux/slice-param";
+import {
+  Button,
+  FormControl,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+  TextField,
+} from "@mui/material";
 
 type Props = {
   isRegister: boolean;
@@ -91,6 +102,12 @@ const AuthForm: FC<Props> = ({ isRegister }) => {
     window.open(`${process.env.SERVER_URL}/api/auth/google`, "_self");
   };
 
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
+    event.preventDefault();
+  };
+
   return (
     <div className={styles.authForm}>
       <h1 className={styles.authForm_title}>
@@ -98,13 +115,13 @@ const AuthForm: FC<Props> = ({ isRegister }) => {
       </h1>
       <form className={styles.authForm_form} onSubmit={submitForm}>
         <label className={styles.authForm_label}>
-          {isRegister ? "Електронна пошта:" : "Логін:"}
-          <input
-            className={`${styles.authForm_input} ${
-              invalidInput.includes("email") && styles.invalid
-            }`}
-            type={"email"}
+          <TextField
+            id="email"
+            label={"Електронна пошта"}
+            variant="outlined"
             placeholder={"Введіть email"}
+            size="small"
+            error={invalidInput.includes("email")}
             value={email}
             onChange={(e) => setEmail(e.currentTarget.value)}
           />
@@ -112,25 +129,25 @@ const AuthForm: FC<Props> = ({ isRegister }) => {
         {isRegister && (
           <>
             <label className={styles.authForm_label}>
-              Ім'я:
-              <input
-                className={`${styles.authForm_input} ${
-                  invalidInput.includes("first name") && styles.invalid
-                }`}
-                type={"text"}
+              <TextField
+                id="first_name"
+                label={"Ім'я"}
+                variant="outlined"
                 placeholder={"Введіть ім'я"}
+                size="small"
+                error={invalidInput.includes("first-name")}
                 value={firstName}
                 onChange={(e) => setFirstName(e.currentTarget.value)}
               />
             </label>
             <label className={styles.authForm_label}>
-              Призвіще:
-              <input
-                className={`${styles.authForm_input} ${
-                  invalidInput.includes("last-name") && styles.invalid
-                }`}
-                type={"text"}
+              <TextField
+                id="last_name"
+                label={"Призвіще"}
+                variant="outlined"
                 placeholder={"Введіть призвіще"}
+                size="small"
+                error={invalidInput.includes("last-name")}
                 value={lastName}
                 onChange={(e) => setLastName(e.currentTarget.value)}
               />
@@ -138,28 +155,44 @@ const AuthForm: FC<Props> = ({ isRegister }) => {
           </>
         )}
         <label className={styles.authForm_label}>
-          Пароль:
-          <input
-            className={`${styles.authForm_input} ${
-              invalidInput.includes("password") && styles.invalid
-            }`}
-            type={isShowPass ? "text" : "password"}
-            placeholder={"Введіть пароль"}
-            value={password}
-            onChange={(e) => setPassword(e.currentTarget.value.trim())}
-            autoComplete={!isRegister ? "current-password" : undefined}
-          />
+          <FormControl variant="outlined" size={"small"}>
+            <InputLabel htmlFor="password">Пароль</InputLabel>
+            <OutlinedInput
+              id="password"
+              type={isShowPass ? "text" : "password"}
+              placeholder={"Введіть пароль"}
+              error={invalidInput.includes("password")}
+              value={password}
+              onChange={(e) => setPassword(e.currentTarget.value)}
+              autoComplete={!isRegister ? "current-password" : undefined}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={() => setIsShowPass((prevState) => !prevState)}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {isShowPass ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+              label="Password"
+            />
+          </FormControl>
         </label>
         {isRegister && (
           <label className={styles.authForm_label}>
-            <input
-              className={`${styles.authForm_input} ${
-                invalidInput.includes("password") && styles.invalid
-              }`}
+            <TextField
+              id="re_password"
+              label={"Підтвердження паролю"}
               type={isShowPass ? "text" : "password"}
+              variant="outlined"
               placeholder={"Повторіть пароль"}
+              size="small"
+              error={invalidInput.includes("password")}
               value={rePassword}
-              onChange={(e) => setRePassword(e.currentTarget.value.trim())}
+              onChange={(e) => setRePassword(e.currentTarget.value)}
             />
           </label>
         )}
@@ -173,34 +206,34 @@ const AuthForm: FC<Props> = ({ isRegister }) => {
             : "Ти ще не маєш аккаунту? Створити"}
         </Link>
 
-        <button
-          className={styles.authForm_button}
+        <Button
           type={"submit"}
+          variant="contained"
           disabled={isLoading || !isMatchesPass}
         >
           {isLoading ? (
-            <LoaderButton color={"#fff"} width={"40"} height={"40"} />
+            <LoaderButton color={"#fff"} width={"25"} height={"25"} />
           ) : (
             <>{isRegister ? "Заєреструватися" : "Увійти"}</>
           )}
-        </button>
-        <div className={styles.authForm_separatorWrap}>
-          <span className={styles.authForm_separator}>Чи</span>
-        </div>
-        <button
-          className={`${styles.authForm_button} ${styles.google}`}
-          type={"button"}
-          disabled={isLoading}
-          onClick={signInWithGoogle}
-        >
-          {isLoading ? (
-            <LoaderButton color={"#8B8BEF"} width={"40"} height={"40"} />
-          ) : (
-            <>
-              <IconGoogle /> &nbsp; Увійти із Google
-            </>
-          )}
-        </button>
+        </Button>
+        {/*<div className={styles.authForm_separatorWrap}>*/}
+        {/*  <span className={styles.authForm_separator}>Чи</span>*/}
+        {/*</div>*/}
+        {/*<button*/}
+        {/*  className={`${styles.authForm_button} ${styles.google}`}*/}
+        {/*  type={"button"}*/}
+        {/*  disabled={isLoading}*/}
+        {/*  onClick={signInWithGoogle}*/}
+        {/*>*/}
+        {/*  {isLoading ? (*/}
+        {/*    <LoaderButton color={"#8B8BEF"} width={"40"} height={"40"} />*/}
+        {/*  ) : (*/}
+        {/*    <>*/}
+        {/*      <IconGoogle /> &nbsp; Увійти із Google*/}
+        {/*    </>*/}
+        {/*  )}*/}
+        {/*</button>*/}
       </form>
     </div>
   );

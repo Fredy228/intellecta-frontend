@@ -9,15 +9,6 @@ NEXT_URL='URL where this project is running, it is usually http://localhost:3000
 SERVER_URL='URL where the server is running'
 SERVER_WEBSOCKET='URL where the websocket-server is running'
 
-NEXTAUTH_URL='URL where this project is running'
-NEXTAUTH_SECRET='secret key for jwt'
-
-TURN_SERVER_URL='URL your turn server'
-TURN_SERVER_USER='username your turn server'
-TURN_SERVER_PASSWORD='password your turn server'
-
-GOOGLE_CLIENT_ID='string'
-GOOGLE_CLIENT_SECRET='string'
 ```
 
 2. Запуск проекту

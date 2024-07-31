@@ -1,13 +1,9 @@
 import $api from "@/axios/base";
 import { UserInterface } from "@/interfaces/user";
-import { ProfileInterface } from "@/interfaces/profile";
 import { DtoUpdateUser } from "@/types/user";
 
-export const getUser = async (): Promise<{
-  user: UserInterface;
-  profiles: ProfileInterface[];
-}> => {
-  const { data } = await $api.get("/api/user");
+export const getUser = async (): Promise<UserInterface> => {
+  const { data } = await $api.get<UserInterface>("/api/user");
 
   return data;
 };

@@ -3,6 +3,9 @@
 import { type FC, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useSelector } from "react-redux";
+import CachedOutlinedIcon from "@mui/icons-material/CachedOutlined";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 
 import styles from "./header.module.scss";
 
@@ -13,12 +16,17 @@ import {
 } from "@/components/reused/Icon/Icon";
 
 import Notice from "@/components/layout/header/notice/Notice";
-import { selectUser } from "@/redux/user/selectors";
+import { selectProfiles, selectUser } from "@/redux/user/selectors";
 import PopapMenuWrap from "@/components/reused/popap-menu-wrap/PopapMenuWrap";
+import ModalWindow from "@/components/reused/modal-window/ModalWindow";
+import ChooseProfile from "@/components/layout/sidebar/choose-prolie/choose-profile";
 
 const Header: FC = () => {
   const user = useSelector(selectUser);
+  const currProfiles = useSelector(selectProfiles);
 
+  const [isShowChooseProfile, setIsShowChooseProfile] =
+    useState<boolean>(false);
   const [isShowNotice, setIsShowNotice] = useState<boolean>(false);
 
   return (
@@ -28,8 +36,18 @@ const Header: FC = () => {
           <p>Привіт {user?.firstName}</p>
         </div>
         <ul className={styles.header_listNotificCenter}>
+          {currProfiles.length > 1 && (
+            <li
+              key={11}
+              className={styles.header_itemNotificCenter}
+              onClick={() => setIsShowChooseProfile((prev) => !prev)}
+            >
+              <CachedOutlinedIcon />
+            </li>
+          )}
+
           <li key={10} className={styles.header_itemNotificCenter}>
-            <IconSetting />
+            <SettingsOutlinedIcon />
           </li>
 
           <li
@@ -40,7 +58,7 @@ const Header: FC = () => {
             }`}
             onClick={() => setIsShowNotice((prevState) => !prevState)}
           >
-            {isShowNotice ? <IconCross /> : <IconNotific />}
+            {isShowNotice ? <IconCross /> : <NotificationsOutlinedIcon />}
 
             <div className={styles.header_wrapperCountNotificCenter}>
               <span className={styles.header_countNotificCenter}>2</span>
@@ -55,6 +73,13 @@ const Header: FC = () => {
               >
                 <Notice />
               </PopapMenuWrap>
+            )}
+          </AnimatePresence>
+          <AnimatePresence>
+            {isShowChooseProfile && (
+              <ModalWindow setShow={setIsShowChooseProfile}>
+                <ChooseProfile setShow={setIsShowChooseProfile} />
+              </ModalWindow>
             )}
           </AnimatePresence>
         </ul>

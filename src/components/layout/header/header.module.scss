@@ -46,15 +46,14 @@
       rgba(255, 255, 255, 1) 100%
     );
 
-    &:first-child {
+    &:not(:last-of-type) {
       margin-right: 15px;
     }
 
     > svg {
-      width: 24px;
-      height: 24px;
-      stroke: #aeaeb4;
-      fill: #aeaeb4;
+      width: 27px;
+      height: 27px;
+      color: #aeaeb4;
     }
 
     &.notice {

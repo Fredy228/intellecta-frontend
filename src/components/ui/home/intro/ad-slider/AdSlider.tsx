@@ -38,7 +38,7 @@ const AdSlider: FC = () => {
             <SwiperSlide key={item.id}>
               <div className={styles.adSlider_item}>
                 <Image
-                  src={`${process.env.NEXTAUTH_URL}/${item.image}`}
+                  src={`${process.env.NEXT_URL}/${item.image}`}
                   alt={"Incubator advertising"}
                   width={"1066"}
                   height={"600"}

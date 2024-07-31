@@ -1,0 +1,14 @@
+@import "@/styles/varible";
+
+.chooseProfile {
+  //position: absolute;
+  //bottom: 0;
+  //right: -100%;
+  //z-index: 500;
+  //
+  //background-color: white;
+
+  &_title {
+    font-size: $font-size-lg;
+  }
+}

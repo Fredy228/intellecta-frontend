@@ -6,7 +6,7 @@ import { RoleEnum } from "@/enums/user/role-enum";
 type StateType = {
   user: Partial<UserInterface> | null;
   profile: ProfileInterface | null;
-  profiles: ProfileInterface[] | undefined | null;
+  profiles: ProfileInterface[];
 };
 
 const initialState: StateType = {
@@ -14,7 +14,7 @@ const initialState: StateType = {
   profile: {
     id: 1,
     role: RoleEnum.STUDENT,
-    title: "ODKU",
+    title: "Студент ODKU",
   },
   profiles: [],
 };
@@ -31,21 +31,23 @@ export const userSlice = createSlice({
       {
         payload,
       }: {
-        payload: {
-          user: UserInterface;
-          profiles: ProfileInterface[] | undefined | null;
-        };
+        payload: UserInterface;
       },
     ) => {
-      state.user = payload.user;
-      state.profiles = payload.profiles;
+      const { profiles, ...user } = payload;
+      state.user = user;
+      state.profiles = payload.profiles || [];
     },
     setUserProfile: (state, { payload }) => {
       state.user = { ...state.user, ...payload };
     },
+    setCurrentProfile: (state, { payload }: { payload: ProfileInterface }) => {
+      state.profile = payload;
+    },
   },
 });
 
-export const { removeUser, setUser, setUserProfile } = userSlice.actions;
+export const { removeUser, setUser, setUserProfile, setCurrentProfile } =
+  userSlice.actions;
 
 export default userSlice.reducer;

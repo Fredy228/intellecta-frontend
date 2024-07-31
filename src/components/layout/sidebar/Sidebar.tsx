@@ -1,17 +1,18 @@
 "use client";
 
-import { type FC, useEffect } from "react";
+import { type FC, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import styles from "./sidebar.module.scss";
 
-import { listMenu, listMenuAdmin } from "@/components/layout/sidebar/listMenu";
+import {
+  listMenuDefault,
+  listsMenu,
+} from "@/components/layout/sidebar/listMenu";
 import { IconArrowCouple } from "@/components/reused/Icon/Icon";
 
-import { TItemMenu } from "@/components/layout/sidebar/listMenu";
-import { RoleEnum } from "@/enums/user/role-enum";
 import { useSelector } from "react-redux";
 import { selectProfile, selectUser } from "@/redux/user/selectors";
 
@@ -19,19 +20,6 @@ const Sidebar: FC = () => {
   const pathname = usePathname();
   const user = useSelector(selectUser);
   const currentProfile = useSelector(selectProfile);
-
-  const menu = (): TItemMenu[] | [] => {
-    if (
-      currentProfile?.role === RoleEnum.TEACHER ||
-      currentProfile?.role === RoleEnum.STUDENT
-    )
-      return listMenu;
-    if (currentProfile?.role === RoleEnum.OWNER_UNIVERSITY)
-      return listMenuAdmin;
-
-    // return [];
-    return listMenu;
-  };
 
   return (
     <aside
@@ -59,7 +47,7 @@ const Sidebar: FC = () => {
         </div>
         <div className={styles.aside_listMenuWrapper}>
           <ul className={styles.aside_listMenu}>
-            {menu().map((item) => (
+            {listMenuDefault.map((item) => (
               <li
                 key={item.id}
                 className={`${styles.aside_itemMenu} ${
@@ -78,6 +66,26 @@ const Sidebar: FC = () => {
                 </Link>
               </li>
             ))}
+            {currentProfile &&
+              listsMenu[currentProfile.role].map((item) => (
+                <li
+                  key={item.id}
+                  className={`${styles.aside_itemMenu} ${
+                    item.href === pathname ? styles.active : ""
+                  }`}
+                >
+                  <Link href={item.href} className={styles.aside_linkMenu}>
+                    <Image
+                      src={`${process.env.NEXT_URL}/img/sidebar/${item.url}`}
+                      alt={item.title}
+                      width={"30"}
+                      height={"30"}
+                      className={styles.aside_imgMenu}
+                    />
+                    <p className={styles.aside_linkText}>{item.title}</p>
+                  </Link>
+                </li>
+              ))}
           </ul>
         </div>
         <div className={styles.aside_wrapperUser}>
@@ -98,16 +106,9 @@ const Sidebar: FC = () => {
                 {`${user?.firstName} ${user?.lastName}`}
               </p>
               <span className={styles.aside_userRole}>
-                {currentProfile?.role === RoleEnum.TEACHER && "Викладач"}
-                {(currentProfile?.role === RoleEnum.STUDENT ||
-                  currentProfile?.role === null) &&
-                  "Студент"}
-                {currentProfile?.role === RoleEnum.OWNER_UNIVERSITY && "Адмін"}
+                {currentProfile ? currentProfile.title : "Гість"}
               </span>
             </Link>
-          </div>
-          <div className={styles.aside_wrapperChangeIcon}>
-            <IconArrowCouple />
           </div>
         </div>
       </div>

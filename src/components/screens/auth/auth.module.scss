@@ -33,11 +33,13 @@
   }
 
   &_wrapperForm {
-    padding: 20px;
+    padding: 15px;
     box-shadow:
       8px 8px 10px rgba(204, 204, 204, 0.3),
       -8px -8px 10px #fff;
-    border-radius: 35px;
+
+    //border-radius: 35px;
+    border-radius: 15px;
     background: $background-body;
     max-width: 630px;
     width: 100%;

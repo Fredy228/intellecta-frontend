@@ -1,17 +1,13 @@
-export type TItemMenu = {
+import { RoleEnum } from "@/enums/user/role-enum";
+
+type TItemMenu = {
   id: number;
   title: string;
   url: string;
   href: string;
 };
 
-export const listMenu: TItemMenu[] = [
-  {
-    id: 1,
-    title: "Головна",
-    url: "educate.png",
-    href: "/dashboard",
-  },
+const listMenuStudy: TItemMenu[] = [
   {
     id: 2,
     title: "Розклад",
@@ -42,21 +38,9 @@ export const listMenu: TItemMenu[] = [
     url: "marks.png",
     href: "/dashboard/marks",
   },
-  {
-    id: 7,
-    title: "Саморозвиток",
-    url: "tally.png",
-    href: "/dashboard/courses",
-  },
 ];
 
-export const listMenuAdmin: TItemMenu[] = [
-  {
-    id: 1,
-    title: "Головна",
-    url: "educate.png",
-    href: "/dashboard",
-  },
+const listMenuAdmin: TItemMenu[] = [
   {
     id: 2,
     title: "Розклад",
@@ -82,15 +66,53 @@ export const listMenuAdmin: TItemMenu[] = [
     href: "/dashboard/marks",
   },
   {
-    id: 7,
-    title: "Саморозвиток",
-    url: "tally.png",
-    href: "/dashboard/courses",
-  },
-  {
     id: 8,
     title: "Списки",
     url: "tests.png",
     href: "/dashboard/lists",
   },
 ];
+
+const listMenuMaker: TItemMenu[] = [
+  {
+    id: 1,
+    title: "Головна",
+    url: "educate.png",
+    href: "/dashboard",
+  },
+  {
+    id: 2,
+    title: "Статистика",
+    url: "schedule.png",
+    href: "/dashboard/statistics",
+  },
+  {
+    id: 3,
+    title: "Списки",
+    url: "homework.png",
+    href: "/dashboard/list",
+  },
+];
+
+export const listMenuDefault: TItemMenu[] = [
+  {
+    id: 1,
+    title: "Головна",
+    url: "educate.png",
+    href: "/dashboard",
+  },
+  {
+    id: 999,
+    title: "Курси",
+    url: "tally.png",
+    href: "/dashboard/courses",
+  },
+];
+
+export const listsMenu = {
+  [RoleEnum.STUDENT]: listMenuStudy,
+  [RoleEnum.TEACHER]: listMenuStudy,
+  [RoleEnum.OWNER_UNIVERSITY]: listMenuAdmin,
+  [RoleEnum.MODER_UNIVERSITY]: listMenuAdmin,
+  [RoleEnum.MAKER]: listMenuMaker,
+};

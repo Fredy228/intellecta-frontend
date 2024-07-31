@@ -18,8 +18,8 @@ export interface UserInterface {
   };
   settings: {};
   actions: {};
-  accessToken: string;
-  refreshToken: string;
+  accessToken?: string;
+  refreshToken?: string;
   devices?: UserDeviceInterface[];
   profiles?: ProfileInterface[];
 }
