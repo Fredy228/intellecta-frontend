@@ -2,7 +2,7 @@
 
 import { createTheme } from "@mui/material/styles";
 
-const theme = createTheme({
+export const theme = createTheme({
   palette: {
     primary: {
       main: "#438ced",
@@ -14,6 +14,63 @@ const theme = createTheme({
     // warning: {
     //   main: "#ff754c",
     // },
+  },
+  components: {
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          borderRadius: "28px",
+          "&:hover": {
+            background: "#F1F3FE",
+            ".MuiInputBase-input": {
+              color: "#9E9E9E",
+            },
+          },
+          "& .MuiOutlinedInput-notchedOutline": {
+            border: "2px solid #E8E8E8",
+          },
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            border: "2px solid #E8E8E8",
+          },
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            border: "2px solid #E8E8E8",
+          },
+          "& .MuiInputBase-input": {
+            transition: "all 0.3s",
+            padding: "16.5px 20px",
+            color: "#11142D",
+          },
+        },
+      },
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          borderRadius: "28px",
+          transition: "all 0.3s",
+          "& .MuiInputBase-root": {
+            borderRadius: "28px",
+          },
+          "&:hover": {
+            background: "#F1F3FE",
+            color: "#9E9E9E",
+            ".MuiInputBase-input": {
+              color: "#9E9E9E",
+            },
+          },
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: "#11142D",
+          "&.Mui-focused": {
+            color: "#11142D",
+          },
+        },
+      },
+    },
   },
 });
 
