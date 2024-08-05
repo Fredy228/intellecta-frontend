@@ -37,7 +37,7 @@ export const theme = createTheme({
           },
           "& .MuiInputBase-input": {
             transition: "all 0.3s",
-            padding: "20px 27px",
+            padding: "15px 27px",
             color: "#11142D",
           },
         },
@@ -64,7 +64,6 @@ export const theme = createTheme({
     MuiInputLabel: {
       styleOverrides: {
         root: {
-          top: "4px",
           left: "15px",
           color: "#11142D",
           "&.Mui-focused": {
