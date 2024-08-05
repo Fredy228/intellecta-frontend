@@ -30,6 +30,7 @@ import {
 } from "@mui/material";
 import { CustomTextField } from "@/components/reused/fields/text/TextField";
 import { CustomPasswordField } from "@/components/reused/fields/passoword/PasswordField";
+import { CustomButtonDefault } from "@/components/reused/custom-btn/custom-btn-default/CustomButtonDefault";
 
 type Props = {
   isRegister: boolean;
@@ -195,9 +196,8 @@ const AuthForm: FC<Props> = ({ isRegister }) => {
             : "Ти ще не маєш аккаунту? Створити"}
         </Link>
 
-        <Button
-          type={"submit"}
-          variant="contained"
+        <CustomButtonDefault
+          type="submit"
           disabled={isLoading || !isMatchesPass}
         >
           {isLoading ? (
@@ -205,7 +205,7 @@ const AuthForm: FC<Props> = ({ isRegister }) => {
           ) : (
             <>{isRegister ? "Заєреструватися" : "Увійти"}</>
           )}
-        </Button>
+        </CustomButtonDefault>
         {/*<div className={styles.authForm_separatorWrap}>*/}
         {/*  <span className={styles.authForm_separator}>Чи</span>*/}
         {/*</div>*/}
