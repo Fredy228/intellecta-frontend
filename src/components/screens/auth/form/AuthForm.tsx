@@ -26,7 +26,10 @@ import {
   InputLabel,
   OutlinedInput,
   TextField,
+  unstable_composeClasses,
 } from "@mui/material";
+import { CustomTextField } from "@/components/reused/fields/text/TextField";
+import { CustomPasswordField } from "@/components/reused/fields/passoword/PasswordField";
 
 type Props = {
   isRegister: boolean;
@@ -100,7 +103,7 @@ const AuthForm: FC<Props> = ({ isRegister }) => {
   };
 
   const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>,
+    event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
   };
@@ -112,12 +115,10 @@ const AuthForm: FC<Props> = ({ isRegister }) => {
       </h1>
       <form className={styles.authForm_form} onSubmit={submitForm}>
         <label className={styles.authForm_label}>
-          <TextField
+          <CustomTextField
             id="email"
-            label={"Електронна пошта"}
-            variant="outlined"
+            label="Електронна пошта"
             placeholder={"Введіть email"}
-            size="small"
             error={invalidInput.includes("email")}
             value={email}
             onChange={(e) => setEmail(e.currentTarget.value)}
@@ -126,24 +127,20 @@ const AuthForm: FC<Props> = ({ isRegister }) => {
         {isRegister && (
           <>
             <label className={styles.authForm_label}>
-              <TextField
+              <CustomTextField
                 id="first_name"
-                label={"Ім'я"}
-                variant="outlined"
+                label="Ім'я"
                 placeholder={"Введіть ім'я"}
-                size="small"
                 error={invalidInput.includes("first-name")}
                 value={firstName}
                 onChange={(e) => setFirstName(e.currentTarget.value)}
               />
             </label>
             <label className={styles.authForm_label}>
-              <TextField
+              <CustomTextField
                 id="last_name"
                 label={"Призвіще"}
-                variant="outlined"
                 placeholder={"Введіть призвіще"}
-                size="small"
                 error={invalidInput.includes("last-name")}
                 value={lastName}
                 onChange={(e) => setLastName(e.currentTarget.value)}
@@ -152,41 +149,36 @@ const AuthForm: FC<Props> = ({ isRegister }) => {
           </>
         )}
         <label className={styles.authForm_label}>
-          <FormControl variant="outlined" size={"small"}>
-            <InputLabel htmlFor="password">Пароль</InputLabel>
-            <OutlinedInput
-              id="password"
-              type={isShowPass ? "text" : "password"}
-              placeholder={"Введіть пароль"}
-              error={invalidInput.includes("password")}
-              value={password}
-              onChange={(e) => setPassword(e.currentTarget.value)}
-              autoComplete={!isRegister ? "current-password" : undefined}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={() => setIsShowPass((prevState) => !prevState)}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {isShowPass ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-              label="Password"
-            />
-          </FormControl>
+          <CustomPasswordField
+            id="password"
+            label="Password"
+            type={isShowPass ? "text" : "password"}
+            placeholder={"Введіть пароль"}
+            error={invalidInput.includes("password")}
+            value={password}
+            onChange={(e) => setPassword(e.currentTarget.value)}
+            autoComplete={!isRegister ? "current-password" : undefined}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={() => setIsShowPass((prevState) => !prevState)}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {isShowPass ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
         </label>
         {isRegister && (
           <label className={styles.authForm_label}>
-            <TextField
+            <CustomTextField
               id="re_password"
               label={"Підтвердження паролю"}
               type={isShowPass ? "text" : "password"}
-              variant="outlined"
               placeholder={"Повторіть пароль"}
-              size="small"
               error={invalidInput.includes("password")}
               value={rePassword}
               onChange={(e) => setRePassword(e.currentTarget.value)}
