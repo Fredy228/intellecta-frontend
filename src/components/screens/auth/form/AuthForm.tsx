@@ -127,24 +127,20 @@ const AuthForm: FC<Props> = ({ isRegister }) => {
         {isRegister && (
           <>
             <label className={styles.authForm_label}>
-              <TextField
+              <CustomTextField
                 id="first_name"
-                label={"Ім'я"}
-                variant="outlined"
+                label="Ім'я"
                 placeholder={"Введіть ім'я"}
-                size="small"
                 error={invalidInput.includes("first-name")}
                 value={firstName}
                 onChange={(e) => setFirstName(e.currentTarget.value)}
               />
             </label>
             <label className={styles.authForm_label}>
-              <TextField
+              <CustomTextField
                 id="last_name"
                 label={"Призвіще"}
-                variant="outlined"
                 placeholder={"Введіть призвіще"}
-                size="small"
                 error={invalidInput.includes("last-name")}
                 value={lastName}
                 onChange={(e) => setLastName(e.currentTarget.value)}
@@ -178,13 +174,11 @@ const AuthForm: FC<Props> = ({ isRegister }) => {
         </label>
         {isRegister && (
           <label className={styles.authForm_label}>
-            <TextField
+            <CustomTextField
               id="re_password"
               label={"Підтвердження паролю"}
               type={isShowPass ? "text" : "password"}
-              variant="outlined"
               placeholder={"Повторіть пароль"}
-              size="small"
               error={invalidInput.includes("password")}
               value={rePassword}
               onChange={(e) => setRePassword(e.currentTarget.value)}

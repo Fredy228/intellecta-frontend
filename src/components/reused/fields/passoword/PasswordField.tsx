@@ -12,8 +12,7 @@ export const CustomPasswordField = (
     <FormControl variant="outlined" size={"small"}>
       <InputLabel
         sx={{
-          top: "7px",
-          left: "5px",
+          top: "10px",
         }}
         htmlFor="password"
       >

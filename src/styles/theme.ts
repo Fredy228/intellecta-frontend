@@ -19,7 +19,7 @@ export const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          borderRadius: "28px",
+          borderRadius: "20px",
           "&:hover": {
             background: "#F1F3FE",
             ".MuiInputBase-input": {
@@ -37,7 +37,7 @@ export const theme = createTheme({
           },
           "& .MuiInputBase-input": {
             transition: "all 0.3s",
-            padding: "16.5px 20px",
+            padding: "20px 27px",
             color: "#11142D",
           },
         },
@@ -46,10 +46,10 @@ export const theme = createTheme({
     MuiTextField: {
       styleOverrides: {
         root: {
-          borderRadius: "28px",
+          borderRadius: "20px",
           transition: "all 0.3s",
           "& .MuiInputBase-root": {
-            borderRadius: "28px",
+            borderRadius: "20px",
           },
           "&:hover": {
             background: "#F1F3FE",
@@ -64,8 +64,11 @@ export const theme = createTheme({
     MuiInputLabel: {
       styleOverrides: {
         root: {
+          top: "4px",
+          left: "15px",
           color: "#11142D",
           "&.Mui-focused": {
+            left: "-5px",
             color: "#11142D",
           },
         },
