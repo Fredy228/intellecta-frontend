@@ -15,7 +15,6 @@ export const CustomPasswordField = (
           top: "6px",
           "&.Mui-focused": {
             top: "0",
-            left: "-5px",
             color: "#11142D",
           },
         }}

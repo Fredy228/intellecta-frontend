@@ -67,7 +67,7 @@ export const theme = createTheme({
           left: "15px",
           color: "#11142D",
           "&.Mui-focused": {
-            left: "-5px",
+            left: "12px",
             color: "#11142D",
           },
         },
