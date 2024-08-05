@@ -3,7 +3,7 @@
 import { type NextPage } from "next";
 import { useSelector } from "react-redux";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { PropsWithChildren, useEffect, useRef } from "react";
 import { redirect, usePathname } from "next/navigation";
 
 import styles from "./auth.module.scss";
@@ -12,14 +12,12 @@ import AuthForm from "@/components/screens/auth/form/AuthForm";
 import LoaderPage from "@/components/reused/loader/loader-page";
 import { selectIsAuthorize, selectIsLoadingApp } from "@/redux/selector-param";
 
-const Auth: NextPage = () => {
+const Auth: NextPage<PropsWithChildren> = ({ children }) => {
   const divRef = useRef<HTMLDivElement | null>(null);
 
   const pathname = usePathname();
   const isLoadingApp = useSelector(selectIsLoadingApp);
   const isAuthorize = useSelector(selectIsAuthorize);
-
-  const isRegister = pathname === "/auth/register";
 
   useEffect(() => {
     function moveBg(e: any) {
@@ -61,9 +59,7 @@ const Auth: NextPage = () => {
             Intellecta<span>.</span>
           </p>
         </div>
-        <div className={styles.singin_wrapperForm}>
-          <AuthForm isRegister={isRegister} />
-        </div>
+        <div className={styles.singin_wrapperForm}>{children}</div>
       </div>
     </div>
   );
