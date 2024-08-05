@@ -3,11 +3,15 @@ import {
   InputLabel,
   OutlinedInput,
   OutlinedInputProps,
+  TextFieldVariants,
 } from "@mui/material";
+import { FC } from "react";
 
-export const CustomPasswordField = (
-  props: Omit<OutlinedInputProps, "variant">
-) => {
+type Props = {
+  variant?: OutlinedInputProps;
+} & Omit<OutlinedInputProps, "variant">;
+
+export const CustomPasswordField: FC<Props> = (props) => {
   return (
     <FormControl variant="outlined" size={"small"}>
       <InputLabel
