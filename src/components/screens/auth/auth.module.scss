@@ -19,6 +19,18 @@
     width: 110%;
     height: 110%;
     transition: all 0.1s ease;
+
+    @media (max-width: 1000px) {
+      transform: translate(5%, 0);
+      width: 175%;
+    }
+
+    path.movementY {
+      animation: triangle-animation-top-down 7s infinite linear;
+    }
+    path.movementX {
+      animation: triangle-animation-left-right 7s infinite linear;
+    }
   }
 
   &_inner {
@@ -67,5 +79,28 @@
     > span {
       color: $accent-color;
     }
+  }
+}
+
+@keyframes triangle-animation-top-down {
+  0% {
+    transform: translate(0px, -5px);
+  }
+  50% {
+    transform: translate(0px, 5px);
+  }
+  100% {
+    transform: translate(0px, -5px);
+  }
+}
+@keyframes triangle-animation-left-right {
+  0% {
+    transform: translate(5px, 0px);
+  }
+  50% {
+    transform: translate(-5px, 0px);
+  }
+  100% {
+    transform: translate(5px, 0px);
   }
 }

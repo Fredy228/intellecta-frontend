@@ -8,9 +8,9 @@ import { redirect, usePathname } from "next/navigation";
 
 import styles from "./auth.module.scss";
 
-import AuthForm from "@/components/screens/auth/form/AuthForm";
 import LoaderPage from "@/components/reused/loader/loader-page";
 import { selectIsAuthorize, selectIsLoadingApp } from "@/redux/selector-param";
+import { AuthBackground } from "@/components/reused/background/auth-background/AuthBackground";
 
 const Auth: NextPage<PropsWithChildren> = ({ children }) => {
   const divRef = useRef<HTMLDivElement | null>(null);
@@ -39,13 +39,14 @@ const Auth: NextPage<PropsWithChildren> = ({ children }) => {
 
   return (
     <div className={styles.singin}>
-      <div
+      {/* <div
         ref={divRef}
         className={styles.singin_parallax}
         style={{
           backgroundImage: `url(${process.env.NEXT_URL}/img/auth-bg.png)`,
         }}
-      ></div>
+      ></div> */}
+      <AuthBackground className={styles.singin_parallax} />
       <div className={styles.singin_inner}>
         <div className={styles.singin_logoWrapper}>
           <Image
