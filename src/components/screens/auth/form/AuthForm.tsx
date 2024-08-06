@@ -172,6 +172,11 @@ const AuthForm: FC<Props> = ({ isRegister }) => {
               </InputAdornment>
             }
           />
+          {!isRegister && (
+            <Link className={styles.authForm_linkForgot} href={"/auth/forgot"}>
+              Забули <span>пароль?</span>
+            </Link>
+          )}
         </label>
         {isRegister && (
           <label className={styles.authForm_label}>

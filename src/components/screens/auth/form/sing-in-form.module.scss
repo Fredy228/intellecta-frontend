@@ -63,6 +63,20 @@
       text-decoration: underline;
     }
   }
+  &_linkForgot {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #6b6b7a;
+    span {
+      color: #438ced;
+    }
+    outline: transparent;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
 
   &_button {
     background-color: $background-item;
