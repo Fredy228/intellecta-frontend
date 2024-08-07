@@ -39,13 +39,6 @@ const Auth: NextPage<PropsWithChildren> = ({ children }) => {
 
   return (
     <div className={styles.singin}>
-      {/* <div
-        ref={divRef}
-        className={styles.singin_parallax}
-        style={{
-          backgroundImage: `url(${process.env.NEXT_URL}/img/auth-bg.png)`,
-        }}
-      ></div> */}
       <AuthBackground className={styles.singin_parallax} />
       <div className={styles.singin_inner}>
         <div className={styles.singin_logoWrapper}>

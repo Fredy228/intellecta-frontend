@@ -3,6 +3,7 @@
 import { type FC, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useSelector } from "react-redux";
+import classNames from "classnames/bind";
 import CachedOutlinedIcon from "@mui/icons-material/CachedOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
@@ -20,6 +21,8 @@ import { selectProfiles, selectUser } from "@/redux/user/selectors";
 import PopapMenuWrap from "@/components/reused/popap-menu-wrap/PopapMenuWrap";
 import ModalWindow from "@/components/reused/modal-window/ModalWindow";
 import ChooseProfile from "@/components/layout/sidebar/choose-prolie/choose-profile";
+
+const cx = classNames.bind(styles);
 
 const Header: FC = () => {
   const user = useSelector(selectUser);
@@ -53,9 +56,11 @@ const Header: FC = () => {
           <li
             key={20}
             style={isShowNotice ? { zIndex: 120 } : {}}
-            className={`${styles.header_itemNotificCenter} ${styles.notice} ${
-              isShowNotice ? styles.active : ""
-            }`}
+            className={cx({
+              header_itemNotificCenter: true,
+              notice: true,
+              active: isShowNotice,
+            })}
             onClick={() => setIsShowNotice((prevState) => !prevState)}
           >
             {isShowNotice ? <IconCross /> : <NotificationsOutlinedIcon />}

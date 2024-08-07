@@ -15,6 +15,9 @@ import { IconArrowCouple } from "@/components/reused/Icon/Icon";
 
 import { useSelector } from "react-redux";
 import { selectProfile, selectUser } from "@/redux/user/selectors";
+import classNames from "classnames/bind";
+
+const cx = classNames.bind(styles);
 
 const Sidebar: FC = () => {
   const pathname = usePathname();
@@ -22,15 +25,9 @@ const Sidebar: FC = () => {
   const currentProfile = useSelector(selectProfile);
 
   return (
-    <aside
-      className={`${styles.aside} ${
-        pathname === "/dashboard" ? styles.active : ""
-      }`}
-    >
+    <aside className={cx({ aside: true, active: pathname === "/dashboard" })}>
       <div
-        className={`${styles.aside_inner} ${
-          pathname === "/dashboard" ? styles.active : ""
-        }`}
+        className={cx({ aside_inner: true, active: pathname === "/dashboard" })}
       >
         <div className={styles.aside_wrapperLogo}>
           <p className={styles.aside_logo}>
@@ -50,9 +47,10 @@ const Sidebar: FC = () => {
             {listMenuDefault.map((item) => (
               <li
                 key={item.id}
-                className={`${styles.aside_itemMenu} ${
-                  item.href === pathname ? styles.active : ""
-                }`}
+                className={cx({
+                  aside_itemMenu: true,
+                  active: item.href === pathname,
+                })}
               >
                 <Link href={item.href} className={styles.aside_linkMenu}>
                   <Image
@@ -70,9 +68,10 @@ const Sidebar: FC = () => {
               listsMenu[currentProfile.role].map((item) => (
                 <li
                   key={item.id}
-                  className={`${styles.aside_itemMenu} ${
-                    item.href === pathname ? styles.active : ""
-                  }`}
+                  className={cx({
+                    aside_itemMenu: true,
+                    active: item.href === pathname,
+                  })}
                 >
                   <Link href={item.href} className={styles.aside_linkMenu}>
                     <Image
