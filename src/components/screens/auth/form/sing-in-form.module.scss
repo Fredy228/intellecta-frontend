@@ -78,6 +78,13 @@
     }
   }
 
+  &_repeatBtn {
+    margin-top: 5px;
+    button {
+      width: 100%;
+    }
+  }
+
   &_button {
     background-color: $background-item;
     color: $light-text-color;
@@ -117,7 +124,6 @@
       }
     }
   }
-
   &_separatorWrap {
     display: inline-block;
     position: relative;

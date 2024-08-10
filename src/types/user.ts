@@ -12,3 +12,11 @@ export type DtoUpdateUser = {
     number: string;
   };
 };
+
+export type TPasswordBody = {
+  password: string;
+};
+
+export type TEmailBody = {
+  email: string;
+};

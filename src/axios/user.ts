@@ -1,6 +1,7 @@
 import $api from "@/axios/base";
 import { UserInterface } from "@/interfaces/user";
-import { DtoUpdateUser } from "@/types/user";
+import { DtoUpdateUser, TPasswordBody } from "@/types/user";
+import axios from "axios";
 
 export const getUser = async (): Promise<UserInterface> => {
   const { data } = await $api.get<UserInterface>("/api/user");
@@ -28,4 +29,18 @@ export const getUserProfile = async (): Promise<
 
 export const updateUserProfile = async (body: Partial<DtoUpdateUser>) => {
   await $api.patch("/api/user", body);
+};
+
+export const updateUserPassword = async (
+  credentials: TPasswordBody,
+  key: string
+) => {
+  const { data } = await axios.patch(
+    `/api/auth/restore-pass/${key}`,
+    credentials,
+    {
+      withCredentials: true,
+    }
+  );
+  return data;
 };
