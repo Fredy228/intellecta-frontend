@@ -35,12 +35,7 @@ export const updateUserPassword = async (
   credentials: TPasswordBody,
   key: string
 ) => {
-  const { data } = await axios.patch(
-    `/api/auth/restore-pass/${key}`,
-    credentials,
-    {
-      withCredentials: true,
-    }
-  );
-  return data;
+  await axios.patch(`/api/auth/restore-pass/${key}`, credentials, {
+    withCredentials: true,
+  });
 };

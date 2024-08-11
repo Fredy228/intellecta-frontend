@@ -5,6 +5,11 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Visibility from "@mui/icons-material/Visibility";
 import { IconButton, InputAdornment } from "@mui/material";
 import { redirect } from "next/navigation";
+import { passwordSchema } from "@/joi/password-schema";
+import { getToastify } from "@/services/toastify";
+import { ToastifyEnum } from "@/enums/toastify-enum";
+import { updateUserPassword } from "@/axios/user";
+import { outputError } from "@/services/output-error";
 
 import styles from "../form/sing-in-form.module.scss";
 
@@ -12,11 +17,6 @@ import { CustomButtonDefault } from "@/components/reused/custom-btn/custom-btn-d
 import { CustomPasswordField } from "@/components/reused/fields/passoword/PasswordField";
 import LoaderButton from "@/components/reused/loader/loader-button";
 import { CustomTextField } from "@/components/reused/fields/text/TextField";
-import Joi from "joi";
-import { getToastify } from "@/services/toastify";
-import { ToastifyEnum } from "@/enums/toastify-enum";
-import { updateUserPassword } from "@/axios/user";
-import { outputError } from "@/services/output-error";
 
 type Props = {
   params: { key: string };
@@ -31,14 +31,6 @@ export const RestorePass = ({ params }: Props) => {
   const [isSuccess, setIsSuccess] = useState(false);
 
   const isMatchesPass = newPassword === reNewPassword;
-
-  const passwordSchema = Joi.object().keys({
-    password: Joi.string().min(8).required().messages({
-      "string.empty": "password|Пароль порожній.",
-      "string.pattern.base":
-        "password|Пароль повинен містити мінімум 8 символів, включаючи принаймні одну велику літеру та одну цифру",
-    }),
-  });
 
   useEffect(() => {
     if (isSuccess) redirect("/auth/login");
@@ -62,10 +54,7 @@ export const RestorePass = ({ params }: Props) => {
     }
 
     try {
-      const { data } = await updateUserPassword(
-        { password: newPassword.trim() },
-        params.key
-      );
+      await updateUserPassword({ password: newPassword.trim() }, params.key);
       setIsSuccess(true);
     } catch (error) {
       outputError(error);

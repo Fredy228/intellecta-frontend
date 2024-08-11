@@ -67,8 +67,11 @@ export const theme = createTheme({
           left: "15px",
           color: "#11142D",
           "&.Mui-focused": {
-            left: "12px",
+            left: "0px",
             color: "#11142D",
+          },
+          "&.MuiFormLabel-filled": {
+            left: "0px",
           },
         },
       },

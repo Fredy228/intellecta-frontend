@@ -1,7 +1,7 @@
 "use client";
 
-import { FormEventHandler, useEffect, useState } from "react";
-import Joi from "joi";
+import { FormEventHandler, useLayoutEffect, useRef, useState } from "react";
+import { emailSchema } from "@/joi/email-schema";
 import { getToastify } from "@/services/toastify";
 import { ToastifyEnum } from "@/enums/toastify-enum";
 import { sendEmail } from "@/axios/mail";
@@ -12,28 +12,31 @@ import styles from "../form/sing-in-form.module.scss";
 import { CustomButtonDefault } from "@/components/reused/custom-btn/custom-btn-default/CustomButtonDefault";
 import LoaderButton from "@/components/reused/loader/loader-button";
 import { CustomTextField } from "@/components/reused/fields/text/TextField";
+import { useNow } from "@/hooks/useNow";
 
 export const ForgotPass = () => {
   const [email, setEmail] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [invalidInput, setInvalidInput] = useState<Array<string>>([]);
-  const [isActiveRepeatBtn, setIsActiveRepeatBtn] = useState(false);
+  const [sendAt, setSendAt] = useState<number | undefined>();
+  const RESEND_TIMEOUT = 60000;
 
-  const emailSchema = Joi.object().keys({
-    email: Joi.string()
-      .email({ tlds: { allow: false } })
-      .required()
-      .messages({
-        "string.email": "email|Електронна пошта вказана невірно",
-        "string.empty": "email|Імейл порожній.",
-      }),
+  const now = useNow(1000, sendAt, () => {
+    if (sendAt && RESEND_TIMEOUT - (now - sendAt) < 0) {
+      setSendAt(undefined);
+    }
   });
+
+  const secToResend = Math.floor(
+    (sendAt ? RESEND_TIMEOUT - (now - sendAt) : 0) / 1000
+  );
+
+  const isDisabled = secToResend > 0;
 
   const submitForm: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
     setIsLoading(true);
     setInvalidInput([]);
-    setIsActiveRepeatBtn(false);
 
     const { error } = emailSchema.validate({
       email: email.trim(),
@@ -48,10 +51,8 @@ export const ForgotPass = () => {
     }
 
     try {
-      const { data } = await sendEmail({ email: email.trim() });
-      setTimeout(() => {
-        setIsActiveRepeatBtn(true);
-      }, 60000);
+      await sendEmail({ email: email.trim() });
+      setSendAt(Date.now());
     } catch (error) {
       outputError(error);
     } finally {
@@ -73,25 +74,15 @@ export const ForgotPass = () => {
             onChange={(e) => setEmail(e.currentTarget.value)}
           />
         </label>
-        <CustomButtonDefault type="submit" disabled={isLoading}>
+        <CustomButtonDefault type="submit" disabled={isLoading || isDisabled}>
           {isLoading ? (
             <LoaderButton color={"#fff"} width={"25"} height={"25"} />
-          ) : (
+          ) : !isDisabled ? (
             "Відправити"
+          ) : (
+            `Відправити повторно через: ${secToResend}`
           )}
         </CustomButtonDefault>
-        <div className={styles.authForm_repeatBtn}>
-          <CustomButtonDefault
-            type="submit"
-            disabled={isLoading || !isActiveRepeatBtn}
-          >
-            {isLoading ? (
-              <LoaderButton color={"#fff"} width={"25"} height={"25"} />
-            ) : (
-              "Відправити повторно"
-            )}
-          </CustomButtonDefault>
-        </div>
       </form>
     </div>
   );
