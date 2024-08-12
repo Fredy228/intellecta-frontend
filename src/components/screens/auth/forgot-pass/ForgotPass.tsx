@@ -52,6 +52,7 @@ export const ForgotPass = () => {
 
     try {
       await sendEmail({ email: email.trim() });
+      getToastify("На пошту успішно надіслане посилання для зміну паролю");
       setSendAt(Date.now());
     } catch (error) {
       outputError(error);

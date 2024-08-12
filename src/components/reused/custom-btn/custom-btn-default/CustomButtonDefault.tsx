@@ -15,7 +15,7 @@ export const CustomButtonDefault: FC<Props> = (props) => {
         padding: "7px 27px",
         fontSize: "1.1rem",
         fontWeight: "600",
-        textTransform: "capitalize",
+        textTransform: "none",
         borderRadius: "15px",
         background: "#438CED",
         "&:hover": {

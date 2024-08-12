@@ -1,5 +1,6 @@
 "use client";
 
+import { red } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 
 export const theme = createTheme({
@@ -22,23 +23,26 @@ export const theme = createTheme({
           borderRadius: "20px",
           "&:hover": {
             background: "#F1F3FE",
-            ".MuiInputBase-input": {
+            input: {
               color: "#9E9E9E",
             },
           },
-          "& .MuiOutlinedInput-notchedOutline": {
-            border: "2px solid #E8E8E8",
+          "& input": {
+            transition: "all 0.3s",
+            padding: "15px 27px",
+            color: "#11142D",
           },
-          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+          "& fieldset": {
             border: "2px solid #E8E8E8",
           },
           "&:hover .MuiOutlinedInput-notchedOutline": {
             border: "2px solid #E8E8E8",
           },
-          "& .MuiInputBase-input": {
-            transition: "all 0.3s",
-            padding: "15px 27px",
-            color: "#11142D",
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            border: "2px solid #E8E8E8",
+          },
+          "&.Mui-error .MuiOutlinedInput-notchedOutline": {
+            border: "2px solid red",
           },
         },
       },
@@ -48,6 +52,9 @@ export const theme = createTheme({
         root: {
           borderRadius: "20px",
           transition: "all 0.3s",
+          "& .MuiOutlinedInput-root": {
+            borderRadius: "20px",
+          },
           "& .MuiInputBase-root": {
             borderRadius: "20px",
           },
@@ -72,6 +79,9 @@ export const theme = createTheme({
           },
           "&.MuiFormLabel-filled": {
             left: "0px",
+          },
+          "&.Mui-error": {
+            color: "red",
           },
         },
       },
