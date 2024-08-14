@@ -1,9 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { FormEventHandler, useEffect, useState } from "react";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Visibility from "@mui/icons-material/Visibility";
 import { IconButton, InputAdornment } from "@mui/material";
+import { redirect } from "next/navigation";
+import { passwordSchema } from "@/joi/password-schema";
+import { getToastify } from "@/services/toastify";
+import { ToastifyEnum } from "@/enums/toastify-enum";
+import { updateUserPassword } from "@/axios/user";
+import { outputError } from "@/services/output-error";
 
 import styles from "../form/sing-in-form.module.scss";
 
@@ -22,10 +28,40 @@ export const RestorePass = ({ params }: Props) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isShowPass, setIsShowPass] = useState<boolean>(false);
   const [invalidInput, setInvalidInput] = useState<Array<string>>([]);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const isMatchesPass = newPassword === reNewPassword;
 
-  const submitForm = () => {};
+  useEffect(() => {
+    if (isSuccess) redirect("/auth/login");
+  }, [isSuccess]);
+
+  const submitForm: FormEventHandler<HTMLFormElement> = async (event) => {
+    event.preventDefault();
+    setIsLoading(true);
+    setInvalidInput([]);
+
+    const { error } = passwordSchema.validate({
+      password: newPassword.trim(),
+    });
+
+    if (error) {
+      const nameField = error.message.split("|")[0];
+      setInvalidInput((prevState) => [...prevState, nameField]);
+
+      setIsLoading(false);
+      return getToastify(error.message.split("|")[1], ToastifyEnum.ERROR, 5000);
+    }
+
+    try {
+      await updateUserPassword({ password: newPassword.trim() }, params.key);
+      setIsSuccess(true);
+    } catch (error) {
+      outputError(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const handleMouseDownPassword = (
     event: React.MouseEvent<HTMLButtonElement>
