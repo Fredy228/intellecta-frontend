@@ -3,17 +3,17 @@ import { TSelectedItem } from "@/components/reused/selected-custom/SelectedCusto
 export const listOption: TSelectedItem[] = [
   {
     id: 1,
-    value: "class",
-    name: "класи",
+    value: "teacher",
+    name: "Викладачі",
   },
   {
     id: 2,
-    value: "teacher",
-    name: "викладачів",
+    value: "student",
+    name: "Студенти",
   },
   {
     id: 3,
-    value: "student",
-    name: "студентів",
+    value: "group",
+    name: "Групи",
   },
 ];

@@ -1,0 +1,60 @@
+.groupList {
+  position: relative;
+  width: 100%;
+  table-layout: fixed;
+  &_header {
+    width: 100%;
+  }
+  &_headerText {
+    p {
+      font-size: 14px;
+      font-weight: 500;
+      color: #808191;
+    }
+    text-align: left;
+    &:first-child {
+      padding-left: 10px;
+    }
+    &:last-child {
+      text-align: center;
+    }
+  }
+  &_line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #0000001f;
+  }
+  &_body {
+    width: 100%;
+  }
+  &_group {
+    th:first-child {
+      padding-left: 10px;
+    }
+    th p {
+      padding: 16px 0;
+      font-size: 14px;
+      font-weight: 400;
+      color: #808191;
+      text-align: left;
+    }
+    .group_level {
+      p {
+        text-align: center;
+      }
+    }
+  }
+  &_padding {
+    padding-bottom: 15px;
+  }
+  &_groups {
+    height: 355px;
+    overflow-y: scroll;
+    table {
+      position: relative;
+      width: 100%;
+      table-layout: fixed;
+    }
+  }
+}
