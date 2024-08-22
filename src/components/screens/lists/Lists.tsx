@@ -1,7 +1,7 @@
 "use client";
 
 import { type NextPage } from "next";
-import { PropsWithChildren, useState } from "react";
+import { FC, PropsWithChildren, useState } from "react";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import classNames from "classnames/bind";
@@ -20,17 +20,19 @@ import {
 
 import { SearchField } from "@/components/reused/fields/search/SearchField";
 import Link from "next/link";
+import { TeacherList } from "@/components/ui/lists/teacher-list/TeacherList";
+import { usePathname } from "next/navigation";
+import { StudentList } from "@/components/ui/lists/student-list/StudentList";
+import { GroupList } from "@/components/ui/lists/group-list/GroupList";
 
 const cx = classNames.bind(styles);
 
 type Props = {
-  path: string;
-} & PropsWithChildren;
+  type: string | null;
+};
 
-const Lists: NextPage<Props> = ({ children, path }) => {
-  const [currentOption, setCurrentOption] = useState<TSelectedItem>(
-    listOption[0]
-  );
+const Lists: FC<Props> = ({ type }) => {
+  const pathname = usePathname();
 
   return (
     <main className={styles.lists}>
@@ -53,10 +55,10 @@ const Lists: NextPage<Props> = ({ children, path }) => {
               key={id}
               className={cx({
                 lists_navItem: true,
-                active: path === value,
+                active: type === value,
               })}
             >
-              <Link href={`/dashboard/lists/${value}`}>
+              <Link href={`lists?type=${value}`}>
                 <p>{name}</p>
               </Link>
             </li>
@@ -82,7 +84,11 @@ const Lists: NextPage<Props> = ({ children, path }) => {
             </div>
             <SearchField />
           </div>
-          {children}
+          {type === "teacher" && <TeacherList />}
+          {type === "student" && <StudentList />}
+
+          {type === "group" && <GroupList />}
+
           <div className={styles.lists_listRangeBlock}>
             <div className={styles.rangeSelector}>
               <div className={styles.rangeSelector_selectedRange}>
