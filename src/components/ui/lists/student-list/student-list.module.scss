@@ -1,63 +1,12 @@
-.studentList {
-  position: relative;
-  width: 100%;
-  table-layout: fixed;
-  &_header {
-    width: 100%;
+.headerCenter {
+  div {
+    display: flex;
+    justify-content: center;
   }
-  &_headerText {
-    p {
-      font-size: 14px;
-      font-weight: 500;
-      color: #808191;
-    }
-    text-align: left;
-    &:first-child {
-      padding-left: 10px;
-    }
-    &:last-child {
-      text-align: center;
-    }
-  }
-  &_line {
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: #0000001f;
-  }
-  &_body {
-    width: 100%;
-  }
-  &_student {
-    th:first-child {
-      padding-left: 10px;
-    }
-    th p {
-      font-size: 14px;
-      font-weight: 400;
-      color: #808191;
-      text-align: left;
-    }
-    .student_avatar {
-      div {
-        margin: 0 auto;
-        width: 53px;
-        height: 53px;
-        border-radius: 18px;
-        background-color: green;
-      }
-    }
-  }
-  &_padding {
-    padding-bottom: 15px;
-  }
-  &_students {
-    height: 360px;
-    overflow-y: scroll;
-    table {
-      position: relative;
-      width: 100%;
-      table-layout: fixed;
-    }
-  }
+}
+.studentRow {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  border: none;
 }

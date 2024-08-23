@@ -5,3 +5,9 @@ export type DtoCreateStudent = {
 export type DtoUpdateStudent = {
   groupId: number;
 };
+
+export type TStudentList = {
+  id: number;
+  fullName: string;
+  avatar: string;
+};

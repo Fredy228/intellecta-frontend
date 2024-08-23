@@ -3,6 +3,12 @@ export type DtoCreateTeacher = {
   job_title: string;
 };
 
+export type TTeacherList = {
+  id: number;
+  fullName: string;
+  avatar: string;
+};
+
 export type TFilter = {
   [key: string]: string;
 };

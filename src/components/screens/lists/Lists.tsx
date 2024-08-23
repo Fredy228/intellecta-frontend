@@ -1,29 +1,22 @@
 "use client";
 
-import { type NextPage } from "next";
-import { FC, PropsWithChildren, useState } from "react";
+import { FC, ReactElement, useEffect } from "react";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import classNames from "classnames/bind";
+import { useRouter } from "next/navigation";
 
 import styles from "./lists.module.scss";
 
-import SelectedCustom, {
-  TSelectedItem,
-} from "@/components/reused/selected-custom/SelectedCustom";
-import { listOption } from "@/components/screens/lists/listOption";
-
-import {
-  IconSmallRightArrow,
-  IconTriangleArrow,
-} from "@/components/reused/Icon/Icon";
-
 import { SearchField } from "@/components/reused/fields/search/SearchField";
-import Link from "next/link";
 import { TeacherList } from "@/components/ui/lists/teacher-list/TeacherList";
-import { usePathname } from "next/navigation";
 import { StudentList } from "@/components/ui/lists/student-list/StudentList";
 import { GroupList } from "@/components/ui/lists/group-list/GroupList";
+import { listOption } from "@/components/screens/lists/listOption";
+import { listTypeEnum } from "@/enums/lists/listType-enum";
+import { outputError } from "@/services/output-error";
+import { getToastify } from "@/services/toastify";
+import { ToastifyEnum } from "@/enums/toastify-enum";
 
 const cx = classNames.bind(styles);
 
@@ -31,22 +24,29 @@ type Props = {
   type: string | null;
 };
 
+const listTabs: { [key: string]: ReactElement } = {
+  teacher: <TeacherList />,
+  student: <StudentList />,
+  group: <GroupList />,
+};
+
 const Lists: FC<Props> = ({ type }) => {
-  const pathname = usePathname();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (type === null) router.push(`/dashboard/lists?type=teacher`);
+    else if (
+      type !== null &&
+      !Object.values(listTypeEnum).includes(type as listTypeEnum)
+    ) {
+      getToastify("Не існує лист з заданним типом", ToastifyEnum.ERROR);
+    }
+  }, []);
 
   return (
     <main className={styles.lists}>
       <div className={styles.lists_titleWrapper}>
         <h2 className={styles.lists_title}>Усе готово для навчання?</h2>
-        {/* <SelectedCustom
-          list={listOption}
-          currentValue={currentOption}
-          setValue={setCurrentOption}
-          stylePop={{ top: "calc(100% + 10px)", right: "0" }}
-        />
-        <div className={styles.lists_createBtnWrapper}>
-          <button className={styles.lists_createBtn} type={"button"}></button>
-        </div> */}
       </div>
       <div className={styles.lists_listBlock}>
         <ul className={styles.lists_navigationList}>
@@ -58,9 +58,12 @@ const Lists: FC<Props> = ({ type }) => {
                 active: type === value,
               })}
             >
-              <Link href={`lists?type=${value}`}>
-                <p>{name}</p>
-              </Link>
+              <button
+                type="button"
+                onClick={() => router.push(`/dashboard/lists?type=${value}`)}
+              >
+                {name}
+              </button>
             </li>
           ))}
         </ul>
@@ -84,27 +87,9 @@ const Lists: FC<Props> = ({ type }) => {
             </div>
             <SearchField />
           </div>
-          {type === "teacher" && <TeacherList />}
-          {type === "student" && <StudentList />}
-
-          {type === "group" && <GroupList />}
-
-          <div className={styles.lists_listRangeBlock}>
-            <div className={styles.rangeSelector}>
-              <div className={styles.rangeSelector_selectedRange}>
-                <p className={styles.rangeSelector_text}>
-                  Rows per page <span>5</span>
-                </p>
-                <IconTriangleArrow className={styles.rangeSelector_image} />
-              </div>
-              <ul className={styles.rangeSelector_rangeOptions}></ul>
-            </div>
-            <p className={styles.lists_rangeText}>1-5 of 13</p>
-            <div className={styles.lists_arrowBlock}>
-              <IconSmallRightArrow className={styles.lists_arrowPrev} />
-              <IconSmallRightArrow className={styles.lists_arrowNext} />
-            </div>
-          </div>
+          {listTypeEnum.TEACHER === type && listTabs[type]}
+          {listTypeEnum.STUDENT === type && listTabs[type]}
+          {listTypeEnum.GROUP === type && listTabs[type]}
         </div>
       </div>
     </main>
