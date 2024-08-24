@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { DataGrid, GridCellParams, GridColDef } from "@mui/x-data-grid";
+import { GridCellParams, GridColDef } from "@mui/x-data-grid";
 
 import styles from "./teacher-list.module.scss";
 
@@ -10,6 +10,8 @@ import { getAllTeachers } from "@/axios/teacher";
 import { TeachersInterface } from "@/interfaces/teacher";
 import { outputError } from "@/services/output-error";
 import { TTeacherList } from "@/types/teacher";
+import { CustomList } from "@/components/reused/custom-list/CustomList";
+import { useMountEffect } from "@/hooks/useMountEffect";
 
 export const TeacherList = () => {
   const [teachersRows, setTeachersRows] = useState<TTeacherList[]>();
@@ -42,7 +44,7 @@ export const TeacherList = () => {
     },
   ];
 
-  useEffect(() => {
+  useMountEffect(() => {
     getAllTeachers(1, [])
       .then((teachers: TeachersInterface) => {
         const rows = teachers.data.reduce((acc, { id, user }): any => {
@@ -59,53 +61,13 @@ export const TeacherList = () => {
         setTeachersRows(rows);
       })
       .catch((err) => outputError(err));
-  }, []);
+  });
 
   return (
-    <DataGrid
-      sx={{
-        height: "92%",
-        border: "none !important",
-        "& .MuiDataGrid-columnHeaders": {
-          backgroundColor: "transparent",
-        },
-        "--DataGrid-rowBorderColor": "transparent",
-        "--DataGrid-containerBackground": "transparent",
-        ".MuiDataGrid-topContainer": {
-          borderBottom: "1px solid #0000001f",
-        },
-        ".MuiDataGrid-cell": {
-          padding: "0",
-          fontSize: "14px",
-          fontWeight: "400",
-          color: "#808191",
-        },
-        ".MuiDataGrid-columnHeader": {
-          padding: "0",
-          fontSize: "14px",
-          fontWeight: "500",
-          color: "#808191",
-        },
-        ".MuiDataGrid-overlay": {
-          background: "transparent",
-          fontSize: "16px",
-          fontWeight: "500",
-          color: "#808191",
-        },
-      }}
+    <CustomList
       rows={teachersRows}
       columns={columns}
       getRowClassName={() => styles.teacherRow}
-      initialState={{
-        pagination: {
-          paginationModel: {
-            pageSize: 5,
-          },
-        },
-      }}
-      pageSizeOptions={[5]}
-      disableRowSelectionOnClick
-      disableColumnResize
     />
   );
 };

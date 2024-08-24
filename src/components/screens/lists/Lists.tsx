@@ -14,7 +14,6 @@ import { StudentList } from "@/components/ui/lists/student-list/StudentList";
 import { GroupList } from "@/components/ui/lists/group-list/GroupList";
 import { listOption } from "@/components/screens/lists/listOption";
 import { listTypeEnum } from "@/enums/lists/listType-enum";
-import { outputError } from "@/services/output-error";
 import { getToastify } from "@/services/toastify";
 import { ToastifyEnum } from "@/enums/toastify-enum";
 
@@ -24,10 +23,10 @@ type Props = {
   type: string | null;
 };
 
-const listTabs: { [key: string]: ReactElement } = {
-  teacher: <TeacherList />,
-  student: <StudentList />,
-  group: <GroupList />,
+const listTabs: { [key in listTypeEnum]: ReactElement } = {
+  [listTypeEnum.TEACHER]: <TeacherList />,
+  [listTypeEnum.STUDENT]: <StudentList />,
+  [listTypeEnum.GROUP]: <GroupList />,
 };
 
 const Lists: FC<Props> = ({ type }) => {
@@ -35,12 +34,8 @@ const Lists: FC<Props> = ({ type }) => {
 
   useEffect(() => {
     if (type === null) router.push(`/dashboard/lists?type=teacher`);
-    else if (
-      type !== null &&
-      !Object.values(listTypeEnum).includes(type as listTypeEnum)
-    ) {
-      getToastify("Не існує лист з заданним типом", ToastifyEnum.ERROR);
-    }
+    else if (!Object.values(listTypeEnum).includes(type as listTypeEnum))
+      getToastify("Невірний тип списку", ToastifyEnum.ERROR);
   }, []);
 
   return (
@@ -87,9 +82,7 @@ const Lists: FC<Props> = ({ type }) => {
             </div>
             <SearchField />
           </div>
-          {listTypeEnum.TEACHER === type && listTabs[type]}
-          {listTypeEnum.STUDENT === type && listTabs[type]}
-          {listTypeEnum.GROUP === type && listTabs[type]}
+          {listTabs[type as listTypeEnum]}
         </div>
       </div>
     </main>
