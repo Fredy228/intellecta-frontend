@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, ReactElement, useEffect } from "react";
+import { FC, ReactElement } from "react";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import classNames from "classnames/bind";
@@ -14,13 +14,11 @@ import { StudentList } from "@/components/ui/lists/student-list/StudentList";
 import { GroupList } from "@/components/ui/lists/group-list/GroupList";
 import { listOption } from "@/components/screens/lists/listOption";
 import { listTypeEnum } from "@/enums/lists/listType-enum";
-import { getToastify } from "@/services/toastify";
-import { ToastifyEnum } from "@/enums/toastify-enum";
 
 const cx = classNames.bind(styles);
 
 type Props = {
-  type: string | null;
+  type: string;
 };
 
 const listTabs: { [key in listTypeEnum]: ReactElement } = {
@@ -31,12 +29,6 @@ const listTabs: { [key in listTypeEnum]: ReactElement } = {
 
 const Lists: FC<Props> = ({ type }) => {
   const router = useRouter();
-
-  useEffect(() => {
-    if (type === null) router.push(`/dashboard/lists?type=teacher`);
-    else if (!Object.values(listTypeEnum).includes(type as listTypeEnum))
-      getToastify("Невірний тип списку", ToastifyEnum.ERROR);
-  }, []);
 
   return (
     <main className={styles.lists}>
@@ -82,7 +74,11 @@ const Lists: FC<Props> = ({ type }) => {
             </div>
             <SearchField />
           </div>
-          {listTabs[type as listTypeEnum]}
+          {Object.values(listTypeEnum).includes(type as listTypeEnum) ? (
+            listTabs[type as listTypeEnum]
+          ) : (
+            <p>Не вірний тип списку</p>
+          )}
         </div>
       </div>
     </main>

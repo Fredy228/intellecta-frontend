@@ -12,7 +12,7 @@ export const CustomList: FC<Props> = (props) => {
         height: "92%",
         border: "none !important",
         "& .MuiDataGrid-columnHeaders": {
-          backgroundColor: "transparent",
+          backgroundColor: "#f2f2f2",
         },
         "--DataGrid-rowBorderColor": "transparent",
         "--DataGrid-containerBackground": "transparent",
@@ -42,11 +42,12 @@ export const CustomList: FC<Props> = (props) => {
       initialState={{
         pagination: {
           paginationModel: {
-            pageSize: 5,
+            page: 0,
+            pageSize: 10,
           },
         },
       }}
-      pageSizeOptions={[5]}
+      pageSizeOptions={[10, 15, 20, 30]}
       disableRowSelectionOnClick
       disableColumnResize
     />
