@@ -12,31 +12,32 @@ import { TGroupList } from "@/types/group";
 import { CustomList } from "@/components/reused/custom-list/CustomList";
 import { useMountEffect } from "@/hooks/useMountEffect";
 
+const columns: GridColDef<TGroupList>[] = [
+  {
+    field: "id",
+    headerName: "ID",
+    flex: 1,
+  },
+  {
+    field: "name",
+    headerName: "Назва",
+    flex: 1,
+  },
+  {
+    field: "level",
+    headerName: "Номер курсу",
+    flex: 1,
+    align: "center",
+    headerClassName: styles.headerCenter,
+  },
+];
+
 export const GroupList = () => {
   const [groupsRows, setGroupsRows] = useState<TGroupList[]>();
-
-  const columns: GridColDef<TGroupList>[] = [
-    {
-      field: "id",
-      headerName: "ID",
-      flex: 1,
-    },
-    {
-      field: "name",
-      headerName: "Назва",
-      flex: 1,
-    },
-    {
-      field: "level",
-      headerName: "Номер курсу",
-      flex: 1,
-      align: "center",
-      headerClassName: styles.headerCenter,
-    },
-  ];
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useMountEffect(() => {
-    console.log("render");
+    setIsLoading(true);
     getAllGroups(1)
       .then((students: GroupsInterface) => {
         const rows = students.data.reduce((acc, { id, level, name }) => {
@@ -50,13 +51,15 @@ export const GroupList = () => {
 
         setGroupsRows(rows);
       })
-      .catch((err) => outputError(err));
+      .catch((err) => outputError(err))
+      .finally(() => setIsLoading(false));
   });
 
   return (
     <CustomList
       rows={groupsRows}
       columns={columns}
+      loading={isLoading}
       getRowClassName={() => styles.groupRow}
     />
   );

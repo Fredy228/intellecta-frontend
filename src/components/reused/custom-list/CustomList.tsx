@@ -20,13 +20,13 @@ export const CustomList: FC<Props> = (props) => {
           borderBottom: "1px solid #0000001f",
         },
         ".MuiDataGrid-cell": {
-          padding: "0",
+          paddinLeft: "10px",
           fontSize: "14px",
           fontWeight: "400",
           color: "#808191",
         },
         ".MuiDataGrid-columnHeader": {
-          padding: "0",
+          padding: "0 10px",
           fontSize: "14px",
           fontWeight: "500",
           color: "#808191",
