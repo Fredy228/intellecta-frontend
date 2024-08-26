@@ -58,6 +58,7 @@ export { default as IconAddList } from "./storage/add-btn-list.svg";
 export { default as IconHtml } from "./courses/html.svg";
 export { default as IconReact } from "./courses/react.svg";
 export { default as IconJavaScript } from "./courses/js.svg";
+
 //Profile icons
 export { default as IconProfileAboutMe } from "./profile/about-me.svg";
 export { default as IconProfileCertificates } from "./profile/certificates.svg";
@@ -74,3 +75,7 @@ export { default as IconRector } from "./profile/rector.svg";
 // plug
 export { default as IconRobot } from "./plug/intellecta_bot.svg";
 export { default as IconRobotWithBooks } from "./plug/intellecta_bot_with_books.svg";
+
+// lists
+export { default as IconTriangleArrow } from "./storage/triangle-arrow.svg";
+export { default as IconMagnifier } from "./storage/magnifier.svg";
