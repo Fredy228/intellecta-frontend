@@ -20,6 +20,8 @@ export const CustomList: FC<Props> = (props) => {
           borderBottom: "1px solid #0000001f",
         },
         ".MuiDataGrid-cell": {
+          display: "flex",
+          alignItems: "center",
           paddinLeft: "10px",
           fontSize: "14px",
           fontWeight: "400",
@@ -39,6 +41,7 @@ export const CustomList: FC<Props> = (props) => {
         },
       }}
       {...props}
+      rowHeight={67}
       initialState={{
         pagination: {
           paginationModel: {
