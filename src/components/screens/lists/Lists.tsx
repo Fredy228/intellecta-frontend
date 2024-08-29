@@ -1,10 +1,17 @@
 "use client";
 
-import { FC, ReactElement } from "react";
+import {
+  BaseSyntheticEvent,
+  FC,
+  ReactElement,
+  useEffect,
+  useState,
+} from "react";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import classNames from "classnames/bind";
 import { useRouter } from "next/navigation";
+import { useDebounce } from "use-debounce";
 
 import styles from "./lists.module.scss";
 
@@ -14,6 +21,7 @@ import { StudentList } from "@/components/ui/lists/student-list/StudentList";
 import { GroupList } from "@/components/ui/lists/group-list/GroupList";
 import { listOption } from "@/components/screens/lists/listOption";
 import { listTypeEnum } from "@/enums/lists/listType-enum";
+import { FilterQueryType } from "@/types/user";
 
 const cx = classNames.bind(styles);
 
@@ -21,14 +29,54 @@ type Props = {
   type: string;
 };
 
-const listTabs: { [key in listTypeEnum]: ReactElement } = {
-  [listTypeEnum.TEACHER]: <TeacherList />,
-  [listTypeEnum.STUDENT]: <StudentList />,
-  [listTypeEnum.GROUP]: <GroupList />,
-};
-
 const Lists: FC<Props> = ({ type }) => {
   const router = useRouter();
+  const [query, setQuery] = useState("");
+  const [debouncedQuery] = useDebounce(query, 300);
+  const [filterQuery, setFilterQuery] = useState<FilterQueryType>();
+
+  const listTabs: { [key in listTypeEnum]: ReactElement } = {
+    [listTypeEnum.TEACHER]: <TeacherList filter={filterQuery ?? {}} />,
+    [listTypeEnum.STUDENT]: <StudentList filter={filterQuery ?? {}} />,
+    [listTypeEnum.GROUP]: <GroupList />,
+  };
+
+  useEffect(() => {
+    if (debouncedQuery.trim()) {
+      const filterQuery: FilterQueryType = {};
+      const searchVariables = debouncedQuery.split(" ");
+      if (debouncedQuery.split("").includes(":")) {
+        for (let i = 0; i < searchVariables.length; i++) {
+          switch (searchVariables[i][0]) {
+            case "f":
+              filterQuery["firstName"] = searchVariables[i].slice(2);
+              break;
+            case "m":
+              filterQuery["middleName"] = searchVariables[i].slice(2);
+              break;
+            case "s":
+              filterQuery["lastName"] = searchVariables[i].slice(2);
+              break;
+            case "e":
+              filterQuery["email"] = searchVariables[i].slice(2);
+              break;
+          }
+        }
+      } else {
+        if (searchVariables[0]) filterQuery["lastName"] = searchVariables[0];
+        if (searchVariables[1]) filterQuery["firstName"] = searchVariables[1];
+        if (searchVariables[2]) filterQuery["middleName"] = searchVariables[2];
+      }
+
+      setFilterQuery(filterQuery);
+    } else {
+      setFilterQuery({});
+    }
+  }, [debouncedQuery]);
+
+  const onChangeSearch = (event: BaseSyntheticEvent) => {
+    setQuery(event.target.value);
+  };
 
   return (
     <main className={styles.lists}>
@@ -72,7 +120,10 @@ const Lists: FC<Props> = ({ type }) => {
                 <p className={styles.lists_textBtn}>ДОДАТИ</p>
               </button>
             </div>
-            <SearchField />
+            <SearchField
+              value={query}
+              onChange={(event) => onChangeSearch(event)}
+            />
           </div>
           {Object.values(listTypeEnum).includes(type as listTypeEnum) ? (
             listTabs[type as listTypeEnum]

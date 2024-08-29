@@ -1,8 +1,12 @@
-import { TextField } from "@mui/material";
+import { TextField, TextFieldProps, TextFieldVariants } from "@mui/material";
 import { IconMagnifier } from "../../Icon/Icon";
-import { useRef } from "react";
+import { FC, useRef } from "react";
 
-export const SearchField = () => {
+type Props = {
+  variant?: TextFieldVariants;
+} & Omit<TextFieldProps, "variant">;
+
+export const SearchField: FC<Props> = (props) => {
   const searchRef = useRef<HTMLInputElement>(null);
 
   const focusToInput = () => {
@@ -21,6 +25,7 @@ export const SearchField = () => {
         style={{ width: "24px", height: "24px", cursor: "pointer" }}
       />
       <TextField
+        {...props}
         inputRef={searchRef}
         sx={{
           ".MuiInputBase-root": {
