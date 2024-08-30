@@ -1,7 +1,9 @@
 import axios, { isAxiosError } from "axios";
 import { get, set, remove } from "local-storage";
+
 import { getToastify } from "@/services/toastify";
 import { ToastifyEnum } from "@/enums/toastify-enum";
+import $authAPI from "@/axios/auth/base";
 
 const baseURL = process.env.SERVER_URL!;
 
@@ -28,11 +30,8 @@ $api.interceptors.response.use(
     ) {
       originalRequest._isRetry = true;
       try {
-        const { data } = await axios.get<{ accessToken: string }>(
+        const { data } = await $authAPI.get<{ accessToken: string }>(
           "/api/auth/refresh",
-          {
-            withCredentials: true,
-          },
         );
         set("token", data.accessToken);
         return $api.request(originalRequest);
@@ -43,7 +42,7 @@ $api.interceptors.response.use(
             "Your session has expired. Reload the page",
             ToastifyEnum.ERROR,
           );
-          document.location.reload();
+          document.location.href = "/auth/login";
         } else {
           getToastify("Unknown session validation error", ToastifyEnum.ERROR);
         }

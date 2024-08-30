@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 import { passwordSchema } from "@/joi/password-schema";
 import { getToastify } from "@/services/toastify";
 import { ToastifyEnum } from "@/enums/toastify-enum";
-import { updateUserPassword } from "@/axios/user";
+import { updateUserPassword } from "@/axios/auth/auth";
 import { outputError } from "@/services/output-error";
 
 import styles from "../form/sing-in-form.module.scss";
@@ -64,7 +64,7 @@ export const RestorePass = ({ params }: Props) => {
   };
 
   const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
+    event: React.MouseEvent<HTMLButtonElement>,
   ) => {
     event.preventDefault();
   };

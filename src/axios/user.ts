@@ -30,12 +30,3 @@ export const getUserProfile = async (): Promise<
 export const updateUserProfile = async (body: Partial<DtoUpdateUser>) => {
   await $api.patch("/api/user", body);
 };
-
-export const updateUserPassword = async (
-  credentials: TPasswordBody,
-  key: string
-) => {
-  await axios.patch(`/api/auth/restore-pass/${key}`, credentials, {
-    withCredentials: true,
-  });
-};
