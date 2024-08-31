@@ -8,11 +8,10 @@ import styles from "./teacher-list.module.scss";
 
 import { getAllTeachers } from "@/axios/teacher";
 import { TeachersInterface } from "@/interfaces/teacher";
-import { outputError } from "@/services/output-error";
 import { TTeacherList } from "@/types/teacher";
 import { CustomList } from "@/components/reused/custom-list/CustomList";
-import { useMountEffect } from "@/hooks/useMountEffect";
 import { FilterQueryType } from "@/types/user";
+import { useFetch } from "@/hooks/useFetch";
 
 const columns: GridColDef<TTeacherList>[] = [
   {
@@ -23,6 +22,11 @@ const columns: GridColDef<TTeacherList>[] = [
   {
     field: "fullName",
     headerName: "ФІО",
+    flex: 1,
+  },
+  {
+    field: "email",
+    headerName: "Пошта",
     flex: 1,
   },
   {
@@ -46,43 +50,40 @@ type Props = {
   filter: FilterQueryType;
 };
 
+type TeacherFetchType = {
+  response: TeachersInterface | undefined;
+  isLoading: boolean;
+  fetchData: Function;
+};
+
 export const TeacherList: FC<Props> = ({ filter }) => {
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(10);
   const [rowCount, setRowCount] = useState(0);
   const [teachersRows, setTeachersRows] = useState<TTeacherList[]>();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const fetchTeachers = (filter?: FilterQueryType) => {
-    setIsLoading(true);
-
-    getAllTeachers(1, [pageSize * page, pageSize * (page + 1) - 1], filter)
-      .then((teachers: TeachersInterface) => {
-        const rows = teachers.data.reduce((acc, { id, user }): any => {
-          acc.push({
-            id: id,
-            fullName: `${user.firstName}${user.middleName ?? ""} ${
-              user.lastName
-            }`,
-            avatar: user.image ?? "/img/profile/avatar.png",
-          });
-          return acc;
-        }, [] as TTeacherList[]);
-
-        setTeachersRows(rows);
-        setRowCount(teachers.total);
-      })
-      .catch((err) => outputError(err))
-      .finally(() => setIsLoading(false));
+  const createTeachersRows = (response: TeachersInterface) => {
+    const rows = response.data.reduce((acc, { id, user }): any => {
+      acc.push({
+        id: id,
+        fullName: `${user.firstName}${user.middleName ?? ""} ${user.lastName}`,
+        email: user.email,
+        avatar: user.image ?? "/img/profile/avatar.png",
+      });
+      return acc;
+    }, [] as TTeacherList[]);
+    setTeachersRows(rows);
+    setRowCount(response.total);
   };
 
-  useEffect(() => {
-    fetchTeachers(filter);
-  }, [filter, page, pageSize]);
+  const { response, isLoading, fetchData }: TeacherFetchType = useFetch(
+    getAllTeachers(1, [pageSize * page, pageSize * (page + 1) - 1], filter),
+    createTeachersRows
+  );
 
-  useMountEffect(() => {
-    fetchTeachers();
-  });
+  useEffect(() => {
+    fetchData();
+  }, [filter, page, pageSize]);
 
   return (
     <CustomList

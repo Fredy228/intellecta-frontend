@@ -18,10 +18,10 @@ export const createStudent = async (
 
 export const getAllStudents = async (
   idUniversity: number,
-  idGroup: number,
   range?: number[],
   filter?: TFilter,
-  sort?: TSort
+  sort?: TSort,
+  idGroup?: number
 ): Promise<StudentsInterface> => {
   const params = new URLSearchParams();
 

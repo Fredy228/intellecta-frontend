@@ -9,5 +9,6 @@ export type DtoUpdateStudent = {
 export type TStudentList = {
   id: number;
   fullName: string;
+  email: string;
   avatar: string;
 };
