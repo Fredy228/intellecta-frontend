@@ -1,16 +1,16 @@
 "use client";
-import { FC, useCallback, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Image from "next/image";
 import { GridCellParams, GridColDef } from "@mui/x-data-grid";
 
 import styles from "./student-list.module.scss";
 
 import { getAllStudents } from "@/axios/students";
-import { StudentInterface, StudentsInterface } from "@/interfaces/student";
+import { StudentsInterface } from "@/interfaces/student";
+import { outputError } from "@/services/output-error";
 import { TStudentList } from "@/types/student";
 import { CustomList } from "@/components/reused/custom-list/CustomList";
 import { FilterQueryType } from "@/types/user";
-import { useFetch } from "@/hooks/useFetch";
 
 const columns: GridColDef<TStudentList>[] = [
   {
@@ -49,39 +49,39 @@ type Props = {
   filter: FilterQueryType;
 };
 
-type StudentFetchType = {
-  response: StudentsInterface | undefined;
-  isLoading: boolean;
-  fetchData: Function;
-};
-
 export const StudentList: FC<Props> = ({ filter }) => {
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(10);
   const [rowCount, setRowCount] = useState(0);
-  const [studentsRows, setStudentsRows] = useState<TStudentList[]>();
+  const [studentsRows, setstudentsRows] = useState<TStudentList[]>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const createStudentsRows = (response: StudentsInterface) => {
-    const rows = response.data.reduce((acc, { id, user }): any => {
-      acc.push({
-        id: id,
-        fullName: `${user.firstName}${user.middleName ?? ""} ${user.lastName}`,
-        email: user.email,
-        avatar: user.image ?? "/img/profile/avatar.png",
-      });
-      return acc;
-    }, [] as TStudentList[]);
-    setStudentsRows(rows);
-    setRowCount(response.total);
+  const fetchstudents = (filter?: FilterQueryType) => {
+    setIsLoading(true);
+
+    getAllStudents(1, [pageSize * page, pageSize * (page + 1) - 1], filter)
+      .then((students: StudentsInterface) => {
+        const rows = students.data.reduce((acc, { id, user }): any => {
+          acc.push({
+            id: id,
+            fullName: `${user.firstName}${user.middleName ?? ""} ${
+              user.lastName
+            }`,
+            email: user.email,
+            avatar: user.image ?? "/img/profile/avatar.png",
+          });
+          return acc;
+        }, [] as TStudentList[]);
+
+        setstudentsRows(rows);
+        setRowCount(students.total);
+      })
+      .catch((err) => outputError(err))
+      .finally(() => setIsLoading(false));
   };
 
-  const { response, isLoading, fetchData }: StudentFetchType = useFetch(
-    getAllStudents(1, [pageSize * page, pageSize * (page + 1) - 1], filter),
-    createStudentsRows
-  );
-
   useEffect(() => {
-    fetchData();
+    fetchstudents(filter);
   }, [filter, page, pageSize]);
 
   return (
