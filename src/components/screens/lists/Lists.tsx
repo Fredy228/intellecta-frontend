@@ -33,49 +33,52 @@ const Lists: FC<Props> = ({ type }) => {
   const router = useRouter();
   const [query, setQuery] = useState("");
   const [debouncedQuery] = useDebounce(query, 300);
-  const [filterQuery, setFilterQuery] = useState<FilterQueryType>();
+  const [filterQuery, setFilterQuery] = useState<FilterQueryType>({});
 
   const listTabs: { [key in listTypeEnum]: ReactElement } = {
-    [listTypeEnum.TEACHER]: <TeacherList filter={filterQuery ?? {}} />,
-    [listTypeEnum.STUDENT]: <StudentList filter={filterQuery ?? {}} />,
+    [listTypeEnum.TEACHER]: <TeacherList filter={filterQuery} />,
+    [listTypeEnum.STUDENT]: <StudentList filter={filterQuery} />,
     [listTypeEnum.GROUP]: <GroupList />,
   };
 
   useEffect(() => {
     if (debouncedQuery.trim()) {
-      const filterQuery: FilterQueryType = {};
+      const filter: FilterQueryType = {};
       const searchVariables = debouncedQuery.split(" ");
       if (debouncedQuery.split("").includes(":")) {
         for (let i = 0; i < searchVariables.length; i++) {
           switch (searchVariables[i][0]) {
             case "f":
-              filterQuery["firstName"] = searchVariables[i].slice(2);
+              filter["firstName"] = searchVariables[i].slice(2);
               break;
             case "m":
-              filterQuery["middleName"] = searchVariables[i].slice(2);
+              filter["middleName"] = searchVariables[i].slice(2);
               break;
             case "s":
-              filterQuery["lastName"] = searchVariables[i].slice(2);
+              filter["lastName"] = searchVariables[i].slice(2);
               break;
             case "e":
-              filterQuery["email"] = searchVariables[i].slice(2);
+              filter["email"] = searchVariables[i].slice(2);
               break;
           }
         }
       } else {
-        if (searchVariables[0]) filterQuery["lastName"] = searchVariables[0];
-        if (searchVariables[1]) filterQuery["firstName"] = searchVariables[1];
-        if (searchVariables[2]) filterQuery["middleName"] = searchVariables[2];
+        if (searchVariables[0]) filter["lastName"] = searchVariables[0];
+        if (searchVariables[1]) filter["firstName"] = searchVariables[1];
+        if (searchVariables[2]) filter["middleName"] = searchVariables[2];
       }
 
-      setFilterQuery(filterQuery);
-    } else {
-      setFilterQuery({});
+      setFilterQuery(filter);
     }
   }, [debouncedQuery]);
 
   const onChangeSearch = (event: BaseSyntheticEvent) => {
     setQuery(event.target.value);
+  };
+
+  const resetInput = () => {
+    setQuery("");
+    setFilterQuery({});
   };
 
   return (
@@ -123,6 +126,7 @@ const Lists: FC<Props> = ({ type }) => {
             <SearchField
               value={query}
               onChange={(event) => onChangeSearch(event)}
+              onClickClose={resetInput}
             />
           </div>
           {Object.values(listTypeEnum).includes(type as listTypeEnum) ? (

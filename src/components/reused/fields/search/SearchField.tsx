@@ -1,10 +1,12 @@
-import { FC, useRef } from "react";
+import { FC, MouseEventHandler, useRef } from "react";
 import { TextField, TextFieldProps, TextFieldVariants } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 import { IconMagnifier } from "../../Icon/Icon";
 
 type Props = {
   variant?: TextFieldVariants;
+  onClickClose?: MouseEventHandler<SVGSVGElement>;
 } & Omit<TextFieldProps, "variant">;
 
 export const SearchField: FC<Props> = (props) => {
@@ -44,6 +46,11 @@ export const SearchField: FC<Props> = (props) => {
           },
         }}
         placeholder="Search..."
+      />
+      <CloseIcon
+        onClick={props.onClickClose}
+        fontSize="small"
+        sx={{ cursor: "pointer", color: "#0000006B" }}
       />
     </div>
   );
