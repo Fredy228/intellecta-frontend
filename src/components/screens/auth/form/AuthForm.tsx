@@ -15,7 +15,7 @@ import { userCreateSchema, userLoginSchema } from "@/joi/auth-schema";
 import { ToastifyEnum } from "@/enums/toastify-enum";
 import LoaderButton from "@/components/reused/loader/loader-button";
 import { IconGoogle } from "@/components/reused/Icon/Icon";
-import { loginUser, registerUser } from "@/axios/auth";
+import { loginUser, registerUser } from "@/axios/auth/auth";
 import { setUser } from "@/redux/user/slice";
 import { setAuthorize } from "@/redux/slice-param";
 import {
@@ -104,7 +104,7 @@ const AuthForm: FC<Props> = ({ isRegister }) => {
   };
 
   const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
+    event: React.MouseEvent<HTMLButtonElement>,
   ) => {
     event.preventDefault();
   };

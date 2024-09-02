@@ -4,8 +4,9 @@ import { Dispatch, type ReactNode, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { isAxiosError } from "axios";
 import { useSearchParams } from "next/navigation";
-import { getUser } from "@/axios/user";
 import { get, set } from "local-storage";
+
+import { getUser } from "@/axios/user";
 
 import { setCurrentProfile, setUser } from "@/redux/user/slice";
 import { setAuthorize, setLoadingApp } from "@/redux/slice-param";
@@ -31,7 +32,7 @@ export const AuthProviders = ({ children }: { children: ReactNode }) => {
       set<string>("token", tokenGoogle);
       const currentUrl = window.location.href;
       const url = new URL(currentUrl);
-      url.searchParams.delete("paramToRemove");
+      url.searchParams.delete("token");
       window.history.replaceState({}, "", url.toString());
     }
     const getUserCurrent = async () => {
