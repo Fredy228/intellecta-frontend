@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Image from "next/image";
 import { GridCellParams, GridColDef } from "@mui/x-data-grid";
 
@@ -10,7 +10,7 @@ import { StudentsInterface } from "@/interfaces/student";
 import { outputError } from "@/services/output-error";
 import { TStudentList } from "@/types/student";
 import { CustomList } from "@/components/reused/custom-list/CustomList";
-import { useMountEffect } from "@/hooks/useMountEffect";
+import { FilterQueryType } from "@/types/user";
 
 const columns: GridColDef<TStudentList>[] = [
   {
@@ -21,6 +21,11 @@ const columns: GridColDef<TStudentList>[] = [
   {
     field: "fullName",
     headerName: "ФІО",
+    flex: 1,
+  },
+  {
+    field: "email",
+    headerName: "Пошта",
     flex: 1,
   },
   {
@@ -40,35 +45,64 @@ const columns: GridColDef<TStudentList>[] = [
   },
 ];
 
-export const StudentList = () => {
-  const [studentsRows, setStudentsRows] = useState<TStudentList[]>();
+type Props = {
+  filter: FilterQueryType;
+};
+
+export const StudentList: FC<Props> = ({ filter }) => {
+  const [page, setPage] = useState(0);
+  const [pageSize, setPageSize] = useState(10);
+  const [rowCount, setRowCount] = useState(0);
+  const [studentsRows, setstudentsRows] = useState<TStudentList[]>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  useMountEffect(() => {
+  const fetchstudents = (filter?: FilterQueryType) => {
     setIsLoading(true);
-    getAllStudents(1, 2)
+
+    getAllStudents(1, [pageSize * page, pageSize * (page + 1) - 1], filter)
       .then((students: StudentsInterface) => {
-        const rows = students.data.reduce((acc, { user, id }): any => {
+        const rows = students.data.reduce((acc, { id, user }): any => {
           acc.push({
             id: id,
             fullName: `${user.firstName}${user.middleName ?? ""} ${
               user.lastName
             }`,
+            email: user.email,
             avatar: user.image ?? "/img/profile/avatar.png",
           });
           return acc;
         }, [] as TStudentList[]);
 
-        setStudentsRows(rows);
+        setstudentsRows(rows);
+        setRowCount(students.total);
       })
       .catch((err) => outputError(err))
       .finally(() => setIsLoading(false));
-  });
+  };
+
+  useEffect(() => {
+    fetchstudents(filter);
+  }, [filter, page, pageSize]);
 
   return (
     <CustomList
       rows={studentsRows}
       columns={columns}
+      paginationMode="server"
+      initialState={{
+        pagination: {
+          paginationModel: {
+            page: page,
+            pageSize: pageSize,
+          },
+        },
+      }}
+      pageSizeOptions={[10, 15, 20]}
+      rowCount={rowCount}
+      onPaginationModelChange={({ pageSize, page }) => {
+        setPage(page);
+        setPageSize(pageSize);
+      }}
       loading={isLoading}
       getRowClassName={() => styles.studentRow}
     />

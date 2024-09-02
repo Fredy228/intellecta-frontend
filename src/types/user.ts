@@ -20,3 +20,10 @@ export type TPasswordBody = {
 export type TEmailBody = {
   email: string;
 };
+
+export type FilterQueryType = {
+  firstName?: string;
+  lastName?: string;
+  middleName?: string;
+  email?: string;
+};

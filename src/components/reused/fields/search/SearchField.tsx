@@ -1,8 +1,15 @@
-import { TextField } from "@mui/material";
-import { IconMagnifier } from "../../Icon/Icon";
-import { useRef } from "react";
+import { FC, MouseEventHandler, useRef } from "react";
+import { TextField, TextFieldProps, TextFieldVariants } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
-export const SearchField = () => {
+import { IconMagnifier } from "../../Icon/Icon";
+
+type Props = {
+  variant?: TextFieldVariants;
+  onClickClose?: MouseEventHandler<SVGSVGElement>;
+} & Omit<TextFieldProps, "variant">;
+
+export const SearchField: FC<Props> = (props) => {
   const searchRef = useRef<HTMLInputElement>(null);
 
   const focusToInput = () => {
@@ -21,8 +28,10 @@ export const SearchField = () => {
         style={{ width: "24px", height: "24px", cursor: "pointer" }}
       />
       <TextField
+        {...props}
         inputRef={searchRef}
         sx={{
+          width: "350px",
           ".MuiInputBase-root": {
             height: "24px",
             "& input": {
@@ -37,6 +46,11 @@ export const SearchField = () => {
           },
         }}
         placeholder="Search..."
+      />
+      <CloseIcon
+        onClick={props.onClickClose}
+        fontSize="small"
+        sx={{ cursor: "pointer", color: "#0000006B" }}
       />
     </div>
   );
