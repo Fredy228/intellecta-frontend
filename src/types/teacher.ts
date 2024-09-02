@@ -6,6 +6,7 @@ export type DtoCreateTeacher = {
 export type TTeacherList = {
   id: number;
   fullName: string;
+  email: string;
   avatar: string;
 };
 

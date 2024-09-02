@@ -42,15 +42,6 @@ export const CustomList: FC<Props> = (props) => {
       }}
       {...props}
       rowHeight={67}
-      initialState={{
-        pagination: {
-          paginationModel: {
-            page: 0,
-            pageSize: 10,
-          },
-        },
-      }}
-      pageSizeOptions={[10, 15, 20, 30]}
       disableRowSelectionOnClick
       disableColumnResize
     />
