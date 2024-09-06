@@ -4,89 +4,86 @@ import { FC, useEffect, useState } from "react";
 import Image from "next/image";
 import { GridCellParams, GridColDef } from "@mui/x-data-grid";
 
-import styles from "./teacher-list.module.scss";
+import styles from "./subject-list.module.scss";
 
-import { getAllTeachers } from "@/axios/teacher";
-import { TeachersInterface } from "@/interfaces/teacher";
 import { outputError } from "@/services/output-error";
-import { TTeacherList } from "@/types/teacher";
 import { CustomList } from "@/components/reused/custom-list/CustomList";
-import { UserFilterType } from "@/types/user";
+import { SubjectFilterType, TSubjectList } from "@/types/subject";
+import { getAllSubjects } from "@/axios/subject";
+import { SubjectInterface, SubjectsInterface } from "@/interfaces/subject";
 
-const columns: GridColDef<TTeacherList>[] = [
+const columns: GridColDef<TSubjectList>[] = [
   {
     field: "id",
     headerName: "ID",
     flex: 1,
   },
   {
-    field: "fullName",
-    headerName: "ФІО",
+    field: "name",
+    headerName: "Назва",
     flex: 1,
   },
   {
-    field: "email",
-    headerName: "Пошта",
+    field: "short_name",
+    headerName: "Скорочена назва",
     flex: 1,
   },
   {
-    field: "avatar",
-    headerName: "Аватар",
+    field: "icon_name",
+    headerName: "Іконка",
     flex: 1,
     align: "center",
     headerClassName: styles.headerCenter,
-    renderCell: (params: GridCellParams<TTeacherList>) => (
+    renderCell: (params: GridCellParams<TSubjectList>) => (
       <Image
         src={String(params.value)}
         width={53}
         height={53}
-        alt="user's avatar"
+        alt="subject's icon"
       />
     ),
   },
 ];
 
 type Props = {
-  filter: UserFilterType;
+  filter: SubjectFilterType;
 };
 
-export const TeacherList: FC<Props> = ({ filter }) => {
+export const SubjectList: FC<Props> = ({ filter }) => {
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(10);
   const [rowCount, setRowCount] = useState(0);
-  const [teachersRows, setTeachersRows] = useState<TTeacherList[]>();
+  const [subjectsRows, setSubjectsRows] = useState<SubjectInterface[]>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const fetchTeachers = (filter?: UserFilterType) => {
+  const fetchSubjects = (filter?: SubjectFilterType) => {
     setIsLoading(true);
-
-    getAllTeachers(1, [pageSize * page, pageSize * (page + 1) - 1], filter)
-      .then((teachers: TeachersInterface) => {
-        const rows = teachers.data.map(({ id, user }) => {
-          return {
-            id,
-            fullName: `${user.lastName}${user.middleName ?? ""} ${
-              user.firstName
-            }`,
-            email: user.email,
-            avatar: user.image ?? "/img/profile/avatar.png",
-          };
-        });
-
-        setTeachersRows(rows);
-        setRowCount(teachers.total);
+    getAllSubjects(1, [pageSize * page, pageSize * (page + 1) - 1], filter)
+      .then((subjects: SubjectsInterface) => {
+        const rows = subjects.data.map(
+          ({ id, name, short_name, icon_name }) => {
+            return {
+              id,
+              name,
+              short_name,
+              icon_name: icon_name ?? "/img/profile/mentore-img.png",
+            };
+          }
+        );
+        setSubjectsRows(rows);
+        setRowCount(subjects.total);
       })
       .catch((err) => outputError(err))
       .finally(() => setIsLoading(false));
   };
 
   useEffect(() => {
-    fetchTeachers(filter);
+    fetchSubjects(filter);
   }, [filter, page, pageSize]);
 
   return (
     <CustomList
-      rows={teachersRows}
+      rows={subjectsRows}
       columns={columns}
       paginationMode="server"
       initialState={{
@@ -104,7 +101,7 @@ export const TeacherList: FC<Props> = ({ filter }) => {
         setPageSize(pageSize);
       }}
       loading={isLoading}
-      getRowClassName={() => styles.teacherRow}
+      getRowClassName={() => styles.subjectRow}
     />
   );
 };

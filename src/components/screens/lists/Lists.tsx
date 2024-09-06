@@ -21,7 +21,10 @@ import { StudentList } from "@/components/ui/lists/student-list/StudentList";
 import { GroupList } from "@/components/ui/lists/group-list/GroupList";
 import { listOption } from "@/components/screens/lists/listOption";
 import { listTypeEnum } from "@/enums/lists/listType-enum";
-import { FilterQueryType } from "@/types/user";
+import { UserFilterType } from "@/types/user";
+import { GroupFilterType } from "@/types/group";
+import { SubjectList } from "@/components/ui/lists/subject-list/SubjectList";
+import { SubjectFilterType } from "@/types/subject";
 
 const cx = classNames.bind(styles);
 
@@ -33,44 +36,66 @@ const Lists: FC<Props> = ({ type }) => {
   const router = useRouter();
   const [query, setQuery] = useState("");
   const [debouncedQuery] = useDebounce(query, 300);
-  const [filterQuery, setFilterQuery] = useState<FilterQueryType>({});
+  const [userFilterQuery, setUserFilterQuery] = useState<UserFilterType>({});
+  const [groupFilterQuery, setGroupFilterQuery] = useState<GroupFilterType>({});
+  const [subjectFilterQuery, setSubjectFilterQuery] =
+    useState<SubjectFilterType>({});
 
   const listTabs: { [key in listTypeEnum]: ReactElement } = {
-    [listTypeEnum.TEACHER]: <TeacherList filter={filterQuery} />,
-    [listTypeEnum.STUDENT]: <StudentList filter={filterQuery} />,
-    [listTypeEnum.GROUP]: <GroupList />,
+    [listTypeEnum.TEACHER]: <TeacherList filter={userFilterQuery} />,
+    [listTypeEnum.STUDENT]: <StudentList filter={userFilterQuery} />,
+    [listTypeEnum.GROUP]: <GroupList filter={groupFilterQuery} />,
+    [listTypeEnum.SUBJECT]: <SubjectList filter={subjectFilterQuery} />,
   };
 
   useEffect(() => {
     if (debouncedQuery.trim()) {
-      const filter: FilterQueryType = {};
       const searchVariables = debouncedQuery.split(" ");
-      if (debouncedQuery.split("").includes(":")) {
-        for (let i = 0; i < searchVariables.length; i++) {
-          switch (searchVariables[i][0]) {
-            case "f":
-              filter["firstName"] = searchVariables[i].slice(2);
-              break;
-            case "m":
-              filter["middleName"] = searchVariables[i].slice(2);
-              break;
-            case "s":
-              filter["lastName"] = searchVariables[i].slice(2);
-              break;
-            case "e":
-              filter["email"] = searchVariables[i].slice(2);
-              break;
+      if (listTypeEnum.STUDENT === type || listTypeEnum.TEACHER === type) {
+        const filter: UserFilterType = {};
+        if (debouncedQuery.split("").includes(":")) {
+          for (let i = 0; i < searchVariables.length; i++) {
+            switch (searchVariables[i][0]) {
+              case "f":
+                filter["firstName"] = searchVariables[i].slice(2);
+                break;
+              case "m":
+                filter["middleName"] = searchVariables[i].slice(2);
+                break;
+              case "s":
+                filter["lastName"] = searchVariables[i].slice(2);
+                break;
+              case "e":
+                filter["email"] = searchVariables[i].slice(2);
+                break;
+            }
           }
+          setUserFilterQuery(filter);
+        } else {
+          if (searchVariables[0]) filter["lastName"] = searchVariables[0];
+          if (searchVariables[1]) filter["firstName"] = searchVariables[1];
+          if (searchVariables[2]) filter["middleName"] = searchVariables[2];
+          setUserFilterQuery(filter);
         }
-      } else {
-        if (searchVariables[0]) filter["lastName"] = searchVariables[0];
-        if (searchVariables[1]) filter["firstName"] = searchVariables[1];
-        if (searchVariables[2]) filter["middleName"] = searchVariables[2];
+      } else if (listTypeEnum.GROUP == type) {
+        if (query.trim()) setGroupFilterQuery({ name: query });
+      } else if (listTypeEnum.SUBJECT === type) {
+        const filter: SubjectFilterType = {};
+        if (debouncedQuery.split("").includes(":")) {
+          for (let i = 0; i < searchVariables.length; i++) {
+            switch (searchVariables[i][0]) {
+              case "s":
+                filter["short_name"] = searchVariables[i].slice(2);
+                break;
+            }
+          }
+        } else {
+          filter["name"] = query;
+        }
+        setSubjectFilterQuery(filter);
       }
-
-      setFilterQuery(filter);
     }
-  }, [debouncedQuery]);
+  }, [debouncedQuery, type]);
 
   const onChangeSearch = (event: BaseSyntheticEvent) => {
     setQuery(event.target.value);
@@ -78,7 +103,8 @@ const Lists: FC<Props> = ({ type }) => {
 
   const resetInput = () => {
     setQuery("");
-    setFilterQuery({});
+    setUserFilterQuery({});
+    setGroupFilterQuery({});
   };
 
   return (
@@ -98,7 +124,9 @@ const Lists: FC<Props> = ({ type }) => {
             >
               <button
                 type="button"
-                onClick={() => router.push(`/dashboard/lists?type=${value}`)}
+                onClick={() => {
+                  router.push(`/dashboard/lists?type=${value}`);
+                }}
               >
                 {name}
               </button>

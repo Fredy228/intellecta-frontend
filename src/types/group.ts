@@ -10,3 +10,7 @@ export type TGroupList = {
   name: string;
   level: number;
 };
+
+export type GroupFilterType = {
+  name?: string;
+};
