@@ -28,13 +28,11 @@ export const getAllStudents = async (
   if (range) params.append("range", JSON.stringify(range));
   if (filter) params.append("filter", JSON.stringify(filter));
   if (sort) params.append("sort", JSON.stringify(sort));
+  if (idGroup) params.append("idGroup", JSON.stringify(idGroup));
 
-  const { data } = await $api.get(
-    `/api/student/${idUniversity}?idGroup=${idGroup}`,
-    {
-      params,
-    }
-  );
+  const { data } = await $api.get(`/api/student/${idUniversity}`, {
+    params,
+  });
   return data;
 };
 

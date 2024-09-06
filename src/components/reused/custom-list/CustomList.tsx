@@ -41,6 +41,9 @@ export const CustomList: FC<Props> = (props) => {
         },
       }}
       {...props}
+      localeText={{
+        noRowsLabel: "За вашим запитом нічого не знайдено",
+      }}
       rowHeight={67}
       disableRowSelectionOnClick
       disableColumnResize

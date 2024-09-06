@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { GridColDef } from "@mui/x-data-grid";
 
 import styles from "./group-list.module.scss";
@@ -8,9 +8,8 @@ import styles from "./group-list.module.scss";
 import { getAllGroups } from "@/axios/group";
 import { GroupsInterface } from "@/interfaces/group";
 import { outputError } from "@/services/output-error";
-import { TGroupList } from "@/types/group";
+import { GroupFilterType, TGroupList } from "@/types/group";
 import { CustomList } from "@/components/reused/custom-list/CustomList";
-import { useMountEffect } from "@/hooks/useMountEffect";
 
 const columns: GridColDef<TGroupList>[] = [
   {
@@ -32,42 +31,60 @@ const columns: GridColDef<TGroupList>[] = [
   },
 ];
 
-export const GroupList = () => {
+type Props = {
+  filter: GroupFilterType;
+};
+
+export const GroupList: FC<Props> = ({ filter }) => {
+  const [page, setPage] = useState(0);
+  const [pageSize, setPageSize] = useState(10);
+  const [rowCount, setRowCount] = useState(0);
   const [groupsRows, setGroupsRows] = useState<TGroupList[]>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  useMountEffect(() => {
+  const fetchGroups = (filter?: GroupFilterType) => {
     setIsLoading(true);
-    getAllGroups(1)
-      .then((students: GroupsInterface) => {
-        const rows = students.data.reduce((acc, { id, level, name }) => {
-          acc.push({
+
+    getAllGroups(1, [pageSize * page, pageSize * (page + 1) - 1], filter)
+      .then((groups: GroupsInterface) => {
+        const rows = groups.data.map(({ id, level, name }) => {
+          return {
             id,
             level,
             name,
-          });
-          return acc;
-        }, [] as TGroupList[]);
+          };
+        });
 
         setGroupsRows(rows);
+        setRowCount(groups.total);
       })
       .catch((err) => outputError(err))
       .finally(() => setIsLoading(false));
-  });
+  };
+
+  useEffect(() => {
+    fetchGroups(filter);
+  }, [filter, page, pageSize]);
 
   return (
     <CustomList
       rows={groupsRows}
       columns={columns}
+      paginationMode="server"
       initialState={{
         pagination: {
           paginationModel: {
-            page: 0,
-            pageSize: 10,
+            page: page,
+            pageSize: pageSize,
           },
         },
       }}
       pageSizeOptions={[10, 15, 20]}
+      rowCount={rowCount}
+      onPaginationModelChange={({ pageSize, page }) => {
+        setPage(page);
+        setPageSize(pageSize);
+      }}
       loading={isLoading}
       getRowClassName={() => styles.studentRow}
     />

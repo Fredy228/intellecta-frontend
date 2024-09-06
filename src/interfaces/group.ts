@@ -13,5 +13,5 @@ export interface GroupInterface {
 
 export interface GroupsInterface {
   data: GroupInterface[];
-  count: number;
+  total: number;
 }

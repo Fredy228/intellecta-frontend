@@ -1,6 +1,7 @@
 import { GroupInterface, GroupsInterface } from "@/interfaces/group";
 import { DtoCreateGroup } from "@/types/group";
 import $api from "./base";
+import { TFilter, TSort } from "@/types/teacher";
 
 export const createGroup = async (
   idUniversity: number,
@@ -11,9 +12,20 @@ export const createGroup = async (
 };
 
 export const getAllGroups = async (
-  idUniversity: number
+  idUniversity: number,
+  range?: number[],
+  filter?: TFilter,
+  sort?: TSort,
+  idGroup?: number
 ): Promise<GroupsInterface> => {
-  const { data } = await $api.get(`/api/group/${idUniversity}`);
+  const params = new URLSearchParams();
+
+  if (range) params.append("range", JSON.stringify(range));
+  if (filter) params.append("filter", JSON.stringify(filter));
+  if (sort) params.append("sort", JSON.stringify(sort));
+  if (idGroup) params.append("idGroup", JSON.stringify(idGroup));
+
+  const { data } = await $api.get(`/api/group/${idUniversity}`, { params });
   return data;
 };
 

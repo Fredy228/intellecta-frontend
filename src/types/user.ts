@@ -21,7 +21,7 @@ export type TEmailBody = {
   email: string;
 };
 
-export type FilterQueryType = {
+export type UserFilterType = {
   firstName?: string;
   lastName?: string;
   middleName?: string;

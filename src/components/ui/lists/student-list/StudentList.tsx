@@ -10,7 +10,7 @@ import { StudentsInterface } from "@/interfaces/student";
 import { outputError } from "@/services/output-error";
 import { TStudentList } from "@/types/student";
 import { CustomList } from "@/components/reused/custom-list/CustomList";
-import { FilterQueryType } from "@/types/user";
+import { UserFilterType } from "@/types/user";
 
 const columns: GridColDef<TStudentList>[] = [
   {
@@ -46,34 +46,33 @@ const columns: GridColDef<TStudentList>[] = [
 ];
 
 type Props = {
-  filter: FilterQueryType;
+  filter: UserFilterType;
 };
 
 export const StudentList: FC<Props> = ({ filter }) => {
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(10);
   const [rowCount, setRowCount] = useState(0);
-  const [studentsRows, setstudentsRows] = useState<TStudentList[]>();
+  const [studentsRows, setStudentsRows] = useState<TStudentList[]>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const fetchstudents = (filter?: FilterQueryType) => {
+  const fetchStudents = (filter?: UserFilterType) => {
     setIsLoading(true);
 
     getAllStudents(1, [pageSize * page, pageSize * (page + 1) - 1], filter)
       .then((students: StudentsInterface) => {
-        const rows = students.data.reduce((acc, { id, user }): any => {
-          acc.push({
-            id: id,
-            fullName: `${user.firstName}${user.middleName ?? ""} ${
-              user.lastName
+        const rows = students.data.map(({ id, user }) => {
+          return {
+            id,
+            fullName: `${user.lastName}${user.middleName ?? ""} ${
+              user.firstName
             }`,
             email: user.email,
             avatar: user.image ?? "/img/profile/avatar.png",
-          });
-          return acc;
-        }, [] as TStudentList[]);
+          };
+        });
 
-        setstudentsRows(rows);
+        setStudentsRows(rows);
         setRowCount(students.total);
       })
       .catch((err) => outputError(err))
@@ -81,7 +80,7 @@ export const StudentList: FC<Props> = ({ filter }) => {
   };
 
   useEffect(() => {
-    fetchstudents(filter);
+    fetchStudents(filter);
   }, [filter, page, pageSize]);
 
   return (

@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler, useRef } from "react";
+import { ChangeEvent, Dispatch, FC, SetStateAction, useRef } from "react";
 import { TextField, TextFieldProps, TextFieldVariants } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -6,8 +6,10 @@ import { IconMagnifier } from "../../Icon/Icon";
 
 type Props = {
   variant?: TextFieldVariants;
-  onClickClose?: MouseEventHandler<SVGSVGElement>;
-} & Omit<TextFieldProps, "variant">;
+  onClickClose: () => void;
+  onChange: Dispatch<SetStateAction<string>>;
+  value: string;
+};
 
 export const SearchField: FC<Props> = (props) => {
   const searchRef = useRef<HTMLInputElement>(null);
@@ -28,7 +30,10 @@ export const SearchField: FC<Props> = (props) => {
         style={{ width: "24px", height: "24px", cursor: "pointer" }}
       />
       <TextField
-        {...props}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          props.onChange(e.target.value)
+        }
+        value={props.value}
         inputRef={searchRef}
         sx={{
           width: "350px",
