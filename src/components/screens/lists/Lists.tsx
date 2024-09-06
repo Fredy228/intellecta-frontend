@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  BaseSyntheticEvent,
-  FC,
-  ReactElement,
-  useEffect,
-  useState,
-} from "react";
+import { FC, ReactElement, useEffect, useState } from "react";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import classNames from "classnames/bind";
@@ -34,7 +28,7 @@ type Props = {
 
 const Lists: FC<Props> = ({ type }) => {
   const router = useRouter();
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState<string>("");
   const [debouncedQuery] = useDebounce(query, 300);
   const [userFilterQuery, setUserFilterQuery] = useState<UserFilterType>({});
   const [groupFilterQuery, setGroupFilterQuery] = useState<GroupFilterType>({});
@@ -97,10 +91,6 @@ const Lists: FC<Props> = ({ type }) => {
     }
   }, [debouncedQuery, type]);
 
-  const onChangeSearch = (event: BaseSyntheticEvent) => {
-    setQuery(event.target.value);
-  };
-
   const resetInput = () => {
     setQuery("");
     setUserFilterQuery({});
@@ -154,7 +144,7 @@ const Lists: FC<Props> = ({ type }) => {
             </div>
             <SearchField
               value={query}
-              onChange={(event) => onChangeSearch(event)}
+              onChange={setQuery}
               onClickClose={resetInput}
             />
           </div>
