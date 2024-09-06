@@ -105,6 +105,7 @@ const Lists: FC<Props> = ({ type }) => {
     setQuery("");
     setUserFilterQuery({});
     setGroupFilterQuery({});
+    setSubjectFilterQuery({});
   };
 
   return (

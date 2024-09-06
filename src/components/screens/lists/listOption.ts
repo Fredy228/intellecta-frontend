@@ -17,7 +17,7 @@ export const listOption: TSelectedItem[] = [
     name: "Групи",
   },
   {
-    id: 3,
+    id: 4,
     value: "subject",
     name: "Предмети",
   },
