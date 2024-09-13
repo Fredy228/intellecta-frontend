@@ -10,6 +10,7 @@ import { GroupsInterface } from "@/interfaces/group";
 import { outputError } from "@/services/output-error";
 import { GroupFilterType, TGroupList } from "@/types/group";
 import { CustomList } from "@/components/reused/custom-list/CustomList";
+import { isFetch } from "@/redux/list/selectors";
 
 const columns: GridColDef<TGroupList>[] = [
   {
@@ -64,7 +65,7 @@ export const GroupList: FC<Props> = ({ filter }) => {
 
   useEffect(() => {
     fetchGroups(filter);
-  }, [filter, page, pageSize]);
+  }, [filter, page, pageSize, isFetch]);
 
   return (
     <CustomList

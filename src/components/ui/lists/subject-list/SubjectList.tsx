@@ -11,6 +11,7 @@ import { CustomList } from "@/components/reused/custom-list/CustomList";
 import { SubjectFilterType, TSubjectList } from "@/types/subject";
 import { getAllSubjects } from "@/axios/subject";
 import { SubjectInterface, SubjectsInterface } from "@/interfaces/subject";
+import { isFetch } from "@/redux/list/selectors";
 
 const columns: GridColDef<TSubjectList>[] = [
   {
@@ -36,10 +37,10 @@ const columns: GridColDef<TSubjectList>[] = [
     headerClassName: styles.headerCenter,
     renderCell: (params: GridCellParams<TSubjectList>) => (
       <Image
-        src={String(params.value)}
+        src={"/img/profile/mentore-img.png"}
         width={53}
         height={53}
-        alt="subject's icon"
+        alt={String(params.value)}
       />
     ),
   },
@@ -66,7 +67,7 @@ export const SubjectList: FC<Props> = ({ filter }) => {
               id,
               name,
               short_name,
-              icon_name: icon_name ?? "/img/profile/mentore-img.png",
+              icon_name: icon_name,
             };
           }
         );
@@ -79,7 +80,7 @@ export const SubjectList: FC<Props> = ({ filter }) => {
 
   useEffect(() => {
     fetchSubjects(filter);
-  }, [filter, page, pageSize]);
+  }, [filter, page, pageSize, isFetch]);
 
   return (
     <CustomList

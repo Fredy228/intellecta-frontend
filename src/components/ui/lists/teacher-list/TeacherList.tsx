@@ -12,6 +12,7 @@ import { outputError } from "@/services/output-error";
 import { TTeacherList } from "@/types/teacher";
 import { CustomList } from "@/components/reused/custom-list/CustomList";
 import { UserFilterType } from "@/types/user";
+import { isFetch } from "@/redux/list/selectors";
 
 const columns: GridColDef<TTeacherList>[] = [
   {
@@ -82,7 +83,7 @@ export const TeacherList: FC<Props> = ({ filter }) => {
 
   useEffect(() => {
     fetchTeachers(filter);
-  }, [filter, page, pageSize]);
+  }, [filter, page, pageSize, isFetch]);
 
   return (
     <CustomList

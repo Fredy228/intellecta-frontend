@@ -4,7 +4,7 @@ import { type NextPage } from "next";
 import { useSelector } from "react-redux";
 import Image from "next/image";
 import { PropsWithChildren, useEffect, useRef } from "react";
-import { redirect, usePathname } from "next/navigation";
+import { redirect } from "next/navigation";
 
 import styles from "./auth.module.scss";
 
@@ -15,7 +15,6 @@ import { AuthBackground } from "@/components/reused/background/auth-background/A
 const Auth: NextPage<PropsWithChildren> = ({ children }) => {
   const divRef = useRef<HTMLDivElement | null>(null);
 
-  const pathname = usePathname();
   const isLoadingApp = useSelector(selectIsLoadingApp);
   const isAuthorize = useSelector(selectIsAuthorize);
 

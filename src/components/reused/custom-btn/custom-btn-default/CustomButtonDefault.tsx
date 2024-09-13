@@ -12,8 +12,6 @@ export const CustomButtonDefault: FC<Props> = (props) => {
       variant="contained"
       sx={{
         transition: "all 0.3s",
-        padding: "7px 27px",
-        fontSize: "1.1rem",
         fontWeight: "600",
         textTransform: "none",
         borderRadius: "15px",

@@ -79,3 +79,4 @@ export { default as IconRobotWithBooks } from "./plug/intellecta_bot_with_books.
 // lists
 export { default as IconTriangleArrow } from "./storage/triangle-arrow.svg";
 export { default as IconMagnifier } from "./storage/magnifier.svg";
+export { default as IconXlsFile } from "./storage/xls-file.svg";

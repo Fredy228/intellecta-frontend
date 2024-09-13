@@ -85,7 +85,7 @@ const ModalWindow: FC<Props> = ({
         {children}
       </motion.div>
     </motion.div>,
-    modalRoot,
+    modalRoot
   );
 };
 

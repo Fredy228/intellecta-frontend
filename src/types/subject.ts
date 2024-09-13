@@ -13,7 +13,7 @@ export type SubjectFilterType = {
 export type DtoCreateSubject = {
   name: string;
   short_name: string;
-  icon_name: string;
+  icon_name: string | null;
 };
 
 export type DtoUpdateSubject = {

@@ -2,6 +2,17 @@ import { TeacherInterface, TeachersInterface } from "@/interfaces/teacher";
 import { DtoCreateTeacher, TFilter, TSort } from "@/types/teacher";
 import $api from "./base";
 
+export const createManyTeachers = async (
+  formData: FormData,
+  idUniversity: number
+): Promise<TeacherInterface> => {
+  const { data } = await $api.post(
+    `/api/teacher/many/${idUniversity}`,
+    formData
+  );
+  return data;
+};
+
 export const createOneTeacher = async (
   credentials: DtoCreateTeacher,
   idUniversity: number

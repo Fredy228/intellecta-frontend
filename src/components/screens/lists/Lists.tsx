@@ -19,8 +19,21 @@ import { UserFilterType } from "@/types/user";
 import { GroupFilterType } from "@/types/group";
 import { SubjectList } from "@/components/ui/lists/subject-list/SubjectList";
 import { SubjectFilterType } from "@/types/subject";
+import { AnimatePresence } from "framer-motion";
+import dynamic from "next/dynamic";
+import { SubjectAdding } from "@/components/ui/modals/subject-adding/SubjectAdding";
+import { StudentAdding } from "@/components/ui/modals/student-adding/StudentAdding";
+import { TeacherAdding } from "@/components/ui/modals/teacher-adding/TeacherAdding";
+import { GroupAdding } from "@/components/ui/modals/group-adding/subject-adding/GroupAdding";
 
 const cx = classNames.bind(styles);
+
+const ModalWindow = dynamic(
+  () => import("@/components/reused/modal-window/ModalWindow"),
+  {
+    ssr: false,
+  }
+);
 
 type Props = {
   type: string;
@@ -30,6 +43,7 @@ const Lists: FC<Props> = ({ type }) => {
   const router = useRouter();
   const [query, setQuery] = useState<string>("");
   const [debouncedQuery] = useDebounce(query, 300);
+  const [isShow, setIsShow] = useState<boolean>(false);
   const [userFilterQuery, setUserFilterQuery] = useState<UserFilterType>({});
   const [groupFilterQuery, setGroupFilterQuery] = useState<GroupFilterType>({});
   const [subjectFilterQuery, setSubjectFilterQuery] =
@@ -40,6 +54,13 @@ const Lists: FC<Props> = ({ type }) => {
     [listTypeEnum.STUDENT]: <StudentList filter={userFilterQuery} />,
     [listTypeEnum.GROUP]: <GroupList filter={groupFilterQuery} />,
     [listTypeEnum.SUBJECT]: <SubjectList filter={subjectFilterQuery} />,
+  };
+
+  const listModal: { [key in listTypeEnum]: ReactElement } = {
+    [listTypeEnum.TEACHER]: <TeacherAdding setShow={setIsShow} />,
+    [listTypeEnum.STUDENT]: <StudentAdding />,
+    [listTypeEnum.GROUP]: <GroupAdding setShow={setIsShow} />,
+    [listTypeEnum.SUBJECT]: <SubjectAdding setShow={setIsShow} />,
   };
 
   useEffect(() => {
@@ -98,6 +119,10 @@ const Lists: FC<Props> = ({ type }) => {
     setSubjectFilterQuery({});
   };
 
+  const openModalWindow = () => {
+    setIsShow(true);
+  };
+
   return (
     <main className={styles.lists}>
       <div className={styles.lists_titleWrapper}>
@@ -134,7 +159,10 @@ const Lists: FC<Props> = ({ type }) => {
                 />
                 <p className={styles.lists_textBtn}>ФІЛЬТР</p>
               </button>
-              <button className={styles.lists_manageBtn}>
+              <button
+                onClick={openModalWindow}
+                className={styles.lists_manageBtn}
+              >
                 <FileDownloadOutlinedIcon
                   className={styles.lists_iconBtn}
                   color="primary"
@@ -155,6 +183,17 @@ const Lists: FC<Props> = ({ type }) => {
           )}
         </div>
       </div>
+      <AnimatePresence>
+        {isShow && (
+          <ModalWindow setShow={setIsShow}>
+            {Object.values(listTypeEnum).includes(type as listTypeEnum) ? (
+              listModal[type as listTypeEnum]
+            ) : (
+              <p>Не вірний тип списку</p>
+            )}
+          </ModalWindow>
+        )}
+      </AnimatePresence>
     </main>
   );
 };
