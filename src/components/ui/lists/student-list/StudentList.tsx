@@ -11,6 +11,9 @@ import { outputError } from "@/services/output-error";
 import { TStudentList } from "@/types/student";
 import { CustomList } from "@/components/reused/custom-list/CustomList";
 import { UserFilterType } from "@/types/user";
+import { useSelector } from "react-redux";
+import { selectProfile } from "@/redux/user/selectors";
+import { RoleEnum } from "@/enums/user/role-enum";
 
 const columns: GridColDef<TStudentList>[] = [
   {
@@ -55,11 +58,24 @@ export const StudentList: FC<Props> = ({ filter }) => {
   const [rowCount, setRowCount] = useState(0);
   const [studentsRows, setStudentsRows] = useState<TStudentList[]>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const currProfile = useSelector(selectProfile);
 
   const fetchStudents = (filter?: UserFilterType) => {
+    const idUniversity: number | null =
+      currProfile?.role === RoleEnum.MODER_UNIVERSITY ||
+      currProfile?.role === RoleEnum.OWNER_UNIVERSITY
+        ? currProfile.university.id
+        : null;
+
+    if (!idUniversity) return;
+
     setIsLoading(true);
 
-    getAllStudents(1, [pageSize * page, pageSize * (page + 1) - 1], filter)
+    getAllStudents(
+      idUniversity,
+      [pageSize * page, pageSize * (page + 1) - 1],
+      filter
+    )
       .then((students: StudentsInterface) => {
         const rows = students.data.map(({ id, user }) => {
           return {

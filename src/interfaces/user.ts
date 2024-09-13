@@ -1,4 +1,4 @@
-import { ProfileInterface } from "@/interfaces/profile";
+import { ProfileType } from "@/interfaces/profile";
 import { CountryCode } from "libphonenumber-js";
 
 export interface UserInterface {
@@ -21,7 +21,7 @@ export interface UserInterface {
   accessToken?: string;
   refreshToken?: string;
   devices?: UserDeviceInterface[];
-  profiles?: ProfileInterface[];
+  profiles?: ProfileType[];
 }
 
 export interface UserDeviceInterface {

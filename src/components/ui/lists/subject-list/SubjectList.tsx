@@ -13,6 +13,8 @@ import { getAllSubjects } from "@/axios/subject";
 import { SubjectInterface, SubjectsInterface } from "@/interfaces/subject";
 import { isFetch } from "@/redux/list/selectors";
 import { useSelector } from "react-redux";
+import { selectProfile } from "@/redux/user/selectors";
+import { RoleEnum } from "@/enums/user/role-enum";
 
 const columns: GridColDef<TSubjectList>[] = [
   {
@@ -58,10 +60,23 @@ export const SubjectList: FC<Props> = ({ filter }) => {
   const [rowCount, setRowCount] = useState(0);
   const [subjectsRows, setSubjectsRows] = useState<SubjectInterface[]>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const currProfile = useSelector(selectProfile);
 
   const fetchSubjects = (filter?: SubjectFilterType) => {
+    const idUniversity: number | null =
+      currProfile?.role === RoleEnum.MODER_UNIVERSITY ||
+      currProfile?.role === RoleEnum.OWNER_UNIVERSITY
+        ? currProfile.university.id
+        : null;
+
+    if (!idUniversity) return;
+
     setIsLoading(true);
-    getAllSubjects(1, [pageSize * page, pageSize * (page + 1) - 1], filter)
+    getAllSubjects(
+      idUniversity,
+      [pageSize * page, pageSize * (page + 1) - 1],
+      filter
+    )
       .then((subjects: SubjectsInterface) => {
         const rows = subjects.data.map(
           ({ id, name, short_name, icon_name }) => {

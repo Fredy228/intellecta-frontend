@@ -12,6 +12,8 @@ import { GroupFilterType, TGroupList } from "@/types/group";
 import { CustomList } from "@/components/reused/custom-list/CustomList";
 import { isFetch } from "@/redux/list/selectors";
 import { useSelector } from "react-redux";
+import { selectProfile } from "@/redux/user/selectors";
+import { RoleEnum } from "@/enums/user/role-enum";
 
 const columns: GridColDef<TGroupList>[] = [
   {
@@ -44,11 +46,24 @@ export const GroupList: FC<Props> = ({ filter }) => {
   const [rowCount, setRowCount] = useState(0);
   const [groupsRows, setGroupsRows] = useState<TGroupList[]>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const currProfile = useSelector(selectProfile);
 
   const fetchGroups = (filter?: GroupFilterType) => {
+    const idUniversity: number | null =
+      currProfile?.role === RoleEnum.MODER_UNIVERSITY ||
+      currProfile?.role === RoleEnum.OWNER_UNIVERSITY
+        ? currProfile.university.id
+        : null;
+
+    if (!idUniversity) return;
+
     setIsLoading(true);
 
-    getAllGroups(1, [pageSize * page, pageSize * (page + 1) - 1], filter)
+    getAllGroups(
+      idUniversity,
+      [pageSize * page, pageSize * (page + 1) - 1],
+      filter
+    )
       .then((groups: GroupsInterface) => {
         const rows = groups.data.map(({ id, level, name }) => {
           return {
