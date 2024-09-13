@@ -13,6 +13,7 @@ import { TTeacherList } from "@/types/teacher";
 import { CustomList } from "@/components/reused/custom-list/CustomList";
 import { UserFilterType } from "@/types/user";
 import { isFetch } from "@/redux/list/selectors";
+import { useSelector } from "react-redux";
 
 const columns: GridColDef<TTeacherList>[] = [
   {
@@ -52,6 +53,7 @@ type Props = {
 };
 
 export const TeacherList: FC<Props> = ({ filter }) => {
+  const actionFetch = useSelector(isFetch);
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(10);
   const [rowCount, setRowCount] = useState(0);
@@ -83,7 +85,7 @@ export const TeacherList: FC<Props> = ({ filter }) => {
 
   useEffect(() => {
     fetchTeachers(filter);
-  }, [filter, page, pageSize, isFetch]);
+  }, [filter, page, pageSize, actionFetch]);
 
   return (
     <CustomList

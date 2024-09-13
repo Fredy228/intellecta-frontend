@@ -12,6 +12,7 @@ import { SubjectFilterType, TSubjectList } from "@/types/subject";
 import { getAllSubjects } from "@/axios/subject";
 import { SubjectInterface, SubjectsInterface } from "@/interfaces/subject";
 import { isFetch } from "@/redux/list/selectors";
+import { useSelector } from "react-redux";
 
 const columns: GridColDef<TSubjectList>[] = [
   {
@@ -51,6 +52,7 @@ type Props = {
 };
 
 export const SubjectList: FC<Props> = ({ filter }) => {
+  const actionFetch = useSelector(isFetch);
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(10);
   const [rowCount, setRowCount] = useState(0);
@@ -80,7 +82,7 @@ export const SubjectList: FC<Props> = ({ filter }) => {
 
   useEffect(() => {
     fetchSubjects(filter);
-  }, [filter, page, pageSize, isFetch]);
+  }, [filter, page, pageSize, actionFetch]);
 
   return (
     <CustomList

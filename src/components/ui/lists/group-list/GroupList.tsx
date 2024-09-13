@@ -11,6 +11,7 @@ import { outputError } from "@/services/output-error";
 import { GroupFilterType, TGroupList } from "@/types/group";
 import { CustomList } from "@/components/reused/custom-list/CustomList";
 import { isFetch } from "@/redux/list/selectors";
+import { useSelector } from "react-redux";
 
 const columns: GridColDef<TGroupList>[] = [
   {
@@ -37,6 +38,7 @@ type Props = {
 };
 
 export const GroupList: FC<Props> = ({ filter }) => {
+  const actionFetch = useSelector(isFetch);
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(10);
   const [rowCount, setRowCount] = useState(0);
@@ -65,7 +67,7 @@ export const GroupList: FC<Props> = ({ filter }) => {
 
   useEffect(() => {
     fetchGroups(filter);
-  }, [filter, page, pageSize, isFetch]);
+  }, [filter, page, pageSize, actionFetch]);
 
   return (
     <CustomList
