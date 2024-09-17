@@ -4,14 +4,10 @@ import { TFilter, TSort } from "@/types/teacher";
 import $api from "./base";
 
 export const createStudent = async (
-  idUniversity: number,
   idGroup: number,
   credentials: DtoCreateStudent
 ): Promise<StudentInterface> => {
-  const { data } = await $api.post(
-    `/api/student/one/${idUniversity}?idGroup=${idGroup}`,
-    credentials
-  );
+  const { data } = await $api.post(`/api/student/one/${idGroup}`, credentials);
 
   return data;
 };

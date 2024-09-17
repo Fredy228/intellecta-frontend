@@ -11,6 +11,10 @@ import { CustomList } from "@/components/reused/custom-list/CustomList";
 import { SubjectFilterType, TSubjectList } from "@/types/subject";
 import { getAllSubjects } from "@/axios/subject";
 import { SubjectInterface, SubjectsInterface } from "@/interfaces/subject";
+import { isFetch } from "@/redux/list/selectors";
+import { useSelector } from "react-redux";
+import { selectProfile } from "@/redux/user/selectors";
+import { RoleEnum } from "@/enums/user/role-enum";
 
 const columns: GridColDef<TSubjectList>[] = [
   {
@@ -36,10 +40,10 @@ const columns: GridColDef<TSubjectList>[] = [
     headerClassName: styles.headerCenter,
     renderCell: (params: GridCellParams<TSubjectList>) => (
       <Image
-        src={String(params.value)}
+        src={"/img/profile/mentore-img.png"}
         width={53}
         height={53}
-        alt="subject's icon"
+        alt={String(params.value)}
       />
     ),
   },
@@ -50,15 +54,29 @@ type Props = {
 };
 
 export const SubjectList: FC<Props> = ({ filter }) => {
+  const actionFetch = useSelector(isFetch);
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(10);
   const [rowCount, setRowCount] = useState(0);
   const [subjectsRows, setSubjectsRows] = useState<SubjectInterface[]>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const currProfile = useSelector(selectProfile);
 
   const fetchSubjects = (filter?: SubjectFilterType) => {
+    const idUniversity: number | null =
+      currProfile?.role === RoleEnum.MODER_UNIVERSITY ||
+      currProfile?.role === RoleEnum.OWNER_UNIVERSITY
+        ? currProfile.university.id
+        : null;
+
+    if (!idUniversity) return;
+
     setIsLoading(true);
-    getAllSubjects(1, [pageSize * page, pageSize * (page + 1) - 1], filter)
+    getAllSubjects(
+      idUniversity,
+      [pageSize * page, pageSize * (page + 1) - 1],
+      filter
+    )
       .then((subjects: SubjectsInterface) => {
         const rows = subjects.data.map(
           ({ id, name, short_name, icon_name }) => {
@@ -66,7 +84,7 @@ export const SubjectList: FC<Props> = ({ filter }) => {
               id,
               name,
               short_name,
-              icon_name: icon_name ?? "/img/profile/mentore-img.png",
+              icon_name: icon_name,
             };
           }
         );
@@ -79,7 +97,7 @@ export const SubjectList: FC<Props> = ({ filter }) => {
 
   useEffect(() => {
     fetchSubjects(filter);
-  }, [filter, page, pageSize]);
+  }, [filter, page, pageSize, actionFetch]);
 
   return (
     <CustomList

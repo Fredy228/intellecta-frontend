@@ -104,7 +104,7 @@ const AuthForm: FC<Props> = ({ isRegister }) => {
   };
 
   const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>,
+    event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
   };

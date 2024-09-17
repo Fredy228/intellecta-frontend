@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { UserInterface } from "@/interfaces/user";
-import { ProfileInterface } from "@/interfaces/profile";
+import { ProfileType } from "@/interfaces/profile";
 import { RoleEnum } from "@/enums/user/role-enum";
 
 type StateType = {
   user: Partial<UserInterface> | null;
-  profile: ProfileInterface | null;
-  profiles: ProfileInterface[];
+  profile: ProfileType | null;
+  profiles: ProfileType[];
 };
 
 const initialState: StateType = {
@@ -32,7 +32,7 @@ export const userSlice = createSlice({
         payload,
       }: {
         payload: UserInterface;
-      },
+      }
     ) => {
       const { profiles, ...user } = payload;
       state.user = user;
@@ -41,7 +41,7 @@ export const userSlice = createSlice({
     setUserProfile: (state, { payload }) => {
       state.user = { ...state.user, ...payload };
     },
-    setCurrentProfile: (state, { payload }: { payload: ProfileInterface }) => {
+    setCurrentProfile: (state, { payload }: { payload: ProfileType }) => {
       state.profile = payload;
     },
   },
